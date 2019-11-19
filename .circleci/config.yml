@@ -1,0 +1,85 @@
+version: 2.1
+workflows:
+  main:
+    jobs:
+      - build
+      - lint:
+          requires:
+            - build
+
+job-references:
+  restore_composer: &restore_composer
+    keys:
+      - v1-dependencies-{{ checksum "composer.json" }}
+      - v1-dependencies-
+
+  install_composer: &install_composer
+    name: "Install Composer dependencies"
+    command: composer install -n --prefer-dist
+
+  save_composer: &save_composer
+    key: v1-dependencies-{{ checksum "composer.json" }}
+    paths:
+      - vendor
+
+  restore_npm: &restore_npm
+    keys:
+      - node-v1-{{ checksum "package.json" }}
+      - node-v1-
+
+  install_npm: &install_npm
+    name: "Install NPM dependencies"
+    command: npm ci
+
+  save_npm: &save_npm
+    key: node-v1-{{ checksum "package.json" }}
+    paths:
+      - node_modules
+
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.3-node
+    steps:
+      - checkout
+
+      - restore_cache: *restore_composer
+      - run: *install_composer
+      - save_cache: *save_composer
+
+      - restore_cache: *restore_npm
+      - run: *install_npm
+      - save_cache: *save_npm
+
+      - run:
+          name: "Build"
+          command: npm run build
+      - persist_to_workspace:
+          root: dist
+          paths:
+            - "*"
+  lint:
+    docker:
+      - image: circleci/php:7.3-node
+    steps:
+      - checkout
+
+      - restore_cache: *restore_composer
+      - run: *install_composer
+      - save_cache: *save_composer
+
+      - restore_cache: *restore_npm
+      - run: *install_npm
+      - save_cache: *save_npm
+
+      - attach_workspace:
+          at: dist
+
+      - run:
+          name: "Install php-ast"
+          command: |
+            sudo pecl install ast
+            echo 'extension=ast.so' | sudo tee /usr/local/etc/php/php.ini > /dev/null
+      - run:
+          name: "Lint"
+          command: npm run lint
