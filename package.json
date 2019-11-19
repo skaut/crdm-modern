@@ -24,6 +24,7 @@
 	},
 	"scripts": {
 		"lint:eslint": "eslint src/**/*.js",
+		"lint:phan": "export PHAN_DISABLE_XDEBUG_WARN=1; vendor/bin/phan",
 		"lint:phpcs": "vendor/bin/phpcs",
 		"lint:phpmd": "vendor/bin/phpmd src text phpmd.xml",
 		"lint:stylelint": "stylelint src/**/*.css",
