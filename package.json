@@ -25,6 +25,7 @@
 	"scripts": {
 		"lint:eslint": "eslint src/**/*.js",
 		"lint:phpcs": "vendor/bin/phpcs",
+		"lint:phpmd": "vendor/bin/phpmd src text phpmd.xml",
 		"lint:stylelint": "stylelint src/**/*.css",
 		"lint": "run-s -c lint:*"
 	},
