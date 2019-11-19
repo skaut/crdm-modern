@@ -1,0 +1,35 @@
+{
+	"name": "skaut/crdm-modern",
+	"description": "A modern WordPress theme made for children's organizations",
+	"type": "wordpress-theme",
+	"keywords": [
+		"WordPress",
+		"WordPress theme",
+		"skaut",
+		"ČRDM",
+		"children"
+	],
+	"homepage": "https://github.com/skaut/crdm-modern",
+	"readme": "README.md",
+	"license": "GPL-3.0-or-later",
+	"authors": [
+		{
+			"name": "Marek Dědič",
+			"email": "developer@dedic.eu"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/skaut/crdm-modern/issues",
+		"source": "https://github.com/skaut/crdm-modern"
+	},
+	"require": {
+		"php": "^7.0"
+	},
+	"require-dev": {
+		"squizlabs/php_codesniffer": "^3.4",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"wp-coding-standards/wpcs": "^2.1",
+		"phpmd/phpmd": "^2.7",
+		"phan/phan": "^2.2"
+	}
+}
