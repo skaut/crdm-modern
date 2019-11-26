@@ -3,7 +3,7 @@
 const gulp = require( 'gulp' );
 
 gulp.task( 'build:assets', function() {
-	return gulp.src( [ 'src/assets/license.txt', 'src/assets/readme.txt', 'src/assets/style.css' ] )
+	return gulp.src( [ 'src/assets/license.txt', 'src/assets/readme.txt', 'src/assets/screenshot.png', 'src/assets/style.css' ] )
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
