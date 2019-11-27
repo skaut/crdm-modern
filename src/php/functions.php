@@ -31,6 +31,12 @@ function activate( $old_name ) {
 		switch_theme( get_option( 'theme_switched', '' ) );
 		return false;
 	}
+
+	update_option( 'generate_package_backgrounds', 'activated' );
+	update_option( 'generate_package_blog', 'activated' );
+	update_option( 'generate_package_colors', 'activated' );
+	update_option( 'generate_package_spacing', 'activated' );
+	update_option( 'generate_package_typography', 'activated' );
 	return true;
 }
 
