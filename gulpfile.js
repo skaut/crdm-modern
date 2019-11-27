@@ -7,4 +7,11 @@ gulp.task( 'build:assets', function() {
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
-gulp.task( 'build', gulp.parallel( 'build:assets' ) );
+gulp.task( 'build:php:functions', function() {
+	return gulp.src( 'src/php/functions.php' )
+		.pipe( gulp.dest( 'dist/' ) );
+} );
+
+gulp.task( 'build:php', gulp.parallel( 'build:php:functions' ) );
+
+gulp.task( 'build', gulp.parallel( 'build:assets', 'build:php' ) );
