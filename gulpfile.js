@@ -2,9 +2,38 @@
 
 const gulp = require( 'gulp' );
 
+const composer = require( 'gulp-uglify/composer' );
+const concat = require( 'gulp-concat' );
+const inject = require( 'gulp-inject-string' );
+const merge = require( 'merge-stream' );
+const ts = require( 'gulp-typescript' );
+const uglify = require( 'uglify-js' );
+
+const minify = composer( uglify, console );
+
 gulp.task( 'build:assets', function() {
 	return gulp.src( [ 'src/assets/license.txt', 'src/assets/readme.txt', 'src/assets/screenshot.png', 'src/assets/style.css' ] )
 		.pipe( gulp.dest( 'dist/' ) );
+} );
+
+function bundle( name, sources, part, jQuery = false ) {
+	const tsProject = ts.createProject( 'tsconfig.json' );
+	let ret = gulp.src( sources.concat( [ 'src/d.ts/*.d.ts' ] ) )
+		.pipe( tsProject() )
+		.js
+		.pipe( concat( name + '.min.js' ) );
+	if ( jQuery ) {
+		ret = ret.pipe( inject.prepend( 'jQuery( document ).ready( function( $ ) {\n' ) )
+			.pipe( inject.append( '} );\n' ) );
+	}
+	return ret.pipe( minify( { ie8: true } ) )
+		.pipe( gulp.dest( 'dist/' + part + '/js/' ) );
+}
+
+gulp.task( 'build:js', function() {
+	return merge(
+		bundle( 'preset_customize_control', [ 'src/ts/admin/preset_customize_control.ts' ], 'admin', true )
+	);
 } );
 
 gulp.task( 'build:php:functions', function() {
@@ -19,4 +48,4 @@ gulp.task( 'build:php:admin', function() {
 
 gulp.task( 'build:php', gulp.parallel( 'build:php:functions', 'build:php:admin' ) );
 
-gulp.task( 'build', gulp.parallel( 'build:assets', 'build:php' ) );
+gulp.task( 'build', gulp.parallel( 'build:assets', 'build:js', 'build:php' ) );
