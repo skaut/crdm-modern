@@ -16,7 +16,7 @@ gulp.task( 'build:assets', function() {
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
-function bundle( name, sources, part, jQuery = false ) {
+function bundle( name: string, sources: Array<string>, part: string, jQuery = false ): void {
 	const tsProject = ts.createProject( 'tsconfig.json' );
 	let ret = gulp.src( sources.concat( [ 'src/d.ts/*.d.ts' ] ) )
 		.pipe( tsProject() )
