@@ -83,4 +83,32 @@ function notice_gp_premium() {
 	echo( '</p></div>' );
 }
 
+/**
+ * Registers a script file
+ *
+ * Registers a script so that it can later be enqueued by `wp_enqueue_script()`.
+ *
+ * @param string $handle A unique handle to identify the script with. This handle should be passed to `wp_enqueue_script()`.
+ * @param string $src Path to the file, relative to the theme directory.
+ * @param array  $deps A list of dependencies of the script. These can be either system dependencies like jquery or other registered scripts. Default [].
+ */
+function register_script( string $handle, string $src, array $deps = array() ) {
+	$file = get_stylesheet_directory() . '/' . $src;
+	wp_register_script( $handle, get_stylesheet_directory_uri() . '/' . $src, $deps, file_exists( $file ) ? filemtime( $file ) : false, true );
+}
+
+/**
+ * Enqueues a script file
+ *
+ * Registers and immediately enqueues a script. Note that you should **not** call this function if you've previously registered the script using `register_script()`.
+ *
+ * @param string $handle A unique handle to identify the script with.
+ * @param string $src Path to the file, relative to the theme directory.
+ * @param array  $deps A list of dependencies of the script. These can be either system dependencies like jquery or other registered scripts. Default [].
+ */
+function enqueue_script( string $handle, string $src, array $deps = array() ) {
+	register_script( $handle, $src, $deps );
+	wp_enqueue_script( $handle );
+}
+
 init();
