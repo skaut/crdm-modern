@@ -12,6 +12,11 @@ gulp.task( 'build:php:functions', function() {
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
-gulp.task( 'build:php', gulp.parallel( 'build:php:functions' ) );
+gulp.task( 'build:php:admin', function() {
+	return gulp.src( 'src/php/admin/**/*.php' )
+		.pipe( gulp.dest( 'dist/admin/' ) );
+} );
+
+gulp.task( 'build:php', gulp.parallel( 'build:php:functions', 'build:php:admin' ) );
 
 gulp.task( 'build', gulp.parallel( 'build:assets', 'build:php' ) );
