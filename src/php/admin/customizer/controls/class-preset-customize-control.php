@@ -114,7 +114,7 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 			echo( '<label>' );
 			echo( '<input type="radio" name="crdm_modern_preset" value="' . esc_attr( $preset->id ) . '">' );
 			echo( esc_html( $preset->name ) );
-			echo( '<img src="' . esc_attr( get_stylesheet_directory() . '/' . $preset->image ) . '" alt="' . esc_attr( $preset->name ) . '">' );
+			echo( '<img src="' . esc_attr( get_stylesheet_directory_uri() . '/admin/' . $preset->image ) . '" alt="' . esc_attr( $preset->name ) . '">' );
 			echo( '</label>' );
 		}
 		echo( '<div>' );

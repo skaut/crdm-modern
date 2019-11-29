@@ -43,7 +43,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				'section'  => 'crdm_modern_preset',
 			),
 			array(
-				new \CrdmModern\Admin\Customizer\Controls\Preset_Customize_Control\Preset( 'blue', __( 'Blue', 'crdm-modern' ), 'blue.png' ),
+				new \CrdmModern\Admin\Customizer\Controls\Preset_Customize_Control\Preset( 'blue', __( 'Blue', 'crdm-modern' ), 'presets/blue.png' ),
 			)
 		)
 	);

@@ -53,6 +53,11 @@ gulp.task( 'build:png:screenshot', function() {
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
-gulp.task( 'build:png', gulp.parallel( 'build:png:screenshot' ) );
+gulp.task( 'build:png:admin', function() {
+	return gulp.src( 'src/png/admin/**/*.png' )
+		.pipe( gulp.dest( 'dist/admin/' ) );
+} );
+
+gulp.task( 'build:png', gulp.parallel( 'build:png:screenshot', 'build:png:admin' ) );
 
 gulp.task( 'build', gulp.parallel( 'build:assets', 'build:js', 'build:php', 'build:png' ) );
