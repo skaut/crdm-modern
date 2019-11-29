@@ -9,6 +9,8 @@ declare( strict_types = 1 );
 
 namespace CrdmModern\Admin\Customizer\Controls;
 
+require_once __DIR__ . '/preset-customize-control/class-preset.php';
+
 if ( ! class_exists( 'WP_Customize_Control' ) ) {
 	return;
 }
@@ -31,7 +33,7 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	/**
 	 * Available presets
 	 *
-	 * @var array
+	 * @var Preset_Customize_Control\Preset[]
 	 */
 	private $presets;
 
@@ -44,9 +46,9 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 *
 	 * @since 3.4.0
 	 *
-	 * @param \WP_Customize_Manager $manager Customizer bootstrap instance.
-	 * @param string                $id      Control ID.
-	 * @param array                 $args    {
+	 * @param \WP_Customize_Manager             $manager Customizer bootstrap instance.
+	 * @param string                            $id      Control ID.
+	 * @param array                             $args    {
 	 *     Optional. Arguments to override class property defaults.
 	 *
 	 *     @type int                  $instance_number Order in which this instance was created in relation
@@ -74,7 +76,7 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 *                                                 input types such as 'email', 'url', 'number', 'hidden', and
 	 *                                                 'date' are supported implicitly. Default 'text'.
 	 * }
-	 * @param array                 $presets The available presets. Default [].
+	 * @param Preset_Customize_Control\Preset[] $presets The available presets. Default [].
 	 *
 	 * @inheritDoc
 	 *
@@ -108,6 +110,13 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 * @inheritDoc
 	 */
 	protected function render_content() {
+		foreach ( $this->presets as $preset ) {
+			echo( '<label>' );
+			echo( '<input type="radio" name="crdm_modern_preset" value="' . esc_attr( $preset->id ) . '">' );
+			echo( esc_html( $preset->name ) );
+			echo( '<img src="' . esc_attr( get_stylesheet_directory() . '/' . $preset->image ) . '" alt="' . esc_attr( $preset->name ) . '">' );
+			echo( '</label>' );
+		}
 		echo( '<div>' );
 		esc_html_e( 'Applying the preset overrides a lot of the theme options. You can always go back by closing the customizer before saving.', 'crdm-modern' );
 		echo( '</div>' );
