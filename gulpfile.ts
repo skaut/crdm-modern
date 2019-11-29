@@ -13,8 +13,8 @@ const uglify = require( 'uglify-js' );
 
 const minify = composer( uglify, console );
 
-gulp.task( 'build:assets', function() {
-	return gulp.src( [ 'src/assets/license.txt', 'src/assets/readme.txt', 'src/assets/style.css' ] )
+gulp.task( 'build:css:main', function() {
+	return gulp.src( 'src/css/style.css' )
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
@@ -25,7 +25,7 @@ gulp.task( 'build:css:admin', function() {
 		.pipe( gulp.dest( 'dist/admin/css/' ) );
 } );
 
-gulp.task( 'build:css', gulp.parallel( 'build:css:admin' ) );
+gulp.task( 'build:css', gulp.parallel( 'build:css:main', 'build:css:admin' ) );
 
 function bundle( name: string, sources: Array<string>, part: string, jQuery = false ): void {
 	const tsProject = ts.createProject( 'tsconfig.json' );
@@ -71,4 +71,9 @@ gulp.task( 'build:png:admin', function() {
 
 gulp.task( 'build:png', gulp.parallel( 'build:png:screenshot', 'build:png:admin' ) );
 
-gulp.task( 'build', gulp.parallel( 'build:assets', 'build:css', 'build:js', 'build:php', 'build:png' ) );
+gulp.task( 'build:txt', function() {
+	return gulp.src( [ 'src/txt/license.txt', 'src/txt/readme.txt' ] )
+		.pipe( gulp.dest( 'dist/' ) );
+} );
+
+gulp.task( 'build', gulp.parallel( 'build:css', 'build:js', 'build:php', 'build:png', 'build:txt' ) );
