@@ -30,8 +30,6 @@ function register() {
  * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
  */
 function customize( \WP_Customize_Manager $wp_customize ) {
-	$wp_customize->register_control_type( '\\CrdmModern\\Admin\\Customizer\\Controls\\Preset_Customize_Control' );
-
 	$wp_customize->add_section(
 		'crdm_modern_preset',
 		array(

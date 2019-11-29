@@ -95,16 +95,24 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	}
 
 	/**
-	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
-	 * Class variables for this control class are available in the `data` JS object;
-	 * export custom variables by overriding WP_Customize_Control::to_json().
+	 * Render the control's content.
+	 *
+	 * Allows the content to be overridden without having to rewrite the wrapper in `$this::render()`.
+	 *
+	 * Supports basic input types `text`, `checkbox`, `textarea`, `radio`, `select` and `dropdown-pages`.
+	 * Additional input types such as `email`, `url`, `number`, `hidden` and `date` are supported implicitly.
+	 *
+	 * Control content can alternately be rendered in JS. See WP_Customize_Control::print_template().
 	 *
 	 * @inheritDoc
 	 */
-	protected function content_template() {
-		?>
-<b>Hello</b>
-		<?php
+	protected function render_content() {
+		echo( '<div>' );
+		esc_html_e( 'Applying the preset overrides a lot of the theme options. You can always go back by closing the customizer before saving.', 'crdm-modern' );
+		echo( '</div>' );
+		echo( '<button type="button" class="button button-primary" disabled>' );
+		esc_html_e( 'Apply', 'crdm-modern' );
+		echo( '</button>' );
 	}
 }
