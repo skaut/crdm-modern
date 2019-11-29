@@ -12,7 +12,7 @@ const uglify = require( 'uglify-js' );
 const minify = composer( uglify, console );
 
 gulp.task( 'build:assets', function() {
-	return gulp.src( [ 'src/assets/license.txt', 'src/assets/readme.txt', 'src/assets/screenshot.png', 'src/assets/style.css' ] )
+	return gulp.src( [ 'src/assets/license.txt', 'src/assets/readme.txt', 'src/assets/style.css' ] )
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
@@ -48,4 +48,11 @@ gulp.task( 'build:php:admin', function() {
 
 gulp.task( 'build:php', gulp.parallel( 'build:php:functions', 'build:php:admin' ) );
 
-gulp.task( 'build', gulp.parallel( 'build:assets', 'build:js', 'build:php' ) );
+gulp.task( 'build:png:screenshot', function() {
+	return gulp.src( 'src/png/screenshot.png' )
+		.pipe( gulp.dest( 'dist/' ) );
+} );
+
+gulp.task( 'build:png', gulp.parallel( 'build:png:screenshot' ) );
+
+gulp.task( 'build', gulp.parallel( 'build:assets', 'build:js', 'build:php', 'build:png' ) );
