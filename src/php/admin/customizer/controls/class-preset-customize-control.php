@@ -94,6 +94,7 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 */
 	public function enqueue() {
 		\CrdmModern\enqueue_script( 'crdm_modern_preset_customize_control', 'admin/js/preset_customize_control.min.js', array( 'jquery', 'customize-preview' ) );
+		\CrdmModern\enqueue_style( 'crdm_modern_preset_customize_control', 'admin/css/preset_customize_control.min.css' );
 	}
 
 	/**

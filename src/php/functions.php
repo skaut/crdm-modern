@@ -111,4 +111,32 @@ function enqueue_script( string $handle, string $src, array $deps = array() ) {
 	wp_enqueue_script( $handle );
 }
 
+/**
+ * Registers a style file
+ *
+ * Registers a style so that it can later be enqueued by `wp_enqueue_style()`.
+ *
+ * @param string $handle A unique handle to identify the style with. This handle should be passed to `wp_enqueue_style()`.
+ * @param string $src Path to the file, relative to the theme directory.
+ * @param array  $deps A list of dependencies of the style. These can be either system dependencies like jquery or other registered style. Default [].
+ */
+function register_style( string $handle, string $src, array $deps = array() ) {
+	$file = get_stylesheet_directory() . '/' . $src;
+	wp_register_style( $handle, get_stylesheet_directory_uri() . '/' . $src, $deps, file_exists( $file ) ? filemtime( $file ) : false );
+}
+
+/**
+ * Enqueues a style file
+ *
+ * Registers and immediately enqueues a style. Note that you should **not** call this function if you've previously registered the style using `register_style()`.
+ *
+ * @param string $handle A unique handle to identify the style with.
+ * @param string $src Path to the file, relative to the theme directory.
+ * @param array  $deps A list of dependencies of the style. These can be either system dependencies like jquery or other registered style. Default [].
+ */
+function enqueue_style( string $handle, string $src, array $deps = array() ) {
+	register_style( $handle, $src, $deps );
+	wp_enqueue_style( $handle );
+}
+
 init();

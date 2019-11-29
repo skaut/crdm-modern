@@ -2,10 +2,12 @@
 
 const gulp = require( 'gulp' );
 
+const cleanCSS = require( 'gulp-clean-css' );
 const composer = require( 'gulp-uglify/composer' );
 const concat = require( 'gulp-concat' );
 const inject = require( 'gulp-inject-string' );
 const merge = require( 'merge-stream' );
+const rename = require( 'gulp-rename' );
 const ts = require( 'gulp-typescript' );
 const uglify = require( 'uglify-js' );
 
@@ -15,6 +17,15 @@ gulp.task( 'build:assets', function() {
 	return gulp.src( [ 'src/assets/license.txt', 'src/assets/readme.txt', 'src/assets/style.css' ] )
 		.pipe( gulp.dest( 'dist/' ) );
 } );
+
+gulp.task( 'build:css:admin', function() {
+	return gulp.src( 'src/css/admin/**/*.css' )
+		.pipe( cleanCSS( { compatibility: 'ie8' } ) )
+		.pipe( rename( { suffix: '.min' } ) )
+		.pipe( gulp.dest( 'dist/admin/css/' ) );
+} );
+
+gulp.task( 'build:css', gulp.parallel( 'build:css:admin' ) );
 
 function bundle( name: string, sources: Array<string>, part: string, jQuery = false ): void {
 	const tsProject = ts.createProject( 'tsconfig.json' );
@@ -60,4 +71,4 @@ gulp.task( 'build:png:admin', function() {
 
 gulp.task( 'build:png', gulp.parallel( 'build:png:screenshot', 'build:png:admin' ) );
 
-gulp.task( 'build', gulp.parallel( 'build:assets', 'build:js', 'build:php', 'build:png' ) );
+gulp.task( 'build', gulp.parallel( 'build:assets', 'build:css', 'build:js', 'build:php', 'build:png' ) );
