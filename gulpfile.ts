@@ -29,7 +29,7 @@ gulp.task( 'build:css', gulp.parallel( 'build:css:main', 'build:css:admin' ) );
 
 function bundle( name: string, sources: Array<string>, part: string, jQuery = false ): void {
 	const tsProject = ts.createProject( 'tsconfig.json' );
-	let ret = gulp.src( sources.concat( [ 'src/d.ts/*.d.ts' ] ) )
+	let ret = gulp.src( sources.concat( [ 'src/d.ts/**/*.d.ts' ] ) )
 		.pipe( tsProject() )
 		.js
 		.pipe( concat( name + '.min.js' ) );

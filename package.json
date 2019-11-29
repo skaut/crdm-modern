@@ -24,7 +24,7 @@
 	},
 	"scripts": {
 		"build": "gulp build",
-		"lint:eslint": "eslint **/*.ts",
+		"lint:eslint": "eslint src/ts/**/*.ts gulpfile.ts",
 		"lint:phan": "export PHAN_DISABLE_XDEBUG_WARN=1; vendor/bin/phan",
 		"lint:phpcs": "vendor/bin/phpcs",
 		"lint:phpmd": "vendor/bin/phpmd src text phpmd.xml",

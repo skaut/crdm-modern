@@ -39,16 +39,25 @@ class Preset {
 	public $image;
 
 	/**
+	 * Preset settings
+	 *
+	 * @var array
+	 */
+	public $settings;
+
+	/**
 	 * Preset class constructor
 	 *
 	 * @param string $id The preset id.
 	 * @param string $name Translated preset name.
 	 * @param string $image The preset thumbnail image relative to the admin directory.
+	 * @param array  $settings The preset settings.
 	 */
-	public function __construct( string $id, string $name, string $image ) {
-		$this->id    = $id;
-		$this->name  = $name;
-		$this->image = $image;
+	public function __construct( string $id, string $name, string $image, array $settings ) {
+		$this->id       = $id;
+		$this->name     = $name;
+		$this->image    = $image;
+		$this->settings = $settings;
 	}
 }
 
