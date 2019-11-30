@@ -2,7 +2,7 @@ function flatten( input: object ): Record<string, string> {
 	function flattenInner( inputInner: object ): Record<string, string> {
 		const retInner: Record<string, string> = {};
 		$.each( inputInner, function( key, value ) {
-			if ( typeof ( value ) === 'object' ) {
+			if ( typeof value === 'object' && ! Array.isArray( value ) ) {
 				$.each( flattenInner( value ), function( keyInner, valueInner ) {
 					retInner[ '[' + key + ']' + keyInner ] = valueInner;
 				} );
@@ -15,9 +15,13 @@ function flatten( input: object ): Record<string, string> {
 
 	const ret: Record<string, string> = {};
 	$.each( input, function( key, value ) {
-		$.each( flattenInner( value ), function( keyInner, valueInner ) {
-			ret[ key + keyInner ] = valueInner;
-		} );
+		if ( typeof value === 'object' && ! Array.isArray( value ) ) {
+			$.each( flattenInner( value ), function( keyInner, valueInner ) {
+				ret[ key + keyInner ] = valueInner;
+			} );
+		} else {
+			ret[ key ] = value;
+		}
 	} );
 	return ret;
 }
