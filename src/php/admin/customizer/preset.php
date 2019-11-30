@@ -47,7 +47,24 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 					'blue',
 					__( 'Blue', 'crdm-modern' ),
 					'presets/blue.png',
-					array()
+					array(
+						'generate_settings' => array(
+							// Colors.
+							'site_title_color'            => '#00395e',
+							'site_tagline_color'          => '#00395e',
+							'navigation_background_color' => '#007bc2',
+							'navigation_background_hover_color' => '#00395e',
+							'navigation_background_current_color' => '#00395e',
+							'subnavigation_background_color' => '#00395e',
+							'subnavigation_background_hover_color' => '#007bc2',
+							'subnavigation_background_current_color' => '#007bc2',
+							'sidebar_widget_title_color'  => '#007bc2',
+							'footer_widget_background_color' => '#007bc2',
+							'footer_widget_text_color'    => '#ffffff',
+							'footer_widget_link_color'    => '#ffffff',
+							'footer_widget_title_color'   => '#ffffff',
+						),
+					)
 				),
 			)
 		)
