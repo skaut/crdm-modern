@@ -49,6 +49,11 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 					'presets/blue.png',
 					array(
 						'generate_settings'          => array(
+							// Layout.
+							'content_layout_setting'                 => 'one-container',
+							'header_layout_setting'                  => 'contained-header',
+							'nav_layout_setting'                     => 'contained-nav',
+							'footer_widget_setting'                  => '3',
 							// Colors.
 							'site_title_color'                       => '#00395e',
 							'site_tagline_color'                     => '#00395e',
@@ -80,6 +85,23 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 							'widget_title_font_size'                 => '18',
 							'widget_title_separator'                 => '5',
 							'widget_content_font_size'               => '15',
+						),
+						'generate_spacing_settings'  => array(
+							// Layout.
+							'menu_item' => '25',
+						),
+						'generate_blog_settings'     => array(
+							// Layout.
+							'excerpt_length'       => '25',
+							'read_more'            => __( 'Read more', 'crdm-modern' ) . ' >',
+							'author'               => false,
+							'categories'           => false,
+							'tags'                 => false,
+							'comments'             => false,
+							'post_image_position'  => 'post-image-above-header',
+							'post_image_alignment' => 'post-image-aligned-left',
+							'post_image_width'     => '300',
+							'post_image_height'    => '200',
 						),
 						// Typography.
 						// TODO: Fix Customizer UI not updating for font variants.
