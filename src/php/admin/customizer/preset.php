@@ -48,7 +48,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 					__( 'Blue', 'crdm-modern' ),
 					'presets/blue.png',
 					array(
-						'generate_settings'          => array(
+						'generate_settings'            => array(
 							// Layout.
 							'content_layout_setting'                 => 'one-container',
 							'header_layout_setting'                  => 'contained-header',
@@ -86,11 +86,11 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 							'widget_title_separator'                 => '5',
 							'widget_content_font_size'               => '15',
 						),
-						'generate_spacing_settings'  => array(
+						'generate_spacing_settings'    => array(
 							// Layout.
 							'menu_item' => '25',
 						),
-						'generate_blog_settings'     => array(
+						'generate_blog_settings'       => array(
 							// Layout.
 							'excerpt_length'       => '25',
 							'read_more'            => __( 'Read more', 'crdm-modern' ) . ' >',
@@ -103,11 +103,17 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 							'post_image_width'     => '300',
 							'post_image_height'    => '200',
 						),
+						'generate_background_settings' => array(
+							// Background.
+							'body_image'      => get_stylesheet_directory_uri() . '/frontend/background.jpg',
+							'body_size'       => 'cover',
+							'body_attachment' => 'fixed',
+						),
 						// Typography.
 						// TODO: Fix Customizer UI not updating for font variants.
-						'font_body_variants'         => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
-						'font_site_title_variants'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
-						'font_site_tagline_variants' => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+						'font_body_variants'           => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
+						'font_site_title_variants'     => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+						'font_site_tagline_variants'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 					)
 				),
 			)

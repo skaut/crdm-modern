@@ -27,6 +27,13 @@ gulp.task( 'build:css:admin', function() {
 
 gulp.task( 'build:css', gulp.parallel( 'build:css:main', 'build:css:admin' ) );
 
+gulp.task( 'build:jpg:frontend', function() {
+	return gulp.src( 'src/jpg/frontend/**/*.jpg' )
+		.pipe( gulp.dest( 'dist/frontend/' ) );
+} );
+
+gulp.task( 'build:jpg', gulp.parallel( 'build:jpg:frontend' ) );
+
 function bundle( name: string, sources: Array<string>, part: string, jQuery = false ): void {
 	const tsProject = ts.createProject( 'tsconfig.json' );
 	let ret = gulp.src( sources.concat( [ 'src/d.ts/**/*.d.ts' ] ) )
@@ -76,4 +83,4 @@ gulp.task( 'build:txt', function() {
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
-gulp.task( 'build', gulp.parallel( 'build:css', 'build:js', 'build:php', 'build:png', 'build:txt' ) );
+gulp.task( 'build', gulp.parallel( 'build:css', 'build:jpg', 'build:js', 'build:php', 'build:png', 'build:txt' ) );
