@@ -49,6 +49,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 					'presets/blue.png',
 					array(
 						'generate_settings'            => array(
+							// Site Identity.
+							'logo_width'                             => '100',
+							'inline_logo_site_branding'              => true,
 							// Layout.
 							'content_layout_setting'                 => 'one-container',
 							'header_layout_setting'                  => 'contained-header',
@@ -105,6 +108,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 						),
 						'generate_background_settings' => array(
 							// Background.
+							// TODO: Fix Customizer UI not updating for images.
 							'body_image'      => get_stylesheet_directory_uri() . '/frontend/background.jpg',
 							'body_size'       => 'cover',
 							'body_attachment' => 'fixed',
