@@ -1,38 +1,10 @@
-function flatten( input: object ): Record<string, string> {
-	function flattenInner( inputInner: object ): Record<string, string> {
-		const retInner: Record<string, string> = {};
-		$.each( inputInner, function( key, value ) {
-			if ( typeof value === 'object' && ! Array.isArray( value ) ) {
-				$.each( flattenInner( value ), function( keyInner, valueInner ) {
-					retInner[ '[' + key + ']' + keyInner ] = valueInner;
-				} );
-			} else {
-				retInner[ '[' + key + ']' ] = value;
-			}
-		} );
-		return retInner;
-	}
-
-	const ret: Record<string, string> = {};
-	$.each( input, function( key, value ) {
-		if ( typeof value === 'object' && ! Array.isArray( value ) ) {
-			$.each( flattenInner( value ), function( keyInner, valueInner ) {
-				ret[ key + keyInner ] = valueInner;
-			} );
-		} else {
-			ret[ key ] = value;
-		}
-	} );
-	return ret;
-}
-
 function applyPreset( control: any ): void {
 	const chosen = control.container.find( 'input[name=crdm_modern_preset]:checked' ).val();
 	if ( ! chosen ) {
 		return;
 	}
 
-	const preset = flatten( crdmModernPresetCustomizeControlLocalize[ chosen ] );
+	const preset = crdmModernPresetCustomizeControlLocalize[ chosen ];
 	$.each( preset, function( key, value ) {
 		const setting = wp.customize( key );
 		if ( ! setting ) {

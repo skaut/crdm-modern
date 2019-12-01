@@ -97,7 +97,7 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 		\CrdmModern\enqueue_script( 'crdm_modern_preset_customize_control', 'admin/js/preset_customize_control.min.js', array( 'jquery', 'customize-preview' ) );
 		$preset_settings = array();
 		foreach ( $this->presets as $preset ) {
-			$preset_settings[ $preset->id ] = $preset->settings;
+			$preset_settings[ $preset->id ] = $preset->flat_settings();
 		}
 		wp_localize_script( 'crdm_modern_preset_customize_control', 'crdmModernPresetCustomizeControlLocalize', $preset_settings );
 	}
