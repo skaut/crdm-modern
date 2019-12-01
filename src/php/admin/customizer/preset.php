@@ -21,7 +21,7 @@ function register() {
 /**
  * Initializes customizer options.
  *
- * Adds the panel and the control to the customizer
+ * Adds the panel and the control to the customizer.
  *
  * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
  */
