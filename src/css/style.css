@@ -12,3 +12,8 @@
  Tags:              blog, education
  Version:           0.1.0
 */
+
+/* Tagline closer to site title */
+.main-title {
+	line-height: 1em;
+}
