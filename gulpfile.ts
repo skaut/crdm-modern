@@ -15,6 +15,7 @@ const minify = composer( uglify, console );
 
 gulp.task( 'build:css:main', function() {
 	return gulp.src( 'src/css/style.css' )
+		.pipe( cleanCSS( { compatibility: 'ie8' } ) )
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
