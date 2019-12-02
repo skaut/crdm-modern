@@ -7,7 +7,7 @@
 
 declare( strict_types = 1 );
 
-namespace CrdmModern\Admin\Customizer\Controls\Preset_Customize_Control;
+namespace CrdmModern\Admin\Customizer;
 
 /**
  * A preset
