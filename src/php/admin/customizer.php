@@ -18,7 +18,7 @@ require_once __DIR__ . '/customizer/layout.php';
 function register() {
 	Preset\register();
 	Layout\register();
-	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Admin\\Customizer\\enqueue' );
+	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Admin\\Customizer\\enqueue', 11 );
 }
 
 /**

@@ -73,7 +73,7 @@ function enqueue() {
 
 	// Floating navigation spacing.
 	$css->set_selector( '.main-navigation' );
-	$css->add_property( 'background-color', esc_attr( $generate_color_settings[ 'header_background_color' ] ) . ' !important' ); // TODO: Dynamic value
+	$css->add_property( 'background-color', esc_attr( $generate_color_settings[ 'header_background_color' ] ) );
 
 	$css->set_selector( '.main-navigation .inside-navigation' );
 	$css->add_property( 'margin-left', absint( $crdm_modern_settings[ 'primary_navigation_spacing' ] ), false, 'px' );
