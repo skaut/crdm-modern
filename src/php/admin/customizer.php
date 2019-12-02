@@ -10,6 +10,7 @@ declare( strict_types = 1 );
 namespace CrdmModern\Admin\Customizer;
 
 require_once __DIR__ . '/customizer/class-preset.php';
+require_once __DIR__ . '/customizer/class-preset-registry.php';
 require_once __DIR__ . '/customizer/preset.php';
 require_once __DIR__ . '/customizer/layout.php';
 

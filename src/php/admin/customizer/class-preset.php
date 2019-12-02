@@ -18,13 +18,6 @@ namespace CrdmModern\Admin\Customizer;
  */
 class Preset {
 	/**
-	 * Preset id
-	 *
-	 * @var string
-	 */
-	public $id;
-
-	/**
 	 * Translated preset name
 	 *
 	 * @var string
@@ -48,13 +41,11 @@ class Preset {
 	/**
 	 * Preset class constructor
 	 *
-	 * @param string $id The preset id.
 	 * @param string $name Translated preset name.
 	 * @param string $image The preset thumbnail image relative to the admin directory.
 	 * @param array  $settings The preset settings.
 	 */
-	public function __construct( string $id, string $name, string $image, array $settings ) {
-		$this->id       = $id;
+	public function __construct( string $name, string $image, array $settings ) {
 		$this->name     = $name;
 		$this->image    = $image;
 		$this->settings = $settings;

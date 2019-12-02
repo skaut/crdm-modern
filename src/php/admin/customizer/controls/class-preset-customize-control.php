@@ -31,7 +31,7 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	/**
 	 * Available presets
 	 *
-	 * @var \CrdmModern\Admin\Customizer\Preset[]
+	 * @var ?\CrdmModern\Admin\Customizer\Preset_Registry
 	 */
 	private $presets;
 
@@ -44,9 +44,9 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 *
 	 * @since 3.4.0
 	 *
-	 * @param \WP_Customize_Manager                 $manager Customizer bootstrap instance.
-	 * @param string                                $id      Control ID.
-	 * @param array                                 $args    {
+	 * @param \WP_Customize_Manager                         $manager Customizer bootstrap instance.
+	 * @param string                                        $id      Control ID.
+	 * @param array                                         $args    {
 	 *     Optional. Arguments to override class property defaults.
 	 *
 	 *     @type int                  $instance_number Order in which this instance was created in relation
@@ -74,13 +74,13 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 *                                                 input types such as 'email', 'url', 'number', 'hidden', and
 	 *                                                 'date' are supported implicitly. Default 'text'.
 	 * }
-	 * @param \CrdmModern\Admin\Customizer\Preset[] $presets The available presets. Default [].
+	 * @param ?\CrdmModern\Admin\Customizer\Preset_Registry $presets The available presets. Default null.
 	 *
 	 * @inheritDoc
 	 *
 	 * @SuppressWarnings(PHPMD.ShortVariable)
 	 */
-	public function __construct( \WP_Customize_Manager $manager, string $id, array $args, array $presets = array() ) {
+	public function __construct( \WP_Customize_Manager $manager, string $id, array $args, ?\CrdmModern\Admin\Customizer\Preset_Registry $presets = null ) {
 		parent::__construct( $manager, $id, $args );
 		$this->presets = $presets;
 	}
@@ -93,11 +93,9 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	public function enqueue() {
 		\CrdmModern\enqueue_style( 'crdm_modern_preset_customize_control', 'admin/css/preset_customize_control.min.css' );
 		\CrdmModern\enqueue_script( 'crdm_modern_preset_customize_control', 'admin/js/preset_customize_control.min.js', array( 'jquery', 'customize-preview' ) );
-		$preset_settings = array();
-		foreach ( $this->presets as $preset ) {
-			$preset_settings[ $preset->id ] = $preset->flat_settings();
+		if ( isset( $this->presets ) ) {
+			wp_localize_script( 'crdm_modern_preset_customize_control', 'crdmModernPresetCustomizeControlLocalize', $this->presets->flat_settings() );
 		}
-		wp_localize_script( 'crdm_modern_preset_customize_control', 'crdmModernPresetCustomizeControlLocalize', $preset_settings );
 	}
 
 	/**
@@ -114,9 +112,12 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 * @inheritDoc
 	 */
 	protected function render_content() {
-		foreach ( $this->presets as $preset ) {
+		if ( ! isset( $this->presets ) ) {
+			return;
+		}
+		foreach ( $this->presets->presets as $id => $preset ) {
 			echo( '<label>' );
-			echo( '<input type="radio" name="crdm_modern_preset" value="' . esc_attr( $preset->id ) . '">' );
+			echo( '<input type="radio" name="crdm_modern_preset" value="' . esc_attr( $id ) . '">' );
 			echo( esc_html( $preset->name ) );
 			echo( '<img src="' . esc_attr( get_stylesheet_directory_uri() . '/admin/' . $preset->image ) . '" alt="' . esc_attr( $preset->name ) . '" class="crdm-modern-preset-customize-control-image">' );
 			echo( '</label>' );
