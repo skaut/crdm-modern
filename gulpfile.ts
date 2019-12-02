@@ -51,7 +51,8 @@ function bundle( name: string, sources: Array<string>, part: string, jQuery = fa
 
 gulp.task( 'build:js', function() {
 	return merge(
-		bundle( 'preset_customize_control', [ 'src/ts/admin/preset_customize_control.ts' ], 'admin', true )
+		bundle( 'preset_customize_control', [ 'src/ts/admin/preset_customize_control.ts' ], 'admin', true ),
+		bundle( 'customizer', [ 'src/ts/admin/customizer.ts' ], 'admin', true )
 	);
 } );
 
