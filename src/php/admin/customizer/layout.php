@@ -32,7 +32,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			'type'              => 'option',
 			'default'           => '40', // TODO: Add to preset.
 			'sanitize_callback' => 'absint',
-			'transport'         => 'postMessage'
+			'transport'         => 'postMessage',
 		),
 	);
 
@@ -52,11 +52,30 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 						'max'  => 200,
 						'step' => 1,
 						'edit' => true,
-						'unit' => 'px'
+						'unit' => 'px',
 					),
 				),
 				'priority' => 215,
 			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'crdm_modern[primary_navigation_shadow]',
+		array(
+			'type'      => 'option',
+			'default'   => '2px 4px 5px rgba(0, 0, 0, 0.4)', // TODO: Add to preset.
+			'transport' => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		'crdm_modern[primary_navigation_shadow]',
+		array(
+			'type' => 'text',
+			'label' => __( 'Navigation shadow', 'crdm-modern' ),
+			'section' => 'generate_layout_navigation',
+			'priority' => 216,
 		)
 	);
 }
@@ -69,7 +88,7 @@ function enqueue() {
 
 	$generate_color_settings = wp_parse_args( get_option( 'generate_settings', array() ), generate_get_color_defaults() );
 	// TODO: Add default values to preset.
-	$crdm_modern_settings = wp_parse_args( get_option( 'crdm_modern', array() ), array( 'primary_navigation_spacing' => '40' ) );
+	$crdm_modern_settings = wp_parse_args( get_option( 'crdm_modern', array() ), array( 'primary_navigation_spacing' => '40', 'primary_navigation_shadow' => '2px 4px 5px rgba(0, 0, 0, 0.4)' ) );
 
 	// Floating navigation spacing.
 	$css->set_selector( '.main-navigation' );
@@ -78,6 +97,7 @@ function enqueue() {
 	$css->set_selector( '.main-navigation .inside-navigation' );
 	$css->add_property( 'margin-left', absint( $crdm_modern_settings[ 'primary_navigation_spacing' ] ), false, 'px' );
 	$css->add_property( 'margin-right', absint( $crdm_modern_settings[ 'primary_navigation_spacing' ] ), false, 'px' );
+	$css->add_property( 'box-shadow', esc_attr( $crdm_modern_settings[ 'primary_navigation_shadow' ] ) );
 	$css->add_property( 'background-color', esc_attr( $generate_color_settings[ 'navigation_background_color' ] ) );
 
 	$output = $css->css_output();

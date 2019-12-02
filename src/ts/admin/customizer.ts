@@ -14,6 +14,8 @@ function liveReload( setting: string, selector: string, properties: Array<LiveRe
 	} );
 }
 
-liveReload( 'crdm_modern[primary_navigation_spacing]', '.main-navigation .inside-navigation', [ { name: 'margin-left', postfix: 'px' }, { name: 'margin-right', postfix: 'px' } ] );
 liveReload( 'generate_settings[header_background_color]', '.main-navigation', [ { name: 'background-color' } ] );
+
+liveReload( 'crdm_modern[primary_navigation_spacing]', '.main-navigation .inside-navigation', [ { name: 'margin-left', postfix: 'px' }, { name: 'margin-right', postfix: 'px' } ] );
+liveReload( 'crdm_modern[primary_navigation_shadow]', '.main-navigation .inside-navigation', [ { name: 'box-shadow' } ] );
 liveReload( 'generate_settings[navigation_background_color]', '.main-navigation .inside-navigation', [ { name: 'background-color' } ] );
