@@ -52,6 +52,15 @@ class Preset_Registry {
 	}
 
 	/**
+	 * Returns the defaults preset
+	 *
+	 * @return Preset The default preset.
+	 */
+	public function default_preset() {
+		return $this->presets[ $this->default ];
+	}
+
+	/**
 	 * The default registry.
 	 *
 	 * @var Preset_Registry
@@ -71,6 +80,10 @@ class Preset_Registry {
 						__( 'Blue', 'crdm-modern' ),
 						'presets/blue.png',
 						array(
+							'crdm_modern'                  => array(
+								'primary_navigation_spacing' => '40',
+								'primary_navigation_shadow'  => '2px 4px 5px rgba(0, 0, 0, 0.4)',
+							),
 							'generate_settings'            => array(
 								// Site Identity.
 								'logo_width'                             => '100',

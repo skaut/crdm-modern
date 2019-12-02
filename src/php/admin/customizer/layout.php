@@ -25,12 +25,14 @@ function register() {
  * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
  */
 function customize( \WP_Customize_Manager $wp_customize ) {
+	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings['crdm_modern'];
+
 	// Floating navigation spacing.
 	$wp_customize->add_setting(
 		'crdm_modern[primary_navigation_spacing]',
 		array(
 			'type'              => 'option',
-			'default'           => '40', // TODO: Add to preset.
+			'default'           => $defaults['primary_navigation_spacing'],
 			'sanitize_callback' => 'absint',
 			'transport'         => 'postMessage',
 		)
@@ -64,7 +66,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 		'crdm_modern[primary_navigation_shadow]',
 		array(
 			'type'      => 'option',
-			'default'   => '2px 4px 5px rgba(0, 0, 0, 0.4)', // TODO: Add to preset.
+			'default'   => $defaults['primary_navigation_shadow'],
 			'transport' => 'postMessage',
 		)
 	);
@@ -86,14 +88,14 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
 
-	$gp_color_settings = wp_parse_args( get_option( 'generate_settings', array() ), generate_get_color_defaults() );
-	// TODO: Add default values to preset.
+	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$gp_color_settings    = wp_parse_args(
+		get_option( 'generate_settings', array() ),
+		array_merge( generate_get_color_defaults(), $defaults['generate_settings'] )
+	);
 	$crdm_modern_settings = wp_parse_args(
 		get_option( 'crdm_modern', array() ),
-		array(
-			'primary_navigation_spacing' => '40',
-			'primary_navigation_shadow'  => '2px 4px 5px rgba(0, 0, 0, 0.4)',
-		)
+		$defaults['crdm_modern']
 	);
 
 	// Floating navigation spacing.

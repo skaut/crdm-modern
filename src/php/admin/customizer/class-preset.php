@@ -36,7 +36,7 @@ class Preset {
 	 *
 	 * @var array
 	 */
-	private $settings;
+	public $settings;
 
 	/**
 	 * Preset class constructor
