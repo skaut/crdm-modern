@@ -33,7 +33,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			'default'           => '40', // TODO: Add to preset.
 			'sanitize_callback' => 'absint',
 			'transport'         => 'postMessage',
-		),
+		)
 	);
 
 	$wp_customize->add_control(
@@ -72,9 +72,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 	$wp_customize->add_control(
 		'crdm_modern[primary_navigation_shadow]',
 		array(
-			'type' => 'text',
-			'label' => __( 'Navigation shadow', 'crdm-modern' ),
-			'section' => 'generate_layout_navigation',
+			'type'     => 'text',
+			'label'    => __( 'Navigation shadow', 'crdm-modern' ),
+			'section'  => 'generate_layout_navigation',
 			'priority' => 216,
 		)
 	);
@@ -84,21 +84,27 @@ function customize( \WP_Customize_Manager $wp_customize ) {
  * Enqueues all the styles from this section.
  */
 function enqueue() {
-	$css = new \GeneratePress_Pro_CSS;
+	$css = new \GeneratePress_Pro_CSS();
 
-	$generate_color_settings = wp_parse_args( get_option( 'generate_settings', array() ), generate_get_color_defaults() );
+	$gp_color_settings = wp_parse_args( get_option( 'generate_settings', array() ), generate_get_color_defaults() );
 	// TODO: Add default values to preset.
-	$crdm_modern_settings = wp_parse_args( get_option( 'crdm_modern', array() ), array( 'primary_navigation_spacing' => '40', 'primary_navigation_shadow' => '2px 4px 5px rgba(0, 0, 0, 0.4)' ) );
+	$crdm_modern_settings = wp_parse_args(
+		get_option( 'crdm_modern', array() ),
+		array(
+			'primary_navigation_spacing' => '40',
+			'primary_navigation_shadow'  => '2px 4px 5px rgba(0, 0, 0, 0.4)',
+		)
+	);
 
 	// Floating navigation spacing.
 	$css->set_selector( '.main-navigation' );
-	$css->add_property( 'background-color', esc_attr( $generate_color_settings[ 'header_background_color' ] ) );
+	$css->add_property( 'background-color', esc_attr( $gp_color_settings['header_background_color'] ) );
 
 	$css->set_selector( '.main-navigation .inside-navigation' );
-	$css->add_property( 'margin-left', absint( $crdm_modern_settings[ 'primary_navigation_spacing' ] ), false, 'px' );
-	$css->add_property( 'margin-right', absint( $crdm_modern_settings[ 'primary_navigation_spacing' ] ), false, 'px' );
-	$css->add_property( 'box-shadow', esc_attr( $crdm_modern_settings[ 'primary_navigation_shadow' ] ) );
-	$css->add_property( 'background-color', esc_attr( $generate_color_settings[ 'navigation_background_color' ] ) );
+	$css->add_property( 'margin-left', strval( absint( $crdm_modern_settings['primary_navigation_spacing'] ) ), false, 'px' );
+	$css->add_property( 'margin-right', strval( absint( $crdm_modern_settings['primary_navigation_spacing'] ) ), false, 'px' );
+	$css->add_property( 'box-shadow', esc_attr( $crdm_modern_settings['primary_navigation_shadow'] ) );
+	$css->add_property( 'background-color', esc_attr( $gp_color_settings['navigation_background_color'] ) );
 
 	$output = $css->css_output();
 	if ( '' !== $output ) {

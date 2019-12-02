@@ -25,8 +25,6 @@ return array(
 	'exclude_analysis_directory_list'           => array(
 		'vendor/skaut/phan-wordpress-stubs/stubs',
 	),
-	'suppress_issue_types'                      => array(
-	),
 	'plugins'                                   => array(
 		'AlwaysReturnPlugin',
 		'DollarDollarPlugin',
