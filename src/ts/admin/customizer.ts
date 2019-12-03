@@ -3,17 +3,43 @@ interface LiveReloadProperty {
 	postfix?: string;
 }
 
+function hash( str: string ): string {
+	if ( str.length === 0 ) {
+		return '';
+	}
+	let ret = 0;
+	for ( let i = 0; i < str.length; i++ ) {
+		ret = ( ( ret << 5 ) - ret ) + str.charCodeAt( i ); // eslint-disable-line no-bitwise
+		ret |= 0; // eslint-disable-line no-bitwise
+	}
+	return ret.toString();
+}
+
 function liveReload( setting: string, selector: string, properties: Array<LiveReloadProperty> ): void {
 	wp.customize( setting, function( value: any ) {
 		value.bind( function( newValue: any ) {
 			const el = $( selector );
-			$.each( properties, function( _, property ) {
-				el.css( property.name, newValue + ( property.postfix ?? '' ) );
-			} );
+			if ( el.length > 0 ) {
+				$.each( properties, function( _, property ) {
+					el.css( property.name, newValue + ( property.postfix ?? '' ) );
+				} );
+			} else {
+				$( 'head style#' + hash( setting + selector ) ).remove();
+				$( 'head' ).append( '<style id="' + hash( setting + selector ) + '">\n' + selector + ' {\n' + $.map( properties, function( property ) {
+					return '\t' + property.name + ': ' + newValue + ( property.postfix ?? '' ) + ';\n';
+				} ).join( '' ) + '}\n' + '</style>' );
+			}
 		} );
 	} );
 }
 
+// Colors.
+liveReload( 'generate_settings[sidebar_widget_background_color]', '.sidebar .widget_search .search-field', [ { name: 'background-color' } ] );
+liveReload( 'generate_settings[sidebar_widget_text_color]', '.sidebar .widget_search .search-field', [ { name: 'border-color' } ] );
+liveReload( 'generate_settings[sidebar_widget_text_color]', '.sidebar .widget_search .search-field', [ { name: 'color' } ] );
+liveReload( 'generate_settings[sidebar_widget_link_color]', '.sidebar .widget_search .search-field:focus', [ { name: 'border-color' } ] );
+
+// Layout.
 liveReload( 'generate_settings[header_background_color]', '.main-navigation', [ { name: 'background-color' } ] );
 
 liveReload( 'crdm_modern[primary_navigation_spacing]', '.main-navigation .inside-navigation', [ { name: 'margin-left', postfix: 'px' }, { name: 'margin-right', postfix: 'px' } ] );

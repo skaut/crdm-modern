@@ -11,6 +11,7 @@ namespace CrdmModern\Admin\Customizer;
 
 require_once __DIR__ . '/customizer/class-preset.php';
 require_once __DIR__ . '/customizer/class-preset-registry.php';
+require_once __DIR__ . '/customizer/colors.php';
 require_once __DIR__ . '/customizer/preset.php';
 require_once __DIR__ . '/customizer/layout.php';
 
@@ -18,6 +19,7 @@ require_once __DIR__ . '/customizer/layout.php';
  * Registers all the hooks for the customizer.
  */
 function register() {
+	Colors\register();
 	Preset\register();
 	Layout\register();
 	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Admin\\Customizer\\enqueue', 11 );

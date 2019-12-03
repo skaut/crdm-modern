@@ -89,7 +89,7 @@ function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
 
 	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
-	$gp_color_settings    = wp_parse_args(
+	$gp_settings    = wp_parse_args(
 		get_option( 'generate_settings', array() ),
 		array_merge( generate_get_color_defaults(), $defaults['generate_settings'] )
 	);
@@ -100,13 +100,13 @@ function enqueue() {
 
 	// Floating navigation spacing.
 	$css->set_selector( '.main-navigation' );
-	$css->add_property( 'background-color', esc_attr( $gp_color_settings['header_background_color'] ) );
+	$css->add_property( 'background-color', esc_attr( $gp_settings['header_background_color'] ) );
 
 	$css->set_selector( '.main-navigation .inside-navigation' );
 	$css->add_property( 'margin-left', strval( absint( $crdm_modern_settings['primary_navigation_spacing'] ) ), false, 'px' );
 	$css->add_property( 'margin-right', strval( absint( $crdm_modern_settings['primary_navigation_spacing'] ) ), false, 'px' );
 	$css->add_property( 'box-shadow', esc_attr( $crdm_modern_settings['primary_navigation_shadow'] ) );
-	$css->add_property( 'background-color', esc_attr( $gp_color_settings['navigation_background_color'] ) );
+	$css->add_property( 'background-color', esc_attr( $gp_settings['navigation_background_color'] ) );
 
 	$output = $css->css_output();
 	if ( '' !== $output ) {
