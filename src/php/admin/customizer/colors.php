@@ -13,18 +13,7 @@ namespace CrdmModern\Admin\Customizer\Colors;
  * Registers all the hooks for the customizer section.
  */
 function register() {
-	add_action( 'customize_register', '\\CrdmModern\\Admin\\Customizer\\Colors\\customize', 1000 );
 	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Admin\\Customizer\\Colors\\enqueue', 105 );
-}
-
-/**
- * Initializes customizer options.
- *
- * Adds the settings and the controls to the customizer.
- *
- * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
- */
-function customize( \WP_Customize_Manager $wp_customize ) {
 }
 
 /**
@@ -33,14 +22,10 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
 
-	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
-	$gp_settings    = wp_parse_args(
+	$defaults    = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$gp_settings = wp_parse_args(
 		get_option( 'generate_settings', array() ),
 		array_merge( generate_get_defaults(), generate_get_color_defaults(), $defaults['generate_settings'] )
-	);
-	$crdm_modern_settings = wp_parse_args(
-		get_option( 'crdm_modern', array() ),
-		$defaults['crdm_modern']
 	);
 
 	// Search widget colors.

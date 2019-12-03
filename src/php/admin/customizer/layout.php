@@ -89,7 +89,7 @@ function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
 
 	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
-	$gp_settings    = wp_parse_args(
+	$gp_settings          = wp_parse_args(
 		get_option( 'generate_settings', array() ),
 		array_merge( generate_get_color_defaults(), $defaults['generate_settings'] )
 	);

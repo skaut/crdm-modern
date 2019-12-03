@@ -15,5 +15,11 @@
 /**
  * @return array
  */
+function generate_get_defaults() {
+}
+
+/**
+ * @return array
+ */
 function generate_get_color_defaults() {
 }
