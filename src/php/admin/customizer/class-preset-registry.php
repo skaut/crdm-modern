@@ -103,6 +103,8 @@ class Preset_Registry {
 								'subnavigation_background_hover_color'   => '#007bc2',
 								'subnavigation_background_current_color' => '#007bc2',
 								'sidebar_widget_title_color'             => '#007bc2',
+								'sidebar_widget_link_color'              => '#3a3a3a',
+								'sidebar_widget_link_hover_color'        => '#007bc2',
 								'footer_widget_background_color'         => '#007bc2',
 								'footer_widget_text_color'               => '#ffffff',
 								'footer_widget_link_color'               => '#ffffff',

@@ -17,3 +17,8 @@
 .main-title {
 	line-height: 45px;
 }
+
+/* Sidebar widget styling */
+.sidebar .widget a {
+	text-decoration: underline;
+}
