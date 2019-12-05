@@ -100,7 +100,7 @@ function enqueue() {
 
 	// Floating navigation spacing.
 	$css->set_selector( '.main-navigation' );
-	$css->add_property( 'background-color', esc_attr( $gp_settings['header_background_color'] ) );
+	$css->add_property( 'background-color', esc_attr( $gp_settings['header_background_color'] ) . ' !important' );
 
 	$css->set_selector( '.main-navigation .inside-navigation' );
 	$css->add_property( 'margin-left', strval( absint( $crdm_modern_settings['primary_navigation_spacing'] ) ), false, 'px' );
