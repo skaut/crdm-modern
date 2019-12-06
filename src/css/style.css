@@ -42,3 +42,8 @@
 .sidebar .widget a {
 	text-decoration: underline;
 }
+
+.crdm_modern_inline_icon {
+	margin-right: 5px;
+	vertical-align: middle;
+}
