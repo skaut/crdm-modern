@@ -44,6 +44,11 @@
 }
 
 .crdm_modern_inline_icon {
+	display: none;
 	margin-right: 5px;
 	vertical-align: middle;
+}
+
+.sidebar .crdm_modern_inline_icon {
+	display: inline;
 }
