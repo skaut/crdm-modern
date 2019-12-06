@@ -12,7 +12,7 @@ declare( strict_types = 1 );
 namespace CrdmModern;
 
 require_once __DIR__ . '/admin/customizer.php';
-require_once __DIR__ . '/frontend/header_image.php';
+require_once __DIR__ . '/frontend/header-image.php';
 
 /**
  * Initializes the theme

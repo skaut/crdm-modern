@@ -14,7 +14,7 @@ require_once __DIR__ . '/customizer/class-preset-registry.php';
 require_once __DIR__ . '/customizer/colors.php';
 require_once __DIR__ . '/customizer/preset.php';
 require_once __DIR__ . '/customizer/layout.php';
-require_once __DIR__ . '/customizer/site_identity.php';
+require_once __DIR__ . '/customizer/site-identity.php';
 
 /**
  * Registers all the hooks for the customizer.

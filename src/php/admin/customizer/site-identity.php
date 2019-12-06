@@ -27,7 +27,7 @@ function register() {
 function customize( \WP_Customize_Manager $wp_customize ) {
 	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings['crdm_modern'];
 
-	// Header image
+	// Header image.
 	$wp_customize->add_setting(
 		'crdm_modern[header_image]',
 		array(
@@ -42,9 +42,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			$wp_customize,
 			'crdm_modern[header_image]',
 			array(
-				'label'       => __( 'Header Image', 'crdm-modern' ),
-				'section'     => 'title_tagline',
-				'settings'    => 'crdm_modern[header_image]',
+				'label'    => __( 'Header Image', 'crdm-modern' ),
+				'section'  => 'title_tagline',
+				'settings' => 'crdm_modern[header_image]',
 			)
 		)
 	);
@@ -155,7 +155,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
 
-	$defaults    = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
 	$crdm_modern_settings = wp_parse_args(
 		get_option( 'crdm_modern', array() ),
 		$defaults['crdm_modern']
@@ -163,9 +163,9 @@ function enqueue() {
 
 	// Header image.
 	$css->set_selector( '.crdm_modern_nav_image' );
-	$css->add_property( 'max-height', strval( absint( $crdm_modern_settings[ 'header_image_height' ] ) ), false, 'px' );
-	$css->add_property( 'top', strval( absint( $crdm_modern_settings[ 'header_image_top' ] ) ), false, 'px' );
-	$css->add_property( 'right', strval( absint( $crdm_modern_settings[ 'header_image_right' ] ) ), false, 'px' );
+	$css->add_property( 'max-height', strval( absint( $crdm_modern_settings['header_image_height'] ) ), false, 'px' );
+	$css->add_property( 'top', strval( absint( $crdm_modern_settings['header_image_top'] ) ), false, 'px' );
+	$css->add_property( 'right', strval( absint( $crdm_modern_settings['header_image_right'] ) ), false, 'px' );
 
 	$output = $css->css_output();
 	if ( '' !== $output ) {

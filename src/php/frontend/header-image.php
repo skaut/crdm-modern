@@ -20,15 +20,15 @@ function register() {
  * Inserts the header image into the page
  */
 function insert() {
-	$defaults    = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
 	$crdm_modern_settings = wp_parse_args(
 		get_option( 'crdm_modern', array() ),
 		$defaults['crdm_modern']
 	);
 
 	if ( isset( $crdm_modern_settings['header_image'] ) ) {
-		echo( '<div class="crdm_modern_nav_image_container grid-container"><img class="crdm_modern_nav_image" src="');
+		echo( '<div class="crdm_modern_nav_image_container grid-container"><img class="crdm_modern_nav_image" src="' );
 		echo( esc_url( $crdm_modern_settings['header_image'] ) );
-		echo('"></div>' );
+		echo( '"></div>' );
 	}
 }
