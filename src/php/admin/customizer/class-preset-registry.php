@@ -82,6 +82,9 @@ class Preset_Registry {
 						array(
 							'crdm_modern'                  => array(
 								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/tee-pee.png',
+								'header_image_height'              => '220',
+								'header_image_top'                 => '13',
+								'header_image_right'               => '100',
 								'primary_navigation_spacing'       => '40',
 								'primary_navigation_shadow'        => '2px 4px 5px rgba(0, 0, 0, 0.4)',
 								'sidebar_widget_separator_width'   => '1',

@@ -14,6 +14,7 @@ namespace CrdmModern\Admin\Customizer\Site_Identity;
  */
 function register() {
 	add_action( 'customize_register', '\\CrdmModern\\Admin\\Customizer\\Site_Identity\\customize', 1000 );
+	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Admin\\Customizer\\Site_Identity\\enqueue', 105 );
 }
 
 /**
@@ -47,4 +48,127 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			)
 		)
 	);
+
+	$wp_customize->add_setting(
+		'crdm_modern[header_image_height]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['header_image_height'],
+			'sanitize_callback' => 'absint',
+			'transport'         => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		new \GeneratePress_Pro_Range_Slider_Control(
+			$wp_customize,
+			'crdm_modern[header_image_height]',
+			array(
+				'label'    => __( 'Header Image Height', 'crdm-modern' ),
+				'section'  => 'title_tagline',
+				'settings' => array(
+					'desktop' => 'crdm_modern[header_image_height]',
+				),
+				'choices'  => array(
+					'desktop' => array(
+						'min'  => 0,
+						'max'  => 500,
+						'step' => 1,
+						'edit' => true,
+						'unit' => 'px',
+					),
+				),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'crdm_modern[header_image_top]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['header_image_top'],
+			'sanitize_callback' => 'absint',
+			'transport'         => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		new \GeneratePress_Pro_Range_Slider_Control(
+			$wp_customize,
+			'crdm_modern[header_image_top]',
+			array(
+				'label'    => __( 'Header Image Top Position', 'crdm-modern' ),
+				'section'  => 'title_tagline',
+				'settings' => array(
+					'desktop' => 'crdm_modern[header_image_top]',
+				),
+				'choices'  => array(
+					'desktop' => array(
+						'min'  => 0,
+						'max'  => 300,
+						'step' => 1,
+						'edit' => true,
+						'unit' => 'px',
+					),
+				),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'crdm_modern[header_image_right]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['header_image_right'],
+			'sanitize_callback' => 'absint',
+			'transport'         => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		new \GeneratePress_Pro_Range_Slider_Control(
+			$wp_customize,
+			'crdm_modern[header_image_right]',
+			array(
+				'label'    => __( 'Header Image Right Position', 'crdm-modern' ),
+				'section'  => 'title_tagline',
+				'settings' => array(
+					'desktop' => 'crdm_modern[header_image_right]',
+				),
+				'choices'  => array(
+					'desktop' => array(
+						'min'  => 0,
+						'max'  => 300,
+						'step' => 1,
+						'edit' => true,
+						'unit' => 'px',
+					),
+				),
+			)
+		)
+	);
+}
+
+/**
+ * Enqueues all the styles from this section.
+ */
+function enqueue() {
+	$css = new \GeneratePress_Pro_CSS();
+
+	$defaults    = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$crdm_modern_settings = wp_parse_args(
+		get_option( 'crdm_modern', array() ),
+		$defaults['crdm_modern']
+	);
+
+	// Header image.
+	$css->set_selector( '.crdm_modern_nav_image' );
+	$css->add_property( 'max-height', strval( absint( $crdm_modern_settings[ 'header_image_height' ] ) ), false, 'px' );
+	$css->add_property( 'top', strval( absint( $crdm_modern_settings[ 'header_image_top' ] ) ), false, 'px' );
+	$css->add_property( 'right', strval( absint( $crdm_modern_settings[ 'header_image_right' ] ) ), false, 'px' );
+
+	$output = $css->css_output();
+	if ( '' !== $output ) {
+		wp_add_inline_style( 'crdm_modern_inline', $output );
+	}
 }

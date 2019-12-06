@@ -13,7 +13,7 @@ namespace CrdmModern\Frontend\Header_Image;
  * Registers all the hooks for the header image.
  */
 function register() {
-	add_action( 'generate_header', '\\CrdmModern\\Frontend\\Header_Image\\insert', 11 );
+	add_action( 'generate_header', '\\CrdmModern\\Frontend\\Header_Image\\insert', 9 );
 }
 
 /**
