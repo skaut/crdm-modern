@@ -24,15 +24,14 @@
 }
 
 .crdm_modern_nav_image {
-	background-image: url("http://crdm-modern.test/wp-content/themes/crdm-modern/frontend/tee-pee.png");
 	background-repeat: no-repeat;
-	background-size: auto 230px;
+	background-size: auto 220px;
 	background-position: bottom right;
 	bottom: -53px;
-	height: 230px;
+	height: 220px;
 	position: absolute;
 	right: 100px;
-	width: 150px;
+	width: 100%;
 	z-index: 1;
 }
 

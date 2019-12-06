@@ -81,6 +81,7 @@ class Preset_Registry {
 						'presets/blue.png',
 						array(
 							'crdm_modern'                  => array(
+								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/tee-pee.png',
 								'primary_navigation_spacing'       => '40',
 								'primary_navigation_shadow'        => '2px 4px 5px rgba(0, 0, 0, 0.4)',
 								'sidebar_widget_separator_width'   => '1',

@@ -43,7 +43,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			$wp_customize,
 			'crdm_modern[sidebar_widget_separator_color]',
 			array(
-				'label' => __( 'Widget Separator', 'crdm-modern' ),
+				'label'    => __( 'Widget Separator', 'crdm-modern' ),
 				'section'  => 'sidebar_widget_color_section',
 				'settings' => 'crdm_modern[sidebar_widget_separator_color]',
 				'priority' => 6,
