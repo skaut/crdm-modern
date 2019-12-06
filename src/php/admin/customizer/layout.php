@@ -80,6 +80,75 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			'priority' => 216,
 		)
 	);
+
+	// Sidebar widget separators.
+	$wp_customize->add_setting(
+		'crdm_modern[sidebar_widget_separator_width]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['sidebar_widget_separator_width'],
+			'sanitize_callback' => 'absint',
+			'transport'         => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		new \GeneratePress_Pro_Range_Slider_Control(
+			$wp_customize,
+			'crdm_modern[sidebar_widget_separator_width]',
+			array(
+				'label'    => __( 'Sidebar widget separator width', 'crdm-modern' ),
+				'section'  => 'generate_layout_sidebars',
+				'settings' => array(
+					'desktop' => 'crdm_modern[sidebar_widget_separator_width]',
+				),
+				'choices'  => array(
+					'desktop' => array(
+						'min'  => 0,
+						'max'  => 20,
+						'step' => 1,
+						'edit' => true,
+						'unit' => 'px',
+					),
+				),
+				'priority' => 130,
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'crdm_modern[sidebar_widget_separator_spacing]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['sidebar_widget_separator_spacing'],
+			'sanitize_callback' => 'absint',
+			'transport'         => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		new \GeneratePress_Pro_Range_Slider_Control(
+			$wp_customize,
+			'crdm_modern[sidebar_widget_separator_spacing]',
+			array(
+				'label'    => __( 'Sidebar widget separator spacing', 'crdm-modern' ),
+				'section'  => 'generate_layout_sidebars',
+				'settings' => array(
+					'desktop' => 'crdm_modern[sidebar_widget_separator_spacing]',
+				),
+				'choices'  => array(
+					'desktop' => array(
+						'min'  => 0,
+						'max'  => 200,
+						'step' => 1,
+						'edit' => true,
+						'unit' => 'px',
+					),
+				),
+				'priority' => 131,
+			)
+		)
+	);
 }
 
 /**
@@ -107,6 +176,11 @@ function enqueue() {
 	$css->add_property( 'margin-right', strval( absint( $crdm_modern_settings['primary_navigation_spacing'] ) ), false, 'px' );
 	$css->add_property( 'box-shadow', esc_attr( $crdm_modern_settings['primary_navigation_shadow'] ) );
 	$css->add_property( 'background-color', esc_attr( $gp_settings['navigation_background_color'] ) );
+
+	// Sidebar widget separators.
+	$css->set_selector( '.sidebar .inside-right-sidebar .widget' );
+	$css->add_property( 'border-left-width', strval( absint( $crdm_modern_settings['sidebar_widget_separator_width'] ) ), false, 'px' );
+	$css->add_property( 'padding-left', strval( absint( $crdm_modern_settings['sidebar_widget_separator_spacing'] ) ), false, 'px' );
 
 	$output = $css->css_output();
 	if ( '' !== $output ) {

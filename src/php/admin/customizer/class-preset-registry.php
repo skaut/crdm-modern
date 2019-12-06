@@ -81,8 +81,11 @@ class Preset_Registry {
 						'presets/blue.png',
 						array(
 							'crdm_modern'                  => array(
-								'primary_navigation_spacing' => '40',
-								'primary_navigation_shadow'  => '2px 4px 5px rgba(0, 0, 0, 0.4)',
+								'primary_navigation_spacing'       => '40',
+								'primary_navigation_shadow'        => '2px 4px 5px rgba(0, 0, 0, 0.4)',
+								'sidebar_widget_separator_width'   => '1',
+								'sidebar_widget_separator_spacing' => '20',
+								'sidebar_widget_separator_color'   => '#007bc2',
 							),
 							'generate_settings'            => array(
 								// Site Identity.

@@ -13,7 +13,43 @@ namespace CrdmModern\Admin\Customizer\Colors;
  * Registers all the hooks for the customizer section.
  */
 function register() {
+	add_action( 'customize_register', '\\CrdmModern\\Admin\\Customizer\\Colors\\customize', 1000 );
 	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Admin\\Customizer\\Colors\\enqueue', 105 );
+}
+
+/**
+ * Initializes customizer options.
+ *
+ * Adds the settings and the controls to the customizer.
+ *
+ * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
+ */
+function customize( \WP_Customize_Manager $wp_customize ) {
+	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings['crdm_modern'];
+
+	// Sidebar widget separators.
+	$wp_customize->add_setting(
+		'crdm_modern[sidebar_widget_separator_color]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['sidebar_widget_separator_color'],
+			'sanitize_callback' => 'generate_premium_sanitize_hex_color',
+			'transport'         => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		new \WP_Customize_Color_Control(
+			$wp_customize,
+			'crdm_modern[sidebar_widget_separator_color]',
+			array(
+				'label' => __( 'Widget Separator', 'crdm-modern' ),
+				'section'  => 'sidebar_widget_color_section',
+				'settings' => 'crdm_modern[sidebar_widget_separator_color]',
+				'priority' => 6,
+			)
+		)
+	);
 }
 
 /**
@@ -26,6 +62,10 @@ function enqueue() {
 	$gp_settings = wp_parse_args(
 		get_option( 'generate_settings', array() ),
 		array_merge( generate_get_defaults(), generate_get_color_defaults(), $defaults['generate_settings'] )
+	);
+	$crdm_modern_settings = wp_parse_args(
+		get_option( 'crdm_modern', array() ),
+		$defaults['crdm_modern']
 	);
 
 	// Search widget colors.
@@ -50,6 +90,10 @@ function enqueue() {
 	}
 	$css->set_selector( '.sidebar .widget_search .search-field:focus' );
 	$css->add_property( 'border-color', esc_attr( $widget_link_color ) );
+
+	// Sidebar widget separators.
+	$css->set_selector( '.sidebar .inside-right-sidebar .widget' );
+	$css->add_property( 'border-left-color', esc_attr( $crdm_modern_settings['sidebar_widget_separator_color'] ) );
 
 	$output = $css->css_output();
 	if ( '' !== $output ) {
