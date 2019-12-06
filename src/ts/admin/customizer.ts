@@ -39,9 +39,14 @@ liveReload( 'generate_settings[sidebar_widget_text_color]', '.sidebar .widget_se
 liveReload( 'generate_settings[sidebar_widget_text_color]', '.sidebar .widget_search .search-field', [ { name: 'color' } ] );
 liveReload( 'generate_settings[sidebar_widget_link_color]', '.sidebar .widget_search .search-field:focus', [ { name: 'border-color' } ] );
 
+liveReload( 'crdm_modern[sidebar_widget_separator_color]', '.sidebar .inside-right-sidebar .widget', [ { name: 'border-left-color' } ] );
+
 // Layout.
 liveReload( 'generate_settings[header_background_color]', '.main-navigation', [ { name: 'background-color' } ] );
 
 liveReload( 'crdm_modern[primary_navigation_spacing]', '.main-navigation .inside-navigation', [ { name: 'margin-left', postfix: 'px' }, { name: 'margin-right', postfix: 'px' } ] );
 liveReload( 'crdm_modern[primary_navigation_shadow]', '.main-navigation .inside-navigation', [ { name: 'box-shadow' } ] );
 liveReload( 'generate_settings[navigation_background_color]', '.main-navigation .inside-navigation', [ { name: 'background-color' } ] );
+
+liveReload( 'crdm_modern[sidebar_widget_separator_width]', '.sidebar .inside-right-sidebar .widget', [ { name: 'border-left-width', postfix: 'px' } ] );
+liveReload( 'crdm_modern[sidebar_widget_separator_spacing]', '.sidebar .inside-right-sidebar .widget', [ { name: 'padding-left', postfix: 'px' } ] );
