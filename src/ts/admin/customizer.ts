@@ -33,6 +33,11 @@ function liveReload( setting: string, selector: string, properties: Array<LiveRe
 	} );
 }
 
+// Site Identity.
+liveReload( 'crdm_modern[header_image_height]', '.crdm_modern_nav_image', [ { name: 'max-height', postfix: 'px' } ] );
+liveReload( 'crdm_modern[header_image_top]', '.crdm_modern_nav_image', [ { name: 'top', postfix: 'px' } ] );
+liveReload( 'crdm_modern[header_image_right]', '.crdm_modern_nav_image', [ { name: 'right', postfix: 'px' } ] );
+
 // Colors.
 liveReload( 'generate_settings[sidebar_widget_background_color]', '.sidebar .widget_search .search-field', [ { name: 'background-color' } ] );
 liveReload( 'generate_settings[sidebar_widget_text_color]', '.sidebar .widget_search .search-field', [ { name: 'border-color' } ] );
