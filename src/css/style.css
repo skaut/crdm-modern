@@ -24,14 +24,10 @@
 }
 
 .crdm_modern_nav_image {
-	background-repeat: no-repeat;
-	background-size: auto 220px;
-	background-position: bottom right;
 	bottom: -53px;
-	height: 220px;
+	max-height: 220px;
 	position: absolute;
 	right: 100px;
-	width: 100%;
 	z-index: 1;
 }
 

@@ -14,7 +14,6 @@ namespace CrdmModern\Admin\Customizer\Site_Identity;
  */
 function register() {
 	add_action( 'customize_register', '\\CrdmModern\\Admin\\Customizer\\Site_Identity\\customize', 1000 );
-	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Admin\\Customizer\\Site_Identity\\enqueue', 105 );
 }
 
 /**
@@ -48,26 +47,4 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			)
 		)
 	);
-}
-
-/**
- * Enqueues all the styles from this section.
- */
-function enqueue() {
-	$css = new \GeneratePress_Pro_CSS();
-
-	$defaults    = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
-	$crdm_modern_settings = wp_parse_args(
-		get_option( 'crdm_modern', array() ),
-		$defaults['crdm_modern']
-	);
-
-	// Header image.
-	$css->set_selector( '.crdm_modern_nav_image' );
-	$css->add_property( 'background-image', 'url("' . esc_url( $crdm_modern_settings['header_image'] ) . '")' );
-
-	$output = $css->css_output();
-	if ( '' !== $output ) {
-		wp_add_inline_style( 'crdm_modern_inline', $output );
-	}
 }
