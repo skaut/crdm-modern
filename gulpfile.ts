@@ -28,6 +28,15 @@ gulp.task( 'build:css:admin', function() {
 
 gulp.task( 'build:css', gulp.parallel( 'build:css:main', 'build:css:admin' ) );
 
+gulp.task( 'build:deps:npm:dripicons', function() {
+	return gulp.src( [ 'node_modules/dripicons/webfont/webfont.css', 'node_modules/dripicons/webfont/fonts/*' ], { base: 'node_modules/dripicons/webfont' } )
+		.pipe( gulp.dest( 'dist/frontend/dripicons' ) );
+} );
+
+gulp.task( 'build:deps:npm', gulp.parallel( 'build:deps:npm:dripicons' ) );
+
+gulp.task( 'build:deps', gulp.parallel( 'build:deps:npm' ) );
+
 gulp.task( 'build:jpg:frontend', function() {
 	return gulp.src( 'src/jpg/frontend/**/*.jpg' )
 		.pipe( gulp.dest( 'dist/frontend/' ) );
@@ -95,4 +104,4 @@ gulp.task( 'build:txt', function() {
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
-gulp.task( 'build', gulp.parallel( 'build:css', 'build:jpg', 'build:js', 'build:php', 'build:png', 'build:txt' ) );
+gulp.task( 'build', gulp.parallel( 'build:css', 'build:deps', 'build:jpg', 'build:js', 'build:php', 'build:png', 'build:txt' ) );

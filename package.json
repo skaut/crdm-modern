@@ -31,6 +31,9 @@
 		"lint:stylelint": "stylelint src/**/*.css",
 		"lint": "run-s -c lint:*"
 	},
+	"dependencies": {
+		"dripicons": "^2.0.0"
+	},
 	"devDependencies": {
 		"@types/jquery": "^3.3.31",
 		"@typescript-eslint/eslint-plugin": "^2.10.0",
