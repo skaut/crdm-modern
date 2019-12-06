@@ -18,6 +18,24 @@
 	line-height: 45px;
 }
 
+/* Header image */
+.crdm_modern_nav_image_container {
+	position: relative;
+}
+
+.crdm_modern_nav_image {
+	background-image: url("http://crdm-modern.test/wp-content/themes/crdm-modern/frontend/tee-pee.png");
+	background-repeat: no-repeat;
+	background-size: auto 230px;
+	background-position: bottom right;
+	bottom: -53px;
+	height: 230px;
+	position: absolute;
+	right: 100px;
+	width: 150px;
+	z-index: 1;
+}
+
 /* Sidebar widget separators */
 .sidebar .inside-right-sidebar .widget {
 	border-left-style: solid;

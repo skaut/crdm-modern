@@ -66,7 +66,12 @@ gulp.task( 'build:php:admin', function() {
 		.pipe( gulp.dest( 'dist/admin/' ) );
 } );
 
-gulp.task( 'build:php', gulp.parallel( 'build:php:functions', 'build:php:admin' ) );
+gulp.task( 'build:php:frontend', function() {
+	return gulp.src( 'src/php/frontend/**/*.php' )
+		.pipe( gulp.dest( 'dist/frontend/' ) );
+} );
+
+gulp.task( 'build:php', gulp.parallel( 'build:php:functions', 'build:php:admin', 'build:php:frontend' ) );
 
 gulp.task( 'build:png:screenshot', function() {
 	return gulp.src( 'src/png/screenshot.png' )
@@ -78,7 +83,12 @@ gulp.task( 'build:png:admin', function() {
 		.pipe( gulp.dest( 'dist/admin/' ) );
 } );
 
-gulp.task( 'build:png', gulp.parallel( 'build:png:screenshot', 'build:png:admin' ) );
+gulp.task( 'build:png:frontend', function() {
+	return gulp.src( 'src/png/frontend/**/*.png' )
+		.pipe( gulp.dest( 'dist/frontend/' ) );
+} );
+
+gulp.task( 'build:png', gulp.parallel( 'build:png:screenshot', 'build:png:admin', 'build:png:frontend' ) );
 
 gulp.task( 'build:txt', function() {
 	return gulp.src( [ 'src/txt/license.txt', 'src/txt/readme.txt' ] )

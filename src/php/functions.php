@@ -12,6 +12,7 @@ declare( strict_types = 1 );
 namespace CrdmModern;
 
 require_once __DIR__ . '/admin/customizer.php';
+require_once __DIR__ . '/frontend/header_image.php';
 
 /**
  * Initializes the theme
@@ -19,6 +20,7 @@ require_once __DIR__ . '/admin/customizer.php';
 function init() {
 	add_action( 'after_switch_theme', '\\CrdmModern\\activate' );
 	Admin\Customizer\register();
+	Frontend\Header_Image\register();
 }
 
 /**
