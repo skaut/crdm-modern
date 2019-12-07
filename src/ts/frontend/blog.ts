@@ -4,7 +4,6 @@ function addExcerptBorders(): void {
 		return;
 	}
 	articles.addClass( 'crdm_modern_excerpt' );
-	articles.slice( 0, 2 ).addClass( 'crdm_modern_excerpt_vertical' );
 }
 
 addExcerptBorders();

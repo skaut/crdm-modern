@@ -84,10 +84,10 @@ footer.site-info {
 	font-weight: 700;
 }
 
-.footer-widgets .widget_nav_menu a:hover {
+.footer-widgets .widget_text a {
 	text-decoration: underline;
 }
 
-.footer-widgets .widget_text a {
+.footer-widgets .widget_nav_menu a:hover {
 	text-decoration: underline;
 }

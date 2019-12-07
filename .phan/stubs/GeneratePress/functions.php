@@ -23,3 +23,9 @@ function generate_get_defaults() {
  */
 function generate_get_color_defaults() {
 }
+
+/**
+ * @return void
+ */
+function generate_post_meta() {
+}
