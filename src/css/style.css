@@ -54,6 +54,19 @@
 }
 
 /* Blog styles */
+.one-container .inside-article.crdm_modern_excerpt {
+	border: 1px solid #f00;
+	padding: 0;
+}
+
+.post-image-above-header .crdm_modern_excerpt div.post-image {
+	margin-bottom: -6.25px;
+}
+
+.crdm_modern_excerpt .entry-header {
+	margin-top: 1em;
+}
+
 .entry-summary .read-more {
 	display: block;
 	font-weight: 700;
