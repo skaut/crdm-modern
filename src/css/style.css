@@ -52,3 +52,21 @@
 .sidebar .crdm_modern_inline_icon {
 	display: inline;
 }
+
+/* Footer styles */
+
+footer.site-info {
+	display: none;
+}
+
+.footer-widgets .widget_nav_menu {
+	font-weight: 700;
+}
+
+.footer-widgets .widget_nav_menu a:hover {
+	text-decoration: underline;
+}
+
+.footer-widgets .widget_text a {
+	text-decoration: underline;
+}
