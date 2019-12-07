@@ -50,6 +50,30 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			)
 		)
 	);
+
+	// Excerpt border.
+	$wp_customize->add_setting(
+		'crdm_modern[excerpt_border_color]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['excerpt_border_color'],
+			'sanitize_callback' => 'generate_premium_sanitize_hex_color',
+			'transport'         => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		new \WP_Customize_Color_Control(
+			$wp_customize,
+			'crdm_modern[excerpt_border_color]',
+			array(
+				'label'    => __( 'Excerpt Border', 'crdm-modern' ),
+				'section'  => 'content_color_section',
+				'settings' => 'crdm_modern[excerpt_border_color]',
+				'priority' => 4,
+			)
+		)
+	);
 }
 
 /**
@@ -94,6 +118,10 @@ function enqueue() {
 	// Sidebar widget separators.
 	$css->set_selector( '.sidebar .inside-right-sidebar .widget' );
 	$css->add_property( 'border-left-color', esc_attr( $crdm_modern_settings['sidebar_widget_separator_color'] ) );
+
+	// Excerpt border.
+	$css->set_selector( '.crdm_modern_excerpt' );
+	$css->add_property( 'border-color', esc_attr( $crdm_modern_settings['excerpt_border_color'] ) );
 
 	$output = $css->css_output();
 	if ( '' !== $output ) {

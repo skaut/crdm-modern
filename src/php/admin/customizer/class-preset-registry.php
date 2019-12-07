@@ -90,6 +90,7 @@ class Preset_Registry {
 								'sidebar_widget_separator_width'   => '1',
 								'sidebar_widget_separator_spacing' => '20',
 								'sidebar_widget_separator_color'   => '#007bc2',
+								'excerpt_border_color'             => '#007bc2',
 							),
 							'generate_settings'            => array(
 								// Site Identity.
