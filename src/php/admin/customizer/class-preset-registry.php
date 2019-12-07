@@ -112,6 +112,7 @@ class Preset_Registry {
 								'sidebar_widget_title_color'             => '#007bc2',
 								'sidebar_widget_link_color'              => '#3a3a3a',
 								'sidebar_widget_link_hover_color'        => '#007bc2',
+								'entry_meta_link_color'                  => '#00395e',
 								'footer_widget_background_color'         => '#007bc2',
 								'footer_widget_text_color'               => '#ffffff',
 								'footer_widget_link_color'               => '#ffffff',
@@ -136,7 +137,8 @@ class Preset_Registry {
 							),
 							'generate_spacing_settings'    => array(
 								// Layout.
-								'menu_item' => '25',
+								'menu_item'                 => '25',
+								'content_element_separator' => '0.5',
 							),
 							'generate_blog_settings'       => array(
 								// Layout.

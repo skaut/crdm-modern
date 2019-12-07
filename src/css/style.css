@@ -53,6 +53,13 @@
 	display: inline;
 }
 
+/* Blog styles */
+.entry-summary .read-more {
+	display: block;
+	font-weight: 700;
+	margin-top: 7px;
+}
+
 /* Footer styles */
 
 footer.site-info {
