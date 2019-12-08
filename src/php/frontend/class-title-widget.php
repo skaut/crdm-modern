@@ -35,7 +35,7 @@ class Title_Widget extends \WP_Widget {
 		$site_title_family   = generate_get_font_family_css( 'font_site_title', 'generate_settings', generate_get_default_fonts() );
 		$site_tagline_family = generate_get_font_family_css( 'font_site_tagline', 'generate_settings', generate_get_default_fonts() );
 
-		$css->set_selector( '.crdm_modern_title_widget img' );
+		$css->set_selector( '.widget_crdm_modern_title_widget img' );
 		$css->add_property( 'width', strval( absint( $gp_settings['logo_width'] ) ), false, 'px' );
 
 		$css->set_selector( '.crdm_modern_title_widget_title' );
@@ -65,9 +65,12 @@ class Title_Widget extends \WP_Widget {
 	 * Echoes the widget content.
 	 *
 	 * @param array $args     Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-	 * @param array $instance The settings for the particular instance of the widget.
+	 * @param array $_ Unused.
+	 *
+	 * @SuppressWarnings(PHPMD.ShortVariable)
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
-	public function widget( $args, $instance ) {
+	public function widget( $args, $_ ) {
 		$gp_settings = wp_parse_args(
 			get_option( 'generate_settings', array() ),
 			generate_get_defaults()
@@ -75,7 +78,8 @@ class Title_Widget extends \WP_Widget {
 		$title       = get_option( 'blogname', '' );
 		$tagline     = get_option( 'blogdescription', '' );
 
-		if ( function_exists( 'the_custom_logo' ) && get_theme_mod( 'custom_logo' ) ) {
+		$logo_url = null;
+		if ( function_exists( 'the_custom_logo' ) && null !== get_theme_mod( 'custom_logo' ) ) {
 			$logo_url = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
 		}
 		if ( isset( $logo_url ) ) {
@@ -84,7 +88,8 @@ class Title_Widget extends \WP_Widget {
 			$logo_url = $gp_settings['logo'];
 		}
 
-		echo( '<aside class="crdm_modern_title_widget">' );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo( $args['before_widget'] );
 		echo( '<img src="' );
 		echo( esc_url( $logo_url ) );
 		echo( '">' );
@@ -94,6 +99,7 @@ class Title_Widget extends \WP_Widget {
 		echo( '<div class="crdm_modern_title_widget_tagline">' );
 		echo( esc_html( $tagline ) );
 		echo( '</div>' );
-		echo( '</aside>' );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo( $args['after_widget'] );
 	}
 }

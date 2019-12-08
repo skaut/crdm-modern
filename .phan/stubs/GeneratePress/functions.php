@@ -10,6 +10,7 @@
  *
  * phpcs:disable Generic.Commenting.DocComment.MissingShort
  * phpcs:disable Squiz.Commenting.FunctionComment.InvalidNoReturn
+ * phpcs:disable Squiz.Commenting.FunctionComment.MissingParamComment
  * phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
  */
 
@@ -36,7 +37,7 @@ function generate_get_default_fonts( $filter = true ) {
 /**
  * @param string $font
  * @param string $settings
- * @param array $default
+ * @param array  $default
  *
  * @return string
  */

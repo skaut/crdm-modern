@@ -58,7 +58,7 @@ liveReload( 'crdm_modern[sidebar_widget_separator_width]', '.sidebar .inside-rig
 liveReload( 'crdm_modern[sidebar_widget_separator_spacing]', '.sidebar .inside-right-sidebar .widget', [ { name: 'padding-left', postfix: 'px' } ] );
 
 // Title widget.
-liveReload( 'generate_settings[logo_width]', '.crdm_modern_title_widget img', [ { name: 'width' } ] );
+liveReload( 'generate_settings[logo_width]', '.widget_crdm_modern_title_widget img', [ { name: 'width' } ] );
 liveReload( 'generate_settings[site_title_font_size]', '.crdm_modern_title_widget_title', [ { name: 'font-size', postfix: 'px' } ] );
 liveReload( 'generate_settings[site_title_font_weight]', '.crdm_modern_title_widget_title', [ { name: 'font-weight' } ] );
 liveReload( 'generate_settings[site_tagline_font_size]', '.crdm_modern_title_widget_tagline', [ { name: 'font-size', postfix: 'px' } ] );
