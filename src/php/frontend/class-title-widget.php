@@ -36,18 +36,18 @@ class Title_Widget extends \WP_Widget {
 			array_merge( generate_get_defaults(), generate_get_default_fonts(), $defaults['generate_settings'] )
 		);
 		$site_title_family = generate_get_font_family_css( 'font_site_title', 'generate_settings', generate_get_default_fonts() );
+		$site_tagline_family = generate_get_font_family_css( 'font_site_tagline', 'generate_settings', generate_get_default_fonts() );
 
 		$css->set_selector( '.crdm_modern_title_widget img' );
 		$css->add_property( 'width', strval( absint( $gp_settings['logo_width'] ) ), false, 'px' );
 
-		$css->set_selector( '.crdm_modern_title_widget' );
-		$css->add_property( 'font-family', 'inherit' !== $gp_settings['font_site_title'] ? $site_title_family : null );
-
 		$css->set_selector( '.crdm_modern_title_widget_title' );
+		$css->add_property( 'font-family', 'inherit' !== $gp_settings['font_site_title'] ? $site_title_family : null );
 		$css->add_property( 'font-size', strval( absint( $gp_settings['site_title_font_size'] ) ), false, 'px' );
 		$css->add_property( 'font-weight', strval( absint( $gp_settings['site_title_font_weight'] ) ), false, 'px' );
 
 		$css->set_selector( '.crdm_modern_title_widget_tagline' );
+		$css->add_property( 'font-family', 'inherit' !== $gp_settings['font_site_tagline'] ? $site_tagline_family : null );
 		$css->add_property( 'font-size', strval( absint( $gp_settings['site_tagline_font_size'] ) ), false, 'px' );
 		$css->add_property( 'font-weight', strval( absint( $gp_settings['site_tagline_font_weight'] ) ), false, 'px' );
 
