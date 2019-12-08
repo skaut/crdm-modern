@@ -14,6 +14,7 @@ namespace CrdmModern;
 require_once __DIR__ . '/admin/customizer.php';
 require_once __DIR__ . '/frontend/blog.php';
 require_once __DIR__ . '/frontend/header-image.php';
+require_once __DIR__ . '/frontend/class-title-widget.php';
 require_once __DIR__ . '/frontend/widget-icons.php';
 
 /**
@@ -24,6 +25,7 @@ function init() {
 	Admin\Customizer\register();
 	Frontend\Blog\register();
 	Frontend\Header_Image\register();
+	Frontend\Title_Widget::register();
 	Frontend\Widget_Icons\register();
 }
 

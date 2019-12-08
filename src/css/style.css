@@ -76,10 +76,6 @@
 
 /* Footer styles */
 
-footer.site-info {
-	display: none;
-}
-
 .footer-widgets .widget_nav_menu {
 	font-weight: 700;
 }
@@ -90,4 +86,28 @@ footer.site-info {
 
 .footer-widgets .widget_nav_menu a:hover {
 	text-decoration: underline;
+}
+
+.crdm_modern_title_widget img {
+	float: left;
+	margin-right: 1.5em;
+	width: 100px; /* TODO: Dynamic */
+}
+
+.crdm_modern_title_widget {
+	font-family: "Raleway", sans-serif; /* TODO: Dynamic */
+}
+
+.crdm_modern_title_widget_title {
+	font-size: 45px; /* TODO: Dynamic */
+	font-weight: 900; /* TODO: Dynamic */
+}
+
+.crdm_modern_title_widget_tagline {
+	font-size: 25px; /* TODO: Dynamic */
+	font-weight: 400; /* TODO: Dynamic */
+}
+
+footer.site-info {
+	display: none;
 }
