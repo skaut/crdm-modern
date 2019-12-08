@@ -14,6 +14,7 @@ class Title_Widget extends \WP_Widget {
 	 */
 	public static function register() {
 		register_widget( '\\CrdmModern\\Frontend\\Title_Widget' );
+		add_action( 'wp_enqueue_scripts', array( '\\CrdmModern\\Frontend\\Title_Widget', 'enqueue' ), 105 );
 	}
 
 	/**
@@ -21,6 +22,39 @@ class Title_Widget extends \WP_Widget {
 	 */
 	public function __construct() {
 		parent::__construct( 'crdm_modern_title_widget', __( 'Title Widget' , 'crdm-modern') );
+	}
+
+	/**
+	 * Enqueues all the styles for the widget.
+	 */
+	public static function enqueue() {
+		$css = new \GeneratePress_Pro_CSS();
+
+		$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+		$gp_settings          = wp_parse_args(
+			get_option( 'generate_settings', array() ),
+			array_merge( generate_get_defaults(), generate_get_default_fonts(), $defaults['generate_settings'] )
+		);
+		$site_title_family = generate_get_font_family_css( 'font_site_title', 'generate_settings', generate_get_default_fonts() );
+
+		$css->set_selector( '.crdm_modern_title_widget img' );
+		$css->add_property( 'width', strval( absint( $gp_settings['logo_width'] ) ), false, 'px' );
+
+		$css->set_selector( '.crdm_modern_title_widget' );
+		$css->add_property( 'font-family', 'inherit' !== $gp_settings['font_site_title'] ? $site_title_family : null );
+
+		$css->set_selector( '.crdm_modern_title_widget_title' );
+		$css->add_property( 'font-size', strval( absint( $gp_settings['site_title_font_size'] ) ), false, 'px' );
+		$css->add_property( 'font-weight', strval( absint( $gp_settings['site_title_font_weight'] ) ), false, 'px' );
+
+		$css->set_selector( '.crdm_modern_title_widget_tagline' );
+		$css->add_property( 'font-size', strval( absint( $gp_settings['site_tagline_font_size'] ) ), false, 'px' );
+		$css->add_property( 'font-weight', strval( absint( $gp_settings['site_tagline_font_weight'] ) ), false, 'px' );
+
+		$output = $css->css_output();
+		if ( '' !== $output ) {
+			wp_add_inline_style( 'crdm_modern_inline', $output );
+		}
 	}
 
 	/**
