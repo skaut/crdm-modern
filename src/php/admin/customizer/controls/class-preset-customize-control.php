@@ -120,7 +120,7 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 			echo( '<input type="radio" name="crdm_modern_preset" value="' . esc_attr( $id ) . '">' );
 			echo( esc_html( $preset->name ) );
 			echo( '<img src="' . esc_attr( get_stylesheet_directory_uri() . '/admin/' . $preset->image ) . '" alt="' . esc_attr( $preset->name ) . '" class="crdm-modern-preset-customize-control-image">' );
-			echo( '</label>' );
+			echo( '</label><br>' );
 		}
 		echo( '<div>' );
 		esc_html_e( 'Applying the preset overrides a lot of the theme options. You can always go back by closing the customizer before saving.', 'crdm-modern' );
