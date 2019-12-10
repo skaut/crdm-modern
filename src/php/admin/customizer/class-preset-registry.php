@@ -76,7 +76,7 @@ class Preset_Registry {
 		if ( null === self::$instance ) {
 			self::$instance = new Preset_Registry(
 				array(
-					'blue' => new Preset(
+					'blue'  => new Preset(
 						__( 'Blue', 'crdm-modern' ),
 						'presets/blue.png',
 						array(
