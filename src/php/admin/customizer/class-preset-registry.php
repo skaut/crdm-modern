@@ -102,6 +102,7 @@ class Preset_Registry {
 								'nav_layout_setting'                     => 'contained-nav',
 								'footer_widget_setting'                  => '3',
 								// Colors.
+								'link_color'                             => '#007bc2',
 								'site_title_color'                       => '#00395e',
 								'site_tagline_color'                     => '#00395e',
 								'navigation_background_color'            => '#007bc2',
