@@ -169,6 +169,97 @@ class Preset_Registry {
 							'font_site_tagline_variants'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 						)
 					),
+					'green' => new Preset(
+						__( 'Green', 'crdm-modern' ),
+						'presets/blue.png', // TODO: New images.
+						array(
+							'crdm_modern'                  => array(
+								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/tee-pee.png',
+								'header_image_height'              => '220',
+								'header_image_top'                 => '13',
+								'header_image_right'               => '100',
+								'primary_navigation_spacing'       => '40',
+								'primary_navigation_shadow'        => '2px 4px 5px rgba(0, 0, 0, 0.4)',
+								'sidebar_widget_separator_width'   => '1',
+								'sidebar_widget_separator_spacing' => '20',
+								'sidebar_widget_separator_color'   => '#009b67',
+								'excerpt_border_color'             => '#009b67',
+							),
+							'generate_settings'            => array(
+								// Site Identity.
+								'logo_width'                             => '100',
+								'inline_logo_site_branding'              => true,
+								// Layout.
+								'content_layout_setting'                 => 'one-container',
+								'header_layout_setting'                  => 'contained-header',
+								'nav_layout_setting'                     => 'contained-nav',
+								'footer_widget_setting'                  => '3',
+								// Colors.
+								'link_color'                             => '#009b67',
+								'site_title_color'                       => '#004f35',
+								'site_tagline_color'                     => '#004f35',
+								'navigation_background_color'            => '#009b67',
+								'navigation_background_hover_color'      => '#004f35',
+								'navigation_background_current_color'    => '#004f35',
+								'subnavigation_background_color'         => '#004f35',
+								'subnavigation_background_hover_color'   => '#009b67',
+								'subnavigation_background_current_color' => '#009b67',
+								'sidebar_widget_title_color'             => '#009b67',
+								'sidebar_widget_link_color'              => '#3a3a3a',
+								'sidebar_widget_link_hover_color'        => '#009b67',
+								'entry_meta_link_color'                  => '#004f35',
+								'footer_widget_background_color'         => '#009b67',
+								'footer_widget_text_color'               => '#ffffff',
+								'footer_widget_link_color'               => '#ffffff',
+								'footer_widget_title_color'              => '#ffffff',
+								// Typography.
+								'font_body'                              => 'Source Sans Pro',
+								'body_font_weight'                       => '600',
+								// TODO: Fix Customizer UI not updating for font sizes.
+								'body_font_size'                         => '15',
+								'font_site_title'                        => 'Raleway',
+								'site_title_font_weight'                 => '900',
+								'font_site_tagline'                      => 'Raleway',
+								'site_tagline_font_size'                 => '25',
+								'navigation_font_weight'                 => 'bold',
+								'navigation_font_transform'              => 'uppercase',
+								'navigation_font_size'                   => '17',
+								'heading_2_weight'                       => '700',
+								'heading_2_font_size'                    => '19',
+								'widget_title_font_size'                 => '18',
+								'widget_title_separator'                 => '5',
+								'widget_content_font_size'               => '15',
+							),
+							'generate_spacing_settings'    => array(
+								// Layout.
+								'menu_item'                 => '25',
+								'content_element_separator' => '0.5',
+							),
+							'generate_blog_settings'       => array(
+								// Layout.
+								'excerpt_length'       => '25',
+								'read_more'            => __( 'Read more', 'crdm-modern' ) . ' >',
+								'author'               => false,
+								'categories'           => false,
+								'tags'                 => false,
+								'comments'             => false,
+								'post_image_position'  => 'post-image-above-header',
+								'post_image_alignment' => 'post-image-aligned-left',
+								'post_image_width'     => '300',
+								'post_image_height'    => '200',
+							),
+							'generate_background_settings' => array(
+								// Background.
+								'body_image'      => get_stylesheet_directory_uri() . '/frontend/background.jpg',
+								'body_size'       => 'cover',
+								'body_attachment' => 'fixed',
+							),
+							// Typography.
+							'font_body_variants'           => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
+							'font_site_title_variants'     => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+							'font_site_tagline_variants'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+						)
+					),
 				),
 				'blue'
 			);
