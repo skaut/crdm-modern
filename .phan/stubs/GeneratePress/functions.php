@@ -15,6 +15,12 @@
  */
 
 /**
+ * @return bool
+ */
+function generate_blog_get_columns() {
+}
+
+/**
  * @return array
  */
 function generate_get_defaults() {
@@ -48,4 +54,10 @@ function generate_get_font_family_css( $font, $settings, $default ) {
  * @return void
  */
 function generate_post_meta() {
+}
+
+/**
+ * @return array
+ */
+function generate_spacing_get_defaults() {
 }
