@@ -66,8 +66,8 @@ gulp.task( 'build:js', function() {
 	);
 } );
 
-gulp.task( 'build:php:functions', function() {
-	return gulp.src( 'src/php/functions.php' )
+gulp.task( 'build:php:root', function() {
+	return gulp.src( 'src/php/*.php' )
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
@@ -81,7 +81,7 @@ gulp.task( 'build:php:frontend', function() {
 		.pipe( gulp.dest( 'dist/frontend/' ) );
 } );
 
-gulp.task( 'build:php', gulp.parallel( 'build:php:functions', 'build:php:admin', 'build:php:frontend' ) );
+gulp.task( 'build:php', gulp.parallel( 'build:php:root', 'build:php:admin', 'build:php:frontend' ) );
 
 gulp.task( 'build:png:screenshot', function() {
 	return gulp.src( 'src/png/screenshot.png' )
