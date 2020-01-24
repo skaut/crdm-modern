@@ -61,7 +61,11 @@
 }
 
 .post-image-above-header .crdm_modern_excerpt div.post-image {
-	margin-bottom: -6.25px;
+	margin-bottom: 0;
+}
+
+.crdm_modern_excerpt div.post-image img {
+	vertical-align: bottom;
 }
 
 .crdm_modern_excerpt .entry-header {
