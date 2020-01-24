@@ -19,6 +19,7 @@ function register() {
 	add_action( 'crdmmodern_before_content', '\\CrdmModern\\Frontend\\Blog\\before_content', 9 );
 	add_action( 'crdmmodern_after_content', '\\CrdmModern\\Frontend\\Blog\\after_content', 9 );
 	add_filter( 'post_class', '\\CrdmModern\\Frontend\\Blog\\post_classes' );
+	add_filter( 'generate_resized_featured_image_output', '\\CrdmModern\\Frontend\\Blog\\featured_image' );
 }
 
 /**
@@ -72,11 +73,11 @@ function before_content() {
 }
 
 /**
- * Adds the multi-column blog layout classes to the correct posts.
+ * Adds the multi-column blog layout classes to the featured posts.
  *
  * @param string[] $classes A list of post classes.
  *
- * @return string[] The updated list of post classes
+ * @return string[] The updated list of post classes.
  */
 function post_classes( $classes ) {
 	static $count = -1;
@@ -91,6 +92,34 @@ function post_classes( $classes ) {
 	$classes[] = 'grid-50';
 
 	return $classes;
+}
+
+/**
+ * Makes the featured images full-sized in the multi-column blog layout for the featured posts
+ *
+ * @param string $image The featured image HTML.
+ *
+ * @return string the updated featured image HTML.
+ */
+function featured_image( $image ) {
+	static $count = -1;
+	$count++;
+	if ( $count > 1 || \generate_blog_get_columns() ) {
+		return $image;
+	}
+	$post_ID = get_the_ID();
+	return '<div class="post-image">' .
+			apply_filters( 'generate_inside_featured_image_output', '' ) //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+			. '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' .
+				get_the_post_thumbnail(
+					$post_ID,
+					apply_filters( 'generate_page_header_default_size', 'full' ), //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+					array(
+						'itemprop' => 'image',
+					)
+				)
+			. '</a>
+		</div>';
 }
 
 /**
