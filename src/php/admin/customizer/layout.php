@@ -149,6 +149,43 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			)
 		)
 	);
+
+	// Featured posts.
+	$wp_customize->add_control(
+		new \GeneratePress_Title_Customize_Control(
+			$wp_customize,
+			'crdm_modern_fetured_posts_title',
+			array(
+				'section'  => 'generate_blog_section',
+				'title'    => __( 'Featured Posts', 'crdm-modern' ),
+				'settings' => array(),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'crdm_modern[featured_post_count]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['featured_post_count'],
+			'sanitize_callback' => 'generate_premium_sanitize_choices',
+		)
+	);
+
+	$wp_customize->add_control(
+		'crdm_modern[featured_post_count]',
+		array(
+			'type'     => 'select',
+			'label'    => __( 'Number of featured posts', 'crdm-modern' ),
+			'section'  => 'generate_blog_section',
+			'choices'  => array(
+				'0' => 'Disabled',
+				'2' => '2',
+				'3' => '3',
+			),
+			'settings' => 'crdm_modern[featured_post_count]',
+		)
+	);
 }
 
 /**

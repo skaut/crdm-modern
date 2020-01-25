@@ -91,6 +91,8 @@ class Preset_Registry {
 								'sidebar_widget_separator_spacing' => '20',
 								'sidebar_widget_separator_color'   => '#007bc2',
 								'excerpt_border_color'             => '#007bc2',
+								// Featured posts.
+								'featured_post_count'              => '2',
 							),
 							'generate_settings'            => array(
 								// Site Identity.
@@ -184,6 +186,8 @@ class Preset_Registry {
 								'sidebar_widget_separator_spacing' => '20',
 								'sidebar_widget_separator_color'   => '#009b67',
 								'excerpt_border_color'             => '#009b67',
+								// Featured posts.
+								'featured_post_count'              => '2',
 							),
 							'generate_settings'            => array(
 								// Site Identity.

@@ -61,12 +61,57 @@ function columns_css() {
 }
 
 /**
+ * Returns whether a featured-post function should run and the number of featured posts
+ *
+ * @param string $function_name The name of the function.
+ * @param string $condition Where the function should run - on the first featured image, on all or on the last one. One of `begin`, `all`, `end`.
+ *
+ * @return array {
+ *     @type bool Whether the function should run.
+ *     @type int  The total number of featured images.
+ * }
+ */
+function should_run( $function_name, $condition ) {
+	static $counts = array(
+		'before_content' => 0,
+		'post_classes'   => 0,
+		'featured_image' => 0,
+		'after_content'  => 0,
+	);
+	$counts[ $function_name ]++;
+
+	if ( \generate_blog_get_columns() ) {
+		return array( false, 0 );
+	}
+
+	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$crdm_modern_settings = wp_parse_args(
+		get_option( 'crdm_modern', array() ),
+		$defaults['crdm_modern']
+	);
+	$featured_post_count  = intval( $crdm_modern_settings['featured_post_count'] );
+	if ( 0 === $featured_post_count ) {
+		return array( false, 0 );
+	}
+
+	if ( 'begin' === $condition && 1 !== $counts[ $function_name ] ) {
+		return array( false, $featured_post_count );
+	}
+	if ( 'all' === $condition && $counts[ $function_name ] > $featured_post_count ) {
+		return array( false, $featured_post_count );
+	}
+	if ( 'end' === $condition && $counts[ $function_name ] !== $featured_post_count ) {
+		return array( false, $featured_post_count );
+	}
+	return array( true, $featured_post_count );
+}
+
+/**
  * Fires before each article on the blog. Initializes the multi-column layout when appropriate
  */
 function before_content() {
-	static $count = -1;
-	$count++;
-	if ( 0 !== $count || \generate_blog_get_columns() ) {
+	list( $should_run, ) = should_run( 'before_content', 'begin' );
+	if ( ! $should_run ) { // @phan-suppress-current-line PhanPluginNonBoolBranch
 		return;
 	}
 	echo( '<div class="generate-columns-container">' );
@@ -80,17 +125,15 @@ function before_content() {
  * @return string[] The updated list of post classes.
  */
 function post_classes( $classes ) {
-	static $count = -1;
-	$count++;
-	if ( $count > 1 || \generate_blog_get_columns() ) {
+	list( $should_run, $featured_post_count ) = should_run( 'post_classes', 'all' );
+	if ( ! $should_run ) { // @phan-suppress-current-line PhanPluginNonBoolBranch
 		return $classes;
 	}
 	$classes[] = 'generate-columns';
 	$classes[] = 'tablet-grid-50';
 	$classes[] = 'mobile-grid-100';
 	$classes[] = 'grid-parent';
-	$classes[] = 'grid-50';
-
+	$classes[] = 2 === $featured_post_count ? 'grid-50' : 'grid-33';
 	return $classes;
 }
 
@@ -102,9 +145,8 @@ function post_classes( $classes ) {
  * @return string the updated featured image HTML.
  */
 function featured_image( $image ) {
-	static $count = -1;
-	$count++;
-	if ( $count > 1 || \generate_blog_get_columns() ) {
+	list( $should_run, ) = should_run( 'featured_image', 'all' );
+	if ( ! $should_run ) { // @phan-suppress-current-line PhanPluginNonBoolBranch
 		return $image;
 	}
 	$post_ID = get_the_ID();
@@ -126,9 +168,8 @@ function featured_image( $image ) {
  * Fires after each article on the blog. Closes the multi-column layout when appropriate
  */
 function after_content() {
-	static $count = -1;
-	$count++;
-	if ( 1 !== $count || \generate_blog_get_columns() ) {
+	list( $should_run, ) = should_run( 'after_content', 'end' );
+	if ( ! $should_run ) { // @phan-suppress-current-line PhanPluginNonBoolBranch
 		return;
 	}
 	echo( '</div><!-- .generate-columns-contaier -->' );
