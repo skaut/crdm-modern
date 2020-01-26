@@ -101,10 +101,10 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 
 	// Excerpt text hover color.
 	$wp_customize->add_setting(
-		'crdm_modern[excerpt_text_hover_color]',
+		'crdm_modern[excerpt_hover_text_color]',
 		array(
 			'type'              => 'option',
-			'default'           => $defaults['excerpt_text_hover_color'],
+			'default'           => $defaults['excerpt_hover_text_color'],
 			'sanitize_callback' => 'generate_premium_sanitize_hex_color',
 			'transport'         => 'postMessage',
 		)
@@ -113,11 +113,11 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 	$wp_customize->add_control(
 		new \WP_Customize_Color_Control(
 			$wp_customize,
-			'crdm_modern[excerpt_text_hover_color]',
+			'crdm_modern[excerpt_hover_text_color]',
 			array(
 				'label'    => __( 'Excerpt Text Hover', 'crdm-modern' ),
 				'section'  => 'content_color_section',
-				'settings' => 'crdm_modern[excerpt_text_hover_color]',
+				'settings' => 'crdm_modern[excerpt_hover_text_color]',
 				'priority' => 4,
 			)
 		)
@@ -226,7 +226,7 @@ function enqueue() {
 	$css->set_selector( '.crdm_modern_excerpt:hover .entry-meta a' );
 	$css->add_property( 'color', esc_attr( $gp_settings['entry_meta_link_color_hover'] ) );
 	$css->set_selector( '.crdm_modern_excerpt:hover' );
-	$css->add_property( 'color', esc_attr( $crdm_modern_settings['excerpt_text_hover_color'] ) );
+	$css->add_property( 'color', esc_attr( $crdm_modern_settings['excerpt_hover_text_color'] ) );
 
 	// "Read more" link color.
 	$css->set_selector( 'a.read-more' );
