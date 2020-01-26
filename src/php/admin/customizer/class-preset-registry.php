@@ -92,6 +92,7 @@ class Preset_Registry {
 								'sidebar_widget_separator_color'   => '#007bc2',
 								'excerpt_border_color'             => '#007bc2',
 								'excerpt_hover_background_color'   => '#007bc2',
+								'excerpt_text_hover_color'         => '#ffffff',
 								// Featured posts.
 								'featured_post_count'              => '2',
 								// Read more link.
@@ -193,6 +194,7 @@ class Preset_Registry {
 								'sidebar_widget_separator_color'   => '#009b67',
 								'excerpt_border_color'             => '#009b67',
 								'excerpt_hover_background_color'   => '#009b67',
+								'excerpt_text_hover_color'         => '#ffffff',
 								// Featured posts.
 								'featured_post_count'              => '2',
 								// Read more link.
