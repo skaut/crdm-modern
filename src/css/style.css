@@ -58,6 +58,7 @@
 	border-style: solid;
 	border-width: 1px;
 	padding: 1em;
+	cursor: pointer;
 }
 
 .post-image-above-header .crdm_modern_excerpt div.post-image {

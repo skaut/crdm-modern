@@ -16,8 +16,8 @@ function register() {
 	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Frontend\\Blog\\enqueue', 51 );
 	add_action( 'generate_after_entry_title', '\\CrdmModern\\Frontend\\Blog\\remove_post_meta', 9 );
 	add_action( 'generate_before_entry_title', 'generate_post_meta' );
-	add_action( 'crdmmodern_before_content', '\\CrdmModern\\Frontend\\Blog\\before_content', 9 );
-	add_action( 'crdmmodern_after_content', '\\CrdmModern\\Frontend\\Blog\\after_content', 9 );
+	add_action( 'crdmmodern_before_content', '\\CrdmModern\\Frontend\\Blog\\before_content' );
+	add_action( 'crdmmodern_after_content', '\\CrdmModern\\Frontend\\Blog\\after_content' );
 	add_filter( 'post_class', '\\CrdmModern\\Frontend\\Blog\\post_classes' );
 	add_filter( 'generate_resized_featured_image_output', '\\CrdmModern\\Frontend\\Blog\\featured_image' );
 }
