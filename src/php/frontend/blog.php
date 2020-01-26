@@ -80,6 +80,10 @@ function should_run( $function_name, $condition ) {
 	);
 	$counts[ $function_name ]++;
 
+	if ( \is_single() ) {
+		return array( false, 0 );
+	}
+
 	if ( \generate_blog_get_columns() ) {
 		return array( false, 0 );
 	}
