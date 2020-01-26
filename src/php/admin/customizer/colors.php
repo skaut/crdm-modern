@@ -74,6 +74,31 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			)
 		)
 	);
+
+
+	// Excerpt hover background.
+	$wp_customize->add_setting(
+		'crdm_modern[excerpt_hover_background_color]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['excerpt_hover_background_color'],
+			'sanitize_callback' => 'generate_premium_sanitize_hex_color',
+			'transport'         => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		new \WP_Customize_Color_Control(
+			$wp_customize,
+			'crdm_modern[excerpt_hover_background_color]',
+			array(
+				'label'    => __( 'Excerpt Background Hover', 'crdm-modern' ),
+				'section'  => 'content_color_section',
+				'settings' => 'crdm_modern[excerpt_hover_background_color]',
+				'priority' => 4,
+			)
+		)
+	);
 }
 
 /**
@@ -122,6 +147,10 @@ function enqueue() {
 	// Excerpt border.
 	$css->set_selector( '.crdm_modern_excerpt' );
 	$css->add_property( 'border-color', esc_attr( $crdm_modern_settings['excerpt_border_color'] ) );
+
+	// Excerpt hover background color.
+	$css->set_selector( '.crdm_modern_excerpt:hover' );
+	$css->add_property( 'background-color', esc_attr( $crdm_modern_settings['excerpt_hover_background_color'] ) );
 
 	$output = $css->css_output();
 	if ( '' !== $output ) {

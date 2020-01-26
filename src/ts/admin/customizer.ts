@@ -46,6 +46,7 @@ liveReload( 'generate_settings[sidebar_widget_link_color]', '.sidebar .widget_se
 
 liveReload( 'crdm_modern[sidebar_widget_separator_color]', '.sidebar .inside-right-sidebar .widget', [ { name: 'border-left-color' } ] );
 liveReload( 'crdm_modern[excerpt_border_color]', '.crdm_modern_excerpt', [ { name: 'border-color' } ] );
+liveReload( 'crdm_modern[excerpt_hover_background_color]', '.crdm_modern_excerpt:hover', [ { name: 'background-color' } ] );
 
 // Layout.
 liveReload( 'generate_settings[header_background_color]', '.main-navigation', [ { name: 'background-color' } ] );
