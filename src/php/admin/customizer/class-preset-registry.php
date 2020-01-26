@@ -96,8 +96,8 @@ class Preset_Registry {
 								// Featured posts.
 								'featured_post_count'              => '2',
 								// Read more link.
-								'read_more_color'             => '#007bc2',
-								'read_more_hover_color'       => '#ffffff',
+								'read_more_color'                  => '#007bc2',
+								'read_more_hover_color'            => '#ffffff',
 							),
 							'generate_settings'            => array(
 								// Site Identity.
@@ -198,8 +198,8 @@ class Preset_Registry {
 								// Featured posts.
 								'featured_post_count'              => '2',
 								// Read more link.
-								'read_more_color'             => '#009b67',
-								'read_more_hover_color'       => '#ffffff',
+								'read_more_color'                  => '#009b67',
+								'read_more_hover_color'            => '#ffffff',
 							),
 							'generate_settings'            => array(
 								// Site Identity.

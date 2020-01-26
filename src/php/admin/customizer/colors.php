@@ -75,7 +75,6 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 		)
 	);
 
-
 	// Excerpt hover background.
 	$wp_customize->add_setting(
 		'crdm_modern[excerpt_hover_background_color]',
