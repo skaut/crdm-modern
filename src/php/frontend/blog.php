@@ -80,7 +80,7 @@ function should_run( $function_name, $condition ) {
 	);
 	$counts[ $function_name ]++;
 
-	if ( \is_single() ) {
+	if ( \is_singular() ) {
 		return array( false, 0 );
 	}
 
