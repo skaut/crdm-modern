@@ -42,7 +42,7 @@ function add_icon( string $title, array $_, string $id_base ) {
 			$icon = 'message';
 			break;
 		case 'recent-posts':
-			$icon = 'warning';
+			$icon = 'pencil';
 			break;
 		case 'recent-comments':
 			$icon = 'inbox';
