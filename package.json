@@ -36,7 +36,7 @@
 	},
 	"devDependencies": {
 		"@types/jquery": "^3.3.32",
-		"@typescript-eslint/eslint-plugin": "^2.19.2",
+		"@typescript-eslint/eslint-plugin": "^2.20.0",
 		"@typescript-eslint/parser": "^2.20.0",
 		"@wordpress/eslint-plugin": "^4.0.0",
 		"eslint": "^6.8.0",
