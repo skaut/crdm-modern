@@ -35,7 +35,7 @@
 		"dripicons": "^2.0.0"
 	},
 	"devDependencies": {
-		"@types/jquery": "^3.3.32",
+		"@types/jquery": "^3.3.33",
 		"@typescript-eslint/eslint-plugin": "^2.20.0",
 		"@typescript-eslint/parser": "^2.20.0",
 		"@wordpress/eslint-plugin": "^4.0.0",
