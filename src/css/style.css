@@ -75,8 +75,23 @@ article.post .crdm_modern_excerpt .post-image {
 }
 
 article.post.generate-columns .crdm_modern_excerpt .post-image {
+	margin-left: -1em;
 	margin-right: -1em;
 	margin-bottom: 1em;
+}
+
+@media (max-width: 768px) {
+	body div.inside-article.crdm_modern_excerpt .post-image {
+		margin-left: -1em;
+		margin-right: -1em;
+		margin-bottom: 1em;
+	}
+}
+
+@media (min-width: 769px) {
+	article:not(.generate-columns) .crdm_modern_excerpt .post-image img {
+		object-fit: cover;
+	}
 }
 
 @media (max-width: 767px) {

@@ -35,19 +35,23 @@ function remove_post_meta() {
 function enqueue() {
 	\CrdmModern\enqueue_script( 'crdm_modern_blog', 'frontend/js/blog.min.js', array( 'jquery' ) );
 	if ( ! \generate_blog_get_columns() ) {
-		wp_add_inline_style( 'crdm_modern_inline', columns_css() );
+		wp_add_inline_style( 'crdm_modern_inline', blog_css() );
 	}
 }
 
 /**
- * Returns the CSS for the multi-column blog layout
+ * Returns the CSS for the blog layout
  *
  * @return string The CSS for the multi-column blog layout
  */
-function columns_css() {
+function blog_css() {
 	$spacing_settings = wp_parse_args(
 		get_option( 'generate_spacing_settings', array() ),
 		\generate_spacing_get_defaults()
+	);
+	$blog_settings = wp_parse_args(
+		get_option( 'generate_blog_settings', array() ),
+		\generate_blog_get_defaults()
 	);
 
 	$separator = absint( $spacing_settings['separator'] );
@@ -56,6 +60,7 @@ function columns_css() {
 	$ret .= '.generate-columns-container {margin-left: -' . $separator . 'px;}';
 	$ret .= '.page-header {margin-bottom: ' . $separator . 'px;margin-left: ' . $separator . 'px}';
 	$ret .= '.generate-columns-container > .paging-navigation {margin-left: ' . $separator . 'px;}';
+	$ret .= '@media (min-width: 769px) {article:not(.generate-columns) .crdm_modern_excerpt .post-image img {height: ' . $blog_settings['post_image_height'] . 'px; width: ' . $blog_settings['post_image_width'] . 'px;}}';
 
 	return $ret;
 }
