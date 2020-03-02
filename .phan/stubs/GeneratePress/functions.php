@@ -23,6 +23,12 @@ function generate_blog_get_columns() {
 /**
  * @return array
  */
+function generate_blog_get_defaults() {
+}
+
+/**
+ * @return array
+ */
 function generate_get_defaults() {
 }
 

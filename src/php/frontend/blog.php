@@ -49,7 +49,7 @@ function blog_css() {
 		get_option( 'generate_spacing_settings', array() ),
 		\generate_spacing_get_defaults()
 	);
-	$blog_settings = wp_parse_args(
+	$blog_settings    = wp_parse_args(
 		get_option( 'generate_blog_settings', array() ),
 		\generate_blog_get_defaults()
 	);
@@ -91,7 +91,6 @@ function should_run( $function_name, $condition ) {
 	static $counts = array(
 		'before_content' => 0,
 		'post_classes'   => 0,
-		'featured_image' => 0,
 		'after_content'  => 0,
 	);
 	$counts[ $function_name ]++;
@@ -146,14 +145,10 @@ function post_classes( $classes ) {
 /**
  * Makes the featured images full-sized in the multi-column blog layout for the featured posts
  *
- * @param string $image The featured image HTML.
- *
  * @return string the updated featured image HTML.
  */
-function featured_image( $image ) {
-	if ( ! should_run( 'featured_image', 'all' ) ) {
-		return $image;
-	}
+function featured_image() {
+	// TODO Dynamically select the best size depending on whether it is in columns.
 	$post_ID = get_the_ID();
 	return '<div class="post-image">' .
 			apply_filters( 'generate_inside_featured_image_output', '' ) //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
