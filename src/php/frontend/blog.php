@@ -15,7 +15,7 @@ namespace CrdmModern\Frontend\Blog;
 function register() {
 	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Frontend\\Blog\\enqueue', 51 );
 	add_action( 'generate_after_entry_title', '\\CrdmModern\\Frontend\\Blog\\remove_post_meta', 9 );
-	add_action( 'generate_before_entry_title', 'generate_post_meta' );
+	add_action( 'generate_before_entry_title', '\\CrdmModern\\Frontend\\Blog\\add_post_meta', 9 );
 	add_action( 'crdmmodern_before_content', '\\CrdmModern\\Frontend\\Blog\\before_content' );
 	add_action( 'crdmmodern_after_content', '\\CrdmModern\\Frontend\\Blog\\after_content' );
 	add_filter( 'post_class', '\\CrdmModern\\Frontend\\Blog\\post_classes' );
@@ -23,10 +23,21 @@ function register() {
 }
 
 /**
- * Removes posted-on date from after the excerpt title.
+ * Removes posted-on date from after the excerpt title in the blog.
  */
 function remove_post_meta() {
-	remove_action( 'generate_after_entry_title', 'generate_post_meta' );
+	if ( ! \is_singular() ) {
+		remove_action( 'generate_after_entry_title', 'generate_post_meta' );
+	}
+}
+
+/**
+ * Adds posted-on date before the excerpt title in the blog.
+ */
+function add_post_meta() {
+	if ( ! \is_singular() ) {
+		add_action( 'generate_before_entry_title', 'generate_post_meta' );
+	}
 }
 
 /**
