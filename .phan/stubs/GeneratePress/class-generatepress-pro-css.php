@@ -39,6 +39,20 @@ class GeneratePress_Pro_CSS {
 	}
 
 	/**
+	 * @param string $value
+	 *
+	 * @return $this
+	 */
+	public function start_media_query( $value ) {
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function stop_media_query() {
+	}
+
+	/**
 	 * @return string
 	 */
 	public function css_output() {

@@ -147,6 +147,38 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			)
 		)
 	);
+
+	$wp_customize->add_setting(
+		'crdm_modern[header_image_min_width]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['header_image_min_width'],
+			'sanitize_callback' => 'absint',
+		)
+	);
+
+	$wp_customize->add_control(
+		new \GeneratePress_Pro_Range_Slider_Control(
+			$wp_customize,
+			'crdm_modern[header_image_min_width]',
+			array(
+				'label'    => __( 'Minimum Width to Show Header Image', 'crdm-modern' ),
+				'section'  => 'title_tagline',
+				'settings' => array(
+					'desktop' => 'crdm_modern[header_image_min_width]',
+				),
+				'choices'  => array(
+					'desktop' => array(
+						'min'  => 769,
+						'max'  => 2000,
+						'step' => 1,
+						'edit' => true,
+						'unit' => 'px',
+					),
+				),
+			)
+		)
+	);
 }
 
 /**
@@ -166,6 +198,11 @@ function enqueue() {
 	$css->add_property( 'max-height', strval( absint( $crdm_modern_settings['header_image_height'] ) ), false, 'px' );
 	$css->add_property( 'top', strval( absint( $crdm_modern_settings['header_image_top'] ) ), false, 'px' );
 	$css->add_property( 'right', strval( absint( $crdm_modern_settings['header_image_right'] ) ), false, 'px' );
+
+	$css->start_media_query( '(max-width: ' . strval( absint( $crdm_modern_settings['header_image_min_width'] ) ) . 'px)' );
+	$css->set_selector( '.crdm_modern_nav_image' );
+	$css->add_property( 'display', 'none' );
+	$css->stop_media_query();
 
 	$output = $css->css_output();
 	if ( '' !== $output ) {
