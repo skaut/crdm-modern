@@ -131,7 +131,15 @@ footer.site-info {
 }
 
 /* Title widget */
+.widget_crdm_modern_title_widget {
+	width: max-content;
+}
+
 .widget_crdm_modern_title_widget img {
 	float: left;
 	margin-right: 1.5em;
+}
+
+.widget_crdm_modern_title_widget .crdm_modern_title_widget_title {
+	float: right;
 }
