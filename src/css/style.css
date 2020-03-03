@@ -143,3 +143,11 @@ footer.site-info {
 .widget_crdm_modern_title_widget .crdm_modern_title_widget_title {
 	float: right;
 }
+
+@media (max-width: 768px) {
+	.site-footer .footer-widgets .footer-widgets-container .inside-footer-widgets {
+		margin-left: auto;
+		margin-right: auto;
+		width: max-content;
+	}
+}
