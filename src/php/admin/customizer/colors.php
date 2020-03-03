@@ -223,6 +223,10 @@ function enqueue() {
 	$css->add_property( 'background-color', esc_attr( $crdm_modern_settings['excerpt_hover_background_color'] ) );
 	$css->set_selector( '.crdm_modern_excerpt:hover .entry-title a' );
 	$css->add_property( 'color', esc_attr( $gp_settings['blog_post_title_hover_color'] ) );
+
+	$css->set_selector( '.entry-meta a:hover' );
+	$css->add_property( 'color', esc_attr( $gp_settings['entry_meta_link_color'] ) );
+
 	$css->set_selector( '.crdm_modern_excerpt:hover .entry-meta a' );
 	$css->add_property( 'color', esc_attr( $gp_settings['entry_meta_link_color_hover'] ) );
 	$css->set_selector( '.crdm_modern_excerpt:hover' );
