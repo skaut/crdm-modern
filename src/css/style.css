@@ -38,6 +38,13 @@
 	padding-left: 0 !important;
 }
 
+@media (max-width: 768px) {
+	.sidebar .inside-right-sidebar .widget {
+		border-left: none;
+		padding-left: 0 !important;
+	}
+}
+
 /* Sidebar widget styling */
 .sidebar .widget a {
 	text-decoration: underline;
