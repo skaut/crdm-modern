@@ -1,1 +1,3 @@
-declare const wp: any;
+declare const wp: {
+	customize: typeof import( 'wordpress__customize' );
+};
