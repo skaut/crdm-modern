@@ -53,26 +53,12 @@ class WordPress_Github_Updater {
 	/**
 	 * Injects the necessary data into the WordPress update-checking logic.
 	 *
-	 * @param array $transient {
-	 *     The WordPress update data.
+	 * @param object $transient The WordPress update data.
 	 *
-	 *     @type int   $last_checked
-	 *     @type array $checked
-	 *     @type array $response
-	 *     @type array $translations
-	 * }
-	 *
-	 * @return array {
-	 *     The update data with the injected values.
-	 *
-	 *     @type int   $last_checked
-	 *     @type array $checked
-	 *     @type array $response
-	 *     @type array $translations
-	 * }
+	 * @return object
 	 */
 	public function update_theme( $transient ) {
-		if ( empty( $transient['checked'] ) || empty( $transient['checked'][ $this->wp_slug ] ) ) {
+		if ( empty( $transient->checked ) || empty( $transient->checked[ $this->wp_slug ] ) ) {
 			return $transient; // TODO: Error reporting.
 		}
 
@@ -86,7 +72,7 @@ class WordPress_Github_Updater {
 		}
 
 		$version = ltrim( $response->tag_name, 'v' );
-		if ( version_compare( $version, $transient['checked'][ $this->wp_slug ], '<=' ) ) {
+		if ( version_compare( $version, $transient->checked[ $this->wp_slug ], '<=' ) ) {
 			return $transient;
 		}
 
@@ -103,7 +89,7 @@ class WordPress_Github_Updater {
 			return $transient; // TODO: Error reporting.
 		}
 
-		$transient['response'][ $this->wp_slug ] = array(
+		$transient->response[ $this->wp_slug ] = array(
 			'theme'       => $this->wp_slug,
 			'new_version' => $version,
 			'url'         => $response->html_url,
