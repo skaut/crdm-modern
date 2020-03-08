@@ -16,10 +16,24 @@ namespace CrdmModern\Admin\Update;
  */
 class WordPress_Github_Updater {
 	/**
+	 * The WordPress slug of the resource.
+	 *
+	 * @var string
+	 */
+	private $wp_slug;
+
+	/**
+	 * The GitHub slug of the project in the form `user/repo`.
+	 *
+	 * @var string
+	 */
+	private $gh_slug;
+
+	/**
 	 * Registers a new resource (theme) to be auto-updated.
 	 *
 	 * @param string $wp_slug The WordPress slug of the resource.
-	 * @param string $gh_slug A GitHub slug of the project in the form user/repo.
+	 * @param string $gh_slug The GitHub slug of the project in the form `user/repo`.
 	 * @param string $type Resource type. Accepts `theme`.
 	 *
 	 * @throws \Exception Invalid type.
