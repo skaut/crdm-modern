@@ -53,9 +53,23 @@ class WordPress_Github_Updater {
 	/**
 	 * Injects the necessary data into the WordPress update-checking logic.
 	 *
-	 * @param array $transient The WordPress update data.
+	 * @param array $transient {
+	 *     The WordPress update data.
 	 *
-	 * @return array The update data with the injected values.
+	 *     @type int   $last_checked
+	 *     @type array $checked
+	 *     @type array $response
+	 *     @type array $translations
+	 * }
+	 *
+	 * @return array {
+	 *     The update data with the injected values.
+	 *
+	 *     @type int   $last_checked
+	 *     @type array $checked
+	 *     @type array $response
+	 *     @type array $translations
+	 * }
 	 */
 	public function update_theme( $transient ) {
 		if ( empty( $transient->checked ) || empty( $transient->checked[ $this->wp_slug ] ) ) {
