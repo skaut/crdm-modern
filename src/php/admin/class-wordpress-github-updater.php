@@ -1,19 +1,49 @@
 <?php
+/**
+ * Contains the WordPress_Github_Updater class.
+ *
+ * @package crdm-modern
+ */
 
-namespace CrdmModern\Admin\Updater;
+declare( strict_types = 1 );
 
-function register() {
-	new WordpressGithubUpdater( 'crdm-modern', 'skaut/crdm-modern', 'theme' );
-}
+namespace CrdmModern\Admin\Update;
 
-class WordpressGithubUpdater {
+/**
+ * Checks for updates from GitHub.
+ *
+ * Allows for updating a resource (e.g. a theme) from GitHub. Releases (tags) on Github are used as versions with the zip file taken from the release as the asset with the name `wp-slug.version.zip`. The updater hooks into the standard WordPress update functionality so for the user it is as though the resource were hosted on wordpress.org.
+ */
+class WordPress_Github_Updater {
+	/**
+	 * Registers a new resource (theme) to be auto-updated.
+	 *
+	 * @param string $wp_slug The WordPress slug of the resource.
+	 * @param string $gh_slug A GitHub slug of the project in the form user/repo.
+	 * @param string $type Resource type. Accepts `theme`.
+	 *
+	 * @throws \Exception Invalid type.
+	 */
 	public function __construct( $wp_slug, $gh_slug, $type ) {
 		$this->wp_slug = $wp_slug;
 		$this->gh_slug = $gh_slug;
-		add_filter( 'pre_set_site_transient_update_themes', array( $this, 'pre_set_site_transient_update_themes' ) );
+		switch ( $type ) {
+			case 'theme':
+				add_filter( 'pre_set_site_transient_update_themes', array( $this, 'update_theme' ) );
+				break;
+			default:
+				throw new \Exception( 'Wordpress_Github_Updater called with invalid type!' );
+		}
 	}
 
-	public function pre_set_site_transient_update_themes( $transient ) {
+	/**
+	 * Injects the necessary data into the WordPress update-checking logic.
+	 *
+	 * @param array $transient The WordPress update data.
+	 *
+	 * @return array The update data with the injected values.
+	 */
+	public function update_theme( $transient ) {
 		if ( empty( $transient->checked ) || empty( $transient->checked[ $this->wp_slug ] ) ) {
 			return $transient; // TODO: Error reporting.
 		}
