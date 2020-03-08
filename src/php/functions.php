@@ -56,7 +56,7 @@ function activate() {
 	update_option( 'generate_package_colors', 'activated' );
 	update_option( 'generate_package_spacing', 'activated' );
 	update_option( 'generate_package_typography', 'activated' );
-	// TODO: Apply a preset
+	// TODO: Apply a preset.
 	return true;
 }
 
