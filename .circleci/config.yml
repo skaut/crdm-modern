@@ -6,6 +6,14 @@ workflows:
       - lint:
           requires:
             - build
+      - package:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
+          requires:
+            - build
 
 job-references:
   restore_composer: &restore_composer
@@ -83,3 +91,21 @@ jobs:
       - run:
           name: "Lint"
           command: npm run lint
+  package:
+    docker:
+      - image: circleci/golang:latest
+    steps:
+      - checkout
+      - attach_workspace:
+          at: dist
+      - run:
+          name: "Install ghr"
+          command: go get github.com/tcnksm/ghr
+      - run:
+          name: "Create zip package"
+          command: |
+            cp -r dist ${CIRCLE_PROJECT_REPONAME}
+            zip -r ${CIRCLE_PROJECT_REPONAME}.${CIRCLE_TAG}.zip ${CIRCLE_PROJECT_REPONAME}
+      - run:
+          name: "Upload the package to GitHub"
+          command: ghr -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -n "Version ${CIRCLE_TAG}" ${CIRCLE_TAG} ${CIRCLE_PROJECT_REPONAME}.${CIRCLE_TAG}.zip
