@@ -16,6 +16,17 @@
 		</properties>
 	</rule>
 	<rule ref="rulesets/design.xml"/>
-	<rule ref="rulesets/naming.xml"/>
+	<rule ref="rulesets/naming.xml">
+		<exclude name="LongVariable"/>
+		</rule>
+		<rule ref="rulesets/naming.xml/LongVariable">
+		<properties>
+			<property name="maximum">
+				<value>
+					30
+				</value>
+			</property>
+		</properties>
+	</rule>
 	<rule ref="rulesets/unusedcode.xml"/>
 </ruleset>
