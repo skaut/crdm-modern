@@ -16,5 +16,5 @@ require_once __DIR__ . '/class-wordpress-github-updater.php';
  */
 function register() {
 	// @phan-suppress-next-line PhanNoopNew
-	new WordPress_Github_Updater( 'crdm-modern', 'skaut/crdm-modern', 'theme' );
+	new WordPress_Github_Updater( 'crdm-modern', 'skaut/crdm-modern', 'CRDM - Modern', 'theme' );
 }
