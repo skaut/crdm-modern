@@ -186,6 +186,7 @@ class WordPress_Github_Updater {
 	private function github_request() {
 		$raw_response = wp_remote_get( 'https://api.github.com/repos/' . $this->gh_slug . '/releases/latest' );
 		if ( is_wp_error( $raw_response ) ) {
+			// @phan-suppress-next-line PhanPossiblyNonClassMethodCall is_wp_error() narrows $raw_response from \WP_Error|array to \WP_Error.
 			throw new \Exception( sprintf( self::$err_msg_request_failed, $this->name ) . ' ' . self::$err_msg_error_message . ' ' . $raw_response->get_error_message() );
 		}
 		if ( wp_remote_retrieve_response_code( $raw_response ) !== 200 || ! isset( $raw_response['body'] ) ) {
