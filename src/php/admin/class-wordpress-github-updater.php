@@ -16,18 +16,18 @@ namespace CrdmModern\Admin\Update;
  */
 class WordPress_Github_Updater {
 	/**
-	 * Error message: "The package $s is not available for updating.".
+	 * Error message: "The package %s is not available for updating.".
 	 *
 	 * @var string
 	 */
-	private static $err_msg_not_available = 'The package $s is not available for updating.';
+	private static $err_msg_not_available = 'The package %s is not available for updating.';
 
 	/**
-	 * Error message: "The GitHub API request for package $s failed.".
+	 * Error message: "The GitHub API request for updates for the package %s has failed.".
 	 *
 	 * @var string
 	 */
-	private static $err_msg_request_failed = 'The GitHub API request for package $s failed.';
+	private static $err_msg_request_failed = 'The GitHub API request for updates for the package %s has failed.';
 
 	/**
 	 * Error message: "Error message:".
@@ -37,18 +37,18 @@ class WordPress_Github_Updater {
 	private static $err_msg_error_message = 'Error message:';
 
 	/**
-	 * Error message: "The GitHub API response for package $s is invalid.".
+	 * Error message: "The GitHub API response for the package %s is invalid.".
 	 *
 	 * @var string
 	 */
-	private static $err_msg_response_invalid = 'The GitHub API response for package $s is invalid.';
+	private static $err_msg_response_invalid = 'The GitHub API response for the package %s is invalid.';
 
 	/**
-	 * Error message: "The latest version of package $s does not contain an update zip file.".
+	 * Error message: "The latest version of the package %s does not contain an update zip file.".
 	 *
 	 * @var string
 	 */
-	private static $err_msg_no_zip = 'The latest version of package $s does not contain an update zip file.';
+	private static $err_msg_no_zip = 'The latest version of the package %s does not contain an update zip file.';
 
 	/**
 	 * The WordPress slug of the package.
@@ -72,14 +72,21 @@ class WordPress_Github_Updater {
 	private $name;
 
 	/**
+	 * The current error message.
+	 *
+	 * @var string
+	 */
+	private $error_message;
+
+	/**
 	 * Sets the internationalized error messages.
 	 *
 	 * By default, the updater prints the error messages in English only. If you want to internationalize them, call this function in the form `Wordpress_Github_Updater::set_error_messages_i10n( __( "..." ), __( "..." ), ... )`.
 	 *
-	 * @param string $not_available Error message: "The package $s is not available for updating".
-	 * @param string $request_failed Error message: "The GitHub API request for package $s failed.".
+	 * @param string $not_available Error message: "The package %s is not available for updating".
+	 * @param string $request_failed Error message: "The GitHub API request for updates for the package %s has failed.".
 	 * @param string $error_message Error message: "Error message:".
-	 * @param string $response_invalid Error message: "The GitHub API response for package $s is invalid.".
+	 * @param string $response_invalid Error message: "The GitHub API response for the package %s is invalid.".
 	 *
 	 * @return void
 	 */
@@ -101,9 +108,10 @@ class WordPress_Github_Updater {
 	 * @throws \Exception Invalid type.
 	 */
 	public function __construct( $wp_slug, $gh_slug, $name, $type ) {
-		$this->wp_slug = $wp_slug;
-		$this->gh_slug = $gh_slug;
-		$this->name    = $name;
+		$this->wp_slug       = $wp_slug;
+		$this->gh_slug       = $gh_slug;
+		$this->name          = $name;
+		$this->error_message = '';
 		switch ( $type ) {
 			case 'theme':
 				add_filter( 'pre_set_site_transient_update_themes', array( $this, 'update_theme' ) );
@@ -130,7 +138,8 @@ class WordPress_Github_Updater {
 			}
 			$zip_url = $this->get_zip_url( $response, $version );
 		} catch ( \Exception $e ) {
-			// TODO: Error handling with esc_html.
+			$this->error_message = $e->getMessage();
+			add_action( 'admin_notices', array( $this, 'error_notice' ) );
 			return $transient;
 		}
 
@@ -144,13 +153,22 @@ class WordPress_Github_Updater {
 	}
 
 	/**
+	 * Displays an error notice containing `$this->error_message`.
+	 *
+	 * @return void
+	 */
+	public function error_notice() {
+		echo( '<div class="notice notice-error is-dismissible"><p>' . esc_html( $this->error_message ) . '</p></div>' );
+	}
+
+	/**
 	 * Checks the transient for the current package.
 	 *
 	 * @param object $transient The WordPress update data.
 	 *
 	 * @return void
 	 *
-	 * @throws \Exception The package $s is not available for updating.
+	 * @throws \Exception The package %s is not available for updating.
 	 */
 	private function check_transient( $transient ) {
 		if ( empty( $transient->checked ) || empty( $transient->checked[ $this->wp_slug ] ) ) {
@@ -163,7 +181,7 @@ class WordPress_Github_Updater {
 	 *
 	 * @return mixed The API response.
 	 *
-	 * @throws \Exception The GitHub API request for package $s failed.
+	 * @throws \Exception The GitHub API request for updates for the package %s has failed.
 	 */
 	private function github_request() {
 		$raw_response = wp_remote_get( 'https://api.github.com/repos/' . $this->gh_slug . '/releases/latest' );
@@ -185,7 +203,7 @@ class WordPress_Github_Updater {
 	 *
 	 * @return void
 	 *
-	 * @throws \Exception The GitHub API response for package $s is invalid.
+	 * @throws \Exception The GitHub API response for the package %s is invalid.
 	 */
 	private function check_response_fields( $response ) {
 		if ( ! isset( $response->tag_name ) || ! isset( $response->html_url ) || ! isset( $response->assets ) ) {
@@ -206,7 +224,7 @@ class WordPress_Github_Updater {
 	 *
 	 * @return string The update zip archive url.
 	 *
-	 * @throws \Exception The latest version of package $s does not contain an update zip file.
+	 * @throws \Exception The latest version of the package %s does not contain an update zip file.
 	 */
 	private function get_zip_url( $response, $version ) {
 		$zip_url = null;
