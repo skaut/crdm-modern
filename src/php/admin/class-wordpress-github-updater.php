@@ -55,38 +55,20 @@ class WordPress_Github_Updater {
 	 *
 	 * @param object $transient The WordPress update data.
 	 *
-	 * @return object
+	 * @return object The updated update data with the injected values.
 	 */
 	public function update_theme( $transient ) {
-		if ( empty( $transient->checked ) || empty( $transient->checked[ $this->wp_slug ] ) ) {
-			return $transient; // TODO: Error reporting.
-		}
-
-		$raw_response = wp_remote_get( 'https://api.github.com/repos/' . $this->gh_slug . '/releases/latest' );
-		if ( is_wp_error( $raw_response ) || wp_remote_retrieve_response_code( $raw_response ) !== 200 || ! isset( $raw_response['body'] ) ) {
-			return $transient; // TODO: Error reporting.
-		}
-		$response = json_decode( $raw_response['body'] );
-		if ( ! isset( $response->tag_name ) || ! isset( $response->html_url ) ) {
-			return $transient; // TODO: Error reporting.
-		}
-
-		$version = ltrim( $response->tag_name, 'v' );
-		if ( version_compare( $version, $transient->checked[ $this->wp_slug ], '<=' ) ) {
+		try {
+			$this->check_transient( $transient );
+			$response = $this->github_request();
+			$version  = ltrim( $response->tag_name, 'v' );
+			if ( version_compare( $version, $transient->checked[ $this->wp_slug ], '<=' ) ) {
+				return $transient;
+			}
+			$zip_url = $this->get_zip_url( $response, $version );
+		} catch ( \Exception $e ) {
+			// TODO: Error handling.
 			return $transient;
-		}
-
-		$zip_url = null;
-		foreach ( $response->assets as $asset ) {
-			if ( ! isset( $asset->name ) || ! isset( $asset->browser_download_url ) ) {
-				return $transient; // TODO: Error reporting.
-			}
-			if ( $asset->name === $this->wp_slug . '.' . $version . '.zip' ) {
-				$zip_url = $asset->browser_download_url;
-			}
-		}
-		if ( is_null( $zip_url ) ) {
-			return $transient; // TODO: Error reporting.
 		}
 
 		$transient->response[ $this->wp_slug ] = array(
@@ -96,5 +78,80 @@ class WordPress_Github_Updater {
 			'package'     => $zip_url,
 		);
 		return $transient;
+	}
+
+	/**
+	 * Checks the transient for the current resource.
+	 *
+	 * @param object $transient The WordPress update data.
+	 *
+	 * @return void
+	 *
+	 * @throws \Exception The resource not present in `$transient`.
+	 */
+	private function check_transient( $transient ) {
+		if ( empty( $transient->checked ) || empty( $transient->checked[ $this->wp_slug ] ) ) {
+			throw new \Exception(); // TODO: Message.
+		}
+	}
+
+	/**
+	 * Makes the actual request to the GitHub API
+	 *
+	 * @return mixed The API response.
+	 *
+	 * @throws \Exception The request failed.
+	 */
+	private function github_request() {
+		$raw_response = wp_remote_get( 'https://api.github.com/repos/' . $this->gh_slug . '/releases/latest' );
+		if ( is_wp_error( $raw_response ) || wp_remote_retrieve_response_code( $raw_response ) !== 200 || ! isset( $raw_response['body'] ) ) {
+			throw new \Exception(); // TODO: Message.
+		}
+		$response = json_decode( $raw_response['body'] );
+		self::check_response_fields( $response );
+		return $response;
+	}
+
+	/**
+	 * Checks the GitHub response for the required fields.
+	 *
+	 * @param mixed $response The GitHub response.
+	 *
+	 * @return void
+	 *
+	 * @throws \Exception Required fields missing.
+	 */
+	private static function check_response_fields( $response ) {
+		if ( ! isset( $response->tag_name ) || ! isset( $response->html_url ) || ! isset( $response->assets ) ) {
+			throw new \Exception(); // TODO: Message.
+		}
+		foreach ( $response->assets as $asset ) {
+			if ( ! isset( $asset->name ) || ! isset( $asset->browser_download_url ) ) {
+				throw new \Exception(); // TODO: Message.
+			}
+		}
+	}
+
+	/**
+	 * Returns the update zip archive url.
+	 *
+	 * @param mixed  $response The GitHub response.
+	 * @param string $version The update version.
+	 *
+	 * @return string The update zip archive url.
+	 *
+	 * @throws \Exception No update archive.
+	 */
+	private function get_zip_url( $response, $version ) {
+		$zip_url = null;
+		foreach ( $response->assets as $asset ) {
+			if ( $asset->name === $this->wp_slug . '.' . $version . '.zip' ) {
+				$zip_url = $asset->browser_download_url;
+			}
+		}
+		if ( is_null( $zip_url ) ) {
+			throw new \Exception(); // TODO: Message.
+		}
+		return $zip_url;
 	}
 }
