@@ -87,14 +87,16 @@ class WordPress_Github_Updater {
 	 * @param string $request_failed Error message: "The GitHub API request for updates for the package %s has failed.".
 	 * @param string $error_message Error message: "Error message:".
 	 * @param string $response_invalid Error message: "The GitHub API response for the package %s is invalid.".
+	 * @param string $no_zip Error message: "The latest version of the package %s does not contain an update zip file.".
 	 *
 	 * @return void
 	 */
-	public static function set_error_messages_i10n( $not_available, $request_failed, $error_message, $response_invalid ) {
+	public static function set_error_messages_i10n( $not_available, $request_failed, $error_message, $response_invalid, $no_zip ) {
 		self::$err_msg_not_available    = $not_available;
 		self::$err_msg_request_failed   = $request_failed;
 		self::$err_msg_error_message    = $error_message;
 		self::$err_msg_response_invalid = $response_invalid;
+		self::$err_msg_no_zip           = $no_zip;
 	}
 
 	/**
