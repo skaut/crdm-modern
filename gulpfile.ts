@@ -10,6 +10,7 @@ const merge = require("merge-stream");
 const rename = require("gulp-rename");
 const ts = require("gulp-typescript");
 const uglify = require("uglify-js");
+const wpPot = require('gulp-wp-pot');
 
 const minify = composer(uglify, console);
 
@@ -144,3 +145,16 @@ gulp.task(
     "build:txt"
   )
 );
+
+gulp.task("generate-pot", function() {
+  return gulp
+    .src("src/php/**/*.php")
+    .pipe(
+      wpPot({
+        bugReport: "https://github.com/skaut/crdm-modern/issues",
+        domain: "crdm-modern",
+        relativeTo: "src/php"
+      })
+    )
+    .pipe(gulp.dest("src/langs/crdm-modern.pot"));
+});
