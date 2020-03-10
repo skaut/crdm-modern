@@ -31,7 +31,8 @@
 		"disabled_lint:stylelint": "stylelint src/**/*.css",
 		"lint": "run-s -c lint:*",
 		"generate-pot": "gulp generate-pot",
-		"update-po": "gulp update-po"
+		"update-po": "gulp update-po",
+		"generate-mo": "gulp generate-mo"
 	},
 	"dependencies": {
 		"dripicons": "^2.0.0"
@@ -47,6 +48,7 @@
 		"gulp-clean-css": "^4.2.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-inject-string": "^1.1.2",
+		"gulp-potomo": "^1.1.0",
 		"gulp-rename": "^2.0.0",
 		"gulp-shell": "^0.8.0",
 		"gulp-typescript": "^6.0.0-alpha.1",

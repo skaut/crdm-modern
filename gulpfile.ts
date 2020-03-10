@@ -7,6 +7,7 @@ const composer = require("gulp-uglify/composer");
 const concat = require("gulp-concat");
 const inject = require("gulp-inject-string");
 const merge = require("merge-stream");
+const potomo = require("gulp-potomo");
 const rename = require("gulp-rename");
 const shell = require("gulp-shell");
 const ts = require("gulp-typescript");
@@ -169,4 +170,11 @@ gulp.task("update-po", function() {
   return gulp
     .src("src/langs/*.po", { read: false })
     .pipe(shell("msgmerge -U <%= file.path %> src/langs/crdm-modern.pot"));
+});
+
+gulp.task("generate-mo", function() {
+  return gulp
+    .src("src/langs/*.po")
+    .pipe(potomo())
+    .pipe(gulp.dest("dist/langs/"));
 });
