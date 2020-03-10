@@ -91,6 +91,13 @@ gulp.task("build:js", function() {
   );
 });
 
+gulp.task("build:mo", function() {
+  return gulp
+    .src("src/langs/*.po")
+    .pipe(potomo())
+    .pipe(gulp.dest("dist/langs/"));
+});
+
 gulp.task("build:php:root", function() {
   return gulp.src("src/php/*.php").pipe(gulp.dest("dist/"));
 });
@@ -142,6 +149,7 @@ gulp.task(
     "build:deps",
     "build:jpg",
     "build:js",
+    "build:mo",
     "build:php",
     "build:png",
     "build:txt"
@@ -170,11 +178,4 @@ gulp.task("update-po", function() {
   return gulp
     .src("src/langs/*.po", { read: false })
     .pipe(shell("msgmerge -U <%= file.path %> src/langs/crdm-modern.pot"));
-});
-
-gulp.task("generate-mo", function() {
-  return gulp
-    .src("src/langs/*.po")
-    .pipe(potomo())
-    .pipe(gulp.dest("dist/langs/"));
 });
