@@ -113,7 +113,8 @@ jobs:
           command: npm run update-translations
       - run:
           name: Check for clean repo
-          command: [ -z "$(git status --porcelain)" ] || (c=$?; git status; (exit $c))
+          command: |
+            [ -z "$(git status --porcelain)" ] || (c=$?; git status; (exit $c))
 
   package:
     docker:
