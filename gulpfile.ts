@@ -157,7 +157,7 @@ gulp.task(
 );
 
 gulp.task(
-  "generate-pot",
+  "update-translations:generate-pot",
   gulp.series(function() {
     return gulp
       .src("src/php/**/*.php")
@@ -174,8 +174,16 @@ gulp.task(
   ))
 );
 
-gulp.task("update-po", function() {
+gulp.task("update-translations:update-po", function() {
   return gulp
     .src("src/langs/*.po", { read: false })
     .pipe(shell("msgmerge -U <%= file.path %> src/langs/crdm-modern.pot"));
 });
+
+gulp.task(
+  "update-translations",
+  gulp.series(
+    "update-translations:generate-pot",
+    "update-translations:update-po"
+  )
+);

@@ -30,8 +30,7 @@
 		"lint:phpmd": "vendor/bin/phpmd src text phpmd.xml",
 		"disabled_lint:stylelint": "stylelint src/**/*.css",
 		"lint": "run-s -c lint:*",
-		"generate-pot": "gulp generate-pot",
-		"update-po": "gulp update-po"
+		"update-translations": "gulp update-translations"
 	},
 	"dependencies": {
 		"dripicons": "^2.0.0"
