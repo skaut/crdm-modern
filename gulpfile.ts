@@ -164,3 +164,9 @@ gulp.task(
     "msgmerge -U src/langs/crdm-modern.pot src/langs/crdm-modern.pot"
   ))
 );
+
+gulp.task("update-po", function() {
+  return gulp
+    .src("src/langs/*.po", { read: false })
+    .pipe(shell("msgmerge -U <%= file.path %> src/langs/crdm-modern.pot"));
+});
