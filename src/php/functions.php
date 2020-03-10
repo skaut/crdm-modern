@@ -12,6 +12,7 @@ declare( strict_types = 1 );
 namespace CrdmModern;
 
 require_once __DIR__ . '/admin/customizer.php';
+require_once __DIR__ . '/admin/update.php';
 require_once __DIR__ . '/frontend/blog.php';
 require_once __DIR__ . '/frontend/header-image.php';
 require_once __DIR__ . '/frontend/class-title-widget.php';
@@ -23,6 +24,7 @@ require_once __DIR__ . '/frontend/widget-icons.php';
 function init() {
 	add_action( 'after_switch_theme', '\\CrdmModern\\activate' );
 	Admin\Customizer\register();
+	Admin\Update\register();
 	Frontend\Blog\register();
 	Frontend\Header_Image\register();
 	Frontend\Title_Widget::register();
