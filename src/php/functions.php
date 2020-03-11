@@ -23,7 +23,7 @@ require_once __DIR__ . '/frontend/widget-icons.php';
  */
 function init() {
 	add_action( 'after_switch_theme', '\\CrdmModern\\activate' );
-	internationalize();
+	localize();
 	Admin\Customizer\register();
 	Admin\Update\register();
 	Frontend\Blog\register();
@@ -32,8 +32,13 @@ function init() {
 	Frontend\Widget_Icons\register();
 }
 
-function internationalize() {
-	$locale = apply_filters( 'theme_locale', determine_locale(), 'crdm-modern' );
+/**
+ * Loads localization files.
+ *
+ * @return void
+ */
+function localize() {
+	$locale = apply_filters( 'theme_locale', determine_locale(), 'crdm-modern' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 	load_textdomain( 'crdm-modern', get_stylesheet_directory() . '/langs/crdm-modern-' . $locale . '.mo' );
 }
 

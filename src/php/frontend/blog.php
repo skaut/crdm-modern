@@ -162,11 +162,11 @@ function featured_image() {
 	// TODO Dynamically select the best size depending on whether it is in columns.
 	$post_ID = get_the_ID();
 	return '<div class="post-image">' .
-			apply_filters( 'generate_inside_featured_image_output', '' ) //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+			apply_filters( 'generate_inside_featured_image_output', '' ) // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 			. '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' .
 				get_the_post_thumbnail(
 					$post_ID,
-					apply_filters( 'generate_page_header_default_size', 'full' ), //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+					apply_filters( 'generate_page_header_default_size', 'full' ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 					array(
 						'itemprop' => 'image',
 					)
