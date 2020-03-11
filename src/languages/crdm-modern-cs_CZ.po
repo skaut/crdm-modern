@@ -1,0 +1,158 @@
+# Copyright (C) 2020 crdm-modern
+# This file is distributed under the same license as the crdm-modern package.
+msgid ""
+msgstr ""
+"Project-Id-Version: crdm-modern\n"
+"Report-Msgid-Bugs-To: https://github.com/skaut/crdm-modern/issues\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;"
+"_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
+"esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: functions.php:83
+msgid "CRDM - Modern theme requires at least WordPress 5.0"
+msgstr "Šablona CRDM - Modern vyžaduje alespoň WordPress 5.0"
+
+#: functions.php:94
+msgid "CRDM - Modern theme requires at least PHP 7.0"
+msgstr "Šablona CRDM - Modern vyžaduje alespoň PHP 7.0"
+
+#: functions.php:104
+msgid "CRDM - Modern theme requires GeneratePress Premium"
+msgstr "Šablona CRDM - Modern vyžaduje premium verzi GeneratePress"
+
+#. translators: %s: Theme name.
+#: admin/update.php:20
+msgid "The theme %s is not available for updating."
+msgstr "Šablona %s není dostupná k aktualizaci"
+
+#. translators: %s: Theme name.
+#: admin/update.php:22
+msgid "The GitHub API request for updates for the theme %s has failed."
+msgstr "Požadavek na GitHub API pro aktualizaci šablony %s selhal."
+
+#: admin/update.php:23
+msgid "Error message:"
+msgstr "Chybová hláška:"
+
+#. translators: %s: Theme name.
+#: admin/update.php:25
+msgid "The GitHub API response for the theme %s is invalid."
+msgstr "Odpověď GitHub API pro aktualizaci šablony %s je neplatná."
+
+#. translators: %s: Theme name.
+#: admin/update.php:27
+msgid "The latest version of the theme %s does not contain an update zip file."
+msgstr "Nejnovější verze šablony %s neobsahuje soubor zip s aktualizací."
+
+#: frontend/class-title-widget.php:61
+msgid "Title Widget"
+msgstr "Widget názvu webu"
+
+#: frontend/class-title-widget.php:61
+msgid "A widget containing the site logo, title and tagline."
+msgstr "Widget obsahující logo, název a popis webu."
+
+#: admin/customizer/class-preset-registry.php:80
+msgid "Blue"
+msgstr "Modrá"
+
+#: admin/customizer/class-preset-registry.php:158,
+#: admin/customizer/class-preset-registry.php:266
+msgid "Read more"
+msgstr "Číst více"
+
+#: admin/customizer/class-preset-registry.php:188
+msgid "Green"
+msgstr "Zelená"
+
+#: admin/customizer/colors.php:46
+msgid "Widget Separator"
+msgstr "Oddělovač widgetů"
+
+#: admin/customizer/colors.php:70
+msgid "Excerpt Border"
+msgstr "Rámeček úryvku"
+
+#: admin/customizer/colors.php:94
+msgid "Excerpt Background Hover"
+msgstr "Pozadí úryvku při přejetí myší"
+
+#: admin/customizer/colors.php:118
+msgid "Excerpt Text Hover"
+msgstr "Text úryvku při přejetí myší"
+
+#: admin/customizer/colors.php:142
+msgid "\"Read more\" Link"
+msgstr "Odkaz \"Číst více\""
+
+#: admin/customizer/colors.php:165
+msgid "\"Read more\" Link Hover"
+msgstr "Odkaz \"Číst více\" při přejetí myší"
+
+#: admin/customizer/layout.php:46
+msgid "Navigation spacing"
+msgstr "Rozestupy navigace"
+
+#: admin/customizer/layout.php:78
+msgid "Navigation shadow"
+msgstr "Stín navigace"
+
+#: admin/customizer/layout.php:100
+msgid "Sidebar widget separator width"
+msgstr "Šířka oddělovače widgetů v postranním panelu"
+
+#: admin/customizer/layout.php:134
+msgid "Sidebar widget separator spacing"
+msgstr "Rozestup oddělovače widgetů v postranním panelu"
+
+#: admin/customizer/layout.php:160
+msgid "Featured Posts"
+msgstr "Zvýrazněné příspěvky"
+
+#: admin/customizer/layout.php:179
+msgid "Number of featured posts"
+msgstr "Počet zvýrazněných příspěvků"
+
+#: admin/customizer/preset.php:33
+msgid "Preset"
+msgstr "Předvolby šablony"
+
+#: admin/customizer/site-identity.php:45
+msgid "Header Image"
+msgstr "Obrázek v záhlaví"
+
+#: admin/customizer/site-identity.php:67
+msgid "Header Image Height"
+msgstr "Výška obrázku v záhlaví"
+
+#: admin/customizer/site-identity.php:100
+msgid "Header Image Top Position"
+msgstr "Odsazení obrázku v záhlaví zeshora"
+
+#: admin/customizer/site-identity.php:133
+msgid "Header Image Right Position"
+msgstr "Odsazení obrázku v záhlaví zprava"
+
+#: admin/customizer/site-identity.php:165
+msgid "Minimum Width to Show Header Image"
+msgstr "Minimální šířka pro zobrazení obrázku v záhlaví"
+
+#: admin/customizer/controls/class-preset-customize-control.php:126
+msgid ""
+"Applying the preset overrides a lot of the theme options. You can always go "
+"back by closing the customizer before saving."
+msgstr ""
+"Požitím předvolby se změní velké množství nastavení šablony. Vždy se můžete "
+"vrátit zpět zavřením přizpůsobování webu před uložením nového nastavení."
+
+#: admin/customizer/controls/class-preset-customize-control.php:129
+msgid "Apply"
+msgstr "Použít"

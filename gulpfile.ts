@@ -7,9 +7,12 @@ const composer = require("gulp-uglify/composer");
 const concat = require("gulp-concat");
 const inject = require("gulp-inject-string");
 const merge = require("merge-stream");
+const potomo = require("gulp-potomo");
 const rename = require("gulp-rename");
+const shell = require("gulp-shell");
 const ts = require("gulp-typescript");
 const uglify = require("uglify-js");
+const wpPot = require("gulp-wp-pot");
 
 const minify = composer(uglify, console);
 
@@ -88,6 +91,13 @@ gulp.task("build:js", function() {
   );
 });
 
+gulp.task("build:mo", function() {
+  return gulp
+    .src("src/languages/*.po")
+    .pipe(potomo({ verbose: false }))
+    .pipe(gulp.dest("dist/languages/"));
+});
+
 gulp.task("build:php:root", function() {
   return gulp.src("src/php/*.php").pipe(gulp.dest("dist/"));
 });
@@ -139,8 +149,41 @@ gulp.task(
     "build:deps",
     "build:jpg",
     "build:js",
+    "build:mo",
     "build:php",
     "build:png",
     "build:txt"
+  )
+);
+
+gulp.task(
+  "update-translations:generate-pot",
+  gulp.series(function() {
+    return gulp
+      .src("src/php/**/*.php")
+      .pipe(
+        wpPot({
+          bugReport: "https://github.com/skaut/crdm-modern/issues",
+          domain: "crdm-modern",
+          relativeTo: "src/php"
+        })
+      )
+      .pipe(gulp.dest("src/languages/crdm-modern.pot"));
+  }, shell.task(
+    "msgmerge -U src/languages/crdm-modern.pot src/languages/crdm-modern.pot"
+  ))
+);
+
+gulp.task("update-translations:update-po", function() {
+  return gulp
+    .src("src/languages/*.po", { read: false })
+    .pipe(shell("msgmerge -U <%= file.path %> src/languages/crdm-modern.pot"));
+});
+
+gulp.task(
+  "update-translations",
+  gulp.series(
+    "update-translations:generate-pot",
+    "update-translations:update-po"
   )
 );
