@@ -94,7 +94,7 @@ gulp.task("build:js", function() {
 gulp.task("build:mo", function() {
   return gulp
     .src("src/langs/*.po")
-    .pipe(potomo())
+    .pipe(potomo({verbose: false}))
     .pipe(gulp.dest("dist/langs/"));
 });
 

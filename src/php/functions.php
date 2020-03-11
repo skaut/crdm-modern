@@ -23,12 +23,18 @@ require_once __DIR__ . '/frontend/widget-icons.php';
  */
 function init() {
 	add_action( 'after_switch_theme', '\\CrdmModern\\activate' );
+	add_action( 'after_setup_theme', '\\CrdmModern\\internationalize' );
 	Admin\Customizer\register();
 	Admin\Update\register();
 	Frontend\Blog\register();
 	Frontend\Header_Image\register();
 	Frontend\Title_Widget::register();
 	Frontend\Widget_Icons\register();
+}
+
+function internationalize() {
+	$locale = apply_filters( 'theme_locale', determine_locale(), 'crdm-modern' );
+	load_textdomain( 'crdm-modern', get_stylesheet_directory() . '/langs/crdm-modern-' . $locale . '.mo' );
 }
 
 /**
