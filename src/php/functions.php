@@ -23,7 +23,7 @@ require_once __DIR__ . '/frontend/widget-icons.php';
  */
 function init() {
 	add_action( 'after_switch_theme', '\\CrdmModern\\activate' );
-	add_action( 'after_setup_theme', '\\CrdmModern\\internationalize' );
+	internationalize();
 	Admin\Customizer\register();
 	Admin\Update\register();
 	Frontend\Blog\register();
