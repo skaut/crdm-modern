@@ -93,9 +93,9 @@ gulp.task("build:js", function() {
 
 gulp.task("build:mo", function() {
   return gulp
-    .src("src/langs/*.po")
+    .src("src/languages/*.po")
     .pipe(potomo({ verbose: false }))
-    .pipe(gulp.dest("dist/langs/"));
+    .pipe(gulp.dest("dist/languages/"));
 });
 
 gulp.task("build:php:root", function() {
@@ -168,16 +168,16 @@ gulp.task(
           relativeTo: "src/php"
         })
       )
-      .pipe(gulp.dest("src/langs/crdm-modern.pot"));
+      .pipe(gulp.dest("src/languages/crdm-modern.pot"));
   }, shell.task(
-    "msgmerge -U src/langs/crdm-modern.pot src/langs/crdm-modern.pot"
+    "msgmerge -U src/languages/crdm-modern.pot src/languages/crdm-modern.pot"
   ))
 );
 
 gulp.task("update-translations:update-po", function() {
   return gulp
-    .src("src/langs/*.po", { read: false })
-    .pipe(shell("msgmerge -U <%= file.path %> src/langs/crdm-modern.pot"));
+    .src("src/languages/*.po", { read: false })
+    .pipe(shell("msgmerge -U <%= file.path %> src/languages/crdm-modern.pot"));
 });
 
 gulp.task(

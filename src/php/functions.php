@@ -39,7 +39,7 @@ function init() {
  */
 function localize() {
 	$locale = apply_filters( 'theme_locale', determine_locale(), 'crdm-modern' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
-	load_textdomain( 'crdm-modern', get_stylesheet_directory() . '/langs/crdm-modern-' . $locale . '.mo' );
+	load_textdomain( 'crdm-modern', get_stylesheet_directory() . '/languages/crdm-modern-' . $locale . '.mo' );
 }
 
 /**
