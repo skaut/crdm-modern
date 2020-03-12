@@ -95,6 +95,13 @@ gulp.task("build:mo", function() {
   return gulp
     .src("src/languages/*.po")
     .pipe(potomo({ verbose: false }))
+    .pipe(
+      rename(function(path: rename.ParsedPath) {
+        path.basename = path.basename!.substring(
+          path.basename!.lastIndexOf("-") + 1
+        );
+      })
+    )
     .pipe(gulp.dest("dist/languages/"));
 });
 
