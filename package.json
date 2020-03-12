@@ -62,7 +62,7 @@
 		"typescript": "^3.8.3"
 	},
 	"browserslist": [
-		"cover 99%",
-		"cover 99% in CZ"
+		"cover 95%",
+		"cover 95% in CZ"
 	]
 }

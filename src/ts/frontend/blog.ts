@@ -21,7 +21,7 @@ function addExcerptClickability(): void {
       .find(".entry-title a")
       .attr("href")!;
     $(article).click(function() {
-      location.href = href;
+      window.location.href = href;
     });
   });
 }
