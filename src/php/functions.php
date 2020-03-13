@@ -23,6 +23,7 @@ require_once __DIR__ . '/frontend/widget-icons.php';
  */
 function init() {
 	add_action( 'after_switch_theme', '\\CrdmModern\\activate' );
+	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\enqueue', 11 );
 	localize();
 	Admin\Customizer\register();
 	Admin\Update\register();
@@ -70,6 +71,14 @@ function activate() {
 	update_option( 'generate_package_typography', 'activated' );
 	// TODO: Apply a preset.
 	return true;
+}
+
+/**
+ * Registers the inline style.
+ */
+function enqueue() {
+	wp_register_style( 'crdm_modern_inline', false, array(), wp_get_theme()->version );
+	wp_enqueue_style( 'crdm_modern_inline' );
 }
 
 /**
