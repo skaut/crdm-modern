@@ -71,7 +71,7 @@ function activate() {
 	update_option( 'generate_package_typography', 'activated' );
 
 	apply_default_preset();
-	
+
 	return true;
 }
 
@@ -91,6 +91,7 @@ function enqueue() {
 function apply_default_preset() {
 	$settings = Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
 
+	// @phan-suppress-next-line PhanVariableDefinitionCouldBeConstant
 	$generate_mods = array(
 		'font_body_category',
 		'font_body_variants',
@@ -122,6 +123,7 @@ function apply_default_preset() {
 		'font_widget_title_variants',
 		'generate_copyright',
 	);
+	// @phan-suppress-next-line PhanVariableDefinitionCouldBeConstant
 	$generate_settings = array(
 		'generate_background_settings',
 		'generate_blog_settings',
@@ -135,6 +137,7 @@ function apply_default_preset() {
 		'generate_spacing_settings',
 		'generate_woocommerce_settings',
 	);
+	// @phan-suppress-next-line PhanVariableDefinitionCouldBeConstant
 	$generate_unused_modules = array(
 		'generate_package_copyright',
 		'generate_package_elements',
@@ -147,8 +150,8 @@ function apply_default_preset() {
 		'generate_package_woocommerce',
 	);
 
-	// Reset GeneratePress mods
-	foreach( $generate_mods as $mod ) {
+	// Reset GeneratePress mods.
+	foreach ( $generate_mods as $mod ) {
 		if ( array_key_exists( $mod, $settings ) ) {
 			set_theme_mod( $mod, $settings[ $mod ] );
 		} else {
@@ -156,8 +159,8 @@ function apply_default_preset() {
 		}
 	}
 
-	// Reset GeneratePress settings
-	foreach( $generate_settings as $setting ) {
+	// Reset GeneratePress settings.
+	foreach ( $generate_settings as $setting ) {
 		if ( array_key_exists( $setting, $settings ) ) {
 			update_option( $setting, $settings[ $setting ] );
 		} else {
@@ -165,12 +168,12 @@ function apply_default_preset() {
 		}
 	}
 
-	// Deactivate unused GeneratePress modules
-	foreach( $generate_unused_modules as $package ) {
+	// Deactivate unused GeneratePress modules.
+	foreach ( $generate_unused_modules as $package ) {
 		delete_option( $package );
 	}
 
-	// Reset crdm-modern settings
+	// Reset crdm-modern settings.
 	delete_option( 'crdm_modern' );
 }
 
