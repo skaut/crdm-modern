@@ -28,10 +28,8 @@ function register() {
 }
 
 /**
- * Registers the inline style to be used by the customizer options.
+ * Registers customizer live preview script
  */
 function enqueue() {
 	\CrdmModern\enqueue_script( 'crdm_modern_customizer', 'admin/js/customizer.min.js', array( 'generate-spacing-customizer' ) );
-	wp_register_style( 'crdm_modern_inline', false, array(), wp_get_theme()->version );
-	wp_enqueue_style( 'crdm_modern_inline' ); // TODO: Check where it's used.
 }
