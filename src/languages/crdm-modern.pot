@@ -16,15 +16,15 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: functions.php:83
+#: functions.php:91
 msgid "CRDM - Modern theme requires at least WordPress 5.0"
 msgstr ""
 
-#: functions.php:94
+#: functions.php:102
 msgid "CRDM - Modern theme requires at least PHP 7.0"
 msgstr ""
 
-#: functions.php:104
+#: functions.php:112
 msgid "CRDM - Modern theme requires GeneratePress Premium"
 msgstr ""
 
