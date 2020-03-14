@@ -85,7 +85,7 @@ class Preset_Registry {
 								'header_image_height'              => '220',
 								'header_image_top'                 => '13',
 								'header_image_right'               => '100',
-								'header_image_min_width'           => '950',
+								'header_image_min_width'           => '950', // TODO: Live preview
 								'primary_navigation_spacing'       => '40',
 								'primary_navigation_shadow'        => '2px 4px 5px rgba(0, 0, 0, 0.4)',
 								'sidebar_widget_separator_width'   => '1',
@@ -98,7 +98,7 @@ class Preset_Registry {
 								'featured_post_count'              => '2',
 								// Read more link.
 								'read_more_color'                  => '#007bc2',
-								'read_more_hover_color'            => '#ffffff',
+								'read_more_hover_color'            => '#ffffff', // TODO: Live preview
 							),
 							'generate_settings'            => array(
 								// Site Identity.
@@ -122,17 +122,16 @@ class Preset_Registry {
 								'sidebar_widget_title_color'             => '#007bc2',
 								'sidebar_widget_link_color'              => '#3a3a3a',
 								'sidebar_widget_link_hover_color'        => '#007bc2',
-								'blog_post_title_hover_color'            => '#ffffff',
+								'blog_post_title_hover_color'            => '#ffffff', // TODO: Check Live preview
 								'entry_meta_link_color'                  => '#00395e',
 								'entry_meta_link_color_hover'            => '#ffffff',
 								'footer_widget_background_color'         => '#007bc2',
 								'footer_widget_text_color'               => '#ffffff',
 								'footer_widget_link_color'               => '#ffffff',
-								'footer_widget_title_color'              => '#ffffff',
+								'footer_widget_title_color'              => '#ffffff', // TODO: Remove?
 								// Typography.
 								'font_body'                              => 'Source Sans Pro',
 								'body_font_weight'                       => '600',
-								// TODO: Fix Customizer UI not updating for font sizes.
 								'body_font_size'                         => '15',
 								'font_site_title'                        => 'Raleway',
 								'site_title_font_weight'                 => '900',
@@ -163,22 +162,21 @@ class Preset_Registry {
 								'single_categories'          => false,
 								'single_tags'                => false,
 								'single_post_navigation'     => false,
-								'post_image_position'        => 'post-image-above-header',
-								'post_image_alignment'       => 'post-image-aligned-left',
-								'post_image_width'           => '300',
-								'post_image_height'          => '200',
-								'single_post_image_position' => 'below-title',
-								'page_post_image_position'   => 'below-title',
+								'post_image_position'        => 'post-image-above-header', // TODO: Live preview?
+								'post_image_alignment'       => 'post-image-aligned-left', // TODO: Live preview?
+								'post_image_width'           => '300', // TODO: Live preview?
+								'post_image_height'          => '200', // TODO: Live preview?
+								'single_post_image_position' => 'below-title', // TODO: Live preview?
+								'page_post_image_position'   => 'below-title', // TODO: Live preview?
 							),
 							'generate_background_settings' => array(
 								// Background.
-								// TODO: Fix Customizer UI not updating for images.
-								'body_image'      => get_stylesheet_directory_uri() . '/frontend/background.jpg',
+								'body_image'      => get_stylesheet_directory_uri() . '/frontend/background.jpg', // TODO: Image not in UI
 								'body_size'       => 'cover',
 								'body_attachment' => 'fixed',
 							),
 							// Typography.
-							// TODO: Fix Customizer UI not updating for font variants.
+							// TODO: Fix Customizer UI not updating for font variants after preset select.
 							'font_body_variants'           => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
 							'font_site_title_variants'     => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 							'font_site_tagline_variants'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
@@ -240,7 +238,6 @@ class Preset_Registry {
 								// Typography.
 								'font_body'                              => 'Source Sans Pro',
 								'body_font_weight'                       => '600',
-								// TODO: Fix Customizer UI not updating for font sizes.
 								'body_font_size'                         => '15',
 								'font_site_title'                        => 'Raleway',
 								'site_title_font_weight'                 => '900',
