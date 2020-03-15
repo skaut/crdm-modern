@@ -85,7 +85,7 @@ class Preset_Registry {
 								'header_image_height'              => '220',
 								'header_image_top'                 => '13',
 								'header_image_right'               => '100',
-								'header_image_min_width'           => '950', // TODO: Live preview
+								'header_image_min_width'           => '950', // TODO: Live preview.
 								'primary_navigation_spacing'       => '40',
 								'primary_navigation_shadow'        => '2px 4px 5px rgba(0, 0, 0, 0.4)',
 								'sidebar_widget_separator_width'   => '1',
@@ -98,7 +98,7 @@ class Preset_Registry {
 								'featured_post_count'              => '2',
 								// Read more link.
 								'read_more_color'                  => '#007bc2',
-								'read_more_hover_color'            => '#ffffff', // TODO: Live preview
+								'read_more_hover_color'            => '#ffffff', // TODO: Live preview.
 							),
 							'generate_settings'            => array(
 								// Site Identity.
@@ -122,7 +122,7 @@ class Preset_Registry {
 								'sidebar_widget_title_color'             => '#007bc2',
 								'sidebar_widget_link_color'              => '#3a3a3a',
 								'sidebar_widget_link_hover_color'        => '#007bc2',
-								'blog_post_title_hover_color'            => '#ffffff', // TODO: Check Live preview
+								'blog_post_title_hover_color'            => '#ffffff', // TODO: Check Live preview.
 								'entry_meta_link_color'                  => '#00395e',
 								'entry_meta_link_color_hover'            => '#ffffff',
 								'footer_widget_background_color'         => '#007bc2',
@@ -171,7 +171,7 @@ class Preset_Registry {
 							),
 							'generate_background_settings' => array(
 								// Background.
-								'body_image'      => get_stylesheet_directory_uri() . '/frontend/background.jpg', // TODO: Image not in UI
+								'body_image'      => get_stylesheet_directory_uri() . '/frontend/background.jpg', // TODO: Image not in UI.
 								'body_size'       => 'cover',
 								'body_attachment' => 'fixed',
 							),
