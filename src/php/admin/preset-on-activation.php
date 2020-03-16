@@ -11,8 +11,23 @@ namespace CrdmModern\Admin\Preset_On_Activation;
 
 require_once __DIR__ . '/customizer/class-preset-registry.php';
 
+/**
+ * Shows the preset selection popup after activating the theme.
+ *
+ * @return void
+ */
 function show_preset_popup() {
+	add_action( 'admin_enqueue_scripts', '\\CrdmModern\\Admin\\Preset_On_Activation\\enqueue' );
+}
+
+/**
+ * Enqueues the JavaScript for the popup and adds thickbox to the page.
+ *
+ * @return void
+ */
+function enqueue() {
 	\add_thickbox();
+	\CrdmModern\enqueue_script( 'crdm_modern_preset_on_activation', 'admin/js/preset_on_activation.min.js', array( 'jquery' ) );
 }
 
 /**

@@ -86,6 +86,12 @@ gulp.task("build:js", function() {
       "admin",
       true
     ),
+    bundle(
+      "preset_on_activation",
+      ["src/ts/admin/preset_on_activation.ts"],
+      "admin",
+      true
+    ),
     bundle("customizer", ["src/ts/admin/customizer.ts"], "admin", true),
     bundle("blog", ["src/ts/frontend/blog.ts"], "frontend", true)
   );
