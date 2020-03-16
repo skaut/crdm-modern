@@ -12,13 +12,23 @@ namespace CrdmModern\Admin;
 require_once __DIR__ . '/customizer/class-preset-registry.php';
 
 /**
- * Applies the dafault preset of the theme
+ * Applies the default preset of the theme
  *
  * @return void
  */
 function apply_default_preset() {
 	$settings = Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	apply_preset( $settings );
+}
 
+/**
+ * Applies a preset
+ *
+ * @param array $settings The preset to apply
+ *
+ * @return void
+ */
+function apply_preset( $settings ) {
 	// @phan-suppress-next-line PhanVariableDefinitionCouldBeConstant
 	$generate_mods = array(
 		'font_body_category',
