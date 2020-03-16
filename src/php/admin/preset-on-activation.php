@@ -7,9 +7,13 @@
 
 declare( strict_types = 1 );
 
-namespace CrdmModern\Admin;
+namespace CrdmModern\Admin\Preset_On_Activation;
 
 require_once __DIR__ . '/customizer/class-preset-registry.php';
+
+function show_preset_popup() {
+	\add_thickbox();
+}
 
 /**
  * Applies the default preset of the theme
@@ -17,14 +21,14 @@ require_once __DIR__ . '/customizer/class-preset-registry.php';
  * @return void
  */
 function apply_default_preset() {
-	$settings = Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$settings = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
 	apply_preset( $settings );
 }
 
 /**
  * Applies a preset
  *
- * @param array $settings The preset to apply
+ * @param array $settings The preset to apply.
  *
  * @return void
  */
