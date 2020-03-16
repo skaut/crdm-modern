@@ -11,7 +11,7 @@ declare( strict_types = 1 );
 
 namespace CrdmModern;
 
-require_once __DIR__ . '/admin/apply_preset.php';
+require_once __DIR__ . '/admin/apply-preset.php';
 require_once __DIR__ . '/admin/customizer.php';
 require_once __DIR__ . '/admin/update.php';
 require_once __DIR__ . '/frontend/blog.php';
