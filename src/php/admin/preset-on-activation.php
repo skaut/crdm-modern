@@ -56,15 +56,22 @@ function enqueue() {
 	);
 }
 
+/**
+ * Handles the AJAX request for preset application.
+ *
+ * @return void
+ */
 function handle_ajax() {
 	check_ajax_referer( 'crdm_modern_preset_on_activation' );
-	if ( !isset( $_GET['id'] ) ) {
+	if ( ! isset( $_GET['id'] ) ) {
 		wp_send_json( 'error' );
 	}
-	$preset = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->presets[ $_GET['id'] ];
-	if ( !isset( $preset ) ) {
+	$presets   = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->presets;
+	$preset_id = sanitize_text_field( wp_unslash( $_GET['id'] ) );
+	if ( ! array_key_exists( $preset_id, $presets ) ) {
 		wp_send_json( 'error' );
 	}
+	$preset = $presets[ $preset_id ];
 	apply_preset( $preset->settings );
 	wp_send_json( 'success' );
 }
