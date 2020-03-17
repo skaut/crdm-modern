@@ -1,3 +1,17 @@
+function applyPreset(): void {
+  const id = $("input[name=crdm_modern_preset_on_activation]:checked").val();
+  $.get(
+    crdmModernPresetOnActivationLocalize.ajax_url, {
+      _ajax_nonce: crdmModernPresetOnActivationLocalize.nonce, // eslint-disable-line @typescript-eslint/camelcase
+      action: "crdm_modern_apply_preset",
+      id
+    },
+    function(response: any) {
+      console.log(response);
+    }
+  );
+}
+
 function onActivation(): void {
   let html =
     '<div id="crdm-modern-preset-on-activation-modal">' +
@@ -38,6 +52,15 @@ function onActivation(): void {
     crdmModernPresetOnActivationLocalize.title,
     "#TB_inline?inlineId=crdm-modern-preset-on-activation-modal"
   );
+
+  $("input[name=crdm_modern_preset_on_activation]").change(function() {
+    const applyButton = $("#crdm-modern-preset-on-activation-apply");
+    applyButton.removeAttr("disabled");
+    applyButton.click(applyPreset);
+  });
+  $("#crdm-modern-preset-on-activation-skip").click(function() {
+    tb_remove();
+  });
 }
 
 onActivation();

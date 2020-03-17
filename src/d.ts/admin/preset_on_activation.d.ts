@@ -6,8 +6,10 @@ declare interface Preset {
 
 declare interface CrdmModernPresetOnActivationLocalize {
   // TODO: Own file
+  ajax_url: string;
   apply: string;
   intro: string;
+  nonce: string;
   skip: string;
   title: string;
   presets: Record<string, Preset>;
@@ -19,3 +21,4 @@ declare function tb_show( // eslint-disable-line @typescript-eslint/camelcase
   url: string,
   imageGroup?: string
 ): void;
+declare function tb_remove(): false; // eslint-disable-line @typescript-eslint/camelcase
