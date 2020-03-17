@@ -42,6 +42,7 @@ function enqueue() {
 		'crdmModernPresetOnActivationLocalize',
 		array(
 			'apply'   => esc_html__( 'Apply', 'crdm-modern' ),
+			'intro'   => esc_html__( 'You can choose to apply one of the presets of this theme as a starting point for your website. This will change a lot of the settings of this theme and of GeneratePress, so it is advised to do this only if you are starting fresh. This can be done later in the Customizer as well.', 'crdm-modern' ),
 			'skip'    => esc_html__( 'Skip', 'crdm-modern' ),
 			'title'   => esc_html__( 'Theme preset selection', 'crdm-modern' ),
 			'presets' => $presets,

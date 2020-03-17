@@ -1,7 +1,11 @@
 function onActivation(): void {
   let html =
-    '<div id="crdm-modern-on-activation-modal">' +
-    '<div id="crdm-modern-preset-on-activation-overflow">';
+    '<div id="crdm-modern-preset-on-activation-modal">' +
+    '<div id="crdm-modern-preset-on-activation-overflow">' +
+    "<div>" +
+    crdmModernPresetOnActivationLocalize.intro +
+    "</div>" +
+    "<br>";
   $.each(crdmModernPresetOnActivationLocalize.presets, (id: string, preset) => {
     html +=
       '<div class="crdm-modern-preset-on-activation-preset">' +
@@ -32,7 +36,7 @@ function onActivation(): void {
   $("body").append(html);
   tb_show(
     crdmModernPresetOnActivationLocalize.title,
-    "#TB_inline?inlineId=crdm-modern-on-activation-modal"
+    "#TB_inline?inlineId=crdm-modern-preset-on-activation-modal"
   );
 }
 

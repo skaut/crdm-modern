@@ -7,6 +7,7 @@ declare interface Preset {
 declare interface CrdmModernPresetOnActivationLocalize {
   // TODO: Own file
   apply: string;
+  intro: string;
   skip: string;
   title: string;
   presets: Record<string, Preset>;
