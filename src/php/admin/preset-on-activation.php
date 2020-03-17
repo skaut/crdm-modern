@@ -32,9 +32,21 @@ function enqueue() {
 
 	$presets = array();
 	foreach ( \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->presets as $id => $preset ) {
-		$presets[ $id ] = array( 'name' => $preset->name, 'image' => esc_attr( get_stylesheet_directory_uri() . '/admin/' . $preset->image ) );
+		$presets[ $id ] = array(
+			'name'  => $preset->name,
+			'image' => esc_attr( get_stylesheet_directory_uri() . '/admin/' . $preset->image ),
+		);
 	}
-	wp_localize_script( 'crdm_modern_preset_on_activation', 'crdmModernPresetOnActivationLocalize', array( 'presets' => $presets ) );
+	wp_localize_script(
+		'crdm_modern_preset_on_activation',
+		'crdmModernPresetOnActivationLocalize',
+		array(
+			'apply'   => esc_html__( 'Apply', 'crdm-modern' ),
+			'skip'    => esc_html__( 'Skip', 'crdm-modern' ),
+			'title'   => esc_html__( 'Theme preset selection', 'crdm-modern' ),
+			'presets' => $presets,
+		)
+	);
 }
 
 /**
