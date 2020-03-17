@@ -28,6 +28,7 @@ function show_preset_popup() {
 function enqueue() {
 	\add_thickbox();
 	\CrdmModern\enqueue_script( 'crdm_modern_preset_on_activation', 'admin/js/preset_on_activation.min.js', array( 'jquery' ) );
+	\CrdmModern\enqueue_style( 'crdm_modern_preset_on_activation', 'admin/css/preset_on_activation.min.css' );
 }
 
 /**
