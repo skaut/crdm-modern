@@ -32,6 +32,19 @@
 	right: 0;
 }
 
+.crdm-modern-preset-on-activation-preset {
+	display: inline-block;
+	margin-right: 20px;
+	width: calc(33% - 20px);
+}
+
+.crdm-modern-preset-on-activation-image {
+	display: block;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	max-width: 100%;
+}
+
 #crdm-modern-preset-on-activation-skip {
 	float: right;
 	margin-right: 15px;
@@ -39,10 +52,4 @@
 
 #crdm-modern-preset-on-activation-apply {
 	float: right;
-}
-
-.crdm-modern-preset-on-activation-image {
-	display: block;
-	margin-bottom: 20px;
-	margin-top: 10px;
 }

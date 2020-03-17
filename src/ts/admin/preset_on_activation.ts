@@ -4,6 +4,7 @@ function onActivation(): void {
     '<div id="crdm-modern-preset-on-activation-overflow">';
   $.each(crdmModernPresetOnActivationLocalize.presets, (id: string, preset) => {
     html +=
+      '<div class="crdm-modern-preset-on-activation-preset">' +
       "<label>" +
       '<input type="radio" name="crdm_modern_preset_on_activation" value="' +
       id +
@@ -14,7 +15,8 @@ function onActivation(): void {
       '" alt="' +
       preset.name +
       '" class="crdm-modern-preset-on-activation-image"">' +
-      "</label>";
+      "</label>" +
+      "</div>";
   });
   html +=
     "</div>" +
