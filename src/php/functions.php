@@ -71,7 +71,6 @@ function activate() {
 	update_option( 'generate_package_spacing', 'activated' );
 	update_option( 'generate_package_typography', 'activated' );
 
-	Admin\Preset_On_Activation\apply_default_preset();
 	Admin\Preset_On_Activation\show_preset_popup();
 
 	return true;

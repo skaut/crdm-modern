@@ -70,16 +70,6 @@ function handle_ajax() {
 }
 
 /**
- * Applies the default preset of the theme
- *
- * @return void
- */
-function apply_default_preset() {
-	$settings = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
-	apply_preset( $settings );
-}
-
-/**
  * Applies a preset
  *
  * @param array $settings The preset to apply.
