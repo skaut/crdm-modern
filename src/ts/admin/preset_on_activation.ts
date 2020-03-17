@@ -1,13 +1,41 @@
 function applyPreset(): void {
   const id = $("input[name=crdm_modern_preset_on_activation]:checked").val();
   $.get(
-    crdmModernPresetOnActivationLocalize.ajax_url, {
+    crdmModernPresetOnActivationLocalize.ajax_url,
+    {
       _ajax_nonce: crdmModernPresetOnActivationLocalize.nonce, // eslint-disable-line @typescript-eslint/camelcase
       action: "crdm_modern_apply_preset",
       id
     },
-    function(response: any) {
-      console.log(response);
+    function(response: string) {
+      let html = "";
+      if (response === "success") {
+        html +=
+          '<div class="notice notice-success is-dismissible">' +
+          "<p>" +
+          crdmModernPresetOnActivationLocalize.success;
+      } else {
+        html +=
+          '<div class="notice notice-error is-dismissible">' +
+          "<p>" +
+          crdmModernPresetOnActivationLocalize.error;
+      }
+      html +=
+        "</p>" +
+        '<button type="button" class="notice-dismiss crdm-modern-notice-dismiss"><span class="screen-reader-text">' +
+        crdmModernPresetOnActivationLocalize.dismiss +
+        "</span></button>" +
+        "</div>";
+      $(".theme-browser")
+        .first()
+        .before(html);
+
+      $(".crdm-modern-notice-dismiss").click(function() {
+        $(this)
+          .parent()
+          .remove();
+      });
+      tb_remove();
     }
   );
 }

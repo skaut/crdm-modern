@@ -44,9 +44,12 @@ function enqueue() {
 		array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 			'apply'    => esc_html__( 'Apply', 'crdm-modern' ),
+			'dismiss'  => esc_html__( 'Dismiss this notice.', 'crdm-modern' ),
+			'error'    => esc_html__( 'Applying the preset failed.', 'crdm-modern' ),
 			'intro'    => esc_html__( 'You can choose to apply one of the presets of this theme as a starting point for your website. This will change a lot of the settings of this theme and of GeneratePress, so it is advised to do this only if you are starting fresh. This can be done later in the Customizer as well.', 'crdm-modern' ),
 			'nonce'    => wp_create_nonce( 'crdm_modern_preset_on_activation' ),
 			'skip'     => esc_html__( 'Skip', 'crdm-modern' ),
+			'success'  => esc_html__( 'Successfully applied the preset.', 'crdm-modern' ),
 			'title'    => esc_html__( 'Theme preset selection', 'crdm-modern' ),
 			'presets'  => $presets,
 		)
