@@ -12,13 +12,21 @@ namespace CrdmModern\Admin\Preset_On_Activation;
 require_once __DIR__ . '/customizer/class-preset-registry.php';
 
 /**
+ * Registers the AJAX callback for preset selection on theme activation.
+ *
+ * @return void
+ */
+function register() {
+	add_action( 'wp_ajax_crdm_modern_apply_preset', '\\CrdmModern\\Admin\\Preset_On_Activation\\handle_ajax' );
+}
+
+/**
  * Shows the preset selection popup after activating the theme.
  *
  * @return void
  */
 function show_preset_popup() {
 	add_action( 'admin_enqueue_scripts', '\\CrdmModern\\Admin\\Preset_On_Activation\\enqueue' );
-	add_action( 'wp_ajax_crdm_modern_apply_preset', '\\CrdmModern\\Admin\\Preset_On_Activation\\handle_ajax' );
 }
 
 /**

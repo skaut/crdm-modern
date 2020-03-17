@@ -27,6 +27,7 @@ function init() {
 	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\enqueue', 11 );
 	localize();
 	Admin\Customizer\register();
+	Admin\Preset_On_Activation\register();
 	Admin\Update\register();
 	Frontend\Blog\register();
 	Frontend\Header_Image\register();

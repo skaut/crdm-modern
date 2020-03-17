@@ -16,32 +16,32 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: functions.php:94
+#: functions.php:95
 msgid "CRDM - Modern theme requires at least WordPress 5.0"
 msgstr "Šablona CRDM - Modern vyžaduje alespoň WordPress 5.0"
 
-#: functions.php:105
+#: functions.php:106
 msgid "CRDM - Modern theme requires at least PHP 7.0"
 msgstr "Šablona CRDM - Modern vyžaduje alespoň PHP 7.0"
 
-#: functions.php:115
+#: functions.php:116
 msgid "CRDM - Modern theme requires GeneratePress Premium"
 msgstr "Šablona CRDM - Modern vyžaduje premium verzi GeneratePress"
 
-#: admin/preset-on-activation.php:46,
+#: admin/preset-on-activation.php:54,
 #: admin/customizer/controls/class-preset-customize-control.php:129
 msgid "Apply"
 msgstr "Použít"
 
-#: admin/preset-on-activation.php:47
+#: admin/preset-on-activation.php:55
 msgid "Dismiss this notice."
 msgstr "Skrýt toto upozornění."
 
-#: admin/preset-on-activation.php:48
+#: admin/preset-on-activation.php:56
 msgid "Applying the preset failed."
 msgstr "Použití předvolby šablony se nezdařilo."
 
-#: admin/preset-on-activation.php:49
+#: admin/preset-on-activation.php:57
 msgid ""
 "You can choose to apply one of the presets of this theme as a starting point "
 "for your website. This will change a lot of the settings of this theme and "
@@ -49,19 +49,20 @@ msgid ""
 "fresh. This can be done later in the Customizer as well."
 msgstr ""
 "Můžete vybrat a použít jednu z předvoleb šablony jako výchozí bod vašeho "
-"webu. Použití předvolby změní velké množství nastavení této šablony a šablony "
-"GeneratePress a tedy je doporučeno pouze pokud začínáte s touto šablonou. "
-"Předvolby šablony jde použít i později na stránce Přizpůsobení vzhledu webu."
+"webu. Použití předvolby změní velké množství nastavení této šablony a "
+"šablony GeneratePress a tedy je doporučeno pouze pokud začínáte s touto "
+"šablonou. Předvolby šablony jde použít i později na stránce Přizpůsobení "
+"vzhledu webu."
 
-#: admin/preset-on-activation.php:51
+#: admin/preset-on-activation.php:59
 msgid "Skip"
 msgstr "Přeskočit"
 
-#: admin/preset-on-activation.php:52
+#: admin/preset-on-activation.php:60
 msgid "Successfully applied the preset."
 msgstr "Úspěšně použita předvolba šablony."
 
-#: admin/preset-on-activation.php:53
+#: admin/preset-on-activation.php:61
 msgid "Theme preset selection"
 msgstr "Výběr předvolby šablony"
 

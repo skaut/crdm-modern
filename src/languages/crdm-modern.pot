@@ -16,32 +16,32 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: functions.php:94
+#: functions.php:95
 msgid "CRDM - Modern theme requires at least WordPress 5.0"
 msgstr ""
 
-#: functions.php:105
+#: functions.php:106
 msgid "CRDM - Modern theme requires at least PHP 7.0"
 msgstr ""
 
-#: functions.php:115
+#: functions.php:116
 msgid "CRDM - Modern theme requires GeneratePress Premium"
 msgstr ""
 
-#: admin/preset-on-activation.php:46,
+#: admin/preset-on-activation.php:54,
 #: admin/customizer/controls/class-preset-customize-control.php:129
 msgid "Apply"
 msgstr ""
 
-#: admin/preset-on-activation.php:47
+#: admin/preset-on-activation.php:55
 msgid "Dismiss this notice."
 msgstr ""
 
-#: admin/preset-on-activation.php:48
+#: admin/preset-on-activation.php:56
 msgid "Applying the preset failed."
 msgstr ""
 
-#: admin/preset-on-activation.php:49
+#: admin/preset-on-activation.php:57
 msgid ""
 "You can choose to apply one of the presets of this theme as a starting point "
 "for your website. This will change a lot of the settings of this theme and "
@@ -49,15 +49,15 @@ msgid ""
 "fresh. This can be done later in the Customizer as well."
 msgstr ""
 
-#: admin/preset-on-activation.php:51
+#: admin/preset-on-activation.php:59
 msgid "Skip"
 msgstr ""
 
-#: admin/preset-on-activation.php:52
+#: admin/preset-on-activation.php:60
 msgid "Successfully applied the preset."
 msgstr ""
 
-#: admin/preset-on-activation.php:53
+#: admin/preset-on-activation.php:61
 msgid "Theme preset selection"
 msgstr ""
 
