@@ -16,16 +16,49 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: functions.php:91
+#: functions.php:94
 msgid "CRDM - Modern theme requires at least WordPress 5.0"
 msgstr ""
 
-#: functions.php:102
+#: functions.php:105
 msgid "CRDM - Modern theme requires at least PHP 7.0"
 msgstr ""
 
-#: functions.php:112
+#: functions.php:115
 msgid "CRDM - Modern theme requires GeneratePress Premium"
+msgstr ""
+
+#: admin/preset-on-activation.php:46,
+#: admin/customizer/controls/class-preset-customize-control.php:129
+msgid "Apply"
+msgstr ""
+
+#: admin/preset-on-activation.php:47
+msgid "Dismiss this notice."
+msgstr ""
+
+#: admin/preset-on-activation.php:48
+msgid "Applying the preset failed."
+msgstr ""
+
+#: admin/preset-on-activation.php:49
+msgid ""
+"You can choose to apply one of the presets of this theme as a starting point "
+"for your website. This will change a lot of the settings of this theme and "
+"of GeneratePress, so it is advised to do this only if you are starting "
+"fresh. This can be done later in the Customizer as well."
+msgstr ""
+
+#: admin/preset-on-activation.php:51
+msgid "Skip"
+msgstr ""
+
+#: admin/preset-on-activation.php:52
+msgid "Successfully applied the preset."
+msgstr ""
+
+#: admin/preset-on-activation.php:53
+msgid "Theme preset selection"
 msgstr ""
 
 #. translators: %s: Theme name.
@@ -149,8 +182,4 @@ msgstr ""
 msgid ""
 "Applying the preset overrides a lot of the theme options. You can always go "
 "back by closing the customizer before saving."
-msgstr ""
-
-#: admin/customizer/controls/class-preset-customize-control.php:129
-msgid "Apply"
 msgstr ""

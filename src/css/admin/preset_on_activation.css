@@ -1,0 +1,55 @@
+#crdm-modern-preset-on-activation-modal {
+	display: none;
+}
+
+#TB_title { /* stylelint-disable-line selector-id-pattern */
+	font-size: x-large;
+	padding: 15px;
+}
+
+#TB_closeWindowButton { /* stylelint-disable-line selector-id-pattern */
+	right: 15px;
+}
+
+#crdm-modern-preset-on-activation-overflow {
+	bottom: 60px;
+	left: 0;
+	overflow-y: auto;
+	padding: 20px 30px;
+	position: absolute;
+	right: 0;
+	top: 60px;
+}
+
+#crdm-modern-preset-on-activation-footer {
+	background-color: #fcfcfc;
+	border-top: 1px solid #ddd;
+	bottom: 0;
+	height: 30px;
+	left: 0;
+	padding: 15px;
+	position: absolute;
+	right: 0;
+}
+
+.crdm-modern-preset-on-activation-preset {
+	display: inline-block;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	width: calc(33% - 20px);
+}
+
+.crdm-modern-preset-on-activation-image {
+	display: block;
+	margin-top: 10px;
+	max-width: 100%;
+}
+
+#crdm-modern-preset-on-activation-skip {
+	float: right;
+	margin-right: 15px;
+}
+
+#crdm-modern-preset-on-activation-apply {
+	float: right;
+}

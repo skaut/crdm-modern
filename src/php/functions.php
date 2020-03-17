@@ -11,6 +11,7 @@ declare( strict_types = 1 );
 
 namespace CrdmModern;
 
+require_once __DIR__ . '/admin/preset-on-activation.php';
 require_once __DIR__ . '/admin/customizer.php';
 require_once __DIR__ . '/admin/update.php';
 require_once __DIR__ . '/frontend/blog.php';
@@ -69,7 +70,9 @@ function activate() {
 	update_option( 'generate_package_colors', 'activated' );
 	update_option( 'generate_package_spacing', 'activated' );
 	update_option( 'generate_package_typography', 'activated' );
-	// TODO: Apply a preset.
+
+	Admin\Preset_On_Activation\show_preset_popup();
+
 	return true;
 }
 
