@@ -128,7 +128,6 @@ class Preset_Registry {
 								'footer_widget_background_color'         => '#007bc2',
 								'footer_widget_text_color'               => '#ffffff',
 								'footer_widget_link_color'               => '#ffffff',
-								'footer_widget_title_color'              => '#ffffff', // TODO: Remove?
 								// Typography.
 								'font_body'                              => 'Source Sans Pro',
 								'body_font_weight'                       => '600',
@@ -233,7 +232,6 @@ class Preset_Registry {
 								'footer_widget_background_color'         => '#009b67',
 								'footer_widget_text_color'               => '#ffffff',
 								'footer_widget_link_color'               => '#ffffff',
-								'footer_widget_title_color'              => '#ffffff',
 								// Typography.
 								'font_body'                              => 'Source Sans Pro',
 								'body_font_weight'                       => '600',
