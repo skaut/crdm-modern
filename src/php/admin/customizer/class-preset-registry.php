@@ -176,7 +176,6 @@ class Preset_Registry {
 								'body_attachment' => 'fixed',
 							),
 							// Typography.
-							// TODO: Fix Customizer UI not updating for font variants after preset select.
 							'font_body_variants'           => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
 							'font_site_title_variants'     => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 							'font_site_tagline_variants'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
