@@ -81,7 +81,7 @@ class Preset_Registry {
 						'presets/blue.png',
 						array(
 							'crdm_modern'                  => array(
-								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/tee-pee.png',
+								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png',
 								'header_image_height'              => '220',
 								'header_image_top'                 => '13',
 								'header_image_right'               => '100',
@@ -170,7 +170,7 @@ class Preset_Registry {
 							),
 							'generate_background_settings' => array(
 								// Background.
-								'body_image'      => get_stylesheet_directory_uri() . '/frontend/background.jpg', // TODO: Image not in UI.
+								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg', // TODO: Image not in UI.
 								'body_size'       => 'cover',
 								'body_attachment' => 'fixed',
 							),
@@ -185,7 +185,7 @@ class Preset_Registry {
 						'presets/blue.png', // TODO: New images.
 						array(
 							'crdm_modern'                  => array(
-								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/tee-pee.png',
+								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png',
 								'header_image_height'              => '220',
 								'header_image_top'                 => '13',
 								'header_image_right'               => '100',
@@ -274,7 +274,7 @@ class Preset_Registry {
 							),
 							'generate_background_settings' => array(
 								// Background.
-								'body_image'      => get_stylesheet_directory_uri() . '/frontend/background.jpg',
+								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
 								'body_size'       => 'cover',
 								'body_attachment' => 'fixed',
 							),

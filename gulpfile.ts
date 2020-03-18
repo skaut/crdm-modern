@@ -52,7 +52,7 @@ gulp.task("build:deps", gulp.parallel("build:deps:npm"));
 gulp.task("build:jpg:frontend", function() {
   return gulp
     .src("src/jpg/frontend/**/*.jpg")
-    .pipe(gulp.dest("dist/frontend/"));
+    .pipe(gulp.dest("dist/frontend/images/"));
 });
 
 gulp.task("build:jpg", gulp.parallel("build:jpg:frontend"));
@@ -141,7 +141,7 @@ gulp.task("build:png:admin", function() {
 gulp.task("build:png:frontend", function() {
   return gulp
     .src("src/png/frontend/**/*.png")
-    .pipe(gulp.dest("dist/frontend/"));
+    .pipe(gulp.dest("dist/frontend/images/"));
 });
 
 gulp.task(
