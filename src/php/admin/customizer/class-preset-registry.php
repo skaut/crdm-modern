@@ -122,7 +122,7 @@ class Preset_Registry {
 								'sidebar_widget_title_color'             => '#007bc2',
 								'sidebar_widget_link_color'              => '#3a3a3a',
 								'sidebar_widget_link_hover_color'        => '#007bc2',
-								'blog_post_title_hover_color'            => '#ffffff', // TODO: Check Live preview.
+								'blog_post_title_hover_color'            => '#ffffff',
 								'entry_meta_link_color'                  => '#00395e',
 								'entry_meta_link_color_hover'            => '#ffffff',
 								'footer_widget_background_color'         => '#007bc2',
@@ -162,12 +162,12 @@ class Preset_Registry {
 								'single_categories'          => false,
 								'single_tags'                => false,
 								'single_post_navigation'     => false,
-								'post_image_position'        => 'post-image-above-header', // TODO: Live preview?
-								'post_image_alignment'       => 'post-image-aligned-left', // TODO: Live preview?
-								'post_image_width'           => '300', // TODO: Live preview?
-								'post_image_height'          => '200', // TODO: Live preview?
-								'single_post_image_position' => 'below-title', // TODO: Live preview?
-								'page_post_image_position'   => 'below-title', // TODO: Live preview?
+								'post_image_position'        => 'post-image-above-header',
+								'post_image_alignment'       => 'post-image-aligned-left',
+								'post_image_width'           => '300',
+								'post_image_height'          => '200',
+								'single_post_image_position' => 'below-title',
+								'page_post_image_position'   => 'below-title',
 							),
 							'generate_background_settings' => array(
 								// Background.
