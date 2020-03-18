@@ -85,11 +85,11 @@ msgstr ""
 msgid "The latest version of the theme %s does not contain an update zip file."
 msgstr ""
 
-#: frontend/class-title-widget.php:61
+#: frontend/class-title-widget.php:64
 msgid "Title Widget"
 msgstr ""
 
-#: frontend/class-title-widget.php:61
+#: frontend/class-title-widget.php:64
 msgid "A widget containing the site logo, title and tagline."
 msgstr ""
 

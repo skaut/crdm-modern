@@ -90,11 +90,11 @@ msgstr "Odpověď GitHub API pro aktualizaci šablony %s je neplatná."
 msgid "The latest version of the theme %s does not contain an update zip file."
 msgstr "Nejnovější verze šablony %s neobsahuje soubor zip s aktualizací."
 
-#: frontend/class-title-widget.php:61
+#: frontend/class-title-widget.php:64
 msgid "Title Widget"
 msgstr "Widget názvu webu"
 
-#: frontend/class-title-widget.php:61
+#: frontend/class-title-widget.php:64
 msgid "A widget containing the site logo, title and tagline."
 msgstr "Widget obsahující logo, název a popis webu."
 
