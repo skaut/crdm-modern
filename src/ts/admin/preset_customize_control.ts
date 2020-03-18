@@ -14,6 +14,8 @@ function applyPreset(control: any): void {
     }
     setting.set(value);
   });
+
+  $(".generatepress-font-variant select").trigger("change");
 }
 
 wp.customize.control("crdm_modern_preset", function(control: any) {

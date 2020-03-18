@@ -85,7 +85,7 @@ class Preset_Registry {
 								'header_image_height'              => '220',
 								'header_image_top'                 => '13',
 								'header_image_right'               => '100',
-								'header_image_min_width'           => '950', // TODO: Live preview.
+								'header_image_min_width'           => '950',
 								'primary_navigation_spacing'       => '40',
 								'primary_navigation_shadow'        => '2px 4px 5px rgba(0, 0, 0, 0.4)',
 								'sidebar_widget_separator_width'   => '1',
@@ -98,7 +98,7 @@ class Preset_Registry {
 								'featured_post_count'              => '2',
 								// Read more link.
 								'read_more_color'                  => '#007bc2',
-								'read_more_hover_color'            => '#ffffff', // TODO: Live preview.
+								'read_more_hover_color'            => '#ffffff',
 							),
 							'generate_settings'            => array(
 								// Site Identity.
@@ -122,7 +122,7 @@ class Preset_Registry {
 								'sidebar_widget_title_color'             => '#007bc2',
 								'sidebar_widget_link_color'              => '#3a3a3a',
 								'sidebar_widget_link_hover_color'        => '#007bc2',
-								'blog_post_title_hover_color'            => '#ffffff', // TODO: Check Live preview.
+								'blog_post_title_hover_color'            => '#ffffff',
 								'entry_meta_link_color'                  => '#00395e',
 								'entry_meta_link_color_hover'            => '#ffffff',
 								'footer_widget_background_color'         => '#007bc2',
@@ -162,12 +162,12 @@ class Preset_Registry {
 								'single_categories'          => false,
 								'single_tags'                => false,
 								'single_post_navigation'     => false,
-								'post_image_position'        => 'post-image-above-header', // TODO: Live preview?
-								'post_image_alignment'       => 'post-image-aligned-left', // TODO: Live preview?
-								'post_image_width'           => '300', // TODO: Live preview?
-								'post_image_height'          => '200', // TODO: Live preview?
-								'single_post_image_position' => 'below-title', // TODO: Live preview?
-								'page_post_image_position'   => 'below-title', // TODO: Live preview?
+								'post_image_position'        => 'post-image-above-header',
+								'post_image_alignment'       => 'post-image-aligned-left',
+								'post_image_width'           => '300',
+								'post_image_height'          => '200',
+								'single_post_image_position' => 'below-title',
+								'page_post_image_position'   => 'below-title',
 							),
 							'generate_background_settings' => array(
 								// Background.
@@ -176,7 +176,6 @@ class Preset_Registry {
 								'body_attachment' => 'fixed',
 							),
 							// Typography.
-							// TODO: Fix Customizer UI not updating for font variants after preset select.
 							'font_body_variants'           => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
 							'font_site_title_variants'     => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 							'font_site_tagline_variants'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
