@@ -85,7 +85,7 @@ class Preset_Registry {
 								'header_image_height'              => '220',
 								'header_image_top'                 => '13',
 								'header_image_right'               => '100',
-								'header_image_min_width'           => '950', // TODO: Live preview.
+								'header_image_min_width'           => '950',
 								'primary_navigation_spacing'       => '40',
 								'primary_navigation_shadow'        => '2px 4px 5px rgba(0, 0, 0, 0.4)',
 								'sidebar_widget_separator_width'   => '1',
@@ -98,7 +98,7 @@ class Preset_Registry {
 								'featured_post_count'              => '2',
 								// Read more link.
 								'read_more_color'                  => '#007bc2',
-								'read_more_hover_color'            => '#ffffff', // TODO: Live preview.
+								'read_more_hover_color'            => '#ffffff',
 							),
 							'generate_settings'            => array(
 								// Site Identity.
