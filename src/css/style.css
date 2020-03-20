@@ -51,13 +51,13 @@
 	text-decoration: underline;
 }
 
-.crdm_modern_inline_icon {
+.crdm-modern-inline-icon {
 	display: none;
 	margin-right: 5px;
 	vertical-align: middle;
 }
 
-.sidebar .crdm_modern_inline_icon {
+.sidebar .crdm-modern-inline-icon {
 	display: inline;
 }
 
