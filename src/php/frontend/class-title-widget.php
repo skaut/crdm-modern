@@ -93,7 +93,7 @@ class Title_Widget extends \WP_Widget {
 
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo( $args['before_widget'] );
-		echo( '<div class="crdm_modern_title_widget_container">' );
+		echo( '<div class="crdm-modern-title-widget-container">' );
 		echo( '<img src="' );
 		echo( esc_url( $logo_url ) );
 		echo( '">' );
