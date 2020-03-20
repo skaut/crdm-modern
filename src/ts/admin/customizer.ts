@@ -91,27 +91,27 @@ liveReload(
   ".sidebar .inside-right-sidebar .widget",
   [{ name: "border-left-color" }]
 );
-liveReload("crdm_modern[excerpt_border_color]", ".crdm_modern_excerpt", [
+liveReload("crdm_modern[excerpt_border_color]", ".crdm-modern-excerpt", [
   { name: "border-color" }
 ]);
 liveReload(
   "crdm_modern[excerpt_hover_background_color]",
-  ".crdm_modern_excerpt:hover",
+  ".crdm-modern-excerpt:hover",
   [{ name: "background-color" }]
 );
 liveReload(
   "generate_settings[blog_post_title_hover_color]",
-  ".crdm_modern_excerpt:hover .entry-title a",
+  ".crdm-modern-excerpt:hover .entry-title a",
   [{ name: "color" }]
 );
 liveReload(
   "generate_settings[entry_meta_link_color_hover]",
-  ".crdm_modern_excerpt:hover .entry-meta a",
+  ".crdm-modern-excerpt:hover .entry-meta a",
   [{ name: "color" }]
 );
 liveReload(
   "crdm_modern[excerpt_hover_text_color]",
-  ".crdm_modern_excerpt:hover",
+  ".crdm-modern-excerpt:hover",
   [{ name: "color" }]
 );
 liveReload("crdm_modern[read_more_color]", "a.read-more", [{ name: "color" }]);
@@ -120,7 +120,7 @@ liveReload("crdm_modern[read_more_hover_color]", "a.read-more:hover", [
 ]);
 liveReload(
   "crdm_modern[read_more_hover_color]",
-  ".crdm_modern_excerpt:hover a.read-more",
+  ".crdm-modern-excerpt:hover a.read-more",
   [{ name: "color" }]
 );
 
