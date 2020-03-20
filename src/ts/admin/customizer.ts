@@ -177,11 +177,11 @@ liveReload(
 );
 liveReload(
   "generate_settings[site_tagline_font_size]",
-  ".crdm_modern_title_widget_tagline",
+  ".crdm-modern-title-widget-tagline",
   [{ name: "font-size", postfix: "px" }]
 );
 liveReload(
   "generate_settings[site_tagline_font_weight]",
-  ".crdm_modern_title_widget_tagline",
+  ".crdm-modern-title-widget-tagline",
   [{ name: "font-weight" }]
 );
