@@ -27,7 +27,7 @@ function insert() {
 	);
 
 	if ( isset( $crdm_modern_settings['header_image'] ) ) {
-		echo( '<div class="crdm_modern_nav_image_container grid-container"><img class="crdm_modern_nav_image" src="' );
+		echo( '<div class="crdm-modern-nav-image-container grid-container"><img class="crdm_modern_nav_image" src="' );
 		echo( esc_url( $crdm_modern_settings['header_image'] ) );
 		echo( '"></div>' );
 	}
