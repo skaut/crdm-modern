@@ -54,13 +54,13 @@ function liveReload(
 }
 
 // Site Identity.
-liveReload("crdm_modern[header_image_height]", ".crdm_modern_nav_image", [
+liveReload("crdm_modern[header_image_height]", ".crdm-modern-nav-image", [
   { name: "max-height", postfix: "px" }
 ]);
-liveReload("crdm_modern[header_image_top]", ".crdm_modern_nav_image", [
+liveReload("crdm_modern[header_image_top]", ".crdm-modern-nav-image", [
   { name: "top", postfix: "px" }
 ]);
-liveReload("crdm_modern[header_image_right]", ".crdm_modern_nav_image", [
+liveReload("crdm_modern[header_image_right]", ".crdm-modern-nav-image", [
   { name: "right", postfix: "px" }
 ]);
 
