@@ -167,12 +167,12 @@ liveReload(
 );
 liveReload(
   "generate_settings[site_title_font_size]",
-  ".crdm_modern_title_widget_title",
+  ".crdm-modern-title-widget-title",
   [{ name: "font-size", postfix: "px" }]
 );
 liveReload(
   "generate_settings[site_title_font_weight]",
-  ".crdm_modern_title_widget_title",
+  ".crdm-modern-title-widget-title",
   [{ name: "font-weight" }]
 );
 liveReload(

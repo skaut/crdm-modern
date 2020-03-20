@@ -41,7 +41,7 @@ class Title_Widget extends \WP_Widget {
 		$css->set_selector( '.crdm-modern-title-widget-text' );
 		$css->add_property( 'left', strval( absint( $gp_settings['logo_width'] ) + 20 ), false, 'px' );
 
-		$css->set_selector( '.crdm_modern_title_widget_title' );
+		$css->set_selector( '.crdm-modern-title-widget-title' );
 		$css->add_property( 'font-family', 'inherit' !== $gp_settings['font_site_title'] ? $site_title_family : null );
 		$css->add_property( 'font-size', strval( absint( $gp_settings['site_title_font_size'] ) ), false, 'px' );
 		$css->add_property( 'font-weight', strval( absint( $gp_settings['site_title_font_weight'] ) ), false, 'px' );
@@ -98,7 +98,7 @@ class Title_Widget extends \WP_Widget {
 		echo( esc_url( $logo_url ) );
 		echo( '">' );
 		echo( '<div class="crdm-modern-title-widget-text">' );
-		echo( '<div class="crdm_modern_title_widget_title">' );
+		echo( '<div class="crdm-modern-title-widget-title">' );
 		echo( esc_html( $title ) );
 		echo( '</div>' );
 		echo( '<div class="crdm_modern_title_widget_tagline">' );
