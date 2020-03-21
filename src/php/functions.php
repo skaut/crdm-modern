@@ -85,27 +85,32 @@ function activate() {
  * @return void
  */
 function copy_images() {
-	$file     = get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png';
-	$filename = basename( $file );
+	require_once ABSPATH . 'wp-admin/includes/post.php';
+	if ( 0 !== post_exists( 'CRDM - Modern header image' ) ) {
+		return;
+	}
 
-	$upload_file = wp_upload_bits( 'crdm_modern_' . $filename, null, file_get_contents( $file ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-	if ( $upload_file['error'] ) {
+	$path     = get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png';
+	$filename = basename( $path );
+
+	$file_contents = wp_upload_bits( 'crdm_modern_' . $filename, null, file_get_contents( $path ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	if ( $file_contents['error'] ) {
 		// TODO.
 		return;
 	}
-	$wp_filetype   = wp_check_filetype( $filename );
-	$attachment    = array(
-		'post_mime_type' => $wp_filetype['type'],
+	$mime_type   = wp_check_filetype( $filename );
+	$attachment_args    = array(
+		'post_mime_type' => $mime_type['type'],
 		'post_title'     => 'CRDM - Modern header image',
 	);
-	$attachment_id = wp_insert_attachment( $attachment, $upload_file['file'], 0, true );
+	$attachment_id = wp_insert_attachment( $attachment_args, $file_contents['file'], 0, true );
 	if ( is_wp_error( $attachment_id ) ) {
 		// TODO.
 		return;
 	}
 	require_once ABSPATH . 'wp-admin/includes/image.php';
-	$attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
-	wp_update_attachment_metadata( $attachment_id, $attachment_data );
+	$attachment_metadata = wp_generate_attachment_metadata( $attachment_id, $file_contents['file'] );
+	wp_update_attachment_metadata( $attachment_id, $attachment_metadata );
 }
 
 /**
