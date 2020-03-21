@@ -85,14 +85,31 @@ function activate() {
  * @return void
  */
 function copy_images() {
+	try {
+		// Do not touch titles or the files will be copied again.
+		copy_image( get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png', 'CRDM - Modern default header image' );
+		copy_image( get_stylesheet_directory_uri() . '/frontend/images/background.jpg', 'CRDM - Modern default background image' );
+	} catch ( \Exception $e ) {
+		// TODO.
+	}
+}
+
+/**
+ * Copies an image to WordPress Media.
+ *
+ * @param string $path The absolute path to the image.
+ * @param string $title The title to use for the image.
+ *
+ * @return void
+ */
+function copy_image( $path, $title ) {
+	// Bail if image already exists.
 	require_once ABSPATH . 'wp-admin/includes/post.php';
-	if ( 0 !== post_exists( 'CRDM - Modern header image' ) ) {
+	if ( 0 !== post_exists( $title ) ) {
 		return;
 	}
 
-	$path     = get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png';
 	$filename = basename( $path );
-
 	$file_contents = wp_upload_bits( 'crdm_modern_' . $filename, null, file_get_contents( $path ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	if ( $file_contents['error'] ) {
 		// TODO.
@@ -101,7 +118,7 @@ function copy_images() {
 	$mime_type   = wp_check_filetype( $filename );
 	$attachment_args    = array(
 		'post_mime_type' => $mime_type['type'],
-		'post_title'     => 'CRDM - Modern header image',
+		'post_title'     => $title,
 	);
 	$attachment_id = wp_insert_attachment( $attachment_args, $file_contents['file'], 0, true );
 	if ( is_wp_error( $attachment_id ) ) {
