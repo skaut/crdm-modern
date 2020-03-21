@@ -54,7 +54,7 @@ function add_icon( string $title, array $_, string $id_base ) {
 			$icon = '';
 	}
 	if ( '' !== $icon ) {
-		$icon = '<span class="icon dripicons-' . $icon . ' crdm_modern_inline_icon"></span>';
+		$icon = '<span class="icon dripicons-' . $icon . ' crdm-modern-inline-icon"></span>';
 	}
 	return $icon . $title;
 }

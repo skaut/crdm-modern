@@ -33,7 +33,7 @@ function applyPreset(): void {
   const applyButton = $("#crdm-modern-preset-on-activation-apply");
   applyButton.attr("disabled", "disabled");
   applyButton.off("click");
-  const id = $("input[name=crdm_modern_preset_on_activation]:checked").val();
+  const id = $("input[name=crdm-modern-preset-on-activation]:checked").val();
   $.get(
     crdmModernPresetOnActivationLocalize.ajax_url,
     {
@@ -57,7 +57,7 @@ function onActivation(): void {
     html +=
       '<div class="crdm-modern-preset-on-activation-preset">' +
       "<label>" +
-      '<input type="radio" name="crdm_modern_preset_on_activation" value="' +
+      '<input type="radio" name="crdm-modern-preset-on-activation" value="' +
       id +
       '">' +
       preset.name +
@@ -86,7 +86,7 @@ function onActivation(): void {
     "#TB_inline?inlineId=crdm-modern-preset-on-activation-modal"
   );
 
-  $("input[name=crdm_modern_preset_on_activation]").change(function() {
+  $("input[name=crdm-modern-preset-on-activation]").change(function() {
     const applyButton = $("#crdm-modern-preset-on-activation-apply");
     applyButton.removeAttr("disabled");
     applyButton.click(applyPreset);

@@ -215,21 +215,21 @@ function enqueue() {
 	$css->add_property( 'border-left-color', esc_attr( $crdm_modern_settings['sidebar_widget_separator_color'] ) );
 
 	// Excerpt border.
-	$css->set_selector( '.crdm_modern_excerpt' );
+	$css->set_selector( '.crdm-modern-excerpt' );
 	$css->add_property( 'border-color', esc_attr( $crdm_modern_settings['excerpt_border_color'] ) );
 
 	// Excerpt hover background color.
-	$css->set_selector( '.crdm_modern_excerpt:hover' );
+	$css->set_selector( '.crdm-modern-excerpt:hover' );
 	$css->add_property( 'background-color', esc_attr( $crdm_modern_settings['excerpt_hover_background_color'] ) );
-	$css->set_selector( '.crdm_modern_excerpt:hover .entry-title a' );
+	$css->set_selector( '.crdm-modern-excerpt:hover .entry-title a' );
 	$css->add_property( 'color', esc_attr( $gp_settings['blog_post_title_hover_color'] ) );
 
 	$css->set_selector( '.entry-meta a:hover' );
 	$css->add_property( 'color', esc_attr( $gp_settings['entry_meta_link_color'] ) );
 
-	$css->set_selector( '.crdm_modern_excerpt:hover .entry-meta a' );
+	$css->set_selector( '.crdm-modern-excerpt:hover .entry-meta a' );
 	$css->add_property( 'color', esc_attr( $gp_settings['entry_meta_link_color_hover'] ) );
-	$css->set_selector( '.crdm_modern_excerpt:hover' );
+	$css->set_selector( '.crdm-modern-excerpt:hover' );
 	$css->add_property( 'color', esc_attr( $crdm_modern_settings['excerpt_hover_text_color'] ) );
 
 	// "Read more" link color.
@@ -237,7 +237,7 @@ function enqueue() {
 	$css->add_property( 'color', esc_attr( $crdm_modern_settings['read_more_color'] ) );
 	$css->set_selector( 'a.read-more:hover' );
 	$css->add_property( 'color', esc_attr( $crdm_modern_settings['read_more_hover_color'] ) );
-	$css->set_selector( '.crdm_modern_excerpt:hover a.read-more' );
+	$css->set_selector( '.crdm-modern-excerpt:hover a.read-more' );
 	$css->add_property( 'color', esc_attr( $crdm_modern_settings['read_more_hover_color'] ) );
 
 	$output = $css->css_output();

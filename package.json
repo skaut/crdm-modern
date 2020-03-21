@@ -28,7 +28,7 @@
 		"lint:phan": "export PHAN_DISABLE_XDEBUG_WARN=1; vendor/bin/phan",
 		"lint:phpcs": "vendor/bin/phpcs",
 		"lint:phpmd": "vendor/bin/phpmd src text phpmd.xml",
-		"disabled_lint:stylelint": "stylelint src/**/*.css",
+		"lint:stylelint": "stylelint src/**/*.css",
 		"lint": "run-s -c lint:*",
 		"update-translations": "gulp update-translations"
 	},
