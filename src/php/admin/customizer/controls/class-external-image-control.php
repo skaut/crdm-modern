@@ -29,7 +29,7 @@ class External_Image_Control extends \WP_Customize_Image_Control {
 			return;
 		}
 		$value = $this->value();
-		if ( ! $value ) {
+		if ( empty( $value ) ) {
 			return;
 		}
 		$type                     = in_array( substr( $value, -3 ), array( 'jpg', 'png', 'gif', 'bmp' ), true ) ? 'image' : 'document';
