@@ -16,16 +16,23 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: functions.php:95
+#: functions.php:148
 msgid "CRDM - Modern theme requires at least WordPress 5.0"
 msgstr ""
 
-#: functions.php:106
+#: functions.php:159
 msgid "CRDM - Modern theme requires at least PHP 7.0"
 msgstr ""
 
-#: functions.php:116
+#: functions.php:169
 msgid "CRDM - Modern theme requires GeneratePress Premium"
+msgstr ""
+
+#: functions.php:179
+msgid ""
+"Failed to copy CRDM - Modern theme images to WordPress Media. The theme will "
+"work fine, but you won't be able to re-select the default images outside of "
+"the theme presets."
 msgstr ""
 
 #: admin/preset-on-activation.php:54,

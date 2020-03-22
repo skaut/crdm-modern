@@ -72,9 +72,62 @@ function activate() {
 	update_option( 'generate_package_spacing', 'activated' );
 	update_option( 'generate_package_typography', 'activated' );
 
+	copy_images();
+
 	Admin\Preset_On_Activation\show_preset_popup();
 
 	return true;
+}
+
+/**
+ * Copies the theme images to WordPress Media so that the user can use them later.
+ *
+ * @return void
+ */
+function copy_images() {
+	try {
+		// Do not touch titles or the files will be copied again.
+		copy_image( get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png', 'CRDM - Modern default header image' );
+		copy_image( get_stylesheet_directory_uri() . '/frontend/images/background.jpg', 'CRDM - Modern default background image' );
+	} catch ( \Exception $_ ) {
+		add_action( 'admin_notices', '\\CrdmModern\\notice_image_copy_failed' );
+	}
+}
+
+/**
+ * Copies an image to WordPress Media.
+ *
+ * @param string $path The absolute path to the image.
+ * @param string $title The title to use for the image.
+ *
+ * @throws \Exception Failed to copy the image.
+ *
+ * @return void
+ */
+function copy_image( $path, $title ) {
+	// Bail if image already exists.
+	require_once ABSPATH . 'wp-admin/includes/post.php';
+	if ( 0 !== post_exists( $title, '', '', 'attachment' ) ) {
+		return;
+	}
+
+	$filename      = basename( $path );
+	$file_contents = wp_upload_bits( 'crdm_modern_' . $filename, null, file_get_contents( $path ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	if ( is_string( $file_contents['error'] ) ) {
+		throw new \Exception();
+	}
+	$mime_type       = wp_check_filetype( $filename );
+	$attachment_args = array(
+		'post_mime_type' => $mime_type['type'],
+		'post_title'     => $title,
+	);
+	$attachment_id   = wp_insert_attachment( $attachment_args, $file_contents['file'], 0, true );
+	if ( is_wp_error( $attachment_id ) ) {
+		throw new \Exception();
+	}
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+	$attachment_metadata = wp_generate_attachment_metadata( $attachment_id, $file_contents['file'] );
+	wp_update_attachment_metadata( $attachment_id, $attachment_metadata );
 }
 
 /**
@@ -114,6 +167,16 @@ function notice_php_version() {
 function notice_gp_premium() {
 	echo( '<div class="notice notice-error is-dismissible"><p>' );
 	esc_html_e( 'CRDM - Modern theme requires GeneratePress Premium', 'crdm-modern' );
+	echo( '</p></div>' );
+}
+
+/**
+ * Image copy failure notice
+ * Prints a notice informing the user that copying the default theme images to WordPress Media failed.
+ */
+function notice_image_copy_failed() {
+	echo( '<div class="notice notice-warning is-dismissible"><p>' );
+	esc_html_e( 'Failed to copy CRDM - Modern theme images to WordPress Media. The theme will work fine, but you won\'t be able to re-select the default images outside of the theme presets.', 'crdm-modern' );
 	echo( '</p></div>' );
 }
 
