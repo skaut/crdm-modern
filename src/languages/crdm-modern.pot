@@ -35,6 +35,10 @@ msgid ""
 "the theme presets."
 msgstr ""
 
+#: admin/customizer.php:48
+msgid "Body"
+msgstr ""
+
 #: admin/preset-on-activation.php:54,
 #: admin/customizer/controls/class-preset-customize-control.php:129
 msgid "Apply"
