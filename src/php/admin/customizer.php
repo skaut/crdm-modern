@@ -29,6 +29,13 @@ function register() {
 	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Admin\\Customizer\\enqueue', 11 );
 }
 
+/**
+ * Replaces control for body background image with External_Image_Control.
+ *
+ * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
+ *
+ * @return void
+ */
 function fix_images( \WP_Customize_Manager $wp_customize ) {
 	$wp_customize->remove_control( 'generate_backgrounds-body-image' );
 	$wp_customize->add_control(
