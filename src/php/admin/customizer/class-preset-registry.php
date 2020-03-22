@@ -170,7 +170,7 @@ class Preset_Registry {
 							),
 							'generate_background_settings' => array(
 								// Background.
-								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg', // TODO: Image not in UI.
+								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
 								'body_size'       => 'cover',
 								'body_attachment' => 'fixed',
 							),

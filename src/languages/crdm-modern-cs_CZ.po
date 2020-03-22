@@ -38,6 +38,10 @@ msgstr ""
 "Šablona bude fungovat v pořádku i tak, ale nebudete moct znovu použít její "
 "výchozí obrázky jinak, než použitím předvolby šablony."
 
+#: admin/customizer.php:48
+msgid "Body"
+msgstr "Tělo"
+
 #: admin/preset-on-activation.php:54,
 #: admin/customizer/controls/class-preset-customize-control.php:129
 msgid "Apply"
