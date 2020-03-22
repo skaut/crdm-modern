@@ -111,7 +111,7 @@ function copy_image( $path, $title ) {
 		return;
 	}
 
-	$filename      = basename( $path );
+	$filename      = wp_basename( $path );
 	$file_contents = wp_upload_bits( 'crdm_modern_' . $filename, null, file_get_contents( $path ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	if ( is_string( $file_contents['error'] ) ) {
 		throw new \Exception();
