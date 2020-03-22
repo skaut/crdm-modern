@@ -13,7 +13,7 @@ if ( ! class_exists( 'WP_Customize_Image_Control' ) ) {
     return;
 }
 
-class Fixed_Image_Control extends \WP_Customize_Image_Control {
+class External_Image_Control extends \WP_Customize_Image_Control {
     public function __construct($manager, $id, $args = array()) {
 	parent::__construct($manager, $id, $args);
     }

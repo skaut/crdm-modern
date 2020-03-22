@@ -9,13 +9,13 @@ declare( strict_types = 1 );
 
 namespace CrdmModern\Admin\Customizer;
 
-require_once __DIR__ . '/customizer/controls/class-fixed-image-control.php';
 require_once __DIR__ . '/customizer/class-preset.php';
 require_once __DIR__ . '/customizer/class-preset-registry.php';
 require_once __DIR__ . '/customizer/colors.php';
 require_once __DIR__ . '/customizer/preset.php';
 require_once __DIR__ . '/customizer/layout.php';
 require_once __DIR__ . '/customizer/site-identity.php';
+require_once __DIR__ . '/customizer/controls/class-external-image-control.php';
 
 /**
  * Registers all the hooks for the customizer.
@@ -32,7 +32,7 @@ function register() {
 function fix_images( \WP_Customize_Manager $wp_customize ) {
 	$wp_customize->remove_control( 'generate_backgrounds-body-image' );
 	$wp_customize->add_control(
-		new Controls\Fixed_Image_Control(
+		new Controls\External_Image_Control(
 			$wp_customize,
 			'generate_backgrounds-body-image',
 			array(
