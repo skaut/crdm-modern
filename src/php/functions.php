@@ -107,7 +107,7 @@ function copy_images() {
 function copy_image( $path, $title ) {
 	// Bail if image already exists.
 	require_once ABSPATH . 'wp-admin/includes/post.php';
-	if ( 0 !== post_exists( $title ) ) {
+	if ( 0 !== post_exists( $title, '', '', 'attachment' ) ) {
 		return;
 	}
 
