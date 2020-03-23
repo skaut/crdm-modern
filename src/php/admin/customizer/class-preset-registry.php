@@ -182,7 +182,7 @@ class Preset_Registry {
 					),
 					'green' => new Preset(
 						__( 'Green', 'crdm-modern' ),
-						'presets/blue.png', // TODO: New images.
+						'presets/blue.png',
 						array(
 							'crdm_modern'                  => array(
 								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png',

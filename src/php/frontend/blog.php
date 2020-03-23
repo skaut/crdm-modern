@@ -160,7 +160,6 @@ function post_classes( $classes ) {
  * @return string the updated featured image HTML.
  */
 function featured_image() {
-	// TODO Dynamically select the best size depending on whether it is in columns.
 	$post_ID = get_the_ID();
 	return '<div class="post-image">' .
 			apply_filters( 'generate_inside_featured_image_output', '' ) // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
