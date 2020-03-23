@@ -72,30 +72,27 @@
 
 .post-image-above-header .crdm-modern-excerpt div.post-image {
 	margin: 0;
-	position: relative;
 }
 
-.crdm-modern-excerpt .post-image a {
-	height: 100%;
-}
-
-.crdm-modern-excerpt img.wp-post-image {
-	height: 100%;
-	object-fit: cover;
-}
-
-.crdm-modern-excerpt .post-image img {
-	vertical-align: bottom;
-}
-
-article.post.generate-columns .crdm-modern-excerpt .post-image {
+.generate-columns .crdm-modern-excerpt .post-image {
 	padding-top: 66%; /* TODO */
+	position: relative;
 	width: 100%;
 }
 
 .generate-columns .crdm-modern-excerpt .post-image a {
+	height: 100%;
 	position: absolute;
 	top: 0;
+}
+
+.crdm-modern-excerpt .wp-post-image {
+	vertical-align: bottom;
+}
+
+.generate-columns .crdm-modern-excerpt .wp-post-image {
+	height: 100%;
+	object-fit: cover;
 }
 
 @media (max-width: 768px) {
