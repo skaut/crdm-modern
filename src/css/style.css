@@ -87,28 +87,12 @@
 }
 
 .crdm-modern-excerpt .wp-post-image {
+	object-fit: cover;
 	vertical-align: bottom;
 }
 
 .generate-columns .crdm-modern-excerpt .wp-post-image {
 	height: 100%;
-	object-fit: cover;
-}
-
-@media (max-width: 768px) {
-
-	body div.inside-article.crdm-modern-excerpt .post-image {
-		margin-left: -1em;
-		margin-right: -1em;
-		margin-bottom: 1em;
-	}
-}
-
-@media (min-width: 769px) {
-
-	article:not(.generate-columns) .crdm-modern-excerpt .post-image img {
-		object-fit: cover;
-	}
 }
 
 @media (max-width: 767px) {
@@ -118,7 +102,30 @@
 	}
 }
 
-.entry-summary .read-more {
+@media (max-width: 768px) {
+
+	.crdm-modern-excerpt .post-image {
+		padding-top: 66%; /* TODO */
+		position: relative;
+		width: 100%;
+	}
+
+	body:not(.post-image-aligned-center) .inside-article.crdm-modern-excerpt .post-image {
+		text-align: left;
+	}
+
+	.crdm-modern-excerpt .post-image a {
+		height: 100%;
+		position: absolute;
+		top: 0;
+	}
+
+	.crdm-modern-excerpt .wp-post-image {
+		height: 100%;
+	}
+}
+
+.crdm-modern-excerpt  .read-more {
 	display: block;
 	font-weight: 700;
 	margin-top: 7px;
