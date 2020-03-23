@@ -51,6 +51,20 @@ class WordPress_Github_Updater {
 	private static $err_msg_no_zip = 'The latest version of the package %s does not contain an update zip file.';
 
 	/**
+	 * Error message: "Version %s".
+	 *
+	 * @var string
+	 */
+	private static $err_msg_version = 'Version %s';
+
+	/**
+	 * Error message: "No more info available.".
+	 *
+	 * @var string
+	 */
+	private static $err_msg_no_info = 'No more info available.';
+
+	/**
 	 * The WordPress slug of the package.
 	 *
 	 * @var string
@@ -88,15 +102,19 @@ class WordPress_Github_Updater {
 	 * @param string $error_message Error message: "Error message:".
 	 * @param string $response_invalid Error message: "The GitHub API response for the package %s is invalid.".
 	 * @param string $no_zip Error message: "The latest version of the package %s does not contain an update zip file.".
+	 * @param string $version Error message: "Version %s".
+	 * @param string $no_info Error message: "No more info available.".
 	 *
 	 * @return void
 	 */
-	public static function set_error_messages_i10n( $not_available, $request_failed, $error_message, $response_invalid, $no_zip ) {
+	public static function set_error_messages_i10n( $not_available, $request_failed, $error_message, $response_invalid, $no_zip, $version, $no_info ) {
 		self::$err_msg_not_available    = $not_available;
 		self::$err_msg_request_failed   = $request_failed;
 		self::$err_msg_error_message    = $error_message;
 		self::$err_msg_response_invalid = $response_invalid;
 		self::$err_msg_no_zip           = $no_zip;
+		self::$err_msg_version          = $version;
+		self::$err_msg_no_info          = $no_info;
 	}
 
 	/**
@@ -121,6 +139,7 @@ class WordPress_Github_Updater {
 			default:
 				throw new \Exception( 'Wordpress_Github_Updater called with invalid type!' );
 		}
+		add_action( 'wp_ajax_' . $this->wp_slug . '_github_updater', array( $this, 'update_url' ) );
 	}
 
 	/**
@@ -148,10 +167,20 @@ class WordPress_Github_Updater {
 		$transient->response[ $this->wp_slug ] = array(
 			'theme'       => $this->wp_slug,
 			'new_version' => $version,
-			'url'         => $response->html_url,
+			'url'         => admin_url( 'admin-ajax.php' ) . '?action=' . urlencode( $this->wp_slug . '_github_updater' ) . '&version=' . urlencode( $version ),
 			'package'     => $zip_url,
 		);
 		return $transient;
+	}
+
+	public function update_url() {
+		if ( isset( $_GET['version'] ) ) {
+			echo file_get_contents( 'https://github.com/' . $this->gh_slug . '/releases/tag/' . $_GET['version'] );
+		} else {
+			echo '<h1>' . sprintf( self::$err_msg_version, $_GET['version'] ) . '</h1>' . self::$err_msg_no_info;
+			
+		}
+		die();
 	}
 
 	/**
