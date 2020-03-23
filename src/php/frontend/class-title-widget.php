@@ -35,11 +35,11 @@ class Title_Widget extends \WP_Widget {
 		$site_title_family   = generate_get_font_family_css( 'font_site_title', 'generate_settings', generate_get_default_fonts() );
 		$site_tagline_family = generate_get_font_family_css( 'font_site_tagline', 'generate_settings', generate_get_default_fonts() );
 
-		$css->set_selector( '.widget_crdm_modern_title_widget img' );
+		$css->set_selector( '.crdm-modern-title-widget-image' );
 		$css->add_property( 'width', strval( absint( $gp_settings['logo_width'] ) ), false, 'px' );
 
 		$css->set_selector( '.crdm-modern-title-widget-text' );
-		$css->add_property( 'left', strval( absint( $gp_settings['logo_width'] ) + 20 ), false, 'px' );
+		$css->add_property( 'margin-left', strval( absint( $gp_settings['logo_width'] ) + 20 ), false, 'px' );
 
 		$css->set_selector( '.crdm-modern-title-widget-title' );
 		$css->add_property( 'font-family', 'inherit' !== $gp_settings['font_site_title'] ? $site_title_family : null );
@@ -93,8 +93,7 @@ class Title_Widget extends \WP_Widget {
 
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo( $args['before_widget'] );
-		echo( '<div class="crdm-modern-title-widget-container">' );
-		echo( '<img src="' );
+		echo( '<img class="crdm-modern-title-widget-image" src="' );
 		echo( esc_url( $logo_url ) );
 		echo( '">' );
 		echo( '<div class="crdm-modern-title-widget-text">' );
@@ -103,7 +102,6 @@ class Title_Widget extends \WP_Widget {
 		echo( '</div>' );
 		echo( '<div class="crdm-modern-title-widget-tagline">' );
 		echo( esc_html( $tagline ) );
-		echo( '</div>' );
 		echo( '</div>' );
 		echo( '</div>' );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
