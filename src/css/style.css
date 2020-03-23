@@ -65,27 +65,37 @@
 .one-container .inside-article.crdm-modern-excerpt {
 	border-style: solid;
 	border-width: 1px;
-	padding: 1em;
+	padding-bottom: 0;
 	cursor: pointer;
 	transition: color 0.1s ease-in-out;
 }
 
 .post-image-above-header .crdm-modern-excerpt div.post-image {
-	margin: -1em;
+	margin: 0;
+	position: relative;
+}
+
+.crdm-modern-excerpt .post-image a {
+	height: 100%;
+}
+
+.crdm-modern-excerpt img.wp-post-image {
+	height: 100%;
+	object-fit: cover;
 }
 
 .crdm-modern-excerpt .post-image img {
 	vertical-align: bottom;
 }
 
-article.post .crdm-modern-excerpt .post-image {
-	margin-right: 1em;
+article.post.generate-columns .crdm-modern-excerpt .post-image {
+	padding-top: 66%; /* TODO */
+	width: 100%;
 }
 
-article.post.generate-columns .crdm-modern-excerpt .post-image {
-	margin-left: -1em;
-	margin-right: -1em;
-	margin-bottom: 1em;
+.generate-columns .crdm-modern-excerpt .post-image a {
+	position: absolute;
+	top: 0;
 }
 
 @media (max-width: 768px) {
