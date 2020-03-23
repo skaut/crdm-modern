@@ -142,7 +142,20 @@ footer.site-info {
 	}
 }
 
-.crdm-modern-excerpt  .read-more {
+.crdm-modern-excerpt .entry-header {
+	left: 1em;
+	margin-right: 2em;
+	position: relative;
+	top: 1em;
+}
+
+.crdm-modern-excerpt .entry-summary {
+	left: 1em;
+	margin: 1.5em 2em 1em 0;
+	position: relative;
+}
+
+.crdm-modern-excerpt .read-more {
 	display: block;
 	font-weight: 700;
 	margin-top: 7px;
