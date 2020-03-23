@@ -65,7 +65,7 @@ function blog_css() {
 		\generate_blog_get_defaults()
 	);
 
-	$separator = absint( $spacing_settings['separator'] );
+	$separator                   = absint( $spacing_settings['separator'] );
 	$features_image_aspect_ratio = strval( round( 100 * $blog_settings['post_image_height'] / $blog_settings['post_image_width'], 2 ) );
 
 	$ret  = '.generate-columns {margin-bottom: ' . $separator . 'px;padding-left: ' . $separator . 'px;}';
