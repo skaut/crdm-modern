@@ -162,20 +162,33 @@ footer.site-info {
 }
 
 /* Title widget */
-.crdm-modern-title-widget-container {
-	position: relative;
+
+.crdm-modern-title-widget-image {
+	margin-left: -100%;
 }
 
 .crdm-modern-title-widget-text {
-	position: absolute;
-	top: 0;
+	float: left;
 }
 
 @media (max-width: 768px) {
 
-	.site-footer .footer-widgets .footer-widgets-container .inside-footer-widgets {
+	.widget_crdm_modern_title_widget { /*stylelint-disable-line selector-class-pattern */
+		margin-left: 100px;
+	}
+
+	.site-footer .footer-widgets .footer-widgets-container .inside-footer-widgets .grid-parent {
 		margin-left: auto;
 		margin-right: auto;
 		width: max-content;
+	}
+
+	.crdm-modern-title-widget-text {
+		margin-left: 10px !important;
+	}
+
+	.crdm-modern-title-widget-title,
+	.crdm-modern-title-widget-tagline {
+		margin-left: 0;
 	}
 }
