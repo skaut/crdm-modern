@@ -66,12 +66,13 @@ function blog_css() {
 	);
 
 	$separator = absint( $spacing_settings['separator'] );
+	$features_image_aspect_ratio = strval( round( 100 * $blog_settings['post_image_height'] / $blog_settings['post_image_width'], 2 ) );
 
 	$ret  = '.generate-columns {margin-bottom: ' . $separator . 'px;padding-left: ' . $separator . 'px;}';
 	$ret .= '.generate-columns-container {margin-left: -' . $separator . 'px;}';
-	$ret .= '.page-header {margin-bottom: ' . $separator . 'px;margin-left: ' . $separator . 'px}';
-	$ret .= '.generate-columns-container > .paging-navigation {margin-left: ' . $separator . 'px;}';
-	$ret .= '@media (min-width: 769px) {article:not(.generate-columns) .crdm-modern-excerpt .post-image img {height: ' . $blog_settings['post_image_height'] . 'px; width: ' . $blog_settings['post_image_width'] . 'px;}}';
+	$ret .= '.generate-columns .crdm-modern-excerpt .post-image {padding-top: ' . $features_image_aspect_ratio . '%;}';
+	$ret .= '@media (max-width: 768px) {.crdm-modern-excerpt .post-image {padding-top: ' . $features_image_aspect_ratio . '%;}}';
+	$ret .= '@media (min-width: 769px) {article:not(.generate-columns) .crdm-modern-excerpt .wp-post-image {height: ' . $blog_settings['post_image_height'] . 'px; width: ' . $blog_settings['post_image_width'] . 'px;}}';
 
 	return $ret;
 }
