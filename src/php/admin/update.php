@@ -24,7 +24,9 @@ function register() {
 		// translators: %s: Theme name.
 		__( 'The GitHub API response for the theme %s is invalid.', 'crdm-modern' ),
 		// translators: %s: Theme name.
-		__( 'The latest version of the theme %s does not contain an update zip file.', 'crdm-modern' )
+		__( 'The latest version of the theme %s does not contain an update zip file.', 'crdm-modern' ),
+		__( 'New version', 'crdm-modern' ),
+		__( 'No more info available.', 'crdm-modern' )
 	);
 	// @phan-suppress-next-line PhanNoopNew
 	new WordPress_Github_Updater( 'crdm-modern', 'skaut/crdm-modern', 'CRDM - Modern', 'theme' );
