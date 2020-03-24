@@ -104,6 +104,14 @@ msgstr "Odpověď GitHub API pro aktualizaci šablony %s je neplatná."
 msgid "The latest version of the theme %s does not contain an update zip file."
 msgstr "Nejnovější verze šablony %s neobsahuje soubor zip s aktualizací."
 
+#: admin/update.php:28
+msgid "New version"
+msgstr "Nová verze"
+
+#: admin/update.php:29
+msgid "No more info available."
+msgstr "Žádné další informace nejsou k dispozici."
+
 #: frontend/class-title-widget.php:64
 msgid "Title Widget"
 msgstr "Widget názvu webu"
