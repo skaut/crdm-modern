@@ -51,11 +51,11 @@ class WordPress_Github_Updater {
 	private static $err_msg_no_zip = 'The latest version of the package %s does not contain an update zip file.';
 
 	/**
-	 * Error message: "Version %s".
+	 * Error message: "New version".
 	 *
 	 * @var string
 	 */
-	private static $err_msg_version = 'Version %s';
+	private static $err_msg_version = 'New version';
 
 	/**
 	 * Error message: "No more info available.".
@@ -102,7 +102,7 @@ class WordPress_Github_Updater {
 	 * @param string $error_message Error message: "Error message:".
 	 * @param string $response_invalid Error message: "The GitHub API response for the package %s is invalid.".
 	 * @param string $no_zip Error message: "The latest version of the package %s does not contain an update zip file.".
-	 * @param string $version Error message: "Version %s".
+	 * @param string $version Error message: "New version".
 	 * @param string $no_info Error message: "No more info available.".
 	 *
 	 * @return void
@@ -167,19 +167,31 @@ class WordPress_Github_Updater {
 		$transient->response[ $this->wp_slug ] = array(
 			'theme'       => $this->wp_slug,
 			'new_version' => $version,
-			'url'         => admin_url( 'admin-ajax.php' ) . '?action=' . urlencode( $this->wp_slug . '_github_updater' ) . '&version=' . urlencode( $version ),
+			'url'         => admin_url( 'admin-ajax.php' ) . '?action=' . rawurlencode( $this->wp_slug . '_github_updater' ) . '&version=' . rawurlencode( $version ),
 			'package'     => $zip_url,
 		);
 		return $transient;
 	}
 
+	/**
+	 * Passes through the GitHub release page for the given version.
+	 *
+	 * @return void
+	 *
+	 * @SuppressWarnings(PHPMD.ExitExpression)
+	 */
 	public function update_url() {
-		if ( isset( $_GET['version'] ) ) {
-			echo file_get_contents( 'https://github.com/' . $this->gh_slug . '/releases/tag/' . $_GET['version'] );
-		} else {
-			echo '<h1>' . sprintf( self::$err_msg_version, $_GET['version'] ) . '</h1>' . self::$err_msg_no_info;
-			
+		if ( ! isset( $_GET['version'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			echo '<h1>' . esc_html( self::$err_msg_version ) . '</h1>' . esc_html( self::$err_msg_no_info );
+			die();
 		}
+		$version  = sanitize_text_field( wp_unslash( $_GET['version'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$response = wp_remote_get( 'https://github.com/' . $this->gh_slug . '/releases/tag/' . $version );
+		if ( is_wp_error( $response ) ) {
+			echo '<h1>' . esc_html( self::$err_msg_version ) . '</h1>' . esc_html( self::$err_msg_no_info );
+			die();
+		}
+		echo wp_remote_retrieve_body( $response ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		die();
 	}
 
