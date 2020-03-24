@@ -8,7 +8,7 @@ function addExcerptBorders(): void {
     return;
   }
   const articles = $(".site-main article .inside-article");
-  articles.addClass("crdm_modern_excerpt");
+  articles.addClass("crdm-modern-excerpt");
 }
 
 function addExcerptClickability(): void {
@@ -21,7 +21,7 @@ function addExcerptClickability(): void {
       .find(".entry-title a")
       .attr("href")!;
     $(article).click(function() {
-      location.href = href;
+      window.location.href = href;
     });
   });
 }

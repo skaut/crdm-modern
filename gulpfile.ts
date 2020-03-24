@@ -7,9 +7,12 @@ const composer = require("gulp-uglify/composer");
 const concat = require("gulp-concat");
 const inject = require("gulp-inject-string");
 const merge = require("merge-stream");
-const rename = require("gulp-rename");
+const potomo = require("gulp-potomo");
+import rename = require("gulp-rename"); // import needed for typings
+const shell = require("gulp-shell");
 const ts = require("gulp-typescript");
 const uglify = require("uglify-js");
+const wpPot = require("gulp-wp-pot");
 
 const minify = composer(uglify, console);
 
@@ -49,7 +52,7 @@ gulp.task("build:deps", gulp.parallel("build:deps:npm"));
 gulp.task("build:jpg:frontend", function() {
   return gulp
     .src("src/jpg/frontend/**/*.jpg")
-    .pipe(gulp.dest("dist/frontend/"));
+    .pipe(gulp.dest("dist/frontend/images/"));
 });
 
 gulp.task("build:jpg", gulp.parallel("build:jpg:frontend"));
@@ -83,9 +86,29 @@ gulp.task("build:js", function() {
       "admin",
       true
     ),
+    bundle(
+      "preset_on_activation",
+      ["src/ts/admin/preset_on_activation.ts"],
+      "admin",
+      true
+    ),
     bundle("customizer", ["src/ts/admin/customizer.ts"], "admin", true),
     bundle("blog", ["src/ts/frontend/blog.ts"], "frontend", true)
   );
+});
+
+gulp.task("build:mo", function() {
+  return gulp
+    .src("src/languages/*.po")
+    .pipe(potomo({ verbose: false }))
+    .pipe(
+      rename(function(path: rename.ParsedPath) {
+        path.basename = path.basename!.substring(
+          path.basename!.lastIndexOf("-") + 1
+        );
+      })
+    )
+    .pipe(gulp.dest("dist/languages/"));
 });
 
 gulp.task("build:php:root", function() {
@@ -118,7 +141,7 @@ gulp.task("build:png:admin", function() {
 gulp.task("build:png:frontend", function() {
   return gulp
     .src("src/png/frontend/**/*.png")
-    .pipe(gulp.dest("dist/frontend/"));
+    .pipe(gulp.dest("dist/frontend/images/"));
 });
 
 gulp.task(
@@ -139,8 +162,41 @@ gulp.task(
     "build:deps",
     "build:jpg",
     "build:js",
+    "build:mo",
     "build:php",
     "build:png",
     "build:txt"
+  )
+);
+
+gulp.task(
+  "update-translations:generate-pot",
+  gulp.series(function() {
+    return gulp
+      .src("src/php/**/*.php")
+      .pipe(
+        wpPot({
+          bugReport: "https://github.com/skaut/crdm-modern/issues",
+          domain: "crdm-modern",
+          relativeTo: "src/php"
+        })
+      )
+      .pipe(gulp.dest("src/languages/crdm-modern.pot"));
+  }, shell.task(
+    "msgmerge -U src/languages/crdm-modern.pot src/languages/crdm-modern.pot"
+  ))
+);
+
+gulp.task("update-translations:update-po", function() {
+  return gulp
+    .src("src/languages/*.po", { read: false })
+    .pipe(shell("msgmerge -U <%= file.path %> src/languages/crdm-modern.pot"));
+});
+
+gulp.task(
+  "update-translations",
+  gulp.series(
+    "update-translations:generate-pot",
+    "update-translations:update-po"
   )
 );

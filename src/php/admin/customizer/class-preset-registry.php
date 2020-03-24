@@ -81,7 +81,7 @@ class Preset_Registry {
 						'presets/blue.png',
 						array(
 							'crdm_modern'                  => array(
-								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/tee-pee.png',
+								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png',
 								'header_image_height'              => '220',
 								'header_image_top'                 => '13',
 								'header_image_right'               => '100',
@@ -128,11 +128,9 @@ class Preset_Registry {
 								'footer_widget_background_color'         => '#007bc2',
 								'footer_widget_text_color'               => '#ffffff',
 								'footer_widget_link_color'               => '#ffffff',
-								'footer_widget_title_color'              => '#ffffff',
 								// Typography.
 								'font_body'                              => 'Source Sans Pro',
 								'body_font_weight'                       => '600',
-								// TODO: Fix Customizer UI not updating for font sizes.
 								'body_font_size'                         => '15',
 								'font_site_title'                        => 'Raleway',
 								'site_title_font_weight'                 => '900',
@@ -172,13 +170,11 @@ class Preset_Registry {
 							),
 							'generate_background_settings' => array(
 								// Background.
-								// TODO: Fix Customizer UI not updating for images.
-								'body_image'      => get_stylesheet_directory_uri() . '/frontend/background.jpg',
+								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
 								'body_size'       => 'cover',
 								'body_attachment' => 'fixed',
 							),
 							// Typography.
-							// TODO: Fix Customizer UI not updating for font variants.
 							'font_body_variants'           => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
 							'font_site_title_variants'     => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 							'font_site_tagline_variants'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
@@ -186,10 +182,10 @@ class Preset_Registry {
 					),
 					'green' => new Preset(
 						__( 'Green', 'crdm-modern' ),
-						'presets/blue.png', // TODO: New images.
+						'presets/blue.png',
 						array(
 							'crdm_modern'                  => array(
-								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/tee-pee.png',
+								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png',
 								'header_image_height'              => '220',
 								'header_image_top'                 => '13',
 								'header_image_right'               => '100',
@@ -236,11 +232,9 @@ class Preset_Registry {
 								'footer_widget_background_color'         => '#009b67',
 								'footer_widget_text_color'               => '#ffffff',
 								'footer_widget_link_color'               => '#ffffff',
-								'footer_widget_title_color'              => '#ffffff',
 								// Typography.
 								'font_body'                              => 'Source Sans Pro',
 								'body_font_weight'                       => '600',
-								// TODO: Fix Customizer UI not updating for font sizes.
 								'body_font_size'                         => '15',
 								'font_site_title'                        => 'Raleway',
 								'site_title_font_weight'                 => '900',
@@ -280,7 +274,7 @@ class Preset_Registry {
 							),
 							'generate_background_settings' => array(
 								// Background.
-								'body_image'      => get_stylesheet_directory_uri() . '/frontend/background.jpg',
+								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
 								'body_size'       => 'cover',
 								'body_attachment' => 'fixed',
 							),

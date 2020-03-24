@@ -2,8 +2,20 @@ version: 2.1
 workflows:
   main:
     jobs:
-      - build
+      - build:
+          filters:
+            tags:
+              only: /.*/
       - lint:
+          requires:
+            - build
+      - translation-sync
+      - package:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
           requires:
             - build
 
@@ -52,6 +64,11 @@ jobs:
       - save_cache: *save_npm
 
       - run:
+          name: "Install gettext"
+          command: |
+            sudo apt-get update
+            sudo apt-get install gettext
+      - run:
           name: "Build"
           command: npm run build
       - persist_to_workspace:
@@ -83,3 +100,45 @@ jobs:
       - run:
           name: "Lint"
           command: npm run lint
+
+  translation-sync:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+
+      - restore_cache: *restore_npm
+      - run: *install_npm
+      - save_cache: *save_npm
+
+      - run:
+          name: "Install gettext"
+          command: |
+            sudo apt-get update
+            sudo apt-get install gettext
+      - run:
+          name: "Update translations"
+          command: npm run update-translations
+      - run:
+          name: Check for clean repo
+          command: |
+            [ -z "$(git status --porcelain)" ] || (c=$?; git status; (exit $c))
+
+  package:
+    docker:
+      - image: circleci/golang:latest
+    steps:
+      - checkout
+      - attach_workspace:
+          at: dist
+      - run:
+          name: "Install ghr"
+          command: go get github.com/tcnksm/ghr
+      - run:
+          name: "Create zip package"
+          command: |
+            cp -r dist ${CIRCLE_PROJECT_REPONAME}
+            zip -r ${CIRCLE_PROJECT_REPONAME}.${CIRCLE_TAG}.zip ${CIRCLE_PROJECT_REPONAME}
+      - run:
+          name: "Upload the package to GitHub"
+          command: ghr -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -n "Version ${CIRCLE_TAG}" ${CIRCLE_TAG} ${CIRCLE_PROJECT_REPONAME}.${CIRCLE_TAG}.zip

@@ -65,13 +65,14 @@ function blog_css() {
 		\generate_blog_get_defaults()
 	);
 
-	$separator = absint( $spacing_settings['separator'] );
+	$separator                   = absint( $spacing_settings['separator'] );
+	$features_image_aspect_ratio = strval( round( 100 * $blog_settings['post_image_height'] / $blog_settings['post_image_width'], 2 ) );
 
 	$ret  = '.generate-columns {margin-bottom: ' . $separator . 'px;padding-left: ' . $separator . 'px;}';
 	$ret .= '.generate-columns-container {margin-left: -' . $separator . 'px;}';
-	$ret .= '.page-header {margin-bottom: ' . $separator . 'px;margin-left: ' . $separator . 'px}';
-	$ret .= '.generate-columns-container > .paging-navigation {margin-left: ' . $separator . 'px;}';
-	$ret .= '@media (min-width: 769px) {article:not(.generate-columns) .crdm_modern_excerpt .post-image img {height: ' . $blog_settings['post_image_height'] . 'px; width: ' . $blog_settings['post_image_width'] . 'px;}}';
+	$ret .= '.generate-columns .crdm-modern-excerpt .post-image {padding-top: ' . $features_image_aspect_ratio . '%;}';
+	$ret .= '@media (max-width: 768px) {.crdm-modern-excerpt .post-image {padding-top: ' . $features_image_aspect_ratio . '%;}}';
+	$ret .= '@media (min-width: 769px) {article:not(.generate-columns) .crdm-modern-excerpt .wp-post-image {height: ' . $blog_settings['post_image_height'] . 'px; width: ' . $blog_settings['post_image_width'] . 'px;}}';
 
 	return $ret;
 }
@@ -159,14 +160,13 @@ function post_classes( $classes ) {
  * @return string the updated featured image HTML.
  */
 function featured_image() {
-	// TODO Dynamically select the best size depending on whether it is in columns.
 	$post_ID = get_the_ID();
 	return '<div class="post-image">' .
-			apply_filters( 'generate_inside_featured_image_output', '' ) //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+			apply_filters( 'generate_inside_featured_image_output', '' ) // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 			. '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' .
 				get_the_post_thumbnail(
 					$post_ID,
-					apply_filters( 'generate_page_header_default_size', 'full' ), //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+					apply_filters( 'generate_page_header_default_size', 'full' ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 					array(
 						'itemprop' => 'image',
 					)

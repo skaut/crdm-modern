@@ -194,13 +194,13 @@ function enqueue() {
 	);
 
 	// Header image.
-	$css->set_selector( '.crdm_modern_nav_image' );
+	$css->set_selector( '.crdm-modern-nav-image' );
 	$css->add_property( 'max-height', strval( absint( $crdm_modern_settings['header_image_height'] ) ), false, 'px' );
 	$css->add_property( 'top', strval( absint( $crdm_modern_settings['header_image_top'] ) ), false, 'px' );
 	$css->add_property( 'right', strval( absint( $crdm_modern_settings['header_image_right'] ) ), false, 'px' );
 
 	$css->start_media_query( '(max-width: ' . strval( absint( $crdm_modern_settings['header_image_min_width'] ) ) . 'px)' );
-	$css->set_selector( '.crdm_modern_nav_image' );
+	$css->set_selector( '.crdm-modern-nav-image' );
 	$css->add_property( 'display', 'none' );
 	$css->stop_media_query();
 
