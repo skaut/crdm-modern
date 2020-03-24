@@ -104,11 +104,11 @@ msgstr ""
 msgid "No more info available."
 msgstr ""
 
-#: frontend/class-title-widget.php:64
+#: frontend/class-title-widget.php:66
 msgid "Title Widget"
 msgstr ""
 
-#: frontend/class-title-widget.php:64
+#: frontend/class-title-widget.php:66
 msgid "A widget containing the site logo, title and tagline."
 msgstr ""
 
