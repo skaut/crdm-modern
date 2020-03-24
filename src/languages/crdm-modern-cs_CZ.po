@@ -112,11 +112,11 @@ msgstr "Nová verze"
 msgid "No more info available."
 msgstr "Žádné další informace nejsou k dispozici."
 
-#: frontend/class-title-widget.php:64
+#: frontend/class-title-widget.php:66
 msgid "Title Widget"
 msgstr "Widget názvu webu"
 
-#: frontend/class-title-widget.php:64
+#: frontend/class-title-widget.php:66
 msgid "A widget containing the site logo, title and tagline."
 msgstr "Widget obsahující logo, název a popis webu."
 
