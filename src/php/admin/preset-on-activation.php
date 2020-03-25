@@ -111,6 +111,7 @@ function apply_preset( $settings ) {
 		'generate_copyright',
 	);
 
+	// @phan-suppress-next-line PhanVariableDefinitionCouldBeConstant
 	$generate_implode_mods = array(
 		'font_body_variants',
 		'font_buttons_variants',
@@ -165,7 +166,7 @@ function apply_preset( $settings ) {
 	}
 
 	// Reset GeneratePress implode mods.
-	foreach ( $generate_mods as $mod ) {
+	foreach ( $generate_implode_mods as $mod ) {
 		if ( array_key_exists( $mod, $settings ) ) {
 			set_theme_mod( $mod, implode( ',', $settings[ $mod ] ) );
 		} else {
