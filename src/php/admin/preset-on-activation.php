@@ -95,35 +95,39 @@ function apply_preset( $settings ) {
 	// @phan-suppress-next-line PhanVariableDefinitionCouldBeConstant
 	$generate_mods = array(
 		'font_body_category',
-		'font_body_variants',
 		'font_buttons_category',
-		'font_buttons_variants',
 		'font_footer_category',
-		'font_footer_variants',
 		'font_heading_1_category',
-		'font_heading_1_variants',
 		'font_heading_2_category',
-		'font_heading_2_variants',
 		'font_heading_3_category',
-		'font_heading_3_variants',
 		'font_heading_4_category',
-		'font_heading_4_variants',
 		'font_heading_5_category',
-		'font_heading_5_variants',
 		'font_heading_6_category',
-		'font_heading_6_variants',
 		'font_navigation_category',
-		'font_navigation_variants',
 		'font_secondary_navigation_category',
-		'font_secondary_navigation_variants',
 		'font_site_tagline_category',
-		'font_site_tagline_variants',
 		'font_site_title_category',
-		'font_site_title_variants',
 		'font_widget_title_category',
-		'font_widget_title_variants',
 		'generate_copyright',
 	);
+
+	$generate_implode_mods = array(
+		'font_body_variants',
+		'font_buttons_variants',
+		'font_footer_variants',
+		'font_heading_1_variants',
+		'font_heading_2_variants',
+		'font_heading_3_variants',
+		'font_heading_4_variants',
+		'font_heading_5_variants',
+		'font_heading_6_variants',
+		'font_navigation_variants',
+		'font_secondary_navigation_variants',
+		'font_site_tagline_variants',
+		'font_site_title_variants',
+		'font_widget_title_variants',
+	);
+
 	// @phan-suppress-next-line PhanVariableDefinitionCouldBeConstant
 	$generate_settings = array(
 		'generate_background_settings',
@@ -155,6 +159,15 @@ function apply_preset( $settings ) {
 	foreach ( $generate_mods as $mod ) {
 		if ( array_key_exists( $mod, $settings ) ) {
 			set_theme_mod( $mod, $settings[ $mod ] );
+		} else {
+			remove_theme_mod( $mod );
+		}
+	}
+
+	// Reset GeneratePress implode mods.
+	foreach ( $generate_mods as $mod ) {
+		if ( array_key_exists( $mod, $settings ) ) {
+			set_theme_mod( $mod, implode( ',', $settings[ $mod ] ) );
 		} else {
 			remove_theme_mod( $mod );
 		}
