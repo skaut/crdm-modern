@@ -170,6 +170,14 @@ footer.site-info {
 	width: 100%;
 }
 
+.crdm-modern-title-widget-title {
+	line-height: 45px;
+}
+
+.crdm-modern-title-widget-tagline {
+	line-height: 1.5;
+}
+
 @media (max-width: 768px) {
 
 	.site-footer .footer-widgets .footer-widgets-container .inside-footer-widgets .grid-parent {
