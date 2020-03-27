@@ -40,6 +40,7 @@
 		"@types/jquery": "^3.3.34",
 		"@typescript-eslint/eslint-plugin": "^2.25.0",
 		"@typescript-eslint/parser": "^2.25.0",
+		"@wordpress/browserslist-config": "^2.6.0",
 		"@wordpress/eslint-plugin": "^4.0.0",
 		"eslint": "^6.8.0",
 		"eslint-plugin-compat": "^3.5.1",
@@ -62,7 +63,6 @@
 		"typescript": "^3.8.3"
 	},
 	"browserslist": [
-		"cover 95%",
-		"cover 95% in CZ"
+		"extends @wordpress/browserslist-config"
 	]
 }
