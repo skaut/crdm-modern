@@ -124,12 +124,12 @@ msgstr "Widget obsahující logo, název a popis webu."
 msgid "Blue"
 msgstr "Modrá"
 
-#: admin/customizer/class-preset-registry.php:156,
-#: admin/customizer/class-preset-registry.php:260
+#: admin/customizer/class-preset-registry.php:157,
+#: admin/customizer/class-preset-registry.php:262
 msgid "Read more"
 msgstr "Číst více"
 
-#: admin/customizer/class-preset-registry.php:184
+#: admin/customizer/class-preset-registry.php:185
 msgid "Green"
 msgstr "Zelená"
 

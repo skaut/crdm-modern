@@ -167,7 +167,16 @@ footer.site-info {
 
 .crdm-modern-title-widget-text {
 	float: left;
+	margin-top: 15px;
 	width: 100%;
+}
+
+.crdm-modern-title-widget-title {
+	line-height: 0.7;
+}
+
+.crdm-modern-title-widget-tagline {
+	line-height: 1.9;
 }
 
 @media (max-width: 768px) {
