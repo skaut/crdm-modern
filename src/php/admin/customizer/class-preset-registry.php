@@ -133,7 +133,7 @@ class Preset_Registry {
 								// Typography.
 								'font_body'                              => 'Source Sans Pro',
 								'body_font_weight'                       => '600',
-								'body_font_size'                         => '15',
+								'body_font_size'                         => '17',
 								'font_site_title'                        => 'Raleway',
 								'site_title_font_weight'                 => '900',
 								'font_site_tagline'                      => 'Raleway',
