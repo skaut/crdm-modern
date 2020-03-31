@@ -154,7 +154,7 @@ class Preset_Registry {
 							'generate_blog_settings'       => array(
 								// Layout.
 								'excerpt_length'             => '20',
-								'read_more'                  => __( 'Read more', 'crdm-modern' ) . ' >',
+								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
 								'author'                     => false,
 								'categories'                 => false,
 								'tags'                       => false,
@@ -259,7 +259,7 @@ class Preset_Registry {
 							'generate_blog_settings'       => array(
 								// Layout.
 								'excerpt_length'             => '20',
-								'read_more'                  => __( 'Read more', 'crdm-modern' ) . ' >',
+								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
 								'author'                     => false,
 								'categories'                 => false,
 								'tags'                       => false,

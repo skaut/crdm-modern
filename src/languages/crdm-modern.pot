@@ -118,7 +118,7 @@ msgstr ""
 
 #: admin/customizer/class-preset-registry.php:157,
 #: admin/customizer/class-preset-registry.php:262
-msgid "Read more"
+msgid "Read more >"
 msgstr ""
 
 #: admin/customizer/class-preset-registry.php:185
