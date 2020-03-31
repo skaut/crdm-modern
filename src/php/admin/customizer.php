@@ -15,6 +15,7 @@ require_once __DIR__ . '/customizer/colors.php';
 require_once __DIR__ . '/customizer/preset.php';
 require_once __DIR__ . '/customizer/layout.php';
 require_once __DIR__ . '/customizer/site-identity.php';
+require_once __DIR__ . '/customizer/typography.php';
 require_once __DIR__ . '/customizer/controls/class-external-image-control.php';
 
 /**
@@ -25,6 +26,7 @@ function register() {
 	Preset\register();
 	Layout\register();
 	Site_Identity\register();
+	Typography\register();
 	add_action( 'customize_register', '\\CrdmModern\\Admin\\Customizer\\fix_images', 1000 );
 	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Admin\\Customizer\\enqueue', 11 );
 }

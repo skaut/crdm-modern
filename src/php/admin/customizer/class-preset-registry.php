@@ -99,6 +99,8 @@ class Preset_Registry {
 								// Read more link.
 								'read_more_color'                  => '#007bc2',
 								'read_more_hover_color'            => '#ffffff',
+								// Blog typography.
+								'blog_font_size'                   => 15,
 							),
 							'generate_settings'            => array(
 								// Site Identity.
@@ -131,7 +133,7 @@ class Preset_Registry {
 								// Typography.
 								'font_body'                              => 'Source Sans Pro',
 								'body_font_weight'                       => '600',
-								'body_font_size'                         => '15',
+								'body_font_size'                         => '17',
 								'font_site_title'                        => 'Raleway',
 								'site_title_font_weight'                 => '900',
 								'font_site_tagline'                      => 'Raleway',
@@ -204,6 +206,8 @@ class Preset_Registry {
 								// Read more link.
 								'read_more_color'                  => '#009b67',
 								'read_more_hover_color'            => '#ffffff',
+								// Blog typography.
+								'blog_font_size'                   => 15,
 							),
 							'generate_settings'            => array(
 								// Site Identity.
