@@ -53,11 +53,11 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			$wp_customize,
 			'crdm_modern[blog_font_size]',
 			array(
-				'description' => __( 'Font size', 'crdm_modern' ),
+				'description' => __( 'Font size', 'crdm-modern' ),
 				'section'     => 'crdm_modern_blog_typography',
 				'priority'    => 40,
 				'settings'    => array(
-					'desktop' => 'crdm_modern[blog_font_size]'
+					'desktop' => 'crdm_modern[blog_font_size]',
 				),
 				'choices'     => array(
 					'desktop' => array(
@@ -66,8 +66,8 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 						'step' => 1,
 						'edit' => true,
 						'unit' => 'px',
-					)
-				)
+					),
+				),
 			)
 		)
 	);
