@@ -1,0 +1,26 @@
+.crdm-modern-title-widget-image {
+	margin-left: -100%;
+}
+
+.crdm-modern-title-widget-text {
+	float: left;
+	margin-top: 15px;
+	width: 100%;
+}
+
+.crdm-modern-title-widget-title {
+	line-height: 0.7;
+}
+
+.crdm-modern-title-widget-tagline {
+	line-height: 1.9;
+}
+
+@media (max-width: 768px) {
+
+	.site-footer .footer-widgets .footer-widgets-container .inside-footer-widgets .grid-parent {
+		margin-left: auto;
+		margin-right: auto;
+		width: max-content;
+	}
+}

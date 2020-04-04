@@ -18,8 +18,17 @@ const minify = composer(uglify, console);
 
 gulp.task("build:css:main", function() {
   return gulp
-    .src("src/css/style.css")
+    .src([
+      "src/css/style.css",
+      "src/css/frontend/blog.css",
+      "src/css/frontend/footer.css",
+      "src/css/frontend/header-image.css",
+      "src/css/frontend/sidebar.css",
+      "src/css/frontend/site-title.css",
+      "src/css/frontend/title-widget.css"
+    ])
     .pipe(cleanCSS({ compatibility: "ie8" }))
+    .pipe(concat("style.css"))
     .pipe(gulp.dest("dist/"));
 });
 
