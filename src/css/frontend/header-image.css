@@ -1,0 +1,8 @@
+.crdm-modern-nav-image-container {
+	position: relative;
+}
+
+.crdm-modern-nav-image {
+	position: absolute;
+	z-index: 1;
+}

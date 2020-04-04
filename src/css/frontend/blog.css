@@ -1,0 +1,79 @@
+.one-container .inside-article.crdm-modern-excerpt {
+	border-style: solid;
+	border-width: 1px;
+	padding-bottom: 0;
+	cursor: pointer;
+	transition: color 0.1s ease-in-out;
+}
+
+.post-image-above-header .crdm-modern-excerpt div.post-image {
+	margin: 0;
+}
+
+.generate-columns .crdm-modern-excerpt .post-image {
+	position: relative;
+	width: 100%;
+}
+
+.generate-columns .crdm-modern-excerpt .post-image a {
+	height: 100%;
+	position: absolute;
+	top: 0;
+}
+
+.crdm-modern-excerpt .wp-post-image {
+	object-fit: cover;
+	vertical-align: bottom;
+}
+
+.generate-columns .crdm-modern-excerpt .wp-post-image {
+	height: 100%;
+}
+
+@media (max-width: 767px) {
+
+	.generate-columns-container {
+		margin-left: unset !important;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.crdm-modern-excerpt .post-image {
+		position: relative;
+		width: 100%;
+	}
+
+	body:not(.post-image-aligned-center) .inside-article.crdm-modern-excerpt .post-image {
+		text-align: left;
+	}
+
+	.crdm-modern-excerpt .post-image a {
+		height: 100%;
+		position: absolute;
+		top: 0;
+	}
+
+	.crdm-modern-excerpt .wp-post-image {
+		height: 100%;
+	}
+}
+
+.crdm-modern-excerpt .entry-header {
+	left: 1em;
+	margin-right: 2em;
+	position: relative;
+	top: 1em;
+}
+
+.crdm-modern-excerpt .entry-summary {
+	left: 1em;
+	margin: 1.5em 2em 1em 0;
+	position: relative;
+}
+
+.crdm-modern-excerpt .read-more {
+	display: block;
+	font-weight: 700;
+	margin-top: 7px;
+}
