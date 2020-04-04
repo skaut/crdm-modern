@@ -81,7 +81,7 @@ class Preset_Registry {
 						'presets/blue.png',
 						array(
 							'crdm_modern'                  => array(
-								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png',
+								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tent.png',
 								'header_image_height'              => '220',
 								'header_image_top'                 => '13',
 								'header_image_right'               => '100',
