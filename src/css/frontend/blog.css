@@ -67,6 +67,7 @@
 	margin-left: 1em;
 }
 
+.post-image-aligned-center .generate-columns .crdm-modern-excerpt .post-image,
 .post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
 	text-align: left;
 }
