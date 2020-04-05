@@ -69,7 +69,7 @@ function blog_css() {
 	$features_image_aspect_ratio = strval( round( 100 * $blog_settings['post_image_height'] / $blog_settings['post_image_width'], 2 ) );
 
 	return '.generate-columns {' .
-		'margin-bottom: ' . $separator . 'px;' . // TODO: Incorrect
+		'margin-bottom: ' . $separator . 'px;' .
 		'padding-left: ' . $separator . 'px;' .
 		'}' .
 		'.generate-columns-container {' .
