@@ -39,14 +39,14 @@ class Preset_Registry {
 	}
 
 	/**
-	 * Returns an associative array where each item contains the flattened settings of a preset
+	 * Returns an associative array where each item contains all the settings of a preset.
 	 *
 	 * @return array A list of flattened preset settings.
 	 */
-	public function flat_settings() {
+	public function settings() {
 		$ret = array();
 		foreach ( $this->presets as $id => $preset ) {
-			$ret[ $id ] = $preset->flat_settings();
+			$ret[ $id ] = $preset->settings;
 		}
 		return $ret;
 	}
