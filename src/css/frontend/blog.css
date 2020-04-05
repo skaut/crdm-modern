@@ -15,10 +15,6 @@
 	width: 100%;
 }
 
-.post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
-	text-align: left;
-}
-
 .generate-columns .crdm-modern-excerpt .post-image a {
 	height: 100%;
 	position: absolute;
@@ -63,16 +59,26 @@
 	}
 }
 
+.post-image-aligned-left .post-image {
+	margin-right: 1em !important;
+}
+
+.post-image-aligned-right .post-image {
+	margin-left: 1em !important;
+}
+
+.post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
+	text-align: left;
+}
+
 .crdm-modern-excerpt .entry-header {
-	left: 1em;
-	margin-right: 2em;
+	margin: 0 1em;
 	position: relative;
 	top: 1em;
 }
 
 .crdm-modern-excerpt .entry-summary {
-	left: 1em;
-	margin: 1.5em 2em 1em 0;
+	margin: 1.5em 1em 1em 1em;
 	position: relative;
 }
 
