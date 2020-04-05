@@ -64,18 +64,10 @@
 
 @media (min-width: 769px) {
 
-	.post-image-aligned-left .crdm-modern-excerpt .entry-header,
-	.post-image-aligned-left .crdm-modern-excerpt .entry-summary {
-		margin-left: calc(300px + 1em);
-	}
-
-	.post-image-aligned-right .crdm-modern-excerpt .entry-header,
-	.post-image-aligned-right .crdm-modern-excerpt .entry-summary {
-		margin-right: calc(300px + 1em);
-	}
-
-	.generate-columns .crdm-modern-excerpt .entry-header,
-	.generate-columns .crdm-modern-excerpt .entry-summary {
+	.post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-header,
+	.post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-summary,
+	.post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-header,
+	.post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-summary {
 		margin-left: 1em;
 		margin-right: 1em;
 	}
