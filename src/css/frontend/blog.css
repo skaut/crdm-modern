@@ -10,11 +10,13 @@
 	margin: 0;
 }
 
+.post-image-aligned-center .crdm-modern-excerpt .post-image,
 .generate-columns .crdm-modern-excerpt .post-image {
 	position: relative;
 	width: 100%;
 }
 
+.post-image-aligned-center .crdm-modern-excerpt .post-image a,
 .generate-columns .crdm-modern-excerpt .post-image a {
 	height: 100%;
 	position: absolute;
@@ -26,6 +28,7 @@
 	vertical-align: bottom;
 }
 
+.post-image-aligned-center .crdm-modern-excerpt .wp-post-image,
 .generate-columns .crdm-modern-excerpt .wp-post-image {
 	height: 100%;
 }
@@ -59,16 +62,27 @@
 	}
 }
 
+.post-image-above-header.post-image-aligned-left div.post-image {
+	margin-right: 1em;
+}
+
+.post-image-above-header.post-image-aligned-right div.post-image {
+	margin-left: 1em;
+}
+
+.post-image-aligned-center .crdm-modern-excerpt .post-image,
+.post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
+	text-align: left;
+}
+
 .crdm-modern-excerpt .entry-header {
-	left: 1em;
-	margin-right: 2em;
+	margin: 0 1em;
 	position: relative;
 	top: 1em;
 }
 
 .crdm-modern-excerpt .entry-summary {
-	left: 1em;
-	margin: 1.5em 2em 1em 0;
+	margin: 1.5em 1em 1em 1em;
 	position: relative;
 }
 
