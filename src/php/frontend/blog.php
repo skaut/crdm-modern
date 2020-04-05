@@ -68,13 +68,36 @@ function blog_css() {
 	$separator                   = absint( $spacing_settings['separator'] );
 	$features_image_aspect_ratio = strval( round( 100 * $blog_settings['post_image_height'] / $blog_settings['post_image_width'], 2 ) );
 
-	$ret  = '.generate-columns {margin-bottom: ' . $separator . 'px;padding-left: ' . $separator . 'px;}';
-	$ret .= '.generate-columns-container {margin-left: -' . $separator . 'px;}';
-	$ret .= '.post-image-aligned-center .crdm-modern-excerpt .post-image, .generate-columns .crdm-modern-excerpt .post-image {padding-top: ' . $features_image_aspect_ratio . '%;}';
-	$ret .= '@media (max-width: 768px) {.crdm-modern-excerpt .post-image {padding-top: ' . $features_image_aspect_ratio . '%;}}';
-	$ret .= '@media (min-width: 769px) {body:not(.post-image-aligned-center) article:not(.generate-columns) .crdm-modern-excerpt .wp-post-image {height: ' . $blog_settings['post_image_height'] . 'px; width: ' . $blog_settings['post_image_width'] . 'px;}}';
-
-	return $ret;
+	return '.generate-columns {' .
+		'margin-bottom: ' . $separator . 'px;' .
+		'padding-left: ' . $separator . 'px;' .
+		'}' .
+		'.generate-columns-container {' .
+		'margin-left: -' . $separator . 'px;' .
+		'}' .
+		'.post-image-aligned-center .crdm-modern-excerpt .post-image,' .
+		'.generate-columns .crdm-modern-excerpt .post-image {' .
+		'padding-top: ' . $features_image_aspect_ratio . '%;' .
+		'}' .
+		'@media (max-width: 768px) {' .
+		'.crdm-modern-excerpt .post-image {' .
+		'padding-top: ' . $features_image_aspect_ratio . '%;' .
+		'}' .
+		'}' .
+		'@media (min-width: 769px) {' .
+		'body:not(.post-image-aligned-center) article:not(.generate-columns) .crdm-modern-excerpt .wp-post-image {' .
+		'height: ' . $blog_settings['post_image_height'] . 'px;' .
+		'width: ' . $blog_settings['post_image_width'] . 'px;' .
+		'}' .
+		'.post-image-aligned-left .crdm-modern-excerpt .entry-header,' .
+		'.post-image-aligned-left .crdm-modern-excerpt .entry-summary {' .
+		'margin-left: calc(' . $blog_settings['post_image_width'] . 'px + 1em);' .
+		'}' .
+		'.post-image-aligned-right .crdm-modern-excerpt .entry-header,' .
+		'.post-image-aligned-right .crdm-modern-excerpt .entry-summary {' .
+		'margin-right: calc(' . $blog_settings['post_image_width'] . 'px + 1em);' .
+		'}' .
+		'}';
 }
 
 /**
