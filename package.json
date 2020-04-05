@@ -1,6 +1,6 @@
 {
 	"name": "crdm-modern",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "A modern WordPress theme made for children's organizations",
 	"keywords": [
 		"wordpress",
@@ -37,10 +37,11 @@
 	},
 	"devDependencies": {
 		"@types/gulp-rename": "0.0.33",
-		"@types/jquery": "^3.3.33",
-		"@typescript-eslint/eslint-plugin": "^2.25.0",
-		"@typescript-eslint/parser": "^2.25.0",
-		"@wordpress/eslint-plugin": "^4.0.0",
+		"@types/jquery": "^3.3.34",
+		"@typescript-eslint/eslint-plugin": "^2.26.0",
+		"@typescript-eslint/parser": "^2.26.0",
+		"@wordpress/browserslist-config": "^2.6.0",
+		"@wordpress/eslint-plugin": "^4.1.0",
 		"eslint": "^6.8.0",
 		"eslint-plugin-compat": "^3.5.1",
 		"gulp": "^4.0.2",
@@ -52,17 +53,16 @@
 		"gulp-shell": "^0.8.0",
 		"gulp-typescript": "^6.0.0-alpha.1",
 		"gulp-uglify": "^3.0.2",
-		"gulp-wp-pot": "^2.3.6",
+		"gulp-wp-pot": "^2.4.0",
 		"merge-stream": "^2.0.0",
 		"npm-run-all": "^4.1.5",
-		"stylelint": "^13.2.1",
+		"stylelint": "^13.3.0",
 		"stylelint-config-wordpress": "^16.0.0",
 		"stylelint-no-unsupported-browser-features": "^4.0.0",
-		"ts-node": "^8.8.1",
+		"ts-node": "^8.8.2",
 		"typescript": "^3.8.3"
 	},
 	"browserslist": [
-		"cover 95%",
-		"cover 95% in CZ"
+		"extends @wordpress/browserslist-config"
 	]
 }

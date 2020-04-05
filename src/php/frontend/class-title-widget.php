@@ -46,12 +46,12 @@ class Title_Widget extends \WP_Widget {
 		$css->set_selector( '.crdm-modern-title-widget-title' );
 		$css->add_property( 'font-family', 'inherit' !== $gp_settings['font_site_title'] ? $site_title_family : null );
 		$css->add_property( 'font-size', strval( absint( $gp_settings['site_title_font_size'] ) ), false, 'px' );
-		$css->add_property( 'font-weight', strval( absint( $gp_settings['site_title_font_weight'] ) ), false, 'px' );
+		$css->add_property( 'font-weight', strval( absint( $gp_settings['site_title_font_weight'] ) ), false );
 
 		$css->set_selector( '.crdm-modern-title-widget-tagline' );
 		$css->add_property( 'font-family', 'inherit' !== $gp_settings['font_site_tagline'] ? $site_tagline_family : null );
 		$css->add_property( 'font-size', strval( absint( $gp_settings['site_tagline_font_size'] ) ), false, 'px' );
-		$css->add_property( 'font-weight', strval( absint( $gp_settings['site_tagline_font_weight'] ) ), false, 'px' );
+		$css->add_property( 'font-weight', strval( absint( $gp_settings['site_tagline_font_weight'] ) ), false );
 
 		$output = $css->css_output();
 		if ( '' !== $output ) {

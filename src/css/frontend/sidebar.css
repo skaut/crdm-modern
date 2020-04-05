@@ -1,0 +1,32 @@
+/* Widget separators */
+.sidebar .inside-right-sidebar .widget {
+	border-left-style: solid;
+}
+
+.sidebar .inside-right-sidebar .widget.widget_search { /*stylelint-disable-line selector-class-pattern */
+	border-left: none;
+	padding-left: 0 !important;
+}
+
+@media (max-width: 768px) {
+
+	.sidebar .inside-right-sidebar .widget {
+		border-left: none;
+		padding-left: 0 !important;
+	}
+}
+
+/* Widgets */
+.sidebar .widget a {
+	text-decoration: underline;
+}
+
+.crdm-modern-inline-icon {
+	display: none;
+	margin-right: 5px;
+	vertical-align: middle;
+}
+
+.sidebar .crdm-modern-inline-icon {
+	display: inline;
+}

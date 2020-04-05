@@ -99,6 +99,8 @@ class Preset_Registry {
 								// Read more link.
 								'read_more_color'                  => '#007bc2',
 								'read_more_hover_color'            => '#ffffff',
+								// Blog typography.
+								'blog_font_size'                   => 15,
 							),
 							'generate_settings'            => array(
 								// Site Identity.
@@ -131,10 +133,11 @@ class Preset_Registry {
 								// Typography.
 								'font_body'                              => 'Source Sans Pro',
 								'body_font_weight'                       => '600',
-								'body_font_size'                         => '15',
+								'body_font_size'                         => '17',
 								'font_site_title'                        => 'Raleway',
 								'site_title_font_weight'                 => '900',
 								'font_site_tagline'                      => 'Raleway',
+								'site_tagline_font_weight'               => '400',
 								'site_tagline_font_size'                 => '25',
 								'navigation_font_weight'                 => 'bold',
 								'navigation_font_transform'              => 'uppercase',
@@ -153,7 +156,7 @@ class Preset_Registry {
 							'generate_blog_settings'       => array(
 								// Layout.
 								'excerpt_length'             => '20',
-								'read_more'                  => __( 'Read more', 'crdm-modern' ) . ' >',
+								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
 								'author'                     => false,
 								'categories'                 => false,
 								'tags'                       => false,
@@ -203,6 +206,8 @@ class Preset_Registry {
 								// Read more link.
 								'read_more_color'                  => '#009b67',
 								'read_more_hover_color'            => '#ffffff',
+								// Blog typography.
+								'blog_font_size'                   => 15,
 							),
 							'generate_settings'            => array(
 								// Site Identity.
@@ -239,6 +244,7 @@ class Preset_Registry {
 								'font_site_title'                        => 'Raleway',
 								'site_title_font_weight'                 => '900',
 								'font_site_tagline'                      => 'Raleway',
+								'site_tagline_font_weight'               => '400',
 								'site_tagline_font_size'                 => '25',
 								'navigation_font_weight'                 => 'bold',
 								'navigation_font_transform'              => 'uppercase',
@@ -257,7 +263,7 @@ class Preset_Registry {
 							'generate_blog_settings'       => array(
 								// Layout.
 								'excerpt_length'             => '20',
-								'read_more'                  => __( 'Read more', 'crdm-modern' ) . ' >',
+								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
 								'author'                     => false,
 								'categories'                 => false,
 								'tags'                       => false,

@@ -159,6 +159,11 @@ liveReload(
   [{ name: "padding-left", postfix: "px" }]
 );
 
+// Typography.
+liveReload("crdm_modern[blog_font_size]", ".crdm-modern-excerpt", [
+  { name: "font-size", postfix: "px" }
+]);
+
 // Title widget.
 liveReload(
   "generate_settings[logo_width]",

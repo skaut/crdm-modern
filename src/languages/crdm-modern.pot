@@ -35,7 +35,7 @@ msgid ""
 "the theme presets."
 msgstr ""
 
-#: admin/customizer.php:48
+#: admin/customizer.php:50
 msgid "Body"
 msgstr ""
 
@@ -116,12 +116,12 @@ msgstr ""
 msgid "Blue"
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:156,
-#: admin/customizer/class-preset-registry.php:260
-msgid "Read more"
+#: admin/customizer/class-preset-registry.php:159,
+#: admin/customizer/class-preset-registry.php:266
+msgid "Read more >"
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:184
+#: admin/customizer/class-preset-registry.php:187
 msgid "Green"
 msgstr ""
 
@@ -195,6 +195,14 @@ msgstr ""
 
 #: admin/customizer/site-identity.php:165
 msgid "Minimum Width to Show Header Image"
+msgstr ""
+
+#: admin/customizer/typography.php:34
+msgid "Blog"
+msgstr ""
+
+#: admin/customizer/typography.php:56
+msgid "Font size"
 msgstr ""
 
 #: admin/customizer/controls/class-preset-customize-control.php:126

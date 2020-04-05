@@ -3,7 +3,7 @@ Contributors: skaut, marekdedic
 Requires at least: 5.0.0
 Tested up to: 5.1
 Requires PHP: 7.0
-Version: 0.2.1
+Version: 0.2.2
 License: GPLv3 or later
 License URI: https://github.com/skaut/crdm-modern/blob/master/LICENSE
 Tags: two-columns, three-columns, one-column, right-sidebar, left-sidebar, footer-widgets, blog, e-commerce, flexible-header, full-width-template, custom-header, custom-background, custom-menu, custom-colors, sticky-post, threaded-comments, translation-ready, rtl-language-support, featured-images, theme-options, child-theme
@@ -43,6 +43,13 @@ https://wordpress.org/themes/generatepress/
 Copyright 2019 Junák – český skaut, z. s. distributed under the terms of the GNU GPLv3 or later.
 
 == Changelog ==
+
+= 0.2.2 =
+* Fixed font variants being incorrectly set when applying a preset after theme activation
+* Using WordPress browser compatibility settings
+* Fixed typography of the title widget to match that of the header
+* Added independent blog font size
+* Made article font size bigger
 
 = 0.2.1 =
 * Fixed update page being blocked by Content Security Policy
