@@ -59,12 +59,12 @@
 	}
 }
 
-.post-image-aligned-left .post-image {
-	margin-right: 1em !important;
+.post-image-above-header.post-image-aligned-left div.post-image {
+	margin-right: 1em;
 }
 
-.post-image-aligned-right .post-image {
-	margin-left: 1em !important;
+.post-image-above-header.post-image-aligned-right div.post-image {
+	margin-left: 1em;
 }
 
 .post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
