@@ -15,6 +15,10 @@
 	width: 100%;
 }
 
+.post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
+	text-align: left;
+}
+
 .generate-columns .crdm-modern-excerpt .post-image a {
 	height: 100%;
 	position: absolute;
