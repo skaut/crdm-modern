@@ -69,11 +69,13 @@ function blog_css() {
 	$features_image_aspect_ratio = strval( round( 100 * $blog_settings['post_image_height'] / $blog_settings['post_image_width'], 2 ) );
 
 	return '.generate-columns {' .
-		'margin-bottom: ' . $separator . 'px;' .
 		'padding-left: ' . $separator . 'px;' .
 		'}' .
 		'.generate-columns-container {' .
 		'margin-left: -' . $separator . 'px;' .
+		'}' .
+		'.crdm-modern-excerpt {' .
+		'margin-bottom: ' . $separator . 'px;' .
 		'}' .
 		'.post-image-aligned-center .crdm-modern-excerpt .post-image,' .
 		'.generate-columns .crdm-modern-excerpt .post-image {' .
