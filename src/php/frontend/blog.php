@@ -65,8 +65,8 @@ function blog_css() {
 		\generate_blog_get_defaults()
 	);
 
-	$separator                   = absint( $spacing_settings['separator'] ); // TODO: live reload
-	$content_separator           = abs( floatval( $spacing_settings['content_element_separator'] ) ); // TODO: live reload
+	$separator                   = absint( $spacing_settings['separator'] ); // TODO: live reload.
+	$content_separator           = abs( floatval( $spacing_settings['content_element_separator'] ) ); // TODO: live reload.
 	$features_image_aspect_ratio = strval( round( 100 * $blog_settings['post_image_height'] / $blog_settings['post_image_width'], 2 ) );
 
 	return '.generate-columns {' .
@@ -111,12 +111,12 @@ function blog_css() {
 		'top: ' . $content_separator . 'em;' .
 		'}' .
 		'.generate-columns .crdm-modern-excerpt .entry-summary {' .
-		'margin-top: ' . ($content_separator + 0.5) . 'em;' .
+		'margin-top: ' . ( $content_separator + 0.5 ) . 'em;' .
 		'}' .
 		'}' .
 		'.crdm-modern-excerpt .entry-header {' .
 		'margin: 0 ' . $content_separator . 'em;' .
-		'top: ' . ($content_separator - 0.5) . 'em;' .
+		'top: ' . ( $content_separator - 0.5 ) . 'em;' .
 		'}' .
 		'.crdm-modern-excerpt .entry-summary {' .
 		'margin: ' . $content_separator . 'em ' . $content_separator . 'em ' . $content_separator . 'em ' . $content_separator . 'em;' .
