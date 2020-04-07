@@ -4,9 +4,15 @@ interface LiveReloadProperty {
   postfix?: string;
 }
 
+interface MediaRules {
+  minWidth?: number;
+  maxWidth?: number;
+}
+
 interface LiveReloadTarget {
   selector: string;
   properties: Array<LiveReloadProperty>;
+  media?: MediaRules;
 }
 
 function hash(str: string): string {
@@ -21,27 +27,30 @@ function hash(str: string): string {
   return ret.toString();
 }
 
-function setCSSDirectly(target: LiveReloadTarget, value: any): void {
-  const el = $(target.selector);
-  $.each(target.properties, function(_, property) {
-    el.css(
-      property.name,
-      (property.prefix ?? "") + value + (property.postfix ?? "")
-    );
-  });
-}
-
 function setCSSInHead(
   setting: string,
   target: LiveReloadTarget,
   value: any
 ): void {
   const targetHash = hash(setting + target.selector);
+  let mediaBegin = "";
+  let mediaEnd = "";
+  if (target.media) {
+    mediaBegin = "@media (";
+    if (target.media.minWidth) {
+      mediaBegin += "min-width: " + target.media.minWidth;
+    } else if (target.media.maxWidth) {
+      mediaBegin += "max-width: " + target.media.maxWidth;
+    }
+    mediaBegin += "px) {\n";
+    mediaEnd = "}\n";
+  }
   $("head style#" + targetHash).remove();
   $("head").append(
     '<style id="' +
       targetHash +
       '">\n' +
+      mediaBegin +
       target.selector +
       " {\n" +
       $.map(target.properties, function(property) {
@@ -56,6 +65,7 @@ function setCSSInHead(
         );
       }).join("") +
       "}\n" +
+      mediaEnd +
       "</style>"
   );
 }
@@ -64,11 +74,7 @@ function liveReload(setting: string, targets: Array<LiveReloadTarget>): void {
   wp.customize(setting, function(value: any) {
     value.bind(function(newValue: any) {
       $.each(targets, function(_, target) {
-        if ($(target.selector).length > 0) {
-          setCSSDirectly(target, newValue);
-        } else {
-          setCSSInHead(setting, target, newValue);
-        }
+        setCSSInHead(setting, target, newValue);
       });
     });
   });
