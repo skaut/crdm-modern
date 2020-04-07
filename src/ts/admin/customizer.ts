@@ -1,7 +1,13 @@
+interface LiveReloadComputedProperty {
+  additionalSettings: Array<string>;
+  value: (value: any, additionalValues: Array<any>) => any;
+}
+
 interface LiveReloadProperty {
   name: string;
   prefix?: string;
   postfix?: string;
+  computed?: LiveReloadComputedProperty;
 }
 
 interface MediaRules {
@@ -54,12 +60,21 @@ function setCSSInHead(
       target.selector +
       " {\n" +
       $.map(target.properties, function(property) {
+        let computedValue = value;
+        if (property.computed) {
+          computedValue = property.computed.value(
+            value,
+            $.map(property.computed.additionalSettings, additionalSetting =>
+              wp.customize(additionalSetting).get()
+            )
+          );
+        }
         return (
           "\t" +
           property.name +
           ": " +
           (property.prefix ?? "") +
-          value +
+          computedValue +
           (property.postfix ?? "") +
           ";\n"
         );
