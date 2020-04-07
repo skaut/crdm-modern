@@ -4,10 +4,15 @@ interface LiveReloadProperty {
   postfix?: string;
 }
 
-interface MediaRules {
-  minWidth?: number;
-  maxWidth?: number;
+interface MediaRulesMinWidth {
+  minWidth: number;
 }
+
+interface MediaRulesMaxWidth {
+  maxWidth: number;
+}
+
+type MediaRules = MediaRulesMinWidth | MediaRulesMaxWidth;
 
 interface LiveReloadTarget {
   selector: string;
@@ -27,6 +32,14 @@ function hash(str: string): string {
   return ret.toString();
 }
 
+function isMediaRulesMinWidth(rules: MediaRules): rules is MediaRulesMinWidth {
+  return (rules as MediaRulesMinWidth).minWidth !== undefined;
+}
+
+function isMediaRulesMaxWidth(rules: MediaRules): rules is MediaRulesMaxWidth {
+  return (rules as MediaRulesMaxWidth).maxWidth !== undefined;
+}
+
 function setCSSInHead(
   setting: string,
   target: LiveReloadTarget,
@@ -37,9 +50,9 @@ function setCSSInHead(
   let mediaEnd = "";
   if (target.media) {
     mediaBegin = "@media (";
-    if (target.media.minWidth) {
+    if (isMediaRulesMinWidth(target.media)) {
       mediaBegin += "min-width: " + target.media.minWidth;
-    } else if (target.media.maxWidth) {
+    } else if (isMediaRulesMaxWidth(target.media)) {
       mediaBegin += "max-width: " + target.media.maxWidth;
     }
     mediaBegin += "px) {\n";
