@@ -65,7 +65,8 @@ function blog_css() {
 		\generate_blog_get_defaults()
 	);
 
-	$separator                   = absint( $spacing_settings['separator'] );
+	$separator                   = absint( $spacing_settings['separator'] ); // TODO: in preset, live reload
+	$content_separator           = abs( floatval( $spacing_settings['content_element_separator'] ) ); // TODO: live reload
 	$features_image_aspect_ratio = strval( round( 100 * $blog_settings['post_image_height'] / $blog_settings['post_image_width'], 2 ) );
 
 	return '.generate-columns {' .
@@ -93,12 +94,32 @@ function blog_css() {
 		'}' .
 		'.post-image-aligned-left .crdm-modern-excerpt .entry-header,' .
 		'.post-image-aligned-left .crdm-modern-excerpt .entry-summary {' .
-		'margin-left: calc(' . $blog_settings['post_image_width'] . 'px + 1em);' .
+		'margin-left: calc(' . $blog_settings['post_image_width'] . 'px + ' . $content_separator . 'em);' .
 		'}' .
 		'.post-image-aligned-right .crdm-modern-excerpt .entry-header,' .
 		'.post-image-aligned-right .crdm-modern-excerpt .entry-summary {' .
-		'margin-right: calc(' . $blog_settings['post_image_width'] . 'px + 1em);' .
+		'margin-right: calc(' . $blog_settings['post_image_width'] . 'px + ' . $content_separator . 'em);' .
 		'}' .
+		'.post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-header,' .
+		'.post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-summary,' .
+		'.post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-header,' .
+		'.post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-summary {' .
+		'margin-left: ' . $content_separator . 'em;' .
+		'margin-right: ' . $content_separator . 'em;' .
+		'}' .
+		'.generate-columns .crdm-modern-excerpt .entry-header {' .
+		'top: ' . $content_separator . 'em;' .
+		'}' .
+		'.generate-columns .crdm-modern-excerpt .entry-summary {' .
+		'margin-top: ' . ($content_separator + 0.5) . 'em;' .
+		'}' .
+		'}' .
+		'.crdm-modern-excerpt .entry-header {' .
+		'margin: 0 ' . $content_separator . 'em;' .
+		'top: ' . ($content_separator - 0.5) . 'em;' .
+		'}' .
+		'.crdm-modern-excerpt .entry-summary {' .
+		'margin: ' . $content_separator . 'em ' . $content_separator . 'em ' . $content_separator . 'em ' . $content_separator . 'em;' .
 		'}';
 }
 

@@ -66,35 +66,21 @@
 	}
 }
 
-@media (min-width: 769px) {
-
-	.post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-header,
-	.post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-summary,
-	.post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-header,
-	.post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-summary {
-		margin-left: 1em;
-		margin-right: 1em;
-	}
-}
-
 .post-image-aligned-center .crdm-modern-excerpt .post-image,
 .post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
 	text-align: left;
 }
 
 .crdm-modern-excerpt .entry-header {
-	margin: 0 1em;
 	position: relative;
-	top: 1em;
 }
 
 .crdm-modern-excerpt .entry-summary {
-	margin: 1.5em 1em 1em 1em;
 	position: relative;
 }
 
 .crdm-modern-excerpt .read-more {
 	display: block;
 	font-weight: 700;
-	margin-top: 7px;
+	margin-top: 1em;
 }
