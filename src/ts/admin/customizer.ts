@@ -1,6 +1,6 @@
 interface LiveReloadComputedProperty {
   additionalSettings: Array<string>;
-  value: (value: any, additionalValues: Array<any>) => any;
+  value: (value: any, additionalValues: Array<any>) => string;
 }
 
 interface LiveReloadProperty {
@@ -207,65 +207,99 @@ liveReload("generate_spacing_settings[separator]", [
     properties: [{ name: "margin-bottom", postfix: "px" }]
   }
 ]);
-liveReload("generate_blog_settings[post_image_height]", [
+
+liveReload("generate_spacing_settings[content_element_separator]", [
   {
     selector:
-      ".post-image-aligned-center .crdm-modern-excerpt .post-image, .generate-columns .crdm-modern-excerpt .post-image",
+      ".post-image-aligned-left .crdm-modern-excerpt .entry-header, .post-image-aligned-left .crdm-modern-excerpt .entry-summary",
+    media: { minWidth: 769 },
     properties: [
       {
-        name: "padding-top",
-        postfix: "%",
+        name: "margin-left",
         computed: {
           additionalSettings: ["generate_blog_settings[post_image_width]"],
           value: (value, additionalValues): string =>
-            (Math.round((10000 * value) / additionalValues[0]) / 100).toString()
+            "calc(" + additionalValues[0] + "px + " + value + "em)"
         }
       }
     ]
   },
   {
-    selector: ".crdm-modern-excerpt .post-image",
-    media: { maxWidth: 768 },
+    selector:
+      ".post-image-aligned-right .crdm-modern-excerpt .entry-header, .post-image-aligned-right .crdm-modern-excerpt .entry-summary",
+    media: { minWidth: 769 },
     properties: [
       {
-        name: "padding-top",
-        postfix: "%",
+        name: "margin-right",
         computed: {
           additionalSettings: ["generate_blog_settings[post_image_width]"],
           value: (value, additionalValues): string =>
-            (Math.round((10000 * value) / additionalValues[0]) / 100).toString()
-        }
-      }
-    ]
-  }
-]);
-liveReload("generate_blog_settings[post_image_width]", [
-  {
-    selector:
-      ".post-image-aligned-center .crdm-modern-excerpt .post-image, .generate-columns .crdm-modern-excerpt .post-image",
-    properties: [
-      {
-        name: "padding-top",
-        postfix: "%",
-        computed: {
-          additionalSettings: ["generate_blog_settings[post_image_height]"],
-          value: (value, additionalValues): string =>
-            (Math.round((10000 * additionalValues[0]) / value) / 100).toString()
+            "calc(" + additionalValues[0] + "px + " + value + "em)"
         }
       }
     ]
   },
   {
-    selector: ".crdm-modern-excerpt .post-image",
-    media: { maxWidth: 768 },
+    selector:
+      ".post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-header, .post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-summary, .post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-header, .post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-summary",
+    media: { minWidth: 769 },
     properties: [
       {
-        name: "padding-top",
-        postfix: "%",
+        name: "margin-left",
+        postfix: "em"
+      },
+      {
+        name: "margin-right",
+        postfix: "em"
+      }
+    ]
+  },
+  {
+    selector: ".generate-columns .crdm-modern-excerpt .entry-header",
+    media: { minWidth: 769 },
+    properties: [{ name: "top", postfix: "em" }]
+  },
+  {
+    selector: ".generate-columns .crdm-modern-excerpt .entry-summary",
+    media: { minWidth: 769 },
+    properties: [
+      {
+        name: "margin-top",
+        postfix: "em",
         computed: {
-          additionalSettings: ["generate_blog_settings[post_image_height]"],
-          value: (value, additionalValues): string =>
-            (Math.round((10000 * additionalValues[0]) / value) / 100).toString()
+          additionalSettings: [],
+          value: (value): string => (parseFloat(value) + 0.5).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector: ".crdm-modern-excerpt .entry-header",
+    properties: [
+      {
+        name: "margin",
+        prefix: "0 ",
+        postfix: "em"
+      },
+      {
+        name: "top",
+        postfix: "em",
+        computed: {
+          additionalSettings: [],
+          value: (value): string => (parseFloat(value) - 0.5).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector: ".crdm-modern-excerpt .entry-summary",
+    properties: [
+      {
+        name: "margin",
+        computed: {
+          additionalSettings: [],
+          value: (value): string =>
+            value + "em " + value + "em " + value + "em " + value + "em"
         }
       }
     ]
