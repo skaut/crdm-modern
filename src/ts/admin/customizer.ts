@@ -17,8 +17,8 @@ interface MediaRules {
 
 interface LiveReloadTarget {
   selector: string;
-  properties: Array<LiveReloadProperty>;
   media?: MediaRules;
+  properties: Array<LiveReloadProperty>;
 }
 
 function hash(str: string): string {
@@ -192,14 +192,7 @@ liveReload("crdm_modern[read_more_hover_color]", [
   }
 ]);
 
-// Layout.
-liveReload("generate_settings[header_background_color]", [
-  {
-    selector: ".main-navigation",
-    properties: [{ name: "background-color" }]
-  }
-]);
-
+// Blog.
 liveReload("generate_spacing_settings[separator]", [
   {
     selector: ".generate-columns",
@@ -212,6 +205,78 @@ liveReload("generate_spacing_settings[separator]", [
   {
     selector: ".crdm-modern-excerpt",
     properties: [{ name: "margin-bottom", postfix: "px" }]
+  }
+]);
+liveReload("generate_blog_settings[post_image_height]", [
+  {
+    selector:
+      ".post-image-aligned-center .crdm-modern-excerpt .post-image, .generate-columns .crdm-modern-excerpt .post-image",
+    properties: [
+      {
+        name: "padding-top",
+        postfix: "%",
+        computed: {
+          additionalSettings: ["generate_blog_settings[post_image_width]"],
+          value: (value, additionalValues): string =>
+            (Math.round((10000 * value) / additionalValues[0]) / 100).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector: ".crdm-modern-excerpt .post-image",
+    media: { maxWidth: 768 },
+    properties: [
+      {
+        name: "padding-top",
+        postfix: "%",
+        computed: {
+          additionalSettings: ["generate_blog_settings[post_image_width]"],
+          value: (value, additionalValues): string =>
+            (Math.round((10000 * value) / additionalValues[0]) / 100).toString()
+        }
+      }
+    ]
+  }
+]);
+liveReload("generate_blog_settings[post_image_width]", [
+  {
+    selector:
+      ".post-image-aligned-center .crdm-modern-excerpt .post-image, .generate-columns .crdm-modern-excerpt .post-image",
+    properties: [
+      {
+        name: "padding-top",
+        postfix: "%",
+        computed: {
+          additionalSettings: ["generate_blog_settings[post_image_height]"],
+          value: (value, additionalValues): string =>
+            (Math.round((10000 * additionalValues[0]) / value) / 100).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector: ".crdm-modern-excerpt .post-image",
+    media: { maxWidth: 768 },
+    properties: [
+      {
+        name: "padding-top",
+        postfix: "%",
+        computed: {
+          additionalSettings: ["generate_blog_settings[post_image_height]"],
+          value: (value, additionalValues): string =>
+            (Math.round((10000 * additionalValues[0]) / value) / 100).toString()
+        }
+      }
+    ]
+  }
+]);
+
+// Layout.
+liveReload("generate_settings[header_background_color]", [
+  {
+    selector: ".main-navigation",
+    properties: [{ name: "background-color" }]
   }
 ]);
 
