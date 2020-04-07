@@ -65,7 +65,7 @@ function blog_css() {
 		\generate_blog_get_defaults()
 	);
 
-	$separator                   = absint( $spacing_settings['separator'] ); // TODO: in preset, live reload
+	$separator                   = absint( $spacing_settings['separator'] ); // TODO: live reload
 	$content_separator           = abs( floatval( $spacing_settings['content_element_separator'] ) ); // TODO: live reload
 	$features_image_aspect_ratio = strval( round( 100 * $blog_settings['post_image_height'] / $blog_settings['post_image_width'], 2 ) );
 
