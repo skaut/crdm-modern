@@ -1,4 +1,3 @@
-// TODO: Check all live-reload properties
 interface LiveReloadProperty {
   name: string;
   prefix?: string;
@@ -180,6 +179,20 @@ liveReload("generate_settings[header_background_color]", [
   }
 ]);
 
+liveReload("generate_spacing_settings[separator]", [
+  {
+    selector: ".generate-columns",
+    properties: [{ name: "padding-left", postfix: "px" }]
+  },
+  {
+    selector: ".generate-columns-container",
+    properties: [{ name: "margin-left", prefix: "-", postfix: "px" }]
+  },
+  {
+    selector: ".crdm-modern-excerpt",
+    properties: [{ name: "margin-bottom", postfix: "px" }]
+  }
+]);
 
 liveReload("crdm_modern[primary_navigation_spacing]", [
   {
