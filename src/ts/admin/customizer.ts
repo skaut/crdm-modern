@@ -1,5 +1,6 @@
 interface LiveReloadProperty {
   name: string;
+  prefix?: string;
   postfix?: string;
 }
 
@@ -25,7 +26,10 @@ function liveReload(
       const el = $(selector);
       if (el.length > 0) {
         $.each(properties, function(_, property) {
-          el.css(property.name, newValue + (property.postfix ?? ""));
+          el.css(
+            property.name,
+            (property.prefix ?? "") + newValue + (property.postfix ?? "")
+          );
         });
       } else {
         $("head style#" + hash(setting + selector)).remove();
@@ -40,6 +44,7 @@ function liveReload(
                 "\t" +
                 property.name +
                 ": " +
+                (property.prefix ?? "") +
                 newValue +
                 (property.postfix ?? "") +
                 ";\n"
