@@ -116,12 +116,12 @@ msgstr ""
 msgid "Blue"
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:159,
-#: admin/customizer/class-preset-registry.php:266
+#: admin/customizer/class-preset-registry.php:160,
+#: admin/customizer/class-preset-registry.php:268
 msgid "Read more >"
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:187
+#: admin/customizer/class-preset-registry.php:188
 msgid "Green"
 msgstr ""
 
