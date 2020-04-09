@@ -85,59 +85,76 @@ function setCSSInHead(
   );
 }
 
-function liveReload(setting: string, targets: Array<LiveReloadTarget>): void {
+function liveReload(
+  setting: string,
+  targets: Array<LiveReloadTarget>,
+  fallbacks?: Array<string>
+): void {
   wp.customize(setting, function(value: any) {
     value.bind(function(newValue: any) {
+      if (!newValue && fallbacks) {
+        $.each(fallbacks, function(_, fallback) {
+          const fallbackValue = wp.customize(fallback).get();
+          if (fallbackValue) {
+            newValue = fallbackValue;
+            return false;
+          }
+          return true;
+        });
+      }
       $.each(targets, function(_, target) {
         setCSSInHead(setting, target, newValue);
       });
     });
   });
+  if (fallbacks) {
+    for (let i = 0; i < fallbacks.length; i++) {
+      wp.customize(fallbacks[i], function(value: any) {
+        value.bind(function(newValue: any) {
+          if (wp.customize(setting).get()) {
+            return;
+          }
+          for (let j = 0; j < i; j++) {
+            if (wp.customize(fallbacks[j]).get()) {
+              return;
+            }
+          }
+          $.each(targets, function(_, target) {
+            setCSSInHead(setting, target, newValue);
+          });
+        });
+      });
+    }
+  }
 }
 
-// Site Identity.
-liveReload("crdm_modern[header_image_height]", [
-  {
-    selector: ".crdm-modern-nav-image",
-    properties: [{ name: "max-height", postfix: "px" }]
-  }
-]);
-liveReload("crdm_modern[header_image_top]", [
-  {
-    selector: ".crdm-modern-nav-image",
-    properties: [{ name: "top", postfix: "px" }]
-  }
-]);
-liveReload("crdm_modern[header_image_right]", [
-  {
-    selector: ".crdm-modern-nav-image",
-    properties: [{ name: "right", postfix: "px" }]
-  }
-]);
-
-// Colors.
+// Customizer - Colors.
 liveReload("generate_settings[sidebar_widget_background_color]", [
   {
     selector: ".sidebar .widget_search .search-field",
     properties: [{ name: "background-color" }]
   }
 ]);
-liveReload("generate_settings[sidebar_widget_text_color]", [
-  {
-    selector: ".sidebar .widget_search .search-field",
-    properties: [{ name: "border-color" }]
-  },
-  {
-    selector: ".sidebar .widget_search .search-field",
-    properties: [{ name: "color" }]
-  }
-]);
-liveReload("generate_settings[sidebar_widget_link_color]", [
-  {
-    selector: ".sidebar .widget_search .search-field:focus",
-    properties: [{ name: "border-color" }]
-  }
-]);
+liveReload(
+  "generate_settings[sidebar_widget_text_color]",
+  [
+    {
+      selector: ".sidebar .widget_search .search-field",
+      properties: [{ name: "border-color" }, { name: "color" }]
+    }
+  ],
+  ["generate_settings[content_text_color]", "generate_settings[text_color]"]
+);
+liveReload(
+  "generate_settings[sidebar_widget_link_color]",
+  [
+    {
+      selector: ".sidebar .widget_search .search-field:focus",
+      properties: [{ name: "border-color" }]
+    }
+  ],
+  ["generate_settings[content_link_color]", "generate_settings[link_color]"]
+);
 
 liveReload("crdm_modern[sidebar_widget_separator_color]", [
   {
@@ -160,6 +177,12 @@ liveReload("crdm_modern[excerpt_hover_background_color]", [
 liveReload("generate_settings[blog_post_title_hover_color]", [
   {
     selector: ".crdm-modern-excerpt:hover .entry-title a",
+    properties: [{ name: "color" }]
+  }
+]);
+liveReload("generate_settings[entry_meta_link_color]", [
+  {
+    selector: ".entry-meta a:hover",
     properties: [{ name: "color" }]
   }
 ]);
@@ -192,7 +215,78 @@ liveReload("crdm_modern[read_more_hover_color]", [
   }
 ]);
 
-// Blog.
+// Customizer - Layout.
+liveReload("generate_settings[header_background_color]", [
+  {
+    selector: ".main-navigation",
+    properties: [{ name: "background-color", postfix: "!important" }]
+  }
+]);
+
+liveReload("crdm_modern[primary_navigation_spacing]", [
+  {
+    selector: ".main-navigation .inside-navigation",
+    properties: [
+      { name: "margin-left", postfix: "px" },
+      { name: "margin-right", postfix: "px" }
+    ]
+  }
+]);
+liveReload("crdm_modern[primary_navigation_shadow]", [
+  {
+    selector: ".main-navigation .inside-navigation",
+    properties: [{ name: "box-shadow" }]
+  }
+]);
+liveReload("generate_settings[navigation_background_color]", [
+  {
+    selector: ".main-navigation .inside-navigation",
+    properties: [{ name: "background-color" }]
+  }
+]);
+
+liveReload("crdm_modern[sidebar_widget_separator_width]", [
+  {
+    selector: ".sidebar .inside-right-sidebar .widget",
+    properties: [{ name: "border-left-width", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[sidebar_widget_separator_spacing]", [
+  {
+    selector: ".sidebar .inside-right-sidebar .widget",
+    properties: [{ name: "padding-left", postfix: "px" }]
+  }
+]);
+
+// Customizer - Site Identity.
+liveReload("crdm_modern[header_image_height]", [
+  {
+    selector: ".crdm-modern-nav-image",
+    properties: [{ name: "max-height", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[header_image_top]", [
+  {
+    selector: ".crdm-modern-nav-image",
+    properties: [{ name: "top", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[header_image_right]", [
+  {
+    selector: ".crdm-modern-nav-image",
+    properties: [{ name: "right", postfix: "px" }]
+  }
+]);
+
+// Customizer - Typography.
+liveReload("crdm_modern[blog_font_size]", [
+  {
+    selector: ".crdm-modern-excerpt",
+    properties: [{ name: "font-size", postfix: "px" }]
+  }
+]);
+
+// Frontend - Blog.
 liveReload("generate_spacing_settings[separator]", [
   {
     selector: ".generate-columns",
@@ -207,11 +301,11 @@ liveReload("generate_spacing_settings[separator]", [
     properties: [{ name: "margin-bottom", postfix: "px" }]
   }
 ]);
-
 liveReload("generate_spacing_settings[content_element_separator]", [
   {
     selector:
-      ".post-image-below-header.post-image-aligned-left .inside-article.crdm-modern-excerpt .post-image, .post-image-below-header.post-image-aligned-right .inside-article.crdm-modern-excerpt .post-image",
+      ".post-image-below-header.post-image-aligned-left .inside-article.crdm-modern-excerpt .post-image," +
+      ".post-image-below-header.post-image-aligned-right .inside-article.crdm-modern-excerpt .post-image",
     media: { maxWidth: 768 },
     properties: [
       {
@@ -240,7 +334,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   },
   {
     selector:
-      ".post-image-aligned-left .crdm-modern-excerpt .entry-header, .post-image-aligned-left .crdm-modern-excerpt .entry-summary",
+      ".post-image-aligned-left .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-left .crdm-modern-excerpt .entry-summary",
     media: { minWidth: 769 },
     properties: [
       {
@@ -255,7 +350,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   },
   {
     selector:
-      ".post-image-aligned-right .crdm-modern-excerpt .entry-header, .post-image-aligned-right .crdm-modern-excerpt .entry-summary",
+      ".post-image-aligned-right .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-right .crdm-modern-excerpt .entry-summary",
     media: { minWidth: 769 },
     properties: [
       {
@@ -270,7 +366,10 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   },
   {
     selector:
-      ".post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-header, .post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-summary, .post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-header, .post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-summary",
+      ".post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-summary," +
+      ".post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-summary",
     media: { minWidth: 769 },
     properties: [
       {
@@ -304,7 +403,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   },
   {
     selector:
-      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .post-image, .post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .post-image",
+      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .post-image," +
+      ".post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .post-image",
     properties: [
       {
         name: "margin-top",
@@ -318,7 +418,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   },
   {
     selector:
-      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .entry-summary, .post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .entry-summary",
+      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .entry-summary," +
+      ".post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .entry-summary",
     properties: [
       {
         name: "margin-top",
@@ -363,62 +464,37 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   }
 ]);
 
-// Layout.
-liveReload("generate_settings[header_background_color]", [
-  {
-    selector: ".main-navigation",
-    properties: [{ name: "background-color" }]
-  }
-]);
-
-liveReload("crdm_modern[primary_navigation_spacing]", [
-  {
-    selector: ".main-navigation .inside-navigation",
-    properties: [
-      { name: "margin-left", postfix: "px" },
-      { name: "margin-right", postfix: "px" }
-    ]
-  }
-]);
-liveReload("crdm_modern[primary_navigation_shadow]", [
-  {
-    selector: ".main-navigation .inside-navigation",
-    properties: [{ name: "box-shadow" }]
-  }
-]);
-liveReload("generate_settings[navigation_background_color]", [
-  {
-    selector: ".main-navigation .inside-navigation",
-    properties: [{ name: "background-color" }]
-  }
-]);
-
-liveReload("crdm_modern[sidebar_widget_separator_width]", [
-  {
-    selector: ".sidebar .inside-right-sidebar .widget",
-    properties: [{ name: "border-left-width", postfix: "px" }]
-  }
-]);
-liveReload("crdm_modern[sidebar_widget_separator_spacing]", [
-  {
-    selector: ".sidebar .inside-right-sidebar .widget",
-    properties: [{ name: "padding-left", postfix: "px" }]
-  }
-]);
-
-// Typography.
-liveReload("crdm_modern[blog_font_size]", [
-  {
-    selector: ".crdm-modern-excerpt",
-    properties: [{ name: "font-size", postfix: "px" }]
-  }
-]);
-
-// Title widget.
+// Frontend - Title widget.
 liveReload("generate_settings[logo_width]", [
   {
-    selector: ".widget_crdm_modern_title_widget img",
-    properties: [{ name: "width" }]
+    selector: ".crdm-modern-title-widget-image",
+    properties: [{ name: "width", postfix: "px" }]
+  },
+  {
+    selector: ".crdm-modern-title-widget-title",
+    properties: [
+      {
+        name: "margin-left",
+        postfix: "px",
+        computed: {
+          additionalSettings: [],
+          value: (value): string => (parseInt(value) + 20).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector: ".crdm-modern-title-widget-tagline",
+    properties: [
+      {
+        name: "margin-left",
+        postfix: "px",
+        computed: {
+          additionalSettings: [],
+          value: (value): string => (parseInt(value) + 20).toString()
+        }
+      }
+    ]
   }
 ]);
 liveReload("generate_settings[site_title_font_size]", [
