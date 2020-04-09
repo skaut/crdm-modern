@@ -216,10 +216,10 @@ liveReload("crdm_modern[read_more_hover_color]", [
 ]);
 
 // Customizer - Layout.
-liveReload("generate_settings[header_background_color]", [ // TODO: Check !important.
+liveReload("generate_settings[header_background_color]", [
   {
     selector: ".main-navigation",
-    properties: [{ name: "background-color" }]
+    properties: [{ name: "background-color", postfix: "!important" }]
   }
 ]);
 
