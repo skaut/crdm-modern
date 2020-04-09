@@ -135,22 +135,26 @@ liveReload("generate_settings[sidebar_widget_background_color]", [
     properties: [{ name: "background-color" }]
   }
 ]);
-liveReload("generate_settings[sidebar_widget_text_color]", [ // TODO: Check this is correct.
-  {
-    selector: ".sidebar .widget_search .search-field",
-    properties: [{ name: "border-color" }]
-  },
-  {
-    selector: ".sidebar .widget_search .search-field",
-    properties: [{ name: "color" }]
-  }
-]);
-liveReload("generate_settings[sidebar_widget_link_color]", [ // TODO: Check this is correct.
-  {
-    selector: ".sidebar .widget_search .search-field:focus",
-    properties: [{ name: "border-color" }]
-  }
-]);
+liveReload(
+  "generate_settings[sidebar_widget_text_color]",
+  [
+    {
+      selector: ".sidebar .widget_search .search-field",
+      properties: [{ name: "border-color" }, { name: "color" }]
+    }
+  ],
+  ["generate_settings[content_text_color]", "generate_settings[text_color]"]
+);
+liveReload(
+  "generate_settings[sidebar_widget_link_color]",
+  [
+    {
+      selector: ".sidebar .widget_search .search-field:focus",
+      properties: [{ name: "border-color" }]
+    }
+  ],
+  ["generate_settings[content_link_color]", "generate_settings[link_color]"]
+);
 
 liveReload("crdm_modern[sidebar_widget_separator_color]", [
   {

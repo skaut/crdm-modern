@@ -197,8 +197,8 @@ function enqueue() {
 	if ( '' === $widget_text_color ) {
 		$widget_text_color = $gp_settings['text_color'];
 	}
-	$css->add_property( 'border-color', esc_attr( $widget_text_color ) ); // TODO: Check live-reload
-	$css->add_property( 'color', esc_attr( $widget_text_color ) ); // TODO: Check live-reload
+	$css->add_property( 'border-color', esc_attr( $widget_text_color ) );
+	$css->add_property( 'color', esc_attr( $widget_text_color ) );
 
 	$widget_link_color = $gp_settings['sidebar_widget_link_color'];
 	if ( '' === $widget_link_color ) {
@@ -208,7 +208,7 @@ function enqueue() {
 		$widget_link_color = $gp_settings['link_color'];
 	}
 	$css->set_selector( '.sidebar .widget_search .search-field:focus' );
-	$css->add_property( 'border-color', esc_attr( $widget_link_color ) ); // TODO: Check live-reload
+	$css->add_property( 'border-color', esc_attr( $widget_link_color ) );
 
 	// Sidebar widget separators.
 	$css->set_selector( '.sidebar .inside-right-sidebar .widget' );
