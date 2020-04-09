@@ -85,14 +85,47 @@ function setCSSInHead(
   );
 }
 
-function liveReload(setting: string, targets: Array<LiveReloadTarget>): void {
+function liveReload(
+  setting: string,
+  targets: Array<LiveReloadTarget>,
+  fallbacks?: Array<string>
+): void {
   wp.customize(setting, function(value: any) {
     value.bind(function(newValue: any) {
+      if (!newValue && fallbacks) {
+        $.each(fallbacks, function(_, fallback) {
+          const fallbackValue = wp.customize(fallback).get();
+          if (fallbackValue) {
+            newValue = fallbackValue;
+            return false;
+          }
+          return true;
+        });
+      }
       $.each(targets, function(_, target) {
         setCSSInHead(setting, target, newValue);
       });
     });
   });
+  if (fallbacks) {
+    for (let i = 0; i < fallbacks.length; i++) {
+      wp.customize(fallbacks[i], function(value: any) {
+        value.bind(function(newValue: any) {
+          if (wp.customize(setting).get()) {
+            return;
+          }
+          for (let j = 0; j < i; j++) {
+            if (wp.customize(fallbacks[j]).get()) {
+              return;
+            }
+          }
+          $.each(targets, function(_, target) {
+            setCSSInHead(setting, target, newValue);
+          });
+        });
+      });
+    }
+  }
 }
 
 // Customizer - Colors.
@@ -427,7 +460,7 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   }
 ]);
 
-// Title widget.
+// Frontend - Title widget.
 liveReload("generate_settings[logo_width]", [
   {
     selector: ".crdm-modern-title-widget-image",
