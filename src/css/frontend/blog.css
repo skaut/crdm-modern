@@ -69,10 +69,16 @@
 
 @media (min-width: 769px) {
 
+	.post-image-below-header.post-image-aligned-right article:not(.generate-columns) .inside-article.crdm-modern-excerpt .post-image,
 	.post-image-below-header.post-image-aligned-left article:not(.generate-columns) .inside-article.crdm-modern-excerpt .post-image {
 		margin-top: 0;
 		position: absolute;
 		top: 0;
+	}
+
+	/* .post-image-below-header.post-image-aligned-right article:not(.generate-columns) .inside-article.crdm-modern-excerpt .post-image { */
+	.post-image-aligned-right .crdm-modern-excerpt .post-image {
+		right: 0;
 	}
 }
 
