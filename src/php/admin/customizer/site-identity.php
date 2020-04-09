@@ -49,6 +49,13 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 		)
 	);
 
+	$wp_customize->selective_refresh->add_partial(
+		'crdm_modern[header_image]',
+		array(
+			'selector' => '.crdm-modern-nav-image-container'
+		)
+	);
+
 	$wp_customize->add_setting(
 		'crdm_modern[header_image_height]',
 		array(
