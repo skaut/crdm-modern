@@ -211,6 +211,35 @@ liveReload("generate_spacing_settings[separator]", [
 liveReload("generate_spacing_settings[content_element_separator]", [
   {
     selector:
+      ".post-image-below-header.post-image-aligned-left .inside-article.crdm-modern-excerpt .post-image, .post-image-below-header.post-image-aligned-right .inside-article.crdm-modern-excerpt .post-image",
+    media: { maxWidth: 768 },
+    properties: [
+      {
+        name: "margin-top",
+        postfix: "em",
+        computed: {
+          additionalSettings: [],
+          value: (value): string => (2 * parseFloat(value) - 0.5).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector: ".post-image-below-header .crdm-modern-excerpt .entry-summary",
+    media: { maxWidth: 768 },
+    properties: [
+      {
+        name: "margin-top",
+        postfix: "em",
+        computed: {
+          additionalSettings: [],
+          value: (value): string => (parseFloat(value) - 0.5).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector:
       ".post-image-aligned-left .crdm-modern-excerpt .entry-header, .post-image-aligned-left .crdm-modern-excerpt .entry-summary",
     media: { minWidth: 769 },
     properties: [
@@ -269,6 +298,34 @@ liveReload("generate_spacing_settings[content_element_separator]", [
         computed: {
           additionalSettings: [],
           value: (value): string => (parseFloat(value) + 0.5).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector:
+      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .post-image, .post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .post-image",
+    properties: [
+      {
+        name: "margin-top",
+        postfix: "em",
+        computed: {
+          additionalSettings: [],
+          value: (value): string => (2 * parseFloat(value) - 0.5).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector:
+      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .entry-summary, .post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .entry-summary",
+    properties: [
+      {
+        name: "margin-top",
+        postfix: "em",
+        computed: {
+          additionalSettings: [],
+          value: (value): string => (parseFloat(value) - 0.5).toString()
         }
       }
     ]
