@@ -26,7 +26,6 @@ function insert() {
 		$defaults['crdm_modern']
 	);
 
-	// TODO: Check live-reload
 	if ( isset( $crdm_modern_settings['header_image'] ) ) {
 		echo( '<div class="crdm-modern-nav-image-container grid-container"><img class="crdm-modern-nav-image" src="' );
 		echo( esc_url( $crdm_modern_settings['header_image'] ) );

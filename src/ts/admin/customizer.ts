@@ -143,6 +143,12 @@ liveReload("generate_settings[blog_post_title_hover_color]", [
     properties: [{ name: "color" }]
   }
 ]);
+liveReload("generate_settings[entry_meta_link_color]", [
+  {
+    selector: ".entry-meta a:hover",
+    properties: [{ name: "color" }]
+  }
+]);
 liveReload("generate_settings[entry_meta_link_color_hover]", [
   {
     selector: ".crdm-modern-excerpt:hover .entry-meta a",
@@ -235,7 +241,7 @@ liveReload("crdm_modern[header_image_right]", [
   }
 ]);
 
-// Typography.
+// Customizer - Typography.
 liveReload("crdm_modern[blog_font_size]", [
   {
     selector: ".crdm-modern-excerpt",
@@ -258,7 +264,6 @@ liveReload("generate_spacing_settings[separator]", [
     properties: [{ name: "margin-bottom", postfix: "px" }]
   }
 ]);
-
 liveReload("generate_spacing_settings[content_element_separator]", [
   {
     selector:
@@ -423,10 +428,36 @@ liveReload("generate_spacing_settings[content_element_separator]", [
 ]);
 
 // Title widget.
-liveReload("generate_settings[logo_width]", [ // TODO: Check this is correct.
+liveReload("generate_settings[logo_width]", [
   {
-    selector: ".widget_crdm_modern_title_widget img",
-    properties: [{ name: "width" }]
+    selector: ".crdm-modern-title-widget-image",
+    properties: [{ name: "width", postfix: "px" }]
+  },
+  {
+    selector: ".crdm-modern-title-widget-title",
+    properties: [
+      {
+        name: "margin-left",
+        postfix: "px",
+        computed: {
+          additionalSettings: [],
+          value: (value): string => (parseInt(value) + 20).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector: ".crdm-modern-title-widget-tagline",
+    properties: [
+      {
+        name: "margin-left",
+        postfix: "px",
+        computed: {
+          additionalSettings: [],
+          value: (value): string => (parseInt(value) + 20).toString()
+        }
+      }
+    ]
   }
 ]);
 liveReload("generate_settings[site_title_font_size]", [

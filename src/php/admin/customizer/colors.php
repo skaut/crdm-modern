@@ -225,7 +225,7 @@ function enqueue() {
 	$css->add_property( 'color', esc_attr( $gp_settings['blog_post_title_hover_color'] ) );
 
 	$css->set_selector( '.entry-meta a:hover' );
-	$css->add_property( 'color', esc_attr( $gp_settings['entry_meta_link_color'] ) ); // TODO: Check live-reload.
+	$css->add_property( 'color', esc_attr( $gp_settings['entry_meta_link_color'] ) );
 
 	$css->set_selector( '.crdm-modern-excerpt:hover .entry-meta a' );
 	$css->add_property( 'color', esc_attr( $gp_settings['entry_meta_link_color_hover'] ) );
