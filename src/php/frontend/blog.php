@@ -66,7 +66,7 @@ function blog_css() {
 	);
 
 	$separator                   = absint( $spacing_settings['separator'] );
-	$content_separator           = abs( floatval( $spacing_settings['content_element_separator'] ) ); // TODO: live reload.
+	$content_separator           = abs( floatval( $spacing_settings['content_element_separator'] ) );
 	$features_image_aspect_ratio = strval( round( 100 * $blog_settings['post_image_height'] / $blog_settings['post_image_width'], 2 ) );
 
 	return '.generate-columns {' .
@@ -88,9 +88,9 @@ function blog_css() {
 		'}' .
 		'.post-image-below-header.post-image-aligned-left .inside-article.crdm-modern-excerpt .post-image,' .
 		'.post-image-below-header.post-image-aligned-right .inside-article.crdm-modern-excerpt .post-image {' .
-		'margin-top: ' . ( 2 * $content_separator - 0.5 ) . 'em;' . // TODO: Live-reload
+		'margin-top: ' . ( 2 * $content_separator - 0.5 ) . 'em;' .
 		'}' .
-		'.post-image-below-header .crdm-modern-excerpt .entry-summary {' . // TODO: Live-reload
+		'.post-image-below-header .crdm-modern-excerpt .entry-summary {' .
 		'margin-top: ' . ( $content_separator - 0.5 ) . 'em;' .
 		'}' .
 		'}' .
@@ -123,11 +123,11 @@ function blog_css() {
 		'}' .
 		'.post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .post-image,' .
 		'.post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .post-image {' .
-		'margin-top: ' . ( 2 * $content_separator - 0.5 ) . 'em;' . // TODO: Live-reload
+		'margin-top: ' . ( 2 * $content_separator - 0.5 ) . 'em;' .
 		'}' .
 		'.post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .entry-summary,' .
 		'.post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .entry-summary {' .
-		'margin-top: ' . ( $content_separator - 0.5 ) . 'em;' . // TODO: Live-reload
+		'margin-top: ' . ( $content_separator - 0.5 ) . 'em;' .
 		'}' .
 		'.crdm-modern-excerpt .entry-header {' .
 		'margin: 0 ' . $content_separator . 'em;' .
