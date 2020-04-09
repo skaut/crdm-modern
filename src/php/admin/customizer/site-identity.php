@@ -201,7 +201,7 @@ function enqueue() {
 
 	$css->start_media_query( '(max-width: ' . strval( absint( $crdm_modern_settings['header_image_min_width'] ) ) . 'px)' );
 	$css->set_selector( '.crdm-modern-nav-image' );
-	$css->add_property( 'display', 'none' );
+	$css->add_property( 'display', 'none' ); // TODO: Check live-reload.
 	$css->stop_media_query();
 
 	$output = $css->css_output();

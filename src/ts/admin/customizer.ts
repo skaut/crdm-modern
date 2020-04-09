@@ -95,34 +95,14 @@ function liveReload(setting: string, targets: Array<LiveReloadTarget>): void {
   });
 }
 
-// Site Identity.
-liveReload("crdm_modern[header_image_height]", [
-  {
-    selector: ".crdm-modern-nav-image",
-    properties: [{ name: "max-height", postfix: "px" }]
-  }
-]);
-liveReload("crdm_modern[header_image_top]", [
-  {
-    selector: ".crdm-modern-nav-image",
-    properties: [{ name: "top", postfix: "px" }]
-  }
-]);
-liveReload("crdm_modern[header_image_right]", [
-  {
-    selector: ".crdm-modern-nav-image",
-    properties: [{ name: "right", postfix: "px" }]
-  }
-]);
-
-// Colors.
+// Customizer - Colors.
 liveReload("generate_settings[sidebar_widget_background_color]", [
   {
     selector: ".sidebar .widget_search .search-field",
     properties: [{ name: "background-color" }]
   }
 ]);
-liveReload("generate_settings[sidebar_widget_text_color]", [
+liveReload("generate_settings[sidebar_widget_text_color]", [ // TODO: Check this is correct.
   {
     selector: ".sidebar .widget_search .search-field",
     properties: [{ name: "border-color" }]
@@ -132,7 +112,7 @@ liveReload("generate_settings[sidebar_widget_text_color]", [
     properties: [{ name: "color" }]
   }
 ]);
-liveReload("generate_settings[sidebar_widget_link_color]", [
+liveReload("generate_settings[sidebar_widget_link_color]", [ // TODO: Check this is correct.
   {
     selector: ".sidebar .widget_search .search-field:focus",
     properties: [{ name: "border-color" }]
@@ -192,7 +172,78 @@ liveReload("crdm_modern[read_more_hover_color]", [
   }
 ]);
 
-// Blog.
+// Customizer - Layout.
+liveReload("generate_settings[header_background_color]", [ // TODO: Check !important.
+  {
+    selector: ".main-navigation",
+    properties: [{ name: "background-color" }]
+  }
+]);
+
+liveReload("crdm_modern[primary_navigation_spacing]", [
+  {
+    selector: ".main-navigation .inside-navigation",
+    properties: [
+      { name: "margin-left", postfix: "px" },
+      { name: "margin-right", postfix: "px" }
+    ]
+  }
+]);
+liveReload("crdm_modern[primary_navigation_shadow]", [
+  {
+    selector: ".main-navigation .inside-navigation",
+    properties: [{ name: "box-shadow" }]
+  }
+]);
+liveReload("generate_settings[navigation_background_color]", [
+  {
+    selector: ".main-navigation .inside-navigation",
+    properties: [{ name: "background-color" }]
+  }
+]);
+
+liveReload("crdm_modern[sidebar_widget_separator_width]", [
+  {
+    selector: ".sidebar .inside-right-sidebar .widget",
+    properties: [{ name: "border-left-width", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[sidebar_widget_separator_spacing]", [
+  {
+    selector: ".sidebar .inside-right-sidebar .widget",
+    properties: [{ name: "padding-left", postfix: "px" }]
+  }
+]);
+
+// Customizer - Site Identity.
+liveReload("crdm_modern[header_image_height]", [
+  {
+    selector: ".crdm-modern-nav-image",
+    properties: [{ name: "max-height", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[header_image_top]", [
+  {
+    selector: ".crdm-modern-nav-image",
+    properties: [{ name: "top", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[header_image_right]", [
+  {
+    selector: ".crdm-modern-nav-image",
+    properties: [{ name: "right", postfix: "px" }]
+  }
+]);
+
+// Typography.
+liveReload("crdm_modern[blog_font_size]", [
+  {
+    selector: ".crdm-modern-excerpt",
+    properties: [{ name: "font-size", postfix: "px" }]
+  }
+]);
+
+// Frontend - Blog.
 liveReload("generate_spacing_settings[separator]", [
   {
     selector: ".generate-columns",
@@ -211,7 +262,8 @@ liveReload("generate_spacing_settings[separator]", [
 liveReload("generate_spacing_settings[content_element_separator]", [
   {
     selector:
-      ".post-image-below-header.post-image-aligned-left .inside-article.crdm-modern-excerpt .post-image, .post-image-below-header.post-image-aligned-right .inside-article.crdm-modern-excerpt .post-image",
+      ".post-image-below-header.post-image-aligned-left .inside-article.crdm-modern-excerpt .post-image," +
+      ".post-image-below-header.post-image-aligned-right .inside-article.crdm-modern-excerpt .post-image",
     media: { maxWidth: 768 },
     properties: [
       {
@@ -240,7 +292,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   },
   {
     selector:
-      ".post-image-aligned-left .crdm-modern-excerpt .entry-header, .post-image-aligned-left .crdm-modern-excerpt .entry-summary",
+      ".post-image-aligned-left .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-left .crdm-modern-excerpt .entry-summary",
     media: { minWidth: 769 },
     properties: [
       {
@@ -255,7 +308,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   },
   {
     selector:
-      ".post-image-aligned-right .crdm-modern-excerpt .entry-header, .post-image-aligned-right .crdm-modern-excerpt .entry-summary",
+      ".post-image-aligned-right .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-right .crdm-modern-excerpt .entry-summary",
     media: { minWidth: 769 },
     properties: [
       {
@@ -270,7 +324,10 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   },
   {
     selector:
-      ".post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-header, .post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-summary, .post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-header, .post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-summary",
+      ".post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-summary," +
+      ".post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-summary",
     media: { minWidth: 769 },
     properties: [
       {
@@ -304,7 +361,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   },
   {
     selector:
-      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .post-image, .post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .post-image",
+      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .post-image," +
+      ".post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .post-image",
     properties: [
       {
         name: "margin-top",
@@ -318,7 +376,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   },
   {
     selector:
-      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .entry-summary, .post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .entry-summary",
+      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .entry-summary," +
+      ".post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .entry-summary",
     properties: [
       {
         name: "margin-top",
@@ -363,59 +422,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
   }
 ]);
 
-// Layout.
-liveReload("generate_settings[header_background_color]", [
-  {
-    selector: ".main-navigation",
-    properties: [{ name: "background-color" }]
-  }
-]);
-
-liveReload("crdm_modern[primary_navigation_spacing]", [
-  {
-    selector: ".main-navigation .inside-navigation",
-    properties: [
-      { name: "margin-left", postfix: "px" },
-      { name: "margin-right", postfix: "px" }
-    ]
-  }
-]);
-liveReload("crdm_modern[primary_navigation_shadow]", [
-  {
-    selector: ".main-navigation .inside-navigation",
-    properties: [{ name: "box-shadow" }]
-  }
-]);
-liveReload("generate_settings[navigation_background_color]", [
-  {
-    selector: ".main-navigation .inside-navigation",
-    properties: [{ name: "background-color" }]
-  }
-]);
-
-liveReload("crdm_modern[sidebar_widget_separator_width]", [
-  {
-    selector: ".sidebar .inside-right-sidebar .widget",
-    properties: [{ name: "border-left-width", postfix: "px" }]
-  }
-]);
-liveReload("crdm_modern[sidebar_widget_separator_spacing]", [
-  {
-    selector: ".sidebar .inside-right-sidebar .widget",
-    properties: [{ name: "padding-left", postfix: "px" }]
-  }
-]);
-
-// Typography.
-liveReload("crdm_modern[blog_font_size]", [
-  {
-    selector: ".crdm-modern-excerpt",
-    properties: [{ name: "font-size", postfix: "px" }]
-  }
-]);
-
 // Title widget.
-liveReload("generate_settings[logo_width]", [
+liveReload("generate_settings[logo_width]", [ // TODO: Check this is correct.
   {
     selector: ".widget_crdm_modern_title_widget img",
     properties: [{ name: "width" }]
