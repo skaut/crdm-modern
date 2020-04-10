@@ -88,10 +88,10 @@ function blog_css() {
 		'}' .
 		'.post-image-below-header.post-image-aligned-left .inside-article.crdm-modern-excerpt .post-image,' .
 		'.post-image-below-header.post-image-aligned-right .inside-article.crdm-modern-excerpt .post-image {' .
-		'margin-top: ' . ( 2 * $content_separator - 0.5 ) . 'em;' .
+		'margin-top: ' . max( 2 * $content_separator - 0.5, 0 ) . 'em;' .
 		'}' .
 		'.post-image-below-header .crdm-modern-excerpt .entry-summary {' .
-		'margin-top: ' . ( $content_separator - 0.5 ) . 'em;' .
+		'margin-top: ' . max( $content_separator - 0.5, 0 ) . 'em;' .
 		'}' .
 		'}' .
 		'@media (min-width: 769px) {' .
@@ -123,11 +123,11 @@ function blog_css() {
 		'}' .
 		'.post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .post-image,' .
 		'.post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .post-image {' .
-		'margin-top: ' . ( 2 * $content_separator - 0.5 ) . 'em;' .
+		'margin-top: ' . max( 2 * $content_separator - 0.5, 0 ) . 'em;' .
 		'}' .
 		'.post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .entry-summary,' .
 		'.post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .entry-summary {' .
-		'margin-top: ' . ( $content_separator - 0.5 ) . 'em;' .
+		'margin-top: ' . max( $content_separator - 0.5, 0 ) . 'em;' .
 		'}' .
 		'.crdm-modern-excerpt .entry-header {' .
 		'margin: 0 ' . $content_separator . 'em;' .

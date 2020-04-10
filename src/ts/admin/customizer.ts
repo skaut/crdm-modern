@@ -295,7 +295,8 @@ liveReload("crdm_modern[header_image_right]", [
         name: "right",
         postfix: "px",
         computed: {
-          value: (value): string => (parseInt(value) - 30).toString()
+          value: (value): string =>
+            Math.max(parseInt(value) - 30, 30).toString()
         }
       }
     ]
@@ -336,7 +337,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
         name: "margin-top",
         postfix: "em",
         computed: {
-          value: (value): string => (2 * parseFloat(value) - 0.5).toString()
+          value: (value): string =>
+            Math.max(2 * parseFloat(value) - 0.5, 0).toString()
         }
       }
     ]
@@ -349,7 +351,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
         name: "margin-top",
         postfix: "em",
         computed: {
-          value: (value): string => (parseFloat(value) - 0.5).toString()
+          value: (value): string =>
+            Math.max(parseFloat(value) - 0.5, 0).toString()
         }
       }
     ]
@@ -431,7 +434,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
         name: "margin-top",
         postfix: "em",
         computed: {
-          value: (value): string => (2 * parseFloat(value) - 0.5).toString()
+          value: (value): string =>
+            Math.max(2 * parseFloat(value) - 0.5, 0).toString()
         }
       }
     ]
@@ -445,7 +449,8 @@ liveReload("generate_spacing_settings[content_element_separator]", [
         name: "margin-top",
         postfix: "em",
         computed: {
-          value: (value): string => (parseFloat(value) - 0.5).toString()
+          value: (value): string =>
+            Math.max(parseFloat(value) - 0.5, 0).toString()
         }
       }
     ]
