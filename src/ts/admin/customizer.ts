@@ -1,26 +1,3 @@
-interface LiveReloadComputedProperty {
-  additionalSettings?: Array<string>;
-  value: (value: any, additionalValues: Array<any>) => string;
-}
-
-interface LiveReloadProperty {
-  name: string;
-  prefix?: string;
-  postfix?: string;
-  computed?: LiveReloadComputedProperty;
-}
-
-interface MediaRules {
-  minWidth?: number;
-  maxWidth?: number;
-}
-
-interface LiveReloadTarget {
-  selector: string;
-  media?: MediaRules;
-  properties: Array<LiveReloadProperty>;
-}
-
 function hash(str: string): string {
   if (str.length === 0) {
     return "";

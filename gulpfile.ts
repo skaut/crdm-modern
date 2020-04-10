@@ -101,7 +101,18 @@ gulp.task("build:js", function() {
       "admin",
       true
     ),
-    bundle("customizer", ["src/ts/admin/customizer.ts"], "admin", true),
+    bundle(
+      "customizer",
+      [
+        "src/ts/admin/customizer.ts",
+        "src/ts/admin/LiveReloadComputedProperty.ts",
+        "src/ts/admin/LiveReloadMediaRules.ts",
+        "src/ts/admin/LiveReloadProperty.ts",
+        "src/ts/admin/LiveReloadTarget.ts"
+      ],
+      "admin",
+      true
+    ),
     bundle("blog", ["src/ts/frontend/blog.ts"], "frontend", true)
   );
 });
