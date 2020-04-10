@@ -116,12 +116,12 @@ msgstr ""
 msgid "Blue"
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:159,
-#: admin/customizer/class-preset-registry.php:266
+#: admin/customizer/class-preset-registry.php:160,
+#: admin/customizer/class-preset-registry.php:268
 msgid "Read more >"
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:187
+#: admin/customizer/class-preset-registry.php:188
 msgid "Green"
 msgstr ""
 
@@ -181,19 +181,19 @@ msgstr ""
 msgid "Header Image"
 msgstr ""
 
-#: admin/customizer/site-identity.php:67
+#: admin/customizer/site-identity.php:75
 msgid "Header Image Height"
 msgstr ""
 
-#: admin/customizer/site-identity.php:100
+#: admin/customizer/site-identity.php:108
 msgid "Header Image Top Position"
 msgstr ""
 
-#: admin/customizer/site-identity.php:133
+#: admin/customizer/site-identity.php:141
 msgid "Header Image Right Position"
 msgstr ""
 
-#: admin/customizer/site-identity.php:165
+#: admin/customizer/site-identity.php:173
 msgid "Minimum Width to Show Header Image"
 msgstr ""
 

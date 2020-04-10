@@ -1,12 +1,19 @@
+.post {
+	margin: 0;
+}
+
 .one-container .inside-article.crdm-modern-excerpt {
 	border-style: solid;
 	border-width: 1px;
 	padding-bottom: 0;
+	position: relative;
 	cursor: pointer;
 	transition: color 0.1s ease-in-out;
 }
 
-.post-image-above-header .crdm-modern-excerpt div.post-image {
+.post-image-aligned-left .inside-article.crdm-modern-excerpt .post-image,
+.post-image-aligned-right .inside-article.crdm-modern-excerpt .post-image,
+.post-image-above-header .inside-article.crdm-modern-excerpt div.post-image {
 	margin: 0;
 }
 
@@ -64,12 +71,15 @@
 
 @media (min-width: 769px) {
 
-	.post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-header,
-	.post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-summary,
-	.post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-header,
-	.post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-summary {
-		margin-left: 1em;
-		margin-right: 1em;
+	.post-image-aligned-right .crdm-modern-excerpt .post-image {
+		right: 0;
+	}
+
+	.post-image-below-header.post-image-aligned-right article:not(.generate-columns) .inside-article.crdm-modern-excerpt .post-image,
+	.post-image-below-header.post-image-aligned-left article:not(.generate-columns) .inside-article.crdm-modern-excerpt .post-image {
+		margin-top: 0;
+		position: absolute;
+		top: 0;
 	}
 }
 
@@ -78,19 +88,21 @@
 	text-align: left;
 }
 
+.post-image-aligned-left .generate-columns .crdm-modern-excerpt .post-image,
+.post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
+	float: none;
+}
+
 .crdm-modern-excerpt .entry-header {
-	margin: 0 1em;
 	position: relative;
-	top: 1em;
 }
 
 .crdm-modern-excerpt .entry-summary {
-	margin: 1.5em 1em 1em 1em;
 	position: relative;
 }
 
 .crdm-modern-excerpt .read-more {
 	display: block;
 	font-weight: 700;
-	margin-top: 7px;
+	margin-top: 1em;
 }
