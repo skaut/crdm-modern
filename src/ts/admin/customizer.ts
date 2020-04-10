@@ -1,5 +1,5 @@
 interface LiveReloadComputedProperty {
-  additionalSettings: Array<string>;
+  additionalSettings?: Array<string>;
   value: (value: any, additionalValues: Array<any>) => string;
 }
 
@@ -62,12 +62,14 @@ function setCSSInHead(
       $.map(target.properties, function(property) {
         let computedValue = value;
         if (property.computed) {
-          computedValue = property.computed.value(
-            value,
-            $.map(property.computed.additionalSettings, additionalSetting =>
-              wp.customize(additionalSetting).get()
-            )
-          );
+          let additionalValues = [];
+          if (property.computed.additionalSettings) {
+            additionalValues = $.map(
+              property.computed.additionalSettings,
+              additionalSetting => wp.customize(additionalSetting).get()
+            );
+          }
+          computedValue = property.computed.value(value, additionalValues);
         }
         return (
           "\t" +
@@ -278,6 +280,28 @@ liveReload("crdm_modern[header_image_right]", [
   }
 ]);
 
+// Customizer - Header Image edit button
+liveReload("crdm_modern[header_image_top]", [
+  {
+    selector: ".customize-partial-edit-shortcut-crdm_modern-header_image",
+    properties: [{ name: "top", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[header_image_right]", [
+  {
+    selector: ".customize-partial-edit-shortcut-crdm_modern-header_image",
+    properties: [
+      {
+        name: "right",
+        postfix: "px",
+        computed: {
+          value: (value): string => (parseInt(value) - 30).toString()
+        }
+      }
+    ]
+  }
+]);
+
 // Customizer - Typography.
 liveReload("crdm_modern[blog_font_size]", [
   {
@@ -312,7 +336,6 @@ liveReload("generate_spacing_settings[content_element_separator]", [
         name: "margin-top",
         postfix: "em",
         computed: {
-          additionalSettings: [],
           value: (value): string => (2 * parseFloat(value) - 0.5).toString()
         }
       }
@@ -326,7 +349,6 @@ liveReload("generate_spacing_settings[content_element_separator]", [
         name: "margin-top",
         postfix: "em",
         computed: {
-          additionalSettings: [],
           value: (value): string => (parseFloat(value) - 0.5).toString()
         }
       }
@@ -395,7 +417,6 @@ liveReload("generate_spacing_settings[content_element_separator]", [
         name: "margin-top",
         postfix: "em",
         computed: {
-          additionalSettings: [],
           value: (value): string => (parseFloat(value) + 0.5).toString()
         }
       }
@@ -410,7 +431,6 @@ liveReload("generate_spacing_settings[content_element_separator]", [
         name: "margin-top",
         postfix: "em",
         computed: {
-          additionalSettings: [],
           value: (value): string => (2 * parseFloat(value) - 0.5).toString()
         }
       }
@@ -425,7 +445,6 @@ liveReload("generate_spacing_settings[content_element_separator]", [
         name: "margin-top",
         postfix: "em",
         computed: {
-          additionalSettings: [],
           value: (value): string => (parseFloat(value) - 0.5).toString()
         }
       }
@@ -443,7 +462,6 @@ liveReload("generate_spacing_settings[content_element_separator]", [
         name: "top",
         postfix: "em",
         computed: {
-          additionalSettings: [],
           value: (value): string => (parseFloat(value) - 0.5).toString()
         }
       }
@@ -455,7 +473,6 @@ liveReload("generate_spacing_settings[content_element_separator]", [
       {
         name: "margin",
         computed: {
-          additionalSettings: [],
           value: (value): string =>
             value + "em " + value + "em " + value + "em " + value + "em"
         }
@@ -477,7 +494,6 @@ liveReload("generate_settings[logo_width]", [
         name: "margin-left",
         postfix: "px",
         computed: {
-          additionalSettings: [],
           value: (value): string => (parseInt(value) + 20).toString()
         }
       }
@@ -490,7 +506,6 @@ liveReload("generate_settings[logo_width]", [
         name: "margin-left",
         postfix: "px",
         computed: {
-          additionalSettings: [],
           value: (value): string => (parseInt(value) + 20).toString()
         }
       }
