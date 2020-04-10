@@ -36,7 +36,7 @@ class Preset {
 	 *
 	 * @var array
 	 */
-	public $settings;
+	private $settings;
 
 	/**
 	 * Preset class constructor
@@ -49,6 +49,30 @@ class Preset {
 		$this->name     = $name;
 		$this->image    = $image;
 		$this->settings = $settings;
+	}
+
+	/**
+	 * Settings getter
+	 *
+	 * Returns the value of all settings of the preset.
+	 *
+	 * @return array The settings values.
+	 */
+	public function get_all() {
+		return $this->settings;
+	}
+
+	/**
+	 * Settings getter
+	 *
+	 * Returns the value of a particular settings field.
+	 *
+	 * @param string $name The name of the field.
+	 *
+	 * @return array The settings values.
+	 */
+	public function get( string $name ) {
+		return $this->settings[ $name ];
 	}
 }
 

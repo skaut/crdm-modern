@@ -46,7 +46,7 @@ class Preset_Registry {
 	public function settings() {
 		$ret = array();
 		foreach ( $this->presets as $id => $preset ) {
-			$ret[ $id ] = $preset->settings;
+			$ret[ $id ] = $preset->get_all();
 		}
 		return $ret;
 	}

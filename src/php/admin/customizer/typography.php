@@ -25,7 +25,7 @@ function register() {
  * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
  */
 function customize( \WP_Customize_Manager $wp_customize ) {
-	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings['crdm_modern'];
+	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->get( 'crdm_modern' );
 
 	$wp_customize->add_section(
 		'crdm_modern_blog_typography',
@@ -79,10 +79,10 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
 
-	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$preset   = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
 	$settings = wp_parse_args(
 		get_option( 'crdm_modern', array() ),
-		$defaults['crdm_modern']
+		$preset->get( 'crdm_modern' )
 	);
 
 	$css->set_selector( '.crdm-modern-excerpt' );

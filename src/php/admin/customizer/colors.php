@@ -25,7 +25,7 @@ function register() {
  * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
  */
 function customize( \WP_Customize_Manager $wp_customize ) {
-	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings['crdm_modern'];
+	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->get( 'crdm_modern' );
 
 	// Sidebar widget separators.
 	$wp_customize->add_setting(
@@ -177,14 +177,14 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
 
-	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$preset               = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
 	$gp_settings          = wp_parse_args(
 		get_option( 'generate_settings', array() ),
-		array_merge( generate_get_defaults(), generate_get_color_defaults(), $defaults['generate_settings'] )
+		array_merge( generate_get_defaults(), generate_get_color_defaults(), $preset->get( 'generate_settings' ) )
 	);
 	$crdm_modern_settings = wp_parse_args(
 		get_option( 'crdm_modern', array() ),
-		$defaults['crdm_modern']
+		$preset->get( 'crdm_modern' )
 	);
 
 	// Search widget colors.

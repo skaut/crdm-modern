@@ -20,10 +20,10 @@ function register() {
  * Inserts the header image into the page
  */
 function insert() {
-	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$preset               = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
 	$crdm_modern_settings = wp_parse_args(
 		get_option( 'crdm_modern', array() ),
-		$defaults['crdm_modern']
+		$preset->get( 'crdm_modern' )
 	);
 
 	if ( isset( $crdm_modern_settings['header_image'] ) ) {

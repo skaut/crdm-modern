@@ -144,10 +144,10 @@ function blog_css() {
  * @return int The total number of featured images.
  */
 function get_featured_post_count() {
-	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$preset               = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
 	$crdm_modern_settings = wp_parse_args(
 		get_option( 'crdm_modern', array() ),
-		$defaults['crdm_modern']
+		$preset->get( 'crdm_modern' )
 	);
 	return intval( $crdm_modern_settings['featured_post_count'] );
 }
