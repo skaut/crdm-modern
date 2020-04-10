@@ -105,6 +105,7 @@ gulp.task("build:js", function() {
       "customizer",
       [
         "src/ts/admin/customizer.ts",
+        "src/ts/admin/liveReload.ts",
         "src/ts/admin/LiveReloadComputedProperty.ts",
         "src/ts/admin/LiveReloadMediaRules.ts",
         "src/ts/admin/LiveReloadProperty.ts",
