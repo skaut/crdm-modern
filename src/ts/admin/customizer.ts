@@ -278,6 +278,29 @@ liveReload("crdm_modern[header_image_right]", [
   }
 ]);
 
+// Customizer - Header Image edit button
+liveReload("crdm_modern[header_image_top]", [
+  {
+    selector: ".customize-partial-edit-shortcut-crdm_modern-header_image",
+    properties: [{ name: "top", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[header_image_right]", [
+  {
+    selector: ".customize-partial-edit-shortcut-crdm_modern-header_image",
+    properties: [
+      {
+        name: "right",
+        postfix: "px",
+        computed: {
+          additionalSettings: [],
+          value: (value): string => (parseInt(value) - 30).toString()
+        }
+      }
+    ]
+  }
+]);
+
 // Customizer - Typography.
 liveReload("crdm_modern[blog_font_size]", [
   {

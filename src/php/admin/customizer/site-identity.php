@@ -27,7 +27,7 @@ function register() {
 function customize( \WP_Customize_Manager $wp_customize ) {
 	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings['crdm_modern'];
 
-	// Header image.
+	// Header Image.
 	$wp_customize->add_setting(
 		'crdm_modern[header_image]',
 		array(
@@ -49,6 +49,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 		)
 	);
 
+	// Header Image edit button.
 	$wp_customize->selective_refresh->add_partial(
 		'crdm_modern[header_image]',
 		array(
@@ -205,6 +206,11 @@ function enqueue() {
 	$css->add_property( 'max-height', strval( absint( $crdm_modern_settings['header_image_height'] ) ), false, 'px' );
 	$css->add_property( 'top', strval( absint( $crdm_modern_settings['header_image_top'] ) ), false, 'px' );
 	$css->add_property( 'right', strval( absint( $crdm_modern_settings['header_image_right'] ) ), false, 'px' );
+
+	// Header Image edit button.
+	$css->set_selector( '.customize-partial-edit-shortcut-crdm_modern-header_image' );
+	$css->add_property( 'top', strval( absint( $crdm_modern_settings['header_image_top'] ) ), false, 'px' );
+	$css->add_property( 'right', strval( absint( $crdm_modern_settings['header_image_right'] ) - 30 ), false, 'px' );
 
 	$css->start_media_query( '(max-width: ' . strval( absint( $crdm_modern_settings['header_image_min_width'] ) ) . 'px)' );
 	$css->set_selector( '.crdm-modern-nav-image' );
