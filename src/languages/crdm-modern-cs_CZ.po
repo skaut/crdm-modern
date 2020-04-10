@@ -124,12 +124,12 @@ msgstr "Widget obsahující logo, název a popis webu."
 msgid "Blue"
 msgstr "Modrá"
 
-#: admin/customizer/class-preset-registry.php:159,
-#: admin/customizer/class-preset-registry.php:266
+#: admin/customizer/class-preset-registry.php:160,
+#: admin/customizer/class-preset-registry.php:268
 msgid "Read more >"
 msgstr "Číst více >"
 
-#: admin/customizer/class-preset-registry.php:187
+#: admin/customizer/class-preset-registry.php:188
 msgid "Green"
 msgstr "Zelená"
 
@@ -189,19 +189,19 @@ msgstr "Předvolby šablony"
 msgid "Header Image"
 msgstr "Obrázek v záhlaví"
 
-#: admin/customizer/site-identity.php:67
+#: admin/customizer/site-identity.php:75
 msgid "Header Image Height"
 msgstr "Výška obrázku v záhlaví"
 
-#: admin/customizer/site-identity.php:100
+#: admin/customizer/site-identity.php:108
 msgid "Header Image Top Position"
 msgstr "Odsazení obrázku v záhlaví zeshora"
 
-#: admin/customizer/site-identity.php:133
+#: admin/customizer/site-identity.php:141
 msgid "Header Image Right Position"
 msgstr "Odsazení obrázku v záhlaví zprava"
 
-#: admin/customizer/site-identity.php:165
+#: admin/customizer/site-identity.php:173
 msgid "Minimum Width to Show Header Image"
 msgstr "Minimální šířka pro zobrazení obrázku v záhlaví"
 
