@@ -189,19 +189,19 @@ msgstr "Předvolby šablony"
 msgid "Header Image"
 msgstr "Obrázek v záhlaví"
 
-#: admin/customizer/site-identity.php:67
+#: admin/customizer/site-identity.php:75
 msgid "Header Image Height"
 msgstr "Výška obrázku v záhlaví"
 
-#: admin/customizer/site-identity.php:100
+#: admin/customizer/site-identity.php:108
 msgid "Header Image Top Position"
 msgstr "Odsazení obrázku v záhlaví zeshora"
 
-#: admin/customizer/site-identity.php:133
+#: admin/customizer/site-identity.php:141
 msgid "Header Image Right Position"
 msgstr "Odsazení obrázku v záhlaví zprava"
 
-#: admin/customizer/site-identity.php:165
+#: admin/customizer/site-identity.php:173
 msgid "Minimum Width to Show Header Image"
 msgstr "Minimální šířka pro zobrazení obrázku v záhlaví"
 
