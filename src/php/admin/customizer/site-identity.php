@@ -210,7 +210,7 @@ function enqueue() {
 	// Header Image edit button.
 	$css->set_selector( '.customize-partial-edit-shortcut-crdm_modern-header_image' );
 	$css->add_property( 'top', strval( absint( $crdm_modern_settings['header_image_top'] ) ), false, 'px' );
-	$css->add_property( 'right', strval( absint( $crdm_modern_settings['header_image_right'] ) - 30 ), false, 'px' );
+	$css->add_property( 'right', strval( max( intval( $crdm_modern_settings['header_image_right'] ) - 30 , 30 ) ), false, 'px' );
 
 	$css->start_media_query( '(max-width: ' . strval( absint( $crdm_modern_settings['header_image_min_width'] ) ) . 'px)' );
 	$css->set_selector( '.crdm-modern-nav-image' );
