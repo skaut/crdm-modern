@@ -1,6 +1,24 @@
+interface LiveReloadComputedProperty {
+  additionalSettings?: Array<string>;
+  value: (value: any, additionalValues: Array<any>) => string;
+}
+
 interface LiveReloadProperty {
   name: string;
+  prefix?: string;
   postfix?: string;
+  computed?: LiveReloadComputedProperty;
+}
+
+interface MediaRules {
+  minWidth?: number;
+  maxWidth?: number;
+}
+
+interface LiveReloadTarget {
+  selector: string;
+  media?: MediaRules;
+  properties: Array<LiveReloadProperty>;
 }
 
 function hash(str: string): string {
@@ -15,178 +33,511 @@ function hash(str: string): string {
   return ret.toString();
 }
 
+function setCSSInHead(
+  setting: string,
+  target: LiveReloadTarget,
+  value: any
+): void {
+  const targetHash = hash(setting + target.selector);
+  let mediaBegin = "";
+  let mediaEnd = "";
+  if (target.media) {
+    mediaBegin = "@media (";
+    if (target.media.minWidth) {
+      mediaBegin += "min-width: " + target.media.minWidth;
+    } else if (target.media.maxWidth) {
+      mediaBegin += "max-width: " + target.media.maxWidth;
+    }
+    mediaBegin += "px) {\n";
+    mediaEnd = "}\n";
+  }
+  $("head style#" + targetHash).remove();
+  $("head").append(
+    '<style id="' +
+      targetHash +
+      '">\n' +
+      mediaBegin +
+      target.selector +
+      " {\n" +
+      $.map(target.properties, function(property) {
+        let computedValue = value;
+        if (property.computed) {
+          let additionalValues = [];
+          if (property.computed.additionalSettings) {
+            additionalValues = $.map(
+              property.computed.additionalSettings,
+              additionalSetting => wp.customize(additionalSetting).get()
+            );
+          }
+          computedValue = property.computed.value(value, additionalValues);
+        }
+        return (
+          "\t" +
+          property.name +
+          ": " +
+          (property.prefix ?? "") +
+          computedValue +
+          (property.postfix ?? "") +
+          ";\n"
+        );
+      }).join("") +
+      "}\n" +
+      mediaEnd +
+      "</style>"
+  );
+}
+
 function liveReload(
   setting: string,
-  selector: string,
-  properties: Array<LiveReloadProperty>
+  targets: Array<LiveReloadTarget>,
+  fallbacks?: Array<string>
 ): void {
   wp.customize(setting, function(value: any) {
     value.bind(function(newValue: any) {
-      const el = $(selector);
-      if (el.length > 0) {
-        $.each(properties, function(_, property) {
-          el.css(property.name, newValue + (property.postfix ?? ""));
+      if (!newValue && fallbacks) {
+        $.each(fallbacks, function(_, fallback) {
+          const fallbackValue = wp.customize(fallback).get();
+          if (fallbackValue) {
+            newValue = fallbackValue;
+            return false;
+          }
+          return true;
         });
-      } else {
-        $("head style#" + hash(setting + selector)).remove();
-        $("head").append(
-          '<style id="' +
-            hash(setting + selector) +
-            '">\n' +
-            selector +
-            " {\n" +
-            $.map(properties, function(property) {
-              return (
-                "\t" +
-                property.name +
-                ": " +
-                newValue +
-                (property.postfix ?? "") +
-                ";\n"
-              );
-            }).join("") +
-            "}\n" +
-            "</style>"
-        );
       }
+      $.each(targets, function(_, target) {
+        setCSSInHead(setting, target, newValue);
+      });
     });
   });
+  if (fallbacks) {
+    for (let i = 0; i < fallbacks.length; i++) {
+      wp.customize(fallbacks[i], function(value: any) {
+        value.bind(function(newValue: any) {
+          if (wp.customize(setting).get()) {
+            return;
+          }
+          for (let j = 0; j < i; j++) {
+            if (wp.customize(fallbacks[j]).get()) {
+              return;
+            }
+          }
+          $.each(targets, function(_, target) {
+            setCSSInHead(setting, target, newValue);
+          });
+        });
+      });
+    }
+  }
 }
 
-// Site Identity.
-liveReload("crdm_modern[header_image_height]", ".crdm-modern-nav-image", [
-  { name: "max-height", postfix: "px" }
+// Customizer - Colors.
+liveReload("generate_settings[sidebar_widget_background_color]", [
+  {
+    selector: ".sidebar .widget_search .search-field",
+    properties: [{ name: "background-color" }]
+  }
 ]);
-liveReload("crdm_modern[header_image_top]", ".crdm-modern-nav-image", [
-  { name: "top", postfix: "px" }
-]);
-liveReload("crdm_modern[header_image_right]", ".crdm-modern-nav-image", [
-  { name: "right", postfix: "px" }
-]);
-
-// Colors.
-liveReload(
-  "generate_settings[sidebar_widget_background_color]",
-  ".sidebar .widget_search .search-field",
-  [{ name: "background-color" }]
-);
 liveReload(
   "generate_settings[sidebar_widget_text_color]",
-  ".sidebar .widget_search .search-field",
-  [{ name: "border-color" }]
-);
-liveReload(
-  "generate_settings[sidebar_widget_text_color]",
-  ".sidebar .widget_search .search-field",
-  [{ name: "color" }]
+  [
+    {
+      selector: ".sidebar .widget_search .search-field",
+      properties: [{ name: "border-color" }, { name: "color" }]
+    }
+  ],
+  ["generate_settings[content_text_color]", "generate_settings[text_color]"]
 );
 liveReload(
   "generate_settings[sidebar_widget_link_color]",
-  ".sidebar .widget_search .search-field:focus",
-  [{ name: "border-color" }]
-);
-
-liveReload(
-  "crdm_modern[sidebar_widget_separator_color]",
-  ".sidebar .inside-right-sidebar .widget",
-  [{ name: "border-left-color" }]
-);
-liveReload("crdm_modern[excerpt_border_color]", ".crdm-modern-excerpt", [
-  { name: "border-color" }
-]);
-liveReload(
-  "crdm_modern[excerpt_hover_background_color]",
-  ".crdm-modern-excerpt:hover",
-  [{ name: "background-color" }]
-);
-liveReload(
-  "generate_settings[blog_post_title_hover_color]",
-  ".crdm-modern-excerpt:hover .entry-title a",
-  [{ name: "color" }]
-);
-liveReload(
-  "generate_settings[entry_meta_link_color_hover]",
-  ".crdm-modern-excerpt:hover .entry-meta a",
-  [{ name: "color" }]
-);
-liveReload(
-  "crdm_modern[excerpt_hover_text_color]",
-  ".crdm-modern-excerpt:hover",
-  [{ name: "color" }]
-);
-liveReload("crdm_modern[read_more_color]", "a.read-more", [{ name: "color" }]);
-liveReload("crdm_modern[read_more_hover_color]", "a.read-more:hover", [
-  { name: "color" }
-]);
-liveReload(
-  "crdm_modern[read_more_hover_color]",
-  ".crdm-modern-excerpt:hover a.read-more",
-  [{ name: "color" }]
-);
-
-// Layout.
-liveReload("generate_settings[header_background_color]", ".main-navigation", [
-  { name: "background-color" }
-]);
-
-liveReload(
-  "crdm_modern[primary_navigation_spacing]",
-  ".main-navigation .inside-navigation",
   [
-    { name: "margin-left", postfix: "px" },
-    { name: "margin-right", postfix: "px" }
-  ]
-);
-liveReload(
-  "crdm_modern[primary_navigation_shadow]",
-  ".main-navigation .inside-navigation",
-  [{ name: "box-shadow" }]
-);
-liveReload(
-  "generate_settings[navigation_background_color]",
-  ".main-navigation .inside-navigation",
-  [{ name: "background-color" }]
+    {
+      selector: ".sidebar .widget_search .search-field:focus",
+      properties: [{ name: "border-color" }]
+    }
+  ],
+  ["generate_settings[content_link_color]", "generate_settings[link_color]"]
 );
 
-liveReload(
-  "crdm_modern[sidebar_widget_separator_width]",
-  ".sidebar .inside-right-sidebar .widget",
-  [{ name: "border-left-width", postfix: "px" }]
-);
-liveReload(
-  "crdm_modern[sidebar_widget_separator_spacing]",
-  ".sidebar .inside-right-sidebar .widget",
-  [{ name: "padding-left", postfix: "px" }]
-);
-
-// Typography.
-liveReload("crdm_modern[blog_font_size]", ".crdm-modern-excerpt", [
-  { name: "font-size", postfix: "px" }
+liveReload("crdm_modern[sidebar_widget_separator_color]", [
+  {
+    selector: ".sidebar .inside-right-sidebar .widget",
+    properties: [{ name: "border-left-color" }]
+  }
+]);
+liveReload("crdm_modern[excerpt_border_color]", [
+  {
+    selector: ".crdm-modern-excerpt",
+    properties: [{ name: "border-color" }]
+  }
+]);
+liveReload("crdm_modern[excerpt_hover_background_color]", [
+  {
+    selector: ".crdm-modern-excerpt:hover",
+    properties: [{ name: "background-color" }]
+  }
+]);
+liveReload("generate_settings[blog_post_title_hover_color]", [
+  {
+    selector: ".crdm-modern-excerpt:hover .entry-title a",
+    properties: [{ name: "color" }]
+  }
+]);
+liveReload("generate_settings[entry_meta_link_color]", [
+  {
+    selector: ".entry-meta a:hover",
+    properties: [{ name: "color" }]
+  }
+]);
+liveReload("generate_settings[entry_meta_link_color_hover]", [
+  {
+    selector: ".crdm-modern-excerpt:hover .entry-meta a",
+    properties: [{ name: "color" }]
+  }
+]);
+liveReload("crdm_modern[excerpt_hover_text_color]", [
+  {
+    selector: ".crdm-modern-excerpt:hover",
+    properties: [{ name: "color" }]
+  }
+]);
+liveReload("crdm_modern[read_more_color]", [
+  {
+    selector: "a.read-more",
+    properties: [{ name: "color" }]
+  }
+]);
+liveReload("crdm_modern[read_more_hover_color]", [
+  {
+    selector: "a.read-more:hover",
+    properties: [{ name: "color" }]
+  },
+  {
+    selector: ".crdm-modern-excerpt:hover a.read-more",
+    properties: [{ name: "color" }]
+  }
 ]);
 
-// Title widget.
-liveReload(
-  "generate_settings[logo_width]",
-  ".widget_crdm_modern_title_widget img",
-  [{ name: "width" }]
-);
-liveReload(
-  "generate_settings[site_title_font_size]",
-  ".crdm-modern-title-widget-title",
-  [{ name: "font-size", postfix: "px" }]
-);
-liveReload(
-  "generate_settings[site_title_font_weight]",
-  ".crdm-modern-title-widget-title",
-  [{ name: "font-weight" }]
-);
-liveReload(
-  "generate_settings[site_tagline_font_size]",
-  ".crdm-modern-title-widget-tagline",
-  [{ name: "font-size", postfix: "px" }]
-);
-liveReload(
-  "generate_settings[site_tagline_font_weight]",
-  ".crdm-modern-title-widget-tagline",
-  [{ name: "font-weight" }]
-);
+// Customizer - Layout.
+liveReload("generate_settings[header_background_color]", [
+  {
+    selector: ".main-navigation",
+    properties: [{ name: "background-color", postfix: "!important" }]
+  }
+]);
+
+liveReload("crdm_modern[primary_navigation_spacing]", [
+  {
+    selector: ".main-navigation .inside-navigation",
+    properties: [
+      { name: "margin-left", postfix: "px" },
+      { name: "margin-right", postfix: "px" }
+    ]
+  }
+]);
+liveReload("crdm_modern[primary_navigation_shadow]", [
+  {
+    selector: ".main-navigation .inside-navigation",
+    properties: [{ name: "box-shadow" }]
+  }
+]);
+liveReload("generate_settings[navigation_background_color]", [
+  {
+    selector: ".main-navigation .inside-navigation",
+    properties: [{ name: "background-color" }]
+  }
+]);
+
+liveReload("crdm_modern[sidebar_widget_separator_width]", [
+  {
+    selector: ".sidebar .inside-right-sidebar .widget",
+    properties: [{ name: "border-left-width", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[sidebar_widget_separator_spacing]", [
+  {
+    selector: ".sidebar .inside-right-sidebar .widget",
+    properties: [{ name: "padding-left", postfix: "px" }]
+  }
+]);
+
+// Customizer - Site Identity.
+liveReload("crdm_modern[header_image_height]", [
+  {
+    selector: ".crdm-modern-nav-image",
+    properties: [{ name: "max-height", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[header_image_top]", [
+  {
+    selector: ".crdm-modern-nav-image",
+    properties: [{ name: "top", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[header_image_right]", [
+  {
+    selector: ".crdm-modern-nav-image",
+    properties: [{ name: "right", postfix: "px" }]
+  }
+]);
+
+// Customizer - Header Image edit button
+liveReload("crdm_modern[header_image_top]", [
+  {
+    selector: ".customize-partial-edit-shortcut-crdm_modern-header_image",
+    properties: [{ name: "top", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[header_image_right]", [
+  {
+    selector: ".customize-partial-edit-shortcut-crdm_modern-header_image",
+    properties: [
+      {
+        name: "right",
+        postfix: "px",
+        computed: {
+          value: (value): string =>
+            Math.max(parseInt(value) - 30, 30).toString()
+        }
+      }
+    ]
+  }
+]);
+
+// Customizer - Typography.
+liveReload("crdm_modern[blog_font_size]", [
+  {
+    selector: ".crdm-modern-excerpt",
+    properties: [{ name: "font-size", postfix: "px" }]
+  }
+]);
+
+// Frontend - Blog.
+liveReload("generate_spacing_settings[separator]", [
+  {
+    selector: ".generate-columns",
+    properties: [{ name: "padding-left", postfix: "px" }]
+  },
+  {
+    selector: ".generate-columns-container",
+    properties: [{ name: "margin-left", prefix: "-", postfix: "px" }]
+  },
+  {
+    selector: ".crdm-modern-excerpt",
+    properties: [{ name: "margin-bottom", postfix: "px" }]
+  }
+]);
+liveReload("generate_spacing_settings[content_element_separator]", [
+  {
+    selector:
+      ".post-image-below-header.post-image-aligned-left .inside-article.crdm-modern-excerpt .post-image," +
+      ".post-image-below-header.post-image-aligned-right .inside-article.crdm-modern-excerpt .post-image",
+    media: { maxWidth: 768 },
+    properties: [
+      {
+        name: "margin-top",
+        postfix: "em",
+        computed: {
+          value: (value): string =>
+            Math.max(2 * parseFloat(value) - 0.5, 0).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector: ".post-image-below-header .crdm-modern-excerpt .entry-summary",
+    media: { maxWidth: 768 },
+    properties: [
+      {
+        name: "margin-top",
+        postfix: "em",
+        computed: {
+          value: (value): string =>
+            Math.max(parseFloat(value) - 0.5, 0).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector:
+      ".post-image-aligned-left .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-left .crdm-modern-excerpt .entry-summary",
+    media: { minWidth: 769 },
+    properties: [
+      {
+        name: "margin-left",
+        computed: {
+          additionalSettings: ["generate_blog_settings[post_image_width]"],
+          value: (value, additionalValues): string =>
+            "calc(" + additionalValues[0] + "px + " + value + "em)"
+        }
+      }
+    ]
+  },
+  {
+    selector:
+      ".post-image-aligned-right .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-right .crdm-modern-excerpt .entry-summary",
+    media: { minWidth: 769 },
+    properties: [
+      {
+        name: "margin-right",
+        computed: {
+          additionalSettings: ["generate_blog_settings[post_image_width]"],
+          value: (value, additionalValues): string =>
+            "calc(" + additionalValues[0] + "px + " + value + "em)"
+        }
+      }
+    ]
+  },
+  {
+    selector:
+      ".post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-left .generate-columns .crdm-modern-excerpt .entry-summary," +
+      ".post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-header," +
+      ".post-image-aligned-right .generate-columns .crdm-modern-excerpt .entry-summary",
+    media: { minWidth: 769 },
+    properties: [
+      {
+        name: "margin-left",
+        postfix: "em"
+      },
+      {
+        name: "margin-right",
+        postfix: "em"
+      }
+    ]
+  },
+  {
+    selector: ".generate-columns .crdm-modern-excerpt .entry-header",
+    media: { minWidth: 769 },
+    properties: [{ name: "top", postfix: "em" }]
+  },
+  {
+    selector: ".generate-columns .crdm-modern-excerpt .entry-summary",
+    media: { minWidth: 769 },
+    properties: [
+      {
+        name: "margin-top",
+        postfix: "em",
+        computed: {
+          value: (value): string => (parseFloat(value) + 0.5).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector:
+      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .post-image," +
+      ".post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .post-image",
+    properties: [
+      {
+        name: "margin-top",
+        postfix: "em",
+        computed: {
+          value: (value): string =>
+            Math.max(2 * parseFloat(value) - 0.5, 0).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector:
+      ".post-image-below-header.post-image-aligned-center .crdm-modern-excerpt .entry-summary," +
+      ".post-image-below-header .generate-columns .inside-article.crdm-modern-excerpt .entry-summary",
+    properties: [
+      {
+        name: "margin-top",
+        postfix: "em",
+        computed: {
+          value: (value): string =>
+            Math.max(parseFloat(value) - 0.5, 0).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector: ".crdm-modern-excerpt .entry-header",
+    properties: [
+      {
+        name: "margin",
+        prefix: "0 ",
+        postfix: "em"
+      },
+      {
+        name: "top",
+        postfix: "em",
+        computed: {
+          value: (value): string => (parseFloat(value) - 0.5).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector: ".crdm-modern-excerpt .entry-summary",
+    properties: [
+      {
+        name: "margin",
+        computed: {
+          value: (value): string =>
+            value + "em " + value + "em " + value + "em " + value + "em"
+        }
+      }
+    ]
+  }
+]);
+
+// Frontend - Title widget.
+liveReload("generate_settings[logo_width]", [
+  {
+    selector: ".crdm-modern-title-widget-image",
+    properties: [{ name: "width", postfix: "px" }]
+  },
+  {
+    selector: ".crdm-modern-title-widget-title",
+    properties: [
+      {
+        name: "margin-left",
+        postfix: "px",
+        computed: {
+          value: (value): string => (parseInt(value) + 20).toString()
+        }
+      }
+    ]
+  },
+  {
+    selector: ".crdm-modern-title-widget-tagline",
+    properties: [
+      {
+        name: "margin-left",
+        postfix: "px",
+        computed: {
+          value: (value): string => (parseInt(value) + 20).toString()
+        }
+      }
+    ]
+  }
+]);
+liveReload("generate_settings[site_title_font_size]", [
+  {
+    selector: ".crdm-modern-title-widget-title",
+    properties: [{ name: "font-size", postfix: "px" }]
+  }
+]);
+liveReload("generate_settings[site_title_font_weight]", [
+  {
+    selector: ".crdm-modern-title-widget-title",
+    properties: [{ name: "font-weight" }]
+  }
+]);
+liveReload("generate_settings[site_tagline_font_size]", [
+  {
+    selector: ".crdm-modern-title-widget-tagline",
+    properties: [{ name: "font-size", postfix: "px" }]
+  }
+]);
+liveReload("generate_settings[site_tagline_font_weight]", [
+  {
+    selector: ".crdm-modern-title-widget-tagline",
+    properties: [{ name: "font-weight" }]
+  }
+]);

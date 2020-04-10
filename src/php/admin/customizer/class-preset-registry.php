@@ -151,7 +151,8 @@ class Preset_Registry {
 							'generate_spacing_settings'    => array(
 								// Layout.
 								'menu_item'                 => '25',
-								'content_element_separator' => '0.5',
+								'separator'                 => '30',
+								'content_element_separator' => '1.5',
 							),
 							'generate_blog_settings'       => array(
 								// Layout.
@@ -258,7 +259,8 @@ class Preset_Registry {
 							'generate_spacing_settings'    => array(
 								// Layout.
 								'menu_item'                 => '25',
-								'content_element_separator' => '0.5',
+								'separator'                 => '30',
+								'content_element_separator' => '1.5',
 							),
 							'generate_blog_settings'       => array(
 								// Layout.
