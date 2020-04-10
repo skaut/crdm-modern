@@ -1,3 +1,5 @@
+/* exported liveReload */
+
 function hash(str: string): string {
   if (str.length === 0) {
     return "";
