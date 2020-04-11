@@ -59,8 +59,8 @@ class Preset {
 	 */
 	public function get_all() {
 		$ret = array();
-		foreach ( $this->settings as $id => $setting ) {
-			$ret[ $id ] = array_merge( $setting['extends'], $setting['values'] );
+		foreach ( $this->settings as $id => $_ ) {
+			$ret[ $id ] = $this->get( $id );
 		}
 		return $ret;
 	}
@@ -75,7 +75,10 @@ class Preset {
 	 * @return array The settings values.
 	 */
 	public function get( string $name ) {
-		return array_merge( $this->settings[ $name ]['extends'], $this->settings[ $name ]['values'] );
+		if ( $this->settings[ $name ]['type'] === 'option' ) {
+			return array_merge( $this->settings[ $name ]['extends'], $this->settings[ $name ]['values'] );
+		}
+		return $this->settings[$name]['values'];
 	}
 
 	/**
