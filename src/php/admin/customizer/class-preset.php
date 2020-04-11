@@ -85,15 +85,26 @@ class Preset {
 	 * @param array  $args {
 	 *     The setting field arguments.
 	 *
-	 *     @type array $values The settings field values.
-	 *     @type array $extends Original values to extend. Default `array()`.
+	 *     @type string $type The type of the settings field. Accepts `option`, `theme_mod`.
+	 *     @type bool   $imploded Whether the values are stored in the database imploded. Only used for theme mods. Default `false`.
+	 *     @type array  $extends Original values to extend. Only used for options. Default `array()`.
+	 *     @type array  $values The settings field values.
 	 * }
 	 *
 	 * @return $this
 	 */
 	public function add_settings_field( $name, $args ) {
+		if ( ! isset( $args['type'] ) ) {
+			return $this;
+		}
+		if ( $args['type'] == 'theme_mod' && ! isset( $args['imploded'] ) ) {
+			$args['imploded'] = false;
+		}
 		if ( ! isset( $args['extends'] ) ) {
 			$args['extends'] = array();
+		}
+		if ( ! isset( $args['values'] ) ) {
+			return $this;
 		}
 		$this->settings[ $name ] = $args;
 		return $this;

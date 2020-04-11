@@ -84,6 +84,7 @@ class Preset_Registry {
 					) )->add_settings_field(
 						'crdm_modern',
 						array(
+							'type'   => 'option',
 							'values' => array(
 								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png',
 								'header_image_height'              => '220',
@@ -110,6 +111,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_settings',
 						array(
+							'type'   => 'option',
 							'values' => array(
 								// Site Identity.
 								'logo_width'                             => '100',
@@ -160,6 +162,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_spacing_settings',
 						array(
+							'type'   => 'option',
 							'values' => array(
 								// Layout.
 								'menu_item'                 => '25',
@@ -170,6 +173,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_blog_settings',
 						array(
+							'type'   => 'option',
 							'values' => array(
 								// Layout.
 								'excerpt_length'             => '20',
@@ -192,6 +196,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_background_settings',
 						array(
+							'type'   => 'option',
 							'values' => array(
 								// Background.
 								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
@@ -203,17 +208,23 @@ class Preset_Registry {
 						// Typography.
 						'font_body_variants',
 						array(
+							'type'     => 'theme_mod',
+							'imploded' => true,
 							'values' => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
 						)
 					)->add_settings_field(
 						'font_site_title_variants',
 						array(
-							'values' => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+							'type'     => 'theme_mod',
+							'imploded' => true,
+							'values'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 						)
 					)->add_settings_field(
 						'font_site_tagline_variants',
 						array(
-							'values' => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+							'type'     => 'theme_mod',
+							'imploded' => true,
+							'values'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 						)
 					),
 					'green' => ( new Preset(
@@ -222,6 +233,7 @@ class Preset_Registry {
 					) )->add_settings_field(
 						'crdm_modern',
 						array(
+							'type'   => 'option',
 							'values' => array(
 								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png',
 								'header_image_height'              => '220',
@@ -248,6 +260,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_settings',
 						array(
+							'type'   => 'option',
 							'values' => array(
 								// Site Identity.
 								'logo_width'                             => '100',
@@ -298,6 +311,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_spacing_settings',
 						array(
+							'type'   => 'option',
 							'values' => array(
 								// Layout.
 								'menu_item'                 => '25',
@@ -308,6 +322,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_blog_settings',
 						array(
+							'type'   => 'option',
 							'values' => array(
 								// Layout.
 								'excerpt_length'             => '20',
@@ -330,6 +345,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_background_settings',
 						array(
+							'type'   => 'option',
 							'values' => array(
 								// Background.
 								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
@@ -341,16 +357,22 @@ class Preset_Registry {
 						// Typography.
 						'font_body_variants',
 						array(
+							'type'     => 'theme_mod',
+							'imploded' => true,
 							'values' => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
 						)
 					)->add_settings_field(
 						'font_site_title_variants',
 						array(
+							'type'     => 'theme_mod',
+							'imploded' => true,
 							'values' => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 						)
 					)->add_settings_field(
 						'font_site_tagline_variants',
 						array(
+							'type'     => 'theme_mod',
+							'imploded' => true,
 							'values' => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 						)
 					),
