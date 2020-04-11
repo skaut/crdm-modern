@@ -97,7 +97,7 @@ class Preset {
 	 *     @type string   $type The type of the settings field. Accepts `option`, `theme_mod`.
 	 *     @type bool     $imploded Whether the values are stored in the database imploded. Only used for theme mods. Default `false`.
 	 *     @type string[] $extends Original values to extend expressed as a list of function names used to get the values. Only used for options. Default `array()`.
-	 *     @type array    $values The settings field values.
+	 *     @type array    $values The settings field values. Default `array()`.
 	 * }
 	 *
 	 * @return $this
@@ -113,7 +113,7 @@ class Preset {
 			$args['extends'] = array();
 		}
 		if ( ! isset( $args['values'] ) ) {
-			return $this;
+			$args['values'] = array();
 		}
 		$this->settings[ $name ] = $args;
 		return $this;
