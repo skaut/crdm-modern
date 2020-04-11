@@ -111,8 +111,9 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_settings',
 						array(
-							'type'   => 'option',
-							'values' => array(
+							'type'    => 'option',
+							'extends' => array( 'generate_get_default_fonts', 'generate_get_defaults', 'generate_get_color_defaults' ),
+							'values'  => array(
 								// Site Identity.
 								'logo_width'                             => '100',
 								'inline_logo_site_branding'              => true,
@@ -162,8 +163,9 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_spacing_settings',
 						array(
-							'type'   => 'option',
-							'values' => array(
+							'type'    => 'option',
+							'extends' => array( 'generate_spacing_get_defaults' ),
+							'values'  => array(
 								// Layout.
 								'menu_item'                 => '25',
 								'separator'                 => '30',
@@ -173,8 +175,9 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_blog_settings',
 						array(
-							'type'   => 'option',
-							'values' => array(
+							'type'    => 'option',
+							'extends' => array( 'generate_blog_get_defaults' ),
+							'values'  => array(
 								// Layout.
 								'excerpt_length'             => '20',
 								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
@@ -196,8 +199,9 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_background_settings',
 						array(
-							'type'   => 'option',
-							'values' => array(
+							'type'    => 'option',
+							'extends' => array( 'generate_get_background_defaults' ),
+							'values'  => array(
 								// Background.
 								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
 								'body_size'       => 'cover',
@@ -260,8 +264,9 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_settings',
 						array(
-							'type'   => 'option',
-							'values' => array(
+							'type'    => 'option',
+							'extends' => array( 'generate_get_default_fonts', 'generate_get_defaults', 'generate_get_color_defaults' ),
+							'values'  => array(
 								// Site Identity.
 								'logo_width'                             => '100',
 								'inline_logo_site_branding'              => true,
@@ -311,8 +316,9 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_spacing_settings',
 						array(
-							'type'   => 'option',
-							'values' => array(
+							'type'    => 'option',
+							'extends' => array( 'generate_spacing_get_defaults' ),
+							'values'  => array(
 								// Layout.
 								'menu_item'                 => '25',
 								'separator'                 => '30',
@@ -322,8 +328,9 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_blog_settings',
 						array(
-							'type'   => 'option',
-							'values' => array(
+							'type'    => 'option',
+							'extends' => array( 'generate_blog_get_defaults' ),
+							'values'  => array(
 								// Layout.
 								'excerpt_length'             => '20',
 								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
@@ -345,8 +352,9 @@ class Preset_Registry {
 					)->add_settings_field(
 						'generate_background_settings',
 						array(
-							'type'   => 'option',
-							'values' => array(
+							'type'    => 'option',
+							'extends' => array( 'generate_get_background_defaults' ),
+							'values'  => array(
 								// Background.
 								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
 								'body_size'       => 'cover',
