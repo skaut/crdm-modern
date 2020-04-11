@@ -109,6 +109,42 @@ class Preset_Registry {
 							),
 						)
 					)->add_settings_field(
+						'generate_background_settings',
+						array(
+							'type'    => 'option',
+							'extends' => array( 'generate_get_background_defaults' ),
+							'values'  => array(
+								// Background.
+								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
+								'body_size'       => 'cover',
+								'body_attachment' => 'fixed',
+							),
+						)
+					)->add_settings_field(
+						'generate_blog_settings',
+						array(
+							'type'    => 'option',
+							'extends' => array( 'generate_blog_get_defaults' ),
+							'values'  => array(
+								// Layout.
+								'excerpt_length'             => '20',
+								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
+								'author'                     => false,
+								'categories'                 => false,
+								'tags'                       => false,
+								'comments'                   => false,
+								'single_categories'          => false,
+								'single_tags'                => false,
+								'single_post_navigation'     => false,
+								'post_image_position'        => 'post-image-above-header',
+								'post_image_alignment'       => 'post-image-aligned-left',
+								'post_image_width'           => '300',
+								'post_image_height'          => '200',
+								'single_post_image_position' => 'below-title',
+								'page_post_image_position'   => 'below-title',
+							),
+						)
+					)->add_settings_field(
 						'generate_settings',
 						array(
 							'type'    => 'option',
@@ -173,42 +209,6 @@ class Preset_Registry {
 							),
 						)
 					)->add_settings_field(
-						'generate_blog_settings',
-						array(
-							'type'    => 'option',
-							'extends' => array( 'generate_blog_get_defaults' ),
-							'values'  => array(
-								// Layout.
-								'excerpt_length'             => '20',
-								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
-								'author'                     => false,
-								'categories'                 => false,
-								'tags'                       => false,
-								'comments'                   => false,
-								'single_categories'          => false,
-								'single_tags'                => false,
-								'single_post_navigation'     => false,
-								'post_image_position'        => 'post-image-above-header',
-								'post_image_alignment'       => 'post-image-aligned-left',
-								'post_image_width'           => '300',
-								'post_image_height'          => '200',
-								'single_post_image_position' => 'below-title',
-								'page_post_image_position'   => 'below-title',
-							),
-						)
-					)->add_settings_field(
-						'generate_background_settings',
-						array(
-							'type'    => 'option',
-							'extends' => array( 'generate_get_background_defaults' ),
-							'values'  => array(
-								// Background.
-								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
-								'body_size'       => 'cover',
-								'body_attachment' => 'fixed',
-							),
-						)
-					)->add_settings_field(
 						// Typography.
 						'font_body_variants',
 						array(
@@ -259,6 +259,42 @@ class Preset_Registry {
 								'read_more_hover_color'            => '#ffffff',
 								// Blog typography.
 								'blog_font_size'                   => 15,
+							),
+						)
+					)->add_settings_field(
+						'generate_background_settings',
+						array(
+							'type'    => 'option',
+							'extends' => array( 'generate_get_background_defaults' ),
+							'values'  => array(
+								// Background.
+								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
+								'body_size'       => 'cover',
+								'body_attachment' => 'fixed',
+							),
+						)
+					)->add_settings_field(
+						'generate_blog_settings',
+						array(
+							'type'    => 'option',
+							'extends' => array( 'generate_blog_get_defaults' ),
+							'values'  => array(
+								// Layout.
+								'excerpt_length'             => '20',
+								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
+								'author'                     => false,
+								'categories'                 => false,
+								'tags'                       => false,
+								'comments'                   => false,
+								'single_categories'          => false,
+								'single_tags'                => false,
+								'single_post_navigation'     => false,
+								'post_image_position'        => 'post-image-above-header',
+								'post_image_alignment'       => 'post-image-aligned-left',
+								'post_image_width'           => '300',
+								'post_image_height'          => '200',
+								'single_post_image_position' => 'below-title',
+								'page_post_image_position'   => 'below-title',
 							),
 						)
 					)->add_settings_field(
@@ -323,42 +359,6 @@ class Preset_Registry {
 								'menu_item'                 => '25',
 								'separator'                 => '30',
 								'content_element_separator' => '1.5',
-							),
-						)
-					)->add_settings_field(
-						'generate_blog_settings',
-						array(
-							'type'    => 'option',
-							'extends' => array( 'generate_blog_get_defaults' ),
-							'values'  => array(
-								// Layout.
-								'excerpt_length'             => '20',
-								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
-								'author'                     => false,
-								'categories'                 => false,
-								'tags'                       => false,
-								'comments'                   => false,
-								'single_categories'          => false,
-								'single_tags'                => false,
-								'single_post_navigation'     => false,
-								'post_image_position'        => 'post-image-above-header',
-								'post_image_alignment'       => 'post-image-aligned-left',
-								'post_image_width'           => '300',
-								'post_image_height'          => '200',
-								'single_post_image_position' => 'below-title',
-								'page_post_image_position'   => 'below-title',
-							),
-						)
-					)->add_settings_field(
-						'generate_background_settings',
-						array(
-							'type'    => 'option',
-							'extends' => array( 'generate_get_background_defaults' ),
-							'values'  => array(
-								// Background.
-								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
-								'body_size'       => 'cover',
-								'body_attachment' => 'fixed',
 							),
 						)
 					)->add_settings_field(
