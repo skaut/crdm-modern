@@ -279,7 +279,7 @@ class Preset_Registry {
 								// Typography.
 								'font_body'                              => 'Source Sans Pro',
 								'body_font_weight'                       => '600',
-								'body_font_size'                         => '15',
+								'body_font_size'                         => '17',
 								'font_site_title'                        => 'Raleway',
 								'site_title_font_weight'                 => '900',
 								'font_site_tagline'                      => 'Raleway',
@@ -338,6 +338,7 @@ class Preset_Registry {
 							),
 						)
 					)->add_settings_field(
+						// Typography.
 						'font_body_variants',
 						array(
 							'values' => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
