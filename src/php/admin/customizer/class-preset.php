@@ -56,6 +56,8 @@ class Preset {
 	 * Returns the value of all settings of the preset.
 	 *
 	 * @return array The settings values.
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
 	 */
 	public function get_all() {
 		$ret = array();
@@ -75,10 +77,14 @@ class Preset {
 	 * @return array The settings values.
 	 */
 	public function get( string $name ) {
-		if ( $this->settings[ $name ]['type'] === 'option' ) {
-			return array_merge( $this->settings[ $name ]['extends'], $this->settings[ $name ]['values'] );
+		$ret = $this->settings[ $name ]['values'];
+		if ( 'option' === $this->settings[ $name ]['type'] ) {
+			$ret = array_merge( $this->settings[ $name ]['extends'], $ret );
 		}
-		return $this->settings[$name]['values'];
+		if ( ! is_array( $ret ) ) {
+			return array();
+		}
+		return $ret;
 	}
 
 	/**
@@ -100,7 +106,7 @@ class Preset {
 		if ( ! isset( $args['type'] ) ) {
 			return $this;
 		}
-		if ( $args['type'] == 'theme_mod' && ! isset( $args['imploded'] ) ) {
+		if ( 'theme_mod' === $args['type'] && ! isset( $args['imploded'] ) ) {
 			$args['imploded'] = false;
 		}
 		if ( ! isset( $args['extends'] ) ) {

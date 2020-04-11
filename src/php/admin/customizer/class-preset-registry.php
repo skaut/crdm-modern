@@ -210,7 +210,7 @@ class Preset_Registry {
 						array(
 							'type'     => 'theme_mod',
 							'imploded' => true,
-							'values' => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
+							'values'   => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
 						)
 					)->add_settings_field(
 						'font_site_title_variants',
@@ -359,21 +359,21 @@ class Preset_Registry {
 						array(
 							'type'     => 'theme_mod',
 							'imploded' => true,
-							'values' => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
+							'values'   => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
 						)
 					)->add_settings_field(
 						'font_site_title_variants',
 						array(
 							'type'     => 'theme_mod',
 							'imploded' => true,
-							'values' => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+							'values'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 						)
 					)->add_settings_field(
 						'font_site_tagline_variants',
 						array(
 							'type'     => 'theme_mod',
 							'imploded' => true,
-							'values' => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+							'values'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 						)
 					),
 				),
