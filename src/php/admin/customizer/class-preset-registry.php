@@ -148,19 +148,19 @@ class Preset_Registry {
 						'generate_menu_plus_settings',
 						array(
 							'type'    => 'option',
-							'extends' => array( 'generate_menu_plus_get_defaults' )
+							'extends' => array( 'generate_menu_plus_get_defaults' ),
 						)
 					)->add_settings_field(
 						'generate_page_header_settings',
 						array(
 							'type'    => 'option',
-							'extends' => array( 'generate_page_header_get_defaults' )
+							'extends' => array( 'generate_page_header_get_defaults' ),
 						)
 					)->add_settings_field(
 						'generate_secondary_nav_settings',
 						array(
 							'type'    => 'option',
-							'extends' => array( 'generate_secondary_nav_get_defaults' )
+							'extends' => array( 'generate_secondary_nav_get_defaults' ),
 						)
 					)->add_settings_field(
 						'generate_settings',
@@ -230,7 +230,7 @@ class Preset_Registry {
 						'generate_woocommerce_settings',
 						array(
 							'type'    => 'option',
-							'extends' => array( 'generatepress_wc_defaults' )
+							'extends' => array( 'generatepress_wc_defaults' ),
 						)
 					)->add_settings_field(
 						// Typography.
@@ -325,19 +325,19 @@ class Preset_Registry {
 						'generate_menu_plus_settings',
 						array(
 							'type'    => 'option',
-							'extends' => array( 'generate_menu_plus_get_defaults' )
+							'extends' => array( 'generate_menu_plus_get_defaults' ),
 						)
 					)->add_settings_field(
 						'generate_page_header_settings',
 						array(
 							'type'    => 'option',
-							'extends' => array( 'generate_page_header_get_defaults' )
+							'extends' => array( 'generate_page_header_get_defaults' ),
 						)
 					)->add_settings_field(
 						'generate_secondary_nav_settings',
 						array(
 							'type'    => 'option',
-							'extends' => array( 'generate_secondary_nav_get_defaults' )
+							'extends' => array( 'generate_secondary_nav_get_defaults' ),
 						)
 					)->add_settings_field(
 						'generate_settings',
@@ -407,7 +407,7 @@ class Preset_Registry {
 						'generate_woocommerce_settings',
 						array(
 							'type'    => 'option',
-							'extends' => array( 'generatepress_wc_defaults' )
+							'extends' => array( 'generatepress_wc_defaults' ),
 						)
 					)->add_settings_field(
 						// Typography.
