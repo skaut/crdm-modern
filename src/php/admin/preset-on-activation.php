@@ -80,7 +80,7 @@ function handle_ajax() {
 		wp_send_json( 'error' );
 	}
 	$preset = $presets[ $preset_id ];
-	apply_preset( $preset->settings );
+	apply_preset( $preset->get_all() );
 	wp_send_json( 'success' );
 }
 

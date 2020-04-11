@@ -43,12 +43,11 @@ class Preset {
 	 *
 	 * @param string $name Translated preset name.
 	 * @param string $image The preset thumbnail image relative to the admin directory.
-	 * @param array  $settings The preset settings.
 	 */
-	public function __construct( string $name, string $image, array $settings ) {
+	public function __construct( string $name, string $image ) {
 		$this->name     = $name;
 		$this->image    = $image;
-		$this->settings = $settings;
+		$this->settings = array();
 	}
 
 	/**
@@ -59,7 +58,11 @@ class Preset {
 	 * @return array The settings values.
 	 */
 	public function get_all() {
-		return $this->settings;
+		$ret = array();
+		foreach ( $this->settings as $id => $setting ) {
+			$ret[ $id ] = array_merge( $setting['extends'], $setting['values'] );
+		}
+		return $ret;
 	}
 
 	/**
@@ -72,7 +75,28 @@ class Preset {
 	 * @return array The settings values.
 	 */
 	public function get( string $name ) {
-		return $this->settings[ $name ];
+		return array_merge( $this->settings[ $name ]['extends'], $this->settings[ $name ]['values'] );
+	}
+
+	/**
+	 * Adds a settings field.
+	 *
+	 * @param string $name The name of the settings field.
+	 * @param array  $args {
+	 *     The setting field arguments.
+	 *
+	 *     @type array $values The settings field values.
+	 *     @type array $extends Original values to extend. Default `array()`.
+	 * }
+	 *
+	 * @return $this
+	 */
+	public function add_settings_field( $name, $args ) {
+		if ( ! isset( $args['extends'] ) ) {
+			$args['extends'] = array();
+		}
+		$this->settings[ $name ] = $args;
+		return $this;
 	}
 }
 

@@ -71,16 +71,20 @@ class Preset_Registry {
 	 * Returns the default registry. See the singleton pattern for more detail.
 	 *
 	 * @return Preset_Registry The default registry.
+	 *
+	 * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {
 			self::$instance = new Preset_Registry(
 				array(
-					'blue'  => new Preset(
+					'blue'  => ( new Preset(
 						__( 'Blue', 'crdm-modern' ),
-						'presets/blue.png',
+						'presets/blue.png'
+					) )->add_settings_field(
+						'crdm_modern',
 						array(
-							'crdm_modern'                  => array(
+							'values' => array(
 								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png',
 								'header_image_height'              => '220',
 								'header_image_top'                 => '13',
@@ -102,7 +106,11 @@ class Preset_Registry {
 								// Blog typography.
 								'blog_font_size'                   => 15,
 							),
-							'generate_settings'            => array(
+						)
+					)->add_settings_field(
+						'generate_settings',
+						array(
+							'values' => array(
 								// Site Identity.
 								'logo_width'                             => '100',
 								'inline_logo_site_branding'              => true,
@@ -148,13 +156,21 @@ class Preset_Registry {
 								'widget_title_separator'                 => '5',
 								'widget_content_font_size'               => '15',
 							),
-							'generate_spacing_settings'    => array(
+						)
+					)->add_settings_field(
+						'generate_spacing_settings',
+						array(
+							'values' => array(
 								// Layout.
 								'menu_item'                 => '25',
 								'separator'                 => '30',
 								'content_element_separator' => '1.5',
 							),
-							'generate_blog_settings'       => array(
+						)
+					)->add_settings_field(
+						'generate_blog_settings',
+						array(
+							'values' => array(
 								// Layout.
 								'excerpt_length'             => '20',
 								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
@@ -172,23 +188,41 @@ class Preset_Registry {
 								'single_post_image_position' => 'below-title',
 								'page_post_image_position'   => 'below-title',
 							),
-							'generate_background_settings' => array(
+						)
+					)->add_settings_field(
+						'generate_background_settings',
+						array(
+							'values' => array(
 								// Background.
 								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
 								'body_size'       => 'cover',
 								'body_attachment' => 'fixed',
 							),
-							// Typography.
-							'font_body_variants'           => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
-							'font_site_title_variants'     => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
-							'font_site_tagline_variants'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+						)
+					)->add_settings_field(
+						// Typography.
+						'font_body_variants',
+						array(
+							'values' => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
+						)
+					)->add_settings_field(
+						'font_site_title_variants',
+						array(
+							'values' => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+						)
+					)->add_settings_field(
+						'font_site_tagline_variants',
+						array(
+							'values' => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 						)
 					),
-					'green' => new Preset(
+					'green' => ( new Preset(
 						__( 'Green', 'crdm-modern' ),
-						'presets/blue.png',
+						'presets/blue.png'
+					) )->add_settings_field(
+						'crdm_modern',
 						array(
-							'crdm_modern'                  => array(
+							'values' => array(
 								'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png',
 								'header_image_height'              => '220',
 								'header_image_top'                 => '13',
@@ -210,7 +244,11 @@ class Preset_Registry {
 								// Blog typography.
 								'blog_font_size'                   => 15,
 							),
-							'generate_settings'            => array(
+						)
+					)->add_settings_field(
+						'generate_settings',
+						array(
+							'values' => array(
 								// Site Identity.
 								'logo_width'                             => '100',
 								'inline_logo_site_branding'              => true,
@@ -256,13 +294,21 @@ class Preset_Registry {
 								'widget_title_separator'                 => '5',
 								'widget_content_font_size'               => '15',
 							),
-							'generate_spacing_settings'    => array(
+						)
+					)->add_settings_field(
+						'generate_spacing_settings',
+						array(
+							'values' => array(
 								// Layout.
 								'menu_item'                 => '25',
 								'separator'                 => '30',
 								'content_element_separator' => '1.5',
 							),
-							'generate_blog_settings'       => array(
+						)
+					)->add_settings_field(
+						'generate_blog_settings',
+						array(
+							'values' => array(
 								// Layout.
 								'excerpt_length'             => '20',
 								'read_more'                  => __( 'Read more >', 'crdm-modern' ),
@@ -280,16 +326,31 @@ class Preset_Registry {
 								'single_post_image_position' => 'below-title',
 								'page_post_image_position'   => 'below-title',
 							),
-							'generate_background_settings' => array(
+						)
+					)->add_settings_field(
+						'generate_background_settings',
+						array(
+							'values' => array(
 								// Background.
 								'body_image'      => get_stylesheet_directory_uri() . '/frontend/images/background.jpg',
 								'body_size'       => 'cover',
 								'body_attachment' => 'fixed',
 							),
-							// Typography.
-							'font_body_variants'           => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
-							'font_site_title_variants'     => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
-							'font_site_tagline_variants'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+						)
+					)->add_settings_field(
+						'font_body_variants',
+						array(
+							'values' => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
+						)
+					)->add_settings_field(
+						'font_site_title_variants',
+						array(
+							'values' => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+						)
+					)->add_settings_field(
+						'font_site_tagline_variants',
+						array(
+							'values' => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 						)
 					),
 				),
