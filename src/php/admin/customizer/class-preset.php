@@ -77,7 +77,7 @@ class Preset {
 	 * @return array The settings values.
 	 */
 	public function get( string $name ) {
-		$ret = $this->settings[ $name ]['values'];
+		$ret = $this->settings[ $name ]['default_values'];
 		if ( 'option' === $this->settings[ $name ]['type'] ) {
 			$ret = array_merge( $this->settings[ $name ]['extends'], $ret );
 		}
@@ -97,7 +97,7 @@ class Preset {
 	 *     @type string   $type The type of the settings field. Accepts `option`, `theme_mod`.
 	 *     @type bool     $imploded Whether the values are stored in the database imploded. Only used for theme mods. Default `false`.
 	 *     @type string[] $extends Original values to extend expressed as a list of function names used to get the values. Only used for options. Default `array()`.
-	 *     @type array    $values The settings field values. Default `array()`.
+	 *     @type array    $default_values The settings field default values. Default `array()`.
 	 * }
 	 *
 	 * @return $this
@@ -112,8 +112,8 @@ class Preset {
 		if ( ! isset( $args['extends'] ) ) {
 			$args['extends'] = array();
 		}
-		if ( ! isset( $args['values'] ) ) {
-			$args['values'] = array();
+		if ( ! isset( $args['default_values'] ) ) {
+			$args['default_values'] = array();
 		}
 		$this->settings[ $name ] = $args;
 		return $this;
