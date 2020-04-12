@@ -233,11 +233,23 @@ class Preset_Registry {
 							'extends' => array( 'generatepress_wc_defaults' ),
 						)
 					)->add_settings_field(
+						'font_body_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
+						)
+					)->add_settings_field(
 						'font_body_variants',
 						array(
 							'type'     => 'theme_mod',
 							'imploded' => true,
 							'values'   => array( '600', '600italic', '700', '700italic' ), // This needs to be consistent across all places with the same font.
+						)
+					)->add_settings_field(
+						'font_buttons_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
 						)
 					)->add_settings_field(
 						'font_buttons_variants',
@@ -246,10 +258,22 @@ class Preset_Registry {
 							'imploded' => true,
 						)
 					)->add_settings_field(
+						'font_footer_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
+						)
+					)->add_settings_field(
 						'font_footer_variants',
 						array(
 							'type'     => 'theme_mod',
 							'imploded' => true,
+						)
+					)->add_settings_field(
+						'font_heading_1_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
 						)
 					)->add_settings_field(
 						'font_heading_1_variants',
@@ -258,10 +282,22 @@ class Preset_Registry {
 							'imploded' => true,
 						)
 					)->add_settings_field(
+						'font_heading_2_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
+						)
+					)->add_settings_field(
 						'font_heading_2_variants',
 						array(
 							'type'     => 'theme_mod',
 							'imploded' => true,
+						)
+					)->add_settings_field(
+						'font_heading_3_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
 						)
 					)->add_settings_field(
 						'font_heading_3_variants',
@@ -270,10 +306,22 @@ class Preset_Registry {
 							'imploded' => true,
 						)
 					)->add_settings_field(
+						'font_heading_4_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
+						)
+					)->add_settings_field(
 						'font_heading_4_variants',
 						array(
 							'type'     => 'theme_mod',
 							'imploded' => true,
+						)
+					)->add_settings_field(
+						'font_heading_5_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
 						)
 					)->add_settings_field(
 						'font_heading_5_variants',
@@ -282,10 +330,22 @@ class Preset_Registry {
 							'imploded' => true,
 						)
 					)->add_settings_field(
+						'font_heading_6_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
+						)
+					)->add_settings_field(
 						'font_heading_6_variants',
 						array(
 							'type'     => 'theme_mod',
 							'imploded' => true,
+						)
+					)->add_settings_field(
+						'font_navigation_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
 						)
 					)->add_settings_field(
 						'font_navigation_variants',
@@ -294,10 +354,22 @@ class Preset_Registry {
 							'imploded' => true,
 						)
 					)->add_settings_field(
+						'font_secondary_navigation_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
+						)
+					)->add_settings_field(
 						'font_secondary_navigation_variants',
 						array(
 							'type'     => 'theme_mod',
 							'imploded' => true,
+						)
+					)->add_settings_field(
+						'font_site_tagline_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
 						)
 					)->add_settings_field(
 						'font_site_tagline_variants',
@@ -307,11 +379,23 @@ class Preset_Registry {
 							'values'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
 						)
 					)->add_settings_field(
+						'font_site_title_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
+						)
+					)->add_settings_field(
 						'font_site_title_variants',
 						array(
 							'type'     => 'theme_mod',
 							'imploded' => true,
 							'values'   => array( 'regular', '900' ), // This needs to be consistent across all places with the same font.
+						)
+					)->add_settings_field(
+						'font_widget_title_category',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false,
 						)
 					)->add_settings_field(
 						'font_widget_title_variants',
