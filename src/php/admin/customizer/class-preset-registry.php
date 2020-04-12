@@ -235,7 +235,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'font_body_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_body_variants',
@@ -246,107 +246,107 @@ class Preset_Registry {
 					)->add_settings_field(
 						'font_buttons_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_buttons_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_footer_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_footer_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_1_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_1_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_2_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_2_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_3_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_3_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_4_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_4_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_5_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_5_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_6_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_6_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_navigation_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_navigation_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_secondary_navigation_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_secondary_navigation_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_site_tagline_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_site_tagline_variants',
@@ -357,7 +357,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'font_site_title_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_site_title_variants',
@@ -368,17 +368,17 @@ class Preset_Registry {
 					)->add_settings_field(
 						'font_widget_title_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_widget_title_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'generate_copyright',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					),
 					'green' => ( new Preset(
@@ -538,7 +538,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'font_body_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_body_variants',
@@ -549,107 +549,107 @@ class Preset_Registry {
 					)->add_settings_field(
 						'font_buttons_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_buttons_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_footer_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_footer_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_1_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_1_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_2_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_2_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_3_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_3_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_4_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_4_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_5_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_5_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_6_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_heading_6_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_navigation_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_navigation_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_secondary_navigation_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_secondary_navigation_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_site_tagline_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_site_tagline_variants',
@@ -660,7 +660,7 @@ class Preset_Registry {
 					)->add_settings_field(
 						'font_site_title_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_site_title_variants',
@@ -671,17 +671,17 @@ class Preset_Registry {
 					)->add_settings_field(
 						'font_widget_title_category',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'font_widget_title_variants',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					)->add_settings_field(
 						'generate_copyright',
 						array(
-							'type'     => 'theme_mod',
+							'type' => 'theme_mod',
 						)
 					),
 				),
