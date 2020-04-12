@@ -93,17 +93,6 @@ function handle_ajax() {
  */
 function apply_preset( $preset ) {
 	// @phan-suppress-next-line PhanVariableDefinitionCouldBeConstant
-	$generate_settings = array(
-		'generate_background_settings',
-		'generate_blog_settings',
-		'generate_menu_plus_settings',
-		'generate_page_header_settings',
-		'generate_secondary_nav_settings',
-		'generate_settings',
-		'generate_spacing_settings',
-		'generate_woocommerce_settings',
-	);
-	// @phan-suppress-next-line PhanVariableDefinitionCouldBeConstant
 	$generate_unused_modules = array(
 		'generate_package_copyright',
 		'generate_package_elements',
@@ -115,6 +104,14 @@ function apply_preset( $preset ) {
 		'generate_package_sections',
 		'generate_package_woocommerce',
 	);
+
+	// Deactivate unused GeneratePress modules.
+	foreach ( $generate_unused_modules as $package ) {
+		delete_option( $package );
+	}
+
+	// Flush cached CSS.
+	delete_option( 'generate_dynamic_css_output' );
 
 	// Reset GeneratePress theme mods.
 	foreach ( $preset->theme_mods() as $mod ) {
@@ -129,20 +126,16 @@ function apply_preset( $preset ) {
 		set_theme_mod( $mod, $value );
 	}
 
-	// Reset GeneratePress settings.
-	foreach ( $generate_settings as $setting ) {
-		if ( array_key_exists( $setting, $preset->get_all() ) ) {
-			update_option( $setting, $preset->get_all()[ $setting ] );
-		} else {
-			delete_option( $setting );
+	// Reset GeneratePress options.
+	foreach ( $preset->options() as $option ) {
+		echo $option;
+		$value = $preset->get_stylesheet_defaults( $option );
+		echo json_encode($value);
+		echo "\n";
+		if ( is_null( $value ) ) {
+			delete_option( $option );
+			continue;
 		}
+		update_option( $option, $value );
 	}
-
-	// Deactivate unused GeneratePress modules.
-	foreach ( $generate_unused_modules as $package ) {
-		delete_option( $package );
-	}
-
-	// Reset crdm-modern settings.
-	delete_option( 'crdm_modern' );
 }

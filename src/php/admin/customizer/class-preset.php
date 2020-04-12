@@ -88,14 +88,33 @@ class Preset {
 	}
 
 	/**
+	 * Returns a list of all the option names in the preset.
+	 *
+	 * @return string[] A list of options.
+	 */
+	public function options() {
+		return $this->listByType( 'option' );
+	}
+
+	/**
 	 * Returns a list of all the theme mod names in the preset.
 	 *
 	 * @return string[] A list of theme mods.
 	 */
 	public function theme_mods() {
+		return $this->listByType( 'theme_mod' );
+	}
+
+	/**
+	 * Lists all the settings field IDs of a particular type.
+	 *
+	 * @param type The type of the settings field. Accepts `option`, `theme_mod`.
+	 * @return string[] The list
+	 */
+	private function listByType( $type ) {
 		$ret = array();
 		foreach ( $this->settings as $id => $setting ) {
-			if ( 'theme_mod' === $setting['type'] ) {
+			if ( $type === $setting['type'] ) {
 				$ret[] = $id;
 			}
 		}
