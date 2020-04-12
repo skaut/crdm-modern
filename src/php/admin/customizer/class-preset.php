@@ -78,11 +78,26 @@ class Preset {
 	 */
 	public function get( string $name ) {
 		$ret = $this->settings[ $name ]['default_values'];
+		if ( ! is_array( $ret ) ) {
+			$ret = array();
+		}
 		if ( 'option' === $this->settings[ $name ]['type'] ) {
 			$ret = array_merge( $this->settings[ $name ]['extends'], $ret );
 		}
-		if ( ! is_array( $ret ) ) {
-			return array();
+		return $ret;
+	}
+
+	/**
+	 * Returns a list of all the theme mod names in the preset.
+	 *
+	 * @return string[] A list of theme mods.
+	 */
+	public function theme_mods() {
+		$ret = array();
+		foreach ( $this->settings as $id => $setting ) {
+			if ( 'theme_mod' === $setting['type'] ) {
+				$ret[] = $id;
+			}
 		}
 		return $ret;
 	}
@@ -149,7 +164,7 @@ class Preset {
 			$args['extends'] = array();
 		}
 		if ( ! isset( $args['default_values'] ) ) {
-			$args['default_values'] = array();
+			$args['default_values'] = null;
 		}
 		$this->settings[ $name ] = $args;
 		return $this;
