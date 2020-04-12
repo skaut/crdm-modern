@@ -87,11 +87,11 @@ function handle_ajax() {
 /**
  * Applies a preset
  *
- * @param array $settings The preset to apply.
+ * @param \CrdmModern\Admin\Customizer\Preset $preset The preset to apply.
  *
  * @return void
  */
-function apply_preset( $settings ) {
+function apply_preset( $preset ) {
 	// @phan-suppress-next-line PhanVariableDefinitionCouldBeConstant
 	$generate_mods = array(
 		'font_body_category',
@@ -155,8 +155,8 @@ function apply_preset( $settings ) {
 
 	// Reset GeneratePress mods.
 	foreach ( $generate_mods as $mod ) {
-		if ( array_key_exists( $mod, $settings ) ) {
-			set_theme_mod( $mod, $settings[ $mod ] );
+		if ( array_key_exists( $mod, $preset->get_all() ) ) {
+			set_theme_mod( $mod, $preset->get_all()[ $mod ] );
 		} else {
 			remove_theme_mod( $mod );
 		}
@@ -164,8 +164,8 @@ function apply_preset( $settings ) {
 
 	// Reset GeneratePress implode mods.
 	foreach ( $generate_implode_mods as $mod ) {
-		if ( array_key_exists( $mod, $settings ) ) {
-			set_theme_mod( $mod, implode( ',', $settings[ $mod ] ) );
+		if ( array_key_exists( $mod, $preset->get_all() ) ) {
+			set_theme_mod( $mod, implode( ',', $preset->get_all()[ $mod ] ) );
 		} else {
 			remove_theme_mod( $mod );
 		}
@@ -173,8 +173,8 @@ function apply_preset( $settings ) {
 
 	// Reset GeneratePress settings.
 	foreach ( $generate_settings as $setting ) {
-		if ( array_key_exists( $setting, $settings ) ) {
-			update_option( $setting, $settings[ $setting ] );
+		if ( array_key_exists( $setting, $preset->get_all() ) ) {
+			update_option( $setting, $preset->get_all()[ $setting ] );
 		} else {
 			delete_option( $setting );
 		}

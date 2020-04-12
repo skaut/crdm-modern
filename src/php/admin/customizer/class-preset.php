@@ -135,7 +135,6 @@ class Preset {
 	 *     The setting field arguments.
 	 *
 	 *     @type string   $type The type of the settings field. Accepts `option`, `theme_mod`.
-	 *     @type bool     $imploded Whether the values are stored in the database imploded. Only used for theme mods. Default `false`.
 	 *     @type string[] $extends Original values to extend expressed as a list of function names used to get the values. Only used for options. Default `array()`.
 	 *     @type array    $default_values The settings field default values. Default `array()`.
 	 * }
@@ -145,9 +144,6 @@ class Preset {
 	public function add_settings_field( $name, $args ) {
 		if ( ! isset( $args['type'] ) ) {
 			return $this;
-		}
-		if ( 'theme_mod' === $args['type'] && ! isset( $args['imploded'] ) ) {
-			$args['imploded'] = false;
 		}
 		if ( ! isset( $args['extends'] ) ) {
 			$args['extends'] = array();
