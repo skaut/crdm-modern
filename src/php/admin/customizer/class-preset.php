@@ -95,7 +95,7 @@ class Preset {
 	 * @return array The settings extended values.
 	 */
 	private function extends_values( string $name ) {
-		return array_merge( ...$this->settings[ $name ]['extends'] );
+		return array_merge( ...array_map( 'call_user_func', $this->settings[ $name ]['extends'] ) );
 	}
 
 	/**
