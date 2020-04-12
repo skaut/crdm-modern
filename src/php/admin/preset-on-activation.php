@@ -133,9 +133,6 @@ function apply_preset( $settings ) {
 	$generate_settings = array(
 		'generate_background_settings',
 		'generate_blog_settings',
-		'generate_dynamic_css_cached_version',
-		'generate_dynamic_css_output',
-		'generate_hooks',
 		'generate_menu_plus_settings',
 		'generate_page_header_settings',
 		'generate_secondary_nav_settings',

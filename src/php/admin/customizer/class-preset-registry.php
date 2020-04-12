@@ -403,6 +403,12 @@ class Preset_Registry {
 							'type'     => 'theme_mod',
 							'imploded' => true,
 						)
+					)->add_settings_field(
+						'generate_copyright',
+						array(
+							'type'     => 'theme_mod',
+							'imploded' => false
+						)
 					),
 					'green' => ( new Preset(
 						__( 'Green', 'crdm-modern' ),
