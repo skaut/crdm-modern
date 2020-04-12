@@ -178,14 +178,8 @@ function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
 
 	$preset               = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
-	$gp_settings          = wp_parse_args(
-		get_option( 'generate_settings', array() ),
-		array_merge( generate_get_defaults(), generate_get_color_defaults(), $preset->get( 'generate_settings' ) )
-	);
-	$crdm_modern_settings = wp_parse_args(
-		get_option( 'crdm_modern', array() ),
-		$preset->get( 'crdm_modern' )
-	);
+	$gp_settings          = $preset->get_current_values( 'generate_settings' );
+	$crdm_modern_settings = $preset->get_current_values( 'crdm_modern' );
 
 	// Search widget colors.
 	$css->set_selector( '.sidebar .widget_search .search-field' );

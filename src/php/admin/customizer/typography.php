@@ -80,10 +80,7 @@ function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
 
 	$preset   = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
-	$settings = wp_parse_args(
-		get_option( 'crdm_modern', array() ),
-		$preset->get( 'crdm_modern' )
-	);
+	$settings = $preset->get_current_values( 'crdm_modern' );
 
 	$css->set_selector( '.crdm-modern-excerpt' );
 	$css->add_property( 'font-size', esc_attr( $settings['blog_font_size'] . 'px' ) );

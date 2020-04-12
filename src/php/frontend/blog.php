@@ -145,10 +145,7 @@ function blog_css() {
  */
 function get_featured_post_count() {
 	$preset               = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
-	$crdm_modern_settings = wp_parse_args(
-		get_option( 'crdm_modern', array() ),
-		$preset->get( 'crdm_modern' )
-	);
+	$crdm_modern_settings = $preset->get_current_values( 'crdm_modern' );
 	return intval( $crdm_modern_settings['featured_post_count'] );
 }
 

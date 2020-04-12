@@ -196,10 +196,7 @@ function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
 
 	$preset               = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
-	$crdm_modern_settings = wp_parse_args(
-		get_option( 'crdm_modern', array() ),
-		$preset->get( 'crdm_modern' )
-	);
+	$crdm_modern_settings = $preset->get_current_values( 'crdm_modern' );
 
 	// Header image.
 	$css->set_selector( '.crdm-modern-nav-image' );

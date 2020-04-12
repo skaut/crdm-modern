@@ -88,20 +88,43 @@ class Preset {
 	}
 
 	/**
+	 * Gets the extended values of a settings field.
+	 *
+	 * @param string $name The name of the field.
+	 *
+	 * @return array The settings extended values.
+	 */
+	private function extends_values( string $name ) {
+		return array_merge( ...$this->settings[ $name ]['extends'] );
+	}
+
+	/**
+	 * Settings getter
+	 *
+	 * Returns the current values of a particular settings field, including extended values.
+	 *
+	 * @param string $name The name of the field.
+	 *
+	 * @return array The settings current values.
+	 */
+	public function get_current_values( string $name ) {
+		return wp_parse_args(
+			get_option( $name, array() ),
+			array_merge( $this->extends_values( $name ), $this->get_stylesheet_defaults( $name ) )
+		);
+	}
+
+	/**
 	 * Settings getter
 	 *
 	 * Returns the default values of a particular settings field, excluding extended values.
 	 *
 	 * @param string $name The name of the field.
 	 *
-	 * @return array The settings default values.
+	 * @return mixed The settings default values.
 	 */
 	public function get_stylesheet_defaults( string $name ) {
-		$ret = $this->settings[ $name ]['default_values'];
-		if ( ! is_array( $ret ) ) {
-			return array();
-		}
-		return $ret;
+		return $this->settings[ $name ]['default_values'];
 	}
 
 	/**
