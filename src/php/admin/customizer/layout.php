@@ -25,7 +25,7 @@ function register() {
  * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
  */
 function customize( \WP_Customize_Manager $wp_customize ) {
-	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->get( 'crdm_modern' );
+	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->get_stylesheet_defaults( 'crdm_modern' );
 
 	// Floating navigation spacing.
 	$wp_customize->add_setting(

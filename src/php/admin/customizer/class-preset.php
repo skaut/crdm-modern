@@ -88,6 +88,23 @@ class Preset {
 	}
 
 	/**
+	 * Settings getter
+	 *
+	 * Returns the default values of a particular settings field, excluding extended values.
+	 *
+	 * @param string $name The name of the field.
+	 *
+	 * @return array The settings default values.
+	 */
+	public function get_stylesheet_defaults( string $name ) {
+		$ret = $this->settings[ $name ]['default_values'];
+		if ( ! is_array( $ret ) ) {
+			return array();
+		}
+		return $ret;
+	}
+
+	/**
 	 * Adds a settings field.
 	 *
 	 * @param string $name The name of the settings field.
