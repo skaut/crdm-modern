@@ -129,6 +129,9 @@ class Preset {
 	 * @return array The settings extended values.
 	 */
 	private function extends_values( string $name ) {
+		if ( is_null( $this->settings[ $name ]['extends'] ) ) {
+			return array();
+		}
 		return array_merge( ...array_map( 'call_user_func', $this->settings[ $name ]['extends'] ) );
 	}
 
@@ -144,8 +147,29 @@ class Preset {
 	public function get_current_values( string $name ) {
 		return wp_parse_args(
 			get_option( $name, array() ),
-			array_merge( $this->extends_values( $name ), $this->get_stylesheet_defaults( $name ) )
+			$this->get_template_defaults( $name )
 		);
+	}
+
+	/**
+	 * Settings getter
+	 *
+	 * Returns the default values of a particular settings field, including extended values.
+	 *
+	 * @param string $name The name of the field.
+	 *
+	 * @return mixed The settings default values.
+	 */
+	public function get_template_defaults( string $name ) {
+		if ( 'option' === $this->settings[ $name ]['type'] ) {
+			return array_merge( $this->extends_values( $name ), $this->get_stylesheet_defaults( $name ) );
+		} else {
+			$stylesheet_defaults = $this->get_stylesheet_defaults( $name );
+			if ( is_null( $stylesheet_defaults ) ) {
+				return $this->settings[ $name ]['extends'];
+			}
+			return $stylesheet_defaults;
+		}
 	}
 
 	/**
@@ -180,7 +204,7 @@ class Preset {
 			return $this;
 		}
 		if ( ! isset( $args['extends'] ) ) {
-			$args['extends'] = array();
+			$args['extends'] = null;
 		}
 		if ( ! isset( $args['default_values'] ) ) {
 			$args['default_values'] = null;
