@@ -117,7 +117,7 @@ msgid "Blue"
 msgstr ""
 
 #: admin/customizer/class-preset-registry.php:162,
-#: admin/customizer/class-preset-registry.php:270
+#: admin/customizer/class-preset-registry.php:272
 msgid "Read more >"
 msgstr ""
 
