@@ -132,7 +132,7 @@ class Preset {
 		if ( is_null( $this->settings[ $name ]['extends'] ) ) {
 			return array();
 		}
-		return array_merge( ...array_map( 'call_user_func', $this->settings[ $name ]['extends'] ) );
+		return array_merge( ...array_map( 'call_user_func', array_filter( $this->settings[ $name ]['extends'], 'function_exists' ) ) );
 	}
 
 	/**
@@ -161,10 +161,13 @@ class Preset {
 	 * @return mixed The settings default values.
 	 */
 	public function get_template_defaults( string $name ) {
+		$stylesheet_defaults = $this->get_stylesheet_defaults( $name );
 		if ( 'option' === $this->settings[ $name ]['type'] ) {
+			if ( is_null( $stylesheet_defaults ) ) {
+				return $this->extends_values( $name );
+			}
 			return array_merge( $this->extends_values( $name ), $this->get_stylesheet_defaults( $name ) );
 		} else {
-			$stylesheet_defaults = $this->get_stylesheet_defaults( $name );
 			if ( is_null( $stylesheet_defaults ) ) {
 				return $this->settings[ $name ]['extends'];
 			}
@@ -183,6 +186,23 @@ class Preset {
 	 */
 	public function get_stylesheet_defaults( string $name ) {
 		return $this->settings[ $name ]['default_values'];
+	}
+
+	/**
+	 * Settings getter
+	 *
+	 * Returns the default values of all settings fields, including extended values.
+	 *
+	 * @return mixed The defautl values.
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 */
+	public function get_all_template_defaults() {
+		$ret = array();
+		foreach ( $this->settings as $id => $_ ) {
+			$ret[ $id ] = $this->get_template_defaults( $id );
+		}
+		return $ret;
 	}
 
 	/**

@@ -52,6 +52,19 @@ class Preset_Registry {
 	}
 
 	/**
+	 * Returns an associative array where each item contains all the default values of a preset.
+	 *
+	 * @return array A list of preset defaults.
+	 */
+	public function get_all_template_defaults() {
+		$ret = array();
+		foreach ( $this->presets as $id => $preset ) {
+			$ret[ $id ] = $preset->get_all_template_defaults();
+		}
+		return $ret;
+	}
+
+	/**
 	 * Returns the defaults preset
 	 *
 	 * @return Preset The default preset.
