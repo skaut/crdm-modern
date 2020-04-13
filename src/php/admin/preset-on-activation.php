@@ -128,10 +128,7 @@ function apply_preset( $preset ) {
 
 	// Reset GeneratePress options.
 	foreach ( $preset->options() as $option ) {
-		echo $option;
 		$value = $preset->get_stylesheet_defaults( $option );
-		echo json_encode($value);
-		echo "\n";
 		if ( is_null( $value ) ) {
 			delete_option( $option );
 			continue;

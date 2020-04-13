@@ -93,7 +93,7 @@ class Preset {
 	 * @return string[] A list of options.
 	 */
 	public function options() {
-		return $this->listByType( 'option' );
+		return $this->list_by_type( 'option' );
 	}
 
 	/**
@@ -102,16 +102,16 @@ class Preset {
 	 * @return string[] A list of theme mods.
 	 */
 	public function theme_mods() {
-		return $this->listByType( 'theme_mod' );
+		return $this->list_by_type( 'theme_mod' );
 	}
 
 	/**
 	 * Lists all the settings field IDs of a particular type.
 	 *
-	 * @param type The type of the settings field. Accepts `option`, `theme_mod`.
+	 * @param string $type The type of the settings field. Accepts `option`, `theme_mod`.
 	 * @return string[] The list
 	 */
-	private function listByType( $type ) {
+	private function list_by_type( $type ) {
 		$ret = array();
 		foreach ( $this->settings as $id => $setting ) {
 			if ( $type === $setting['type'] ) {
