@@ -213,24 +213,93 @@ function post_classes( $classes ) {
 }
 
 /**
+ * Gets an (approximate) width for the featured images.
+ *
+ * @return int[] The approximate width.
+ */
+function featured_image_width() {
+	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
+	$crdm_modern_settings = wp_parse_args(
+		get_option( 'crdm_modern', array() ),
+		$defaults['crdm_modern']
+	);
+	$gp_settings          = wp_parse_args(
+		get_option( 'generate_settings', array() ),
+		array_merge( generate_get_defaults(), $defaults['generate_settings'] )
+	);
+	$gp_blog_settings     = wp_parse_args(
+		get_option( 'generate_blog_settings', array() ),
+		array_merge( generate_blog_get_defaults(), $defaults['generate_blog_settings'] )
+	);
+	$gp_spacing_settings  = wp_parse_args(
+		get_option( 'generate_spacing_settings', array() ),
+		array_merge( generate_spacing_get_defaults(), $defaults['generate_spacing_settings'] )
+	);
+
+	switch ( $gp_settings['blog_layout_setting'] ) {
+		case 'left-sidebar':
+			$left_sidebar  = true;
+			$right_sidebar = false;
+			break;
+		case 'right-sidebar':
+			$left_sidebar  = false;
+			$right_sidebar = true;
+			break;
+		case 'both-sidebars':
+		case 'both-left':
+		case 'both-right':
+			$left_sidebar  = true;
+			$right_sidebar = true;
+			break;
+		default:
+			$left_sidebar  = false;
+			$right_sidebar = false;
+	}
+	$sidebar_width = 0;
+	if ( $left_sidebar ) {
+		$sidebar_width += $gp_spacing_settings['left_sidebar_width'];
+	}
+	if ( $right_sidebar ) {
+		$sidebar_width += $gp_spacing_settings['right_sidebar_width'];
+	}
+	$content_width = $gp_settings['container_width'] - $sidebar_width;
+
+	$featured_post_image_width = intval( $content_width / $crdm_modern_settings['featured_post_count'] );
+
+	switch ( $gp_blog_settings['post_image_alignment'] ) {
+		case 'post-image-aligned-center':
+			$featured_image_width = $content_width;
+			break;
+		default:
+			$featured_image_width = $gp_blog_settings['post_image_width'];
+	}
+
+	$width  = max( 768, $featured_post_image_width, $featured_image_width );
+	$height = $width / $gp_blog_settings['post_image_width'] * $gp_blog_settings['post_image_height'];
+	return array( $width, $height );
+}
+
+/**
  * Makes the featured images full-sized in the multi-column blog layout for the featured posts
  *
  * @return string the updated featured image HTML.
  */
 function featured_image() {
 	$post_ID = get_the_ID();
+
+	$image_html = get_the_post_thumbnail(
+		$post_ID,
+		featured_image_width(),
+		array(
+			'itemprop' => 'image',
+		)
+	);
 	return '<div class="post-image">' .
-			apply_filters( 'generate_inside_featured_image_output', '' ) // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
-			. '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' .
-				get_the_post_thumbnail(
-					$post_ID,
-					apply_filters( 'generate_page_header_default_size', 'full' ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
-					array(
-						'itemprop' => 'image',
-					)
-				)
-			. '</a>
-		</div>';
+			apply_filters( 'generate_inside_featured_image_output', '' ) . // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+			'<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' .
+			$image_html .
+			'</a>' .
+		'</div>';
 }
 
 /**
