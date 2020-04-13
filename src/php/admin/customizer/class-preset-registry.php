@@ -107,7 +107,9 @@ class Preset_Registry {
 							'read_more_color'                  => '#007bc2',
 							'read_more_hover_color'            => '#ffffff',
 							// Blog typography.
+							'blog_font_weight'                 => '600',
 							'blog_font_size'                   => 15,
+							'blog_font_transform'              => 'none',
 						),
 					)
 				)->add_settings_field(
@@ -405,7 +407,9 @@ class Preset_Registry {
 							'read_more_color'                  => '#009b67',
 							'read_more_hover_color'            => '#ffffff',
 							// Blog typography.
+							'blog_font_weight'                 => '600',
 							'blog_font_size'                   => 15,
+							'blog_font_transform'              => 'none',
 						),
 					)
 				)->add_settings_field(
