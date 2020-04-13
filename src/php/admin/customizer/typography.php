@@ -120,7 +120,9 @@ function enqueue() {
 	);
 
 	$css->set_selector( '.crdm-modern-excerpt' );
+	$css->add_property( 'font-weight', esc_attr( $settings['blog_font_weight'] ) );
 	$css->add_property( 'font-size', esc_attr( $settings['blog_font_size'] . 'px' ) );
+	$css->add_property( 'text-transform', esc_attr( $settings['blog_font_transform'] ) );
 
 	$output = $css->css_output();
 	if ( '' !== $output ) {
