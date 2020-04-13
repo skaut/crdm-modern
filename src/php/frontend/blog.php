@@ -218,23 +218,11 @@ function post_classes( $classes ) {
  * @return int[] The approximate width.
  */
 function featured_image_width() {
-	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
-	$crdm_modern_settings = wp_parse_args(
-		get_option( 'crdm_modern', array() ),
-		$defaults['crdm_modern']
-	);
-	$gp_settings          = wp_parse_args(
-		get_option( 'generate_settings', array() ),
-		array_merge( generate_get_defaults(), $defaults['generate_settings'] )
-	);
-	$gp_blog_settings     = wp_parse_args(
-		get_option( 'generate_blog_settings', array() ),
-		array_merge( generate_blog_get_defaults(), $defaults['generate_blog_settings'] )
-	);
-	$gp_spacing_settings  = wp_parse_args(
-		get_option( 'generate_spacing_settings', array() ),
-		array_merge( generate_spacing_get_defaults(), $defaults['generate_spacing_settings'] )
-	);
+	$preset               = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
+	$crdm_modern_settings = $preset->get_current_values( 'crdm_modern' );
+	$gp_settings          = $preset->get_current_values( 'generate_settings' );
+	$gp_blog_settings     = $preset->get_current_values( 'generate_blog_settings' );
+	$gp_spacing_settings  = $preset->get_current_values( 'generate_spacing_settings' );
 
 	switch ( $gp_settings['blog_layout_setting'] ) {
 		case 'left-sidebar':
