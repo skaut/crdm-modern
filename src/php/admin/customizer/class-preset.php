@@ -51,43 +51,6 @@ class Preset {
 	}
 
 	/**
-	 * Settings getter
-	 *
-	 * Returns the value of all settings of the preset.
-	 *
-	 * @return array The settings values.
-	 *
-	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
-	 */
-	public function get_all() {
-		$ret = array();
-		foreach ( $this->settings as $id => $_ ) {
-			$ret[ $id ] = $this->get( $id );
-		}
-		return $ret;
-	}
-
-	/**
-	 * Settings getter
-	 *
-	 * Returns the value of a particular settings field.
-	 *
-	 * @param string $name The name of the field.
-	 *
-	 * @return array The settings values.
-	 */
-	public function get( string $name ) {
-		$ret = $this->settings[ $name ]['default_values'];
-		if ( ! is_array( $ret ) ) {
-			$ret = array();
-		}
-		if ( 'option' === $this->settings[ $name ]['type'] ) {
-			$ret = array_merge( $this->settings[ $name ]['extends'], $ret );
-		}
-		return $ret;
-	}
-
-	/**
 	 * Returns a list of all the option names in the preset.
 	 *
 	 * @return string[] A list of options.
@@ -132,7 +95,8 @@ class Preset {
 		if ( is_null( $this->settings[ $name ]['extends'] ) ) {
 			return array();
 		}
-		return array_merge( ...array_map( 'call_user_func', array_filter( $this->settings[ $name ]['extends'], 'function_exists' ) ) );
+		$functions = array_values( array_filter( $this->settings[ $name ]['extends'], 'function_exists' ) );
+		return array_merge( ...array_map( 'call_user_func', $functions ) );
 	}
 
 	/**

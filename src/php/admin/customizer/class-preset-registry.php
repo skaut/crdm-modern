@@ -39,19 +39,6 @@ class Preset_Registry {
 	}
 
 	/**
-	 * Returns an associative array where each item contains all the settings of a preset.
-	 *
-	 * @return array A list of flattened preset settings.
-	 */
-	public function settings() {
-		$ret = array();
-		foreach ( $this->presets as $id => $preset ) {
-			$ret[ $id ] = $preset->get_all();
-		}
-		return $ret;
-	}
-
-	/**
 	 * Returns an associative array where each item contains all the default values of a preset.
 	 *
 	 * @return array A list of preset defaults.
