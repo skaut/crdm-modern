@@ -172,10 +172,22 @@ liveReload("crdm_modern[header_image_right]", [
 ]);
 
 // Customizer - Typography.
+liveReload("crdm_modern[blog_font_weight]", [
+  {
+    selector: ".crdm-modern-excerpt",
+    properties: [{ name: "font-weight" }]
+  }
+]);
 liveReload("crdm_modern[blog_font_size]", [
   {
     selector: ".crdm-modern-excerpt",
     properties: [{ name: "font-size", postfix: "px" }]
+  }
+]);
+liveReload("crdm_modern[blog_font_transform]", [
+  {
+    selector: ".crdm-modern-excerpt",
+    properties: [{ name: "text-transform" }]
   }
 ]);
 

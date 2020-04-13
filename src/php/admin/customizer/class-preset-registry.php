@@ -101,6 +101,8 @@ class Preset_Registry {
 								'read_more_hover_color'            => '#ffffff',
 								// Blog typography.
 								'blog_font_size'                   => 15,
+								'blog_font_weight'                 => '600',
+								'blog_font_transform'              => 'none',
 							),
 							'generate_settings'            => array(
 								// Site Identity.

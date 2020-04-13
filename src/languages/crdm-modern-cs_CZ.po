@@ -124,12 +124,12 @@ msgstr "Widget obsahující logo, název a popis webu."
 msgid "Blue"
 msgstr "Modrá"
 
-#: admin/customizer/class-preset-registry.php:160,
-#: admin/customizer/class-preset-registry.php:268
+#: admin/customizer/class-preset-registry.php:162,
+#: admin/customizer/class-preset-registry.php:270
 msgid "Read more >"
 msgstr "Číst více >"
 
-#: admin/customizer/class-preset-registry.php:188
+#: admin/customizer/class-preset-registry.php:190
 msgid "Green"
 msgstr "Zelená"
 
@@ -209,7 +209,7 @@ msgstr "Minimální šířka pro zobrazení obrázku v záhlaví"
 msgid "Blog"
 msgstr "Blog"
 
-#: admin/customizer/typography.php:56
+#: admin/customizer/typography.php:90
 msgid "Font size"
 msgstr "Velikost písma"
 

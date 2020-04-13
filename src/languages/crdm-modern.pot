@@ -116,12 +116,12 @@ msgstr ""
 msgid "Blue"
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:160,
-#: admin/customizer/class-preset-registry.php:268
+#: admin/customizer/class-preset-registry.php:162,
+#: admin/customizer/class-preset-registry.php:270
 msgid "Read more >"
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:188
+#: admin/customizer/class-preset-registry.php:190
 msgid "Green"
 msgstr ""
 
@@ -201,7 +201,7 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: admin/customizer/typography.php:56
+#: admin/customizer/typography.php:90
 msgid "Font size"
 msgstr ""
 
