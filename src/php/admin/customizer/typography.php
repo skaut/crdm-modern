@@ -39,6 +39,40 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 	);
 
 	$wp_customize->add_setting(
+		'crdm_modern[blog_font_weight]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['blog_font_weight'],
+			'sanitize_callback' => 'sanitize_key',
+			'transport'         => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'crdm_modern[blog_font_transform]',
+		array(
+			'type'              => 'option',
+			'default'           => $defaults['blog_font_transform'],
+			'sanitize_callback' => 'sanitize_key',
+			'transport'         => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		new \GeneratePress_Pro_Typography_Customize_Control(
+			$wp_customize,
+			'crdm_modern_blog_font_controls',
+			array(
+				'section'     => 'crdm_modern_blog_typography',
+				'settings'    => array(
+					'weight'    => 'crdm_modern[blog_font_weight]',
+					'transform' => 'crdm_modern[blog_font_transform]',
+				)
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
 		'crdm_modern[blog_font_size]',
 		array(
 			'type'              => 'option',
