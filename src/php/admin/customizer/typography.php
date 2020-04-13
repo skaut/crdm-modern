@@ -63,11 +63,11 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			$wp_customize,
 			'crdm_modern_blog_font_controls',
 			array(
-				'section'     => 'crdm_modern_blog_typography',
-				'settings'    => array(
+				'section'  => 'crdm_modern_blog_typography',
+				'settings' => array(
 					'weight'    => 'crdm_modern[blog_font_weight]',
 					'transform' => 'crdm_modern[blog_font_transform]',
-				)
+				),
 			)
 		)
 	);
