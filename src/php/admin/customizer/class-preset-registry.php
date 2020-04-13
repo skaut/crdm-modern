@@ -375,11 +375,6 @@ class Preset_Registry {
 						array(
 							'type' => 'theme_mod',
 						)
-					)->add_settings_field(
-						'generate_copyright',
-						array(
-							'type' => 'theme_mod',
-						)
 					),
 					'green' => ( new Preset(
 						__( 'Green', 'crdm-modern' ),
@@ -675,11 +670,6 @@ class Preset_Registry {
 						)
 					)->add_settings_field(
 						'font_widget_title_variants',
-						array(
-							'type' => 'theme_mod',
-						)
-					)->add_settings_field(
-						'generate_copyright',
 						array(
 							'type' => 'theme_mod',
 						)
