@@ -25,7 +25,7 @@ function register() {
  * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
  */
 function customize( \WP_Customize_Manager $wp_customize ) {
-	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings['crdm_modern'];
+	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->get_stylesheet_defaults( 'crdm_modern' );
 
 	// Header Image.
 	$wp_customize->add_setting(
@@ -195,11 +195,8 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
 
-	$defaults             = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
-	$crdm_modern_settings = wp_parse_args(
-		get_option( 'crdm_modern', array() ),
-		$defaults['crdm_modern']
-	);
+	$preset               = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
+	$crdm_modern_settings = $preset->get_current_values( 'crdm_modern' );
 
 	// Header image.
 	$css->set_selector( '.crdm-modern-nav-image' );

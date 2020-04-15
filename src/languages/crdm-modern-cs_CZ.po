@@ -112,26 +112,13 @@ msgstr "Nová verze"
 msgid "No more info available."
 msgstr "Žádné další informace nejsou k dispozici."
 
-#: frontend/class-title-widget.php:66
+#: frontend/class-title-widget.php:64
 msgid "Title Widget"
 msgstr "Widget názvu webu"
 
-#: frontend/class-title-widget.php:66
+#: frontend/class-title-widget.php:64
 msgid "A widget containing the site logo, title and tagline."
 msgstr "Widget obsahující logo, název a popis webu."
-
-#: admin/customizer/class-preset-registry.php:80
-msgid "Blue"
-msgstr "Modrá"
-
-#: admin/customizer/class-preset-registry.php:162,
-#: admin/customizer/class-preset-registry.php:272
-msgid "Read more >"
-msgstr "Číst více >"
-
-#: admin/customizer/class-preset-registry.php:190
-msgid "Green"
-msgstr "Zelená"
 
 #: admin/customizer/colors.php:46
 msgid "Widget Separator"
@@ -220,3 +207,12 @@ msgid ""
 msgstr ""
 "Požitím předvolby se změní velké množství nastavení šablony. Vždy se můžete "
 "vrátit zpět zavřením přizpůsobování webu před uložením nového nastavení."
+
+#~ msgid "Blue"
+#~ msgstr "Modrá"
+
+#~ msgid "Read more >"
+#~ msgstr "Číst více >"
+
+#~ msgid "Green"
+#~ msgstr "Zelená"
