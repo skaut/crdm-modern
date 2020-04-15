@@ -94,7 +94,7 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 		\CrdmModern\enqueue_style( 'crdm_modern_preset_customize_control', 'admin/css/preset_customize_control.min.css' );
 		\CrdmModern\enqueue_script( 'crdm_modern_preset_customize_control', 'admin/js/preset_customize_control.min.js', array( 'jquery', 'customize-preview' ) );
 		if ( isset( $this->presets ) ) {
-			wp_localize_script( 'crdm_modern_preset_customize_control', 'crdmModernPresetCustomizeControlLocalize', $this->presets->flat_settings() );
+			wp_localize_script( 'crdm_modern_preset_customize_control', 'crdmModernPresetCustomizeControlLocalize', $this->presets->get_all_template_defaults() );
 		}
 	}
 

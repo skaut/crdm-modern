@@ -27,11 +27,9 @@ class Title_Widget extends \WP_Widget {
 	public static function enqueue() {
 		$css = new \GeneratePress_Pro_CSS();
 
-		$defaults            = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->settings;
-		$gp_settings         = wp_parse_args(
-			get_option( 'generate_settings', array() ),
-			array_merge( generate_get_defaults(), generate_get_default_fonts(), $defaults['generate_settings'] )
-		);
+		$preset      = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
+		$gp_settings = $preset->get_current_values( 'generate_settings' );
+
 		$site_title_family   = generate_get_font_family_css( 'font_site_title', 'generate_settings', generate_get_default_fonts() );
 		$site_tagline_family = generate_get_font_family_css( 'font_site_tagline', 'generate_settings', generate_get_default_fonts() );
 

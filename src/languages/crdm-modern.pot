@@ -104,25 +104,12 @@ msgstr ""
 msgid "No more info available."
 msgstr ""
 
-#: frontend/class-title-widget.php:66
+#: frontend/class-title-widget.php:64
 msgid "Title Widget"
 msgstr ""
 
-#: frontend/class-title-widget.php:66
+#: frontend/class-title-widget.php:64
 msgid "A widget containing the site logo, title and tagline."
-msgstr ""
-
-#: admin/customizer/class-preset-registry.php:80
-msgid "Blue"
-msgstr ""
-
-#: admin/customizer/class-preset-registry.php:162,
-#: admin/customizer/class-preset-registry.php:272
-msgid "Read more >"
-msgstr ""
-
-#: admin/customizer/class-preset-registry.php:190
-msgid "Green"
 msgstr ""
 
 #: admin/customizer/colors.php:46
