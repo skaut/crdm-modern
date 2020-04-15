@@ -1,3 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function isAssoc(value: any): value is Record<string, any> {
+  return !!value && value.constructor === Object;
+}
+
 function applyPreset(control: any): void {
   const chosen = control.container
     .find("input[name=crdm_modern_preset]:checked")
@@ -8,11 +13,21 @@ function applyPreset(control: any): void {
 
   const preset = crdmModernPresetCustomizeControlLocalize[chosen];
   $.each(preset, function(key, value) {
-    const setting = wp.customize(key);
-    if (!setting) {
-      return;
+    if (isAssoc(value)) {
+      $.each(value, function(innerKey, innerValue) {
+        const innerSetting = wp.customize(key + "[" + innerKey + "]");
+        if (!innerSetting) {
+          return;
+        }
+        innerSetting.set(innerValue);
+      });
+    } else {
+      const setting = wp.customize(key);
+      if (!setting) {
+        return;
+      }
+      setting.set(value);
     }
-    setting.set(value);
   });
 
   $(".generatepress-font-variant select").trigger("change");

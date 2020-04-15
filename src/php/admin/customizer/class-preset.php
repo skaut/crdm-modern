@@ -36,83 +36,165 @@ class Preset {
 	 *
 	 * @var array
 	 */
-	public $settings;
+	private $settings;
 
 	/**
 	 * Preset class constructor
 	 *
 	 * @param string $name Translated preset name.
 	 * @param string $image The preset thumbnail image relative to the admin directory.
-	 * @param array  $settings The preset settings.
 	 */
-	public function __construct( string $name, string $image, array $settings ) {
+	public function __construct( string $name, string $image ) {
 		$this->name     = $name;
 		$this->image    = $image;
-		$this->settings = $settings;
+		$this->settings = array();
 	}
 
 	/**
-	 * Checks whether a variable is an associative array.
+	 * Returns a list of all the option names in the preset.
 	 *
-	 * @param mixed $input A variable.
-	 *
-	 * @return bool True if input is an associative array.
+	 * @return string[] A list of options.
 	 */
-	private static function is_assoc( $input ) {
-		if ( ! is_array( $input ) ) {
-			return false;
-		}
-		if ( array() === $input ) {
-			return false;
-		}
-		if ( count( array_filter( array_keys( $input ), 'is_string' ) ) > 0 ) {
-			return true;
-		}
-		return array_keys( $input ) !== range( 0, count( $input ) - 1 );
+	public function options() {
+		return $this->list_by_type( 'option' );
 	}
 
 	/**
-	 * Transforms an nested associative array into a simple one
+	 * Returns a list of all the theme mod names in the preset.
 	 *
-	 * For nested arrays, the function transforms tme into a list of keys in the form `key[innerKey]`.
-	 *
-	 * @param array $array A nested array.
-	 *
-	 * @return array A non-nested array with expanded values.
+	 * @return string[] A list of theme mods.
 	 */
-	private static function flatten_inner( array $array ) {
+	public function theme_mods() {
+		return $this->list_by_type( 'theme_mod' );
+	}
+
+	/**
+	 * Lists all the settings field IDs of a particular type.
+	 *
+	 * @param string $type The type of the settings field. Accepts `option`, `theme_mod`.
+	 * @return string[] The list
+	 */
+	private function list_by_type( $type ) {
 		$ret = array();
-		foreach ( $array as $key => $value ) {
-			if ( self::is_assoc( $value ) ) {
-				foreach ( self::flatten_inner( $value ) as $key_inner => $value_inner ) {
-					$ret[ '[' . $key . ']' . $key_inner ] = $value_inner;
-				}
-			} else {
-				$ret[ '[' . $key . ']' ] = $value;
+		foreach ( $this->settings as $id => $setting ) {
+			if ( $type === $setting['type'] ) {
+				$ret[] = $id;
 			}
 		}
 		return $ret;
 	}
 
 	/**
-	 * Returns the flattened settings.
+	 * Gets the extended values of a settings field.
 	 *
-	 * Flattens the settings, transforming nested array into array with keys like `key[innerKey]`.
+	 * @param string $name The name of the field.
 	 *
-	 * @return array The flattened settings.
+	 * @return array The settings extended values.
 	 */
-	public function flat_settings() {
-		$ret = array();
-		foreach ( $this->settings as $key => $value ) {
-			if ( self::is_assoc( $value ) ) {
-				foreach ( self::flatten_inner( $value ) as $key_inner => $value_inner ) {
-					$ret[ $key . $key_inner ] = $value_inner;
-				}
-			} else {
-				$ret[ $key ] = $value;
+	private function extends_values( string $name ) {
+		if ( is_null( $this->settings[ $name ]['extends'] ) ) {
+			return array();
+		}
+		$functions = array_values( array_filter( $this->settings[ $name ]['extends'], 'function_exists' ) );
+		return array_merge( ...array_map( 'call_user_func', $functions ) );
+	}
+
+	/**
+	 * Settings getter
+	 *
+	 * Returns the current values of a particular settings field, including extended values.
+	 *
+	 * @param string $name The name of the field.
+	 *
+	 * @return array The settings current values.
+	 */
+	public function get_current_values( string $name ) {
+		return wp_parse_args(
+			get_option( $name, array() ),
+			$this->get_template_defaults( $name )
+		);
+	}
+
+	/**
+	 * Settings getter
+	 *
+	 * Returns the default values of a particular settings field, including extended values.
+	 *
+	 * @param string $name The name of the field.
+	 *
+	 * @return mixed The settings default values.
+	 */
+	public function get_template_defaults( string $name ) {
+		$stylesheet_defaults = $this->get_stylesheet_defaults( $name );
+		if ( 'option' === $this->settings[ $name ]['type'] ) {
+			if ( is_null( $stylesheet_defaults ) ) {
+				return $this->extends_values( $name );
 			}
+			return array_merge( $this->extends_values( $name ), $this->get_stylesheet_defaults( $name ) );
+		} else {
+			if ( is_null( $stylesheet_defaults ) ) {
+				return $this->settings[ $name ]['extends'];
+			}
+			return $stylesheet_defaults;
+		}
+	}
+
+	/**
+	 * Settings getter
+	 *
+	 * Returns the default values of a particular settings field, excluding extended values.
+	 *
+	 * @param string $name The name of the field.
+	 *
+	 * @return mixed The settings default values.
+	 */
+	public function get_stylesheet_defaults( string $name ) {
+		return $this->settings[ $name ]['default_values'];
+	}
+
+	/**
+	 * Settings getter
+	 *
+	 * Returns the default values of all settings fields, including extended values.
+	 *
+	 * @return mixed The defautl values.
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 */
+	public function get_all_template_defaults() {
+		$ret = array();
+		foreach ( $this->settings as $id => $_ ) {
+			$ret[ $id ] = $this->get_template_defaults( $id );
 		}
 		return $ret;
+	}
+
+	/**
+	 * Adds a settings field.
+	 *
+	 * @param string $name The name of the settings field.
+	 * @param array  $args {
+	 *     The setting field arguments.
+	 *
+	 *     @type string   $type The type of the settings field. Accepts `option`, `theme_mod`.
+	 *     @type string[] $extends Original values to extend expressed as a list of function names used to get the values. Only used for options. Default `array()`.
+	 *     @type array    $default_values The settings field default values. Default `array()`.
+	 * }
+	 *
+	 * @return $this
+	 */
+	public function add_settings_field( $name, $args ) {
+		if ( ! isset( $args['type'] ) ) {
+			return $this;
+		}
+		if ( ! isset( $args['extends'] ) ) {
+			$args['extends'] = null;
+		}
+		if ( ! isset( $args['default_values'] ) ) {
+			$args['default_values'] = null;
+		}
+		$this->settings[ $name ] = $args;
+		return $this;
 	}
 }
 
