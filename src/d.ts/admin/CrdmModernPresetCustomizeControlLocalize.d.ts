@@ -1,1 +1,4 @@
-declare const crdmModernPresetCustomizeControlLocalize: Record<string, object>;
+declare const crdmModernPresetCustomizeControlLocalize: Record<
+	string,
+	object
+>;

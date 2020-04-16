@@ -1,29 +1,31 @@
 function isArchive(): boolean {
-	const articles = $(".site-main article .inside-article");
-	return articles.length !== 1 || articles.find(".entry-summary").length !== 0;
+	const articles = $( '.site-main article .inside-article' );
+	return (
+		articles.length !== 1 || articles.find( '.entry-summary' ).length !== 0
+	);
 }
 
 function addExcerptBorders(): void {
-	if (!isArchive()) {
-	return;
+	if ( ! isArchive() ) {
+		return;
 	}
-	const articles = $(".site-main article .inside-article");
-	articles.addClass("crdm-modern-excerpt");
+	const articles = $( '.site-main article .inside-article' );
+	articles.addClass( 'crdm-modern-excerpt' );
 }
 
 function addExcerptClickability(): void {
-	if (!isArchive()) {
-	return;
+	if ( ! isArchive() ) {
+		return;
 	}
-	const articles = $(".site-main article .inside-article");
-	articles.each(function(_, article) {
-	const href = $(article)
-		.find(".entry-title a")
-		.attr("href")!;
-	$(article).click(function() {
-		window.location.href = href;
-	});
-	});
+	const articles = $( '.site-main article .inside-article' );
+	articles.each( function( _, article ) {
+		const href = $( article )
+			.find( '.entry-title a' )
+			.attr( 'href' )!;
+		$( article ).click( function() {
+			window.location.href = href;
+		} );
+	} );
 }
 
 addExcerptBorders();

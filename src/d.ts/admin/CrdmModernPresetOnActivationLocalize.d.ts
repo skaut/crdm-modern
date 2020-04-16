@@ -8,5 +8,5 @@ declare interface CrdmModernPresetOnActivationLocalize {
 	skip: string;
 	success: string;
 	title: string;
-	presets: Record<string, PresetOnActivationPreset>;
+	presets: Record< string, PresetOnActivationPreset >;
 }
