@@ -1,4 +1,4 @@
 interface LiveReloadMediaRules {
-  minWidth?: number;
-  maxWidth?: number;
+	minWidth?: number;
+	maxWidth?: number;
 }
