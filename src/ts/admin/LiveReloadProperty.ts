@@ -1,6 +1,6 @@
 interface LiveReloadProperty {
-  name: string;
-  prefix?: string;
-  postfix?: string;
-  computed?: LiveReloadComputedProperty;
+	name: string;
+	prefix?: string;
+	postfix?: string;
+	computed?: LiveReloadComputedProperty;
 }
