@@ -112,6 +112,19 @@ msgstr ""
 msgid "A widget containing the site logo, title and tagline."
 msgstr ""
 
+#: admin/customizer/class-preset-registry.php:135,
+#: admin/customizer/class-preset-registry.php:435
+msgid "Read more >"
+msgstr ""
+
+#: admin/customizer/class-preset-registry.php:84
+msgid "Blue"
+msgstr ""
+
+#: admin/customizer/class-preset-registry.php:384
+msgid "Green"
+msgstr ""
+
 #: admin/customizer/colors.php:46
 msgid "Widget Separator"
 msgstr ""
