@@ -36,7 +36,7 @@ function enqueue() {
  * @SuppressWarnings(PHPMD.ShortVariable)
  * @SuppressWarnings(PHPMD.UnusedFormalParameter)
  */
-function add_icon( string $title, array $_, string $id_base ) {
+function add_icon( string $title, array $_ = array(), string $id_base = '' ) {
 	switch ( $id_base ) {
 		case 'text':
 			$icon = 'message';
@@ -51,10 +51,7 @@ function add_icon( string $title, array $_, string $id_base ) {
 			$icon = 'box';
 			break;
 		default:
-			$icon = '';
+			return $title;
 	}
-	if ( '' !== $icon ) {
-		$icon = '<span class="icon dripicons-' . $icon . ' crdm-modern-inline-icon"></span>';
-	}
-	return $icon . $title;
+	return '<span class="icon dripicons-' . $icon . ' crdm-modern-inline-icon"></span>' . $title;
 }
