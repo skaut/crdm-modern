@@ -28,11 +28,13 @@
 	height: 100%;
 	position: absolute;
 	top: 0;
+	width: 100%;
 }
 
 .crdm-modern-excerpt .wp-post-image {
 	object-fit: cover;
 	vertical-align: bottom;
+	width: 100%;
 }
 
 .post-image-aligned-center .crdm-modern-excerpt .wp-post-image,
