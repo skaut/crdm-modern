@@ -29,7 +29,7 @@ function handleResponse( response: string ): void {
 	tb_remove();
 }
 
-function applyPreset(): void {
+function applyCallback(): void {
 	const applyButton = $( '#crdm-modern-preset-on-activation-apply' );
 	applyButton.attr( 'disabled', 'disabled' );
 	applyButton.off( 'click' );
@@ -94,7 +94,7 @@ function onActivation(): void {
 	$( 'input[name=crdm-modern-preset-on-activation]' ).change( function() {
 		const applyButton = $( '#crdm-modern-preset-on-activation-apply' );
 		applyButton.removeAttr( 'disabled' );
-		applyButton.click( applyPreset );
+		applyButton.click( applyCallback );
 	} );
 	$( '#crdm-modern-preset-on-activation-skip' ).click( function() {
 		tb_remove();

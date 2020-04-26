@@ -3,7 +3,7 @@ Contributors: skaut, marekdedic
 Requires at least: 5.0.0
 Tested up to: 5.1
 Requires PHP: 7.0
-Version: 0.2.2
+Version: 0.3.3
 License: GPLv3 or later
 License URI: https://github.com/skaut/crdm-modern/blob/master/LICENSE
 Tags: two-columns, three-columns, one-column, right-sidebar, left-sidebar, footer-widgets, blog, e-commerce, flexible-header, full-width-template, custom-header, custom-background, custom-menu, custom-colors, sticky-post, threaded-comments, translation-ready, rtl-language-support, featured-images, theme-options, child-theme
@@ -43,6 +43,29 @@ https://wordpress.org/themes/generatepress/
 Copyright 2019 Junák – český skaut, z. s. distributed under the terms of the GNU GPLv3 or later.
 
 == Changelog ==
+
+= 0.3.3 =
+* Fixed multi-column blog layout
+
+= 0.3.2 =
+* Fixed title widget tagline line-spacing
+* Fixed error with widget icons for plugin widgets
+
+= 0.3.1 =
+* Fixed customizer fatal error
+* Fixes for GeneratePress premium version 1.10
+
+= 0.3.0 =
+* Fixed blog layout for featured images below title
+* Fixed blog layout for featured images on the right and in center
+* Fixed blog excerpt overflowing under featured images
+* Added edit button to header image in the customizer
+* Preset selection in customizer now works the same as preset selection on theme activation, i.e. it resets all of the GeneratePress settings
+* Added more typography settings for blog
+* Added minima and maxima to certain customizer settings to prevent negative spacing and similar issues
+* Gone over all spacing to make it consistent and customizable from the customizer
+* Only using the necessary featured image sizes to make the blog lighter to load
+* Fixed all incorrect live-reloading properties in the customizer
 
 = 0.2.2 =
 * Fixed font variants being incorrectly set when applying a preset after theme activation

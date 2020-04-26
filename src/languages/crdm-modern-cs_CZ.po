@@ -120,6 +120,19 @@ msgstr "Widget názvu webu"
 msgid "A widget containing the site logo, title and tagline."
 msgstr "Widget obsahující logo, název a popis webu."
 
+#: admin/customizer/class-preset-registry.php:135,
+#: admin/customizer/class-preset-registry.php:435
+msgid "Read more >"
+msgstr "Číst více >"
+
+#: admin/customizer/class-preset-registry.php:84
+msgid "Blue"
+msgstr "Modrá"
+
+#: admin/customizer/class-preset-registry.php:384
+msgid "Green"
+msgstr "Zelená"
+
 #: admin/customizer/colors.php:46
 msgid "Widget Separator"
 msgstr "Oddělovač widgetů"
@@ -207,12 +220,3 @@ msgid ""
 msgstr ""
 "Požitím předvolby se změní velké množství nastavení šablony. Vždy se můžete "
 "vrátit zpět zavřením přizpůsobování webu před uložením nového nastavení."
-
-#~ msgid "Blue"
-#~ msgstr "Modrá"
-
-#~ msgid "Read more >"
-#~ msgstr "Číst více >"
-
-#~ msgid "Green"
-#~ msgstr "Zelená"

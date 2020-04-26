@@ -96,6 +96,9 @@ class Preset {
 			return array();
 		}
 		$functions = array_values( array_filter( $this->settings[ $name ]['extends'], 'function_exists' ) );
+		if ( empty( $functions ) ) {
+			return array();
+		}
 		return array_merge( ...array_map( 'call_user_func', $functions ) );
 	}
 
