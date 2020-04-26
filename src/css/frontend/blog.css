@@ -28,11 +28,13 @@
 	height: 100%;
 	position: absolute;
 	top: 0;
+	width: 100%;
 }
 
 .crdm-modern-excerpt .wp-post-image {
 	object-fit: cover;
 	vertical-align: bottom;
+	width: 100%;
 }
 
 .post-image-aligned-center .crdm-modern-excerpt .wp-post-image,
@@ -84,7 +86,9 @@
 }
 
 .post-image-aligned-center .crdm-modern-excerpt .post-image,
-.post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
+.post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image,
+.generate-columns-activated.post-image-aligned-left .generate-columns-container article:not(.featured-column) .crdm-modern-excerpt .post-image,
+.generate-columns-activated.post-image-aligned-right .generate-columns-container article:not(.featured-column) .crdm-modern-excerpt .post-image {
 	text-align: left;
 }
 

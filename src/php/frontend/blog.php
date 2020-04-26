@@ -19,7 +19,7 @@ function register() {
 	add_action( 'crdmmodern_before_content', '\\CrdmModern\\Frontend\\Blog\\before_content' );
 	add_action( 'crdmmodern_after_content', '\\CrdmModern\\Frontend\\Blog\\after_content' );
 	add_filter( 'post_class', '\\CrdmModern\\Frontend\\Blog\\post_classes' );
-	add_filter( 'generate_resized_featured_image_output', '\\CrdmModern\\Frontend\\Blog\\featured_image' );
+	add_filter( 'generate_featured_image_output', '\\CrdmModern\\Frontend\\Blog\\featured_image' );
 }
 
 /**
@@ -45,9 +45,7 @@ function add_post_meta() {
  */
 function enqueue() {
 	\CrdmModern\enqueue_script( 'crdm_modern_blog', 'frontend/js/blog.min.js', array( 'jquery' ) );
-	if ( ! \generate_blog_get_columns() ) {
-		wp_add_inline_style( 'crdm_modern_inline', blog_css() );
-	}
+	wp_add_inline_style( 'crdm_modern_inline', blog_css() );
 }
 
 /**
@@ -213,16 +211,14 @@ function post_classes( $classes ) {
 }
 
 /**
- * Gets an (approximate) width for the featured images.
+ * Returns the approximate width of the content area.
  *
- * @return int[] The approximate width.
+ * @return int The approximate width.
  */
-function featured_image_width() {
-	$preset               = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
-	$crdm_modern_settings = $preset->get_current_values( 'crdm_modern' );
-	$gp_settings          = $preset->get_current_values( 'generate_settings' );
-	$gp_blog_settings     = $preset->get_current_values( 'generate_blog_settings' );
-	$gp_spacing_settings  = $preset->get_current_values( 'generate_spacing_settings' );
+function content_width() {
+	$preset              = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
+	$gp_settings         = $preset->get_current_values( 'generate_settings' );
+	$gp_spacing_settings = $preset->get_current_values( 'generate_spacing_settings' );
 
 	switch ( $gp_settings['blog_layout_setting'] ) {
 		case 'left-sidebar':
@@ -250,19 +246,49 @@ function featured_image_width() {
 	if ( $right_sidebar ) {
 		$sidebar_width += $gp_spacing_settings['right_sidebar_width'];
 	}
-	$content_width = $gp_settings['container_width'] - $sidebar_width;
+	return intval( $gp_settings['container_width'] - $sidebar_width );
+}
 
-	$featured_post_image_width = intval( $content_width / $crdm_modern_settings['featured_post_count'] );
+/**
+ * Returns the (aproximate) maximum width of a featured post featured images.
+ *
+ * @return int The approximate width.
+ */
+function featured_post_image_width() {
+	$preset               = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
+	$crdm_modern_settings = $preset->get_current_values( 'crdm_modern' );
+
+	$featured_post_count = intval( $crdm_modern_settings['featured_post_count'] );
+	return 0 !== $featured_post_count ? intval( content_width() / $featured_post_count ) : 0;
+}
+
+/**
+ * Returns the (aproximate) maximum width of a normal post featured images.
+ *
+ * @return int The approximate width.
+ */
+function featured_image_width() {
+	$preset           = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
+	$gp_blog_settings = $preset->get_current_values( 'generate_blog_settings' );
 
 	switch ( $gp_blog_settings['post_image_alignment'] ) {
 		case 'post-image-aligned-center':
-			$featured_image_width = $content_width;
-			break;
+			return content_width();
 		default:
-			$featured_image_width = $gp_blog_settings['post_image_width'];
+			return $gp_blog_settings['post_image_width'];
 	}
+}
 
-	$width  = max( 768, $featured_post_image_width, $featured_image_width );
+/**
+ * Returns the (approximate) width and height for featured images.
+ *
+ * @return int[] The approximate width and height.
+ */
+function featured_image_size() {
+	$preset           = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
+	$gp_blog_settings = $preset->get_current_values( 'generate_blog_settings' );
+
+	$width  = max( 768, featured_post_image_width(), featured_image_width() );
 	$height = $width / $gp_blog_settings['post_image_width'] * $gp_blog_settings['post_image_height'];
 	return array( $width, $height );
 }
@@ -277,7 +303,7 @@ function featured_image() {
 
 	$image_html = get_the_post_thumbnail(
 		$post_ID,
-		featured_image_width(),
+		featured_image_size(),
 		array(
 			'itemprop' => 'image',
 		)

@@ -13,6 +13,10 @@
 }
 
 .crdm-modern-title-widget-tagline {
+	line-height: 1;
+}
+
+.crdm-modern-title-widget-tagline::first-line {
 	line-height: 1.9;
 }
 
