@@ -252,7 +252,8 @@ function featured_image_width() {
 	}
 	$content_width = $gp_settings['container_width'] - $sidebar_width;
 
-	$featured_post_image_width = intval( $content_width / $crdm_modern_settings['featured_post_count'] );
+	$featured_post_count = intval($crdm_modern_settings['featured_post_count']);
+	$featured_post_image_width = 0 !== $featured_post_count ? intval( $content_width / $featured_post_count ) : 0;
 
 	switch ( $gp_blog_settings['post_image_alignment'] ) {
 		case 'post-image-aligned-center':
