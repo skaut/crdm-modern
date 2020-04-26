@@ -389,9 +389,9 @@ class Preset_Registry {
 						'type'           => 'option',
 						'default_values' => array(
 							'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png',
-							'header_image_height'              => '220',
-							'header_image_top'                 => '13',
-							'header_image_right'               => '100',
+							'header_image_height'              => '210',
+							'header_image_top'                 => '15',
+							'header_image_right'               => '95',
 							'header_image_min_width'           => '950',
 							'primary_navigation_spacing'       => '40',
 							'primary_navigation_shadow'        => '2px 4px 5px rgba(0, 0, 0, 0.4)',
