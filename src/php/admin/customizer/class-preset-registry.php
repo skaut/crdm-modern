@@ -689,7 +689,7 @@ class Preset_Registry {
 					array(
 						'type'           => 'option',
 						'default_values' => array(
-							'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tent_beige.png',
+							'header_image'                     => get_stylesheet_directory_uri() . '/frontend/images/tent_grey.png',
 							'header_image_height'              => '150',
 							'header_image_top'                 => '70',
 							'header_image_right'               => '90',
