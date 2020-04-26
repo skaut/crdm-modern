@@ -3,7 +3,7 @@ Contributors: skaut, marekdedic
 Requires at least: 5.0.0
 Tested up to: 5.1
 Requires PHP: 7.0
-Version: 0.3.2
+Version: 0.3.3
 License: GPLv3 or later
 License URI: https://github.com/skaut/crdm-modern/blob/master/LICENSE
 Tags: two-columns, three-columns, one-column, right-sidebar, left-sidebar, footer-widgets, blog, e-commerce, flexible-header, full-width-template, custom-header, custom-background, custom-menu, custom-colors, sticky-post, threaded-comments, translation-ready, rtl-language-support, featured-images, theme-options, child-theme
@@ -43,6 +43,9 @@ https://wordpress.org/themes/generatepress/
 Copyright 2019 Junák – český skaut, z. s. distributed under the terms of the GNU GPLv3 or later.
 
 == Changelog ==
+
+= 0.3.3 =
+* Fixed multi-column blog layout
 
 = 0.3.2 =
 * Fixed title widget tagline line-spacing
