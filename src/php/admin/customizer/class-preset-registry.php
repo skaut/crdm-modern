@@ -402,7 +402,7 @@ class Preset_Registry {
 							'excerpt_hover_background_color'   => '#009b67',
 							'excerpt_hover_text_color'         => '#ffffff',
 							// Featured posts.
-							'featured_post_count'              => '2',
+							'featured_post_count'              => '0',
 							// Read more link.
 							'read_more_color'                  => '#009b67',
 							'read_more_hover_color'            => '#ffffff',
@@ -444,6 +444,7 @@ class Preset_Registry {
 							'post_image_alignment'       => 'post-image-aligned-left',
 							'post_image_width'           => '300',
 							'post_image_height'          => '200',
+							'column_layout'              => true,
 							'single_post_image_position' => 'below-title',
 							'page_post_image_position'   => 'below-title',
 						),
