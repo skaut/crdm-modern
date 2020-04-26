@@ -121,7 +121,8 @@ msgid "A widget containing the site logo, title and tagline."
 msgstr "Widget obsahující logo, název a popis webu."
 
 #: admin/customizer/class-preset-registry.php:135,
-#: admin/customizer/class-preset-registry.php:435
+#: admin/customizer/class-preset-registry.php:435,
+#: admin/customizer/class-preset-registry.php:736
 msgid "Read more >"
 msgstr "Číst více >"
 
@@ -132,6 +133,10 @@ msgstr "Modrá"
 #: admin/customizer/class-preset-registry.php:384
 msgid "Green"
 msgstr "Zelená"
+
+#: admin/customizer/class-preset-registry.php:685
+msgid "Beige"
+msgstr "Béžová"
 
 #: admin/customizer/colors.php:46
 msgid "Widget Separator"
