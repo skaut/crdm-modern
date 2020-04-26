@@ -86,7 +86,9 @@
 }
 
 .post-image-aligned-center .crdm-modern-excerpt .post-image,
-.post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
+.post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image,
+.generate-columns-activated.post-image-aligned-left .generate-columns-container article:not(.featured-column) .crdm-modern-excerpt .post-image,
+.generate-columns-activated.post-image-aligned-right .generate-columns-container article:not(.featured-column) .crdm-modern-excerpt .post-image {
 	text-align: left;
 }
 

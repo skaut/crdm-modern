@@ -45,9 +45,7 @@ function add_post_meta() {
  */
 function enqueue() {
 	\CrdmModern\enqueue_script( 'crdm_modern_blog', 'frontend/js/blog.min.js', array( 'jquery' ) );
-	if ( ! \generate_blog_get_columns() ) {
-		wp_add_inline_style( 'crdm_modern_inline', blog_css() );
-	}
+	wp_add_inline_style( 'crdm_modern_inline', blog_css() );
 }
 
 /**
