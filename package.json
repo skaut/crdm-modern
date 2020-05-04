@@ -42,7 +42,7 @@
 		"@types/gulp-rename": "0.0.33",
 		"@types/jquery": "^3.3.37",
 		"@typescript-eslint/eslint-plugin": "^2.30.0",
-		"@typescript-eslint/parser": "^2.30.0",
+		"@typescript-eslint/parser": "^2.31.0",
 		"@wordpress/browserslist-config": "^2.6.0",
 		"@wordpress/eslint-plugin": "^5.1.0",
 		"eslint": "^6.8.0",
