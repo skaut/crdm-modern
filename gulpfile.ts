@@ -16,7 +16,7 @@ const wpPot = require( 'gulp-wp-pot' );
 
 const minify = composer( uglify, console );
 
-gulp.task( 'build:css:main', function() {
+gulp.task( 'build:css:main', function () {
 	return gulp
 		.src( [
 			'src/css/style.css',
@@ -32,7 +32,7 @@ gulp.task( 'build:css:main', function() {
 		.pipe( gulp.dest( 'dist/' ) );
 } );
 
-gulp.task( 'build:css:admin', function() {
+gulp.task( 'build:css:admin', function () {
 	return gulp
 		.src( 'src/css/admin/**/*.css' )
 		.pipe( cleanCSS( { compatibility: 'ie8' } ) )
@@ -42,7 +42,7 @@ gulp.task( 'build:css:admin', function() {
 
 gulp.task( 'build:css', gulp.parallel( 'build:css:main', 'build:css:admin' ) );
 
-gulp.task( 'build:deps:npm:dripicons', function() {
+gulp.task( 'build:deps:npm:dripicons', function () {
 	return gulp
 		.src(
 			[
@@ -58,7 +58,7 @@ gulp.task( 'build:deps:npm', gulp.parallel( 'build:deps:npm:dripicons' ) );
 
 gulp.task( 'build:deps', gulp.parallel( 'build:deps:npm' ) );
 
-gulp.task( 'build:jpg:frontend', function() {
+gulp.task( 'build:jpg:frontend', function () {
 	return gulp
 		.src( 'src/jpg/frontend/**/*.jpg' )
 		.pipe( gulp.dest( 'dist/frontend/images/' ) );
@@ -89,7 +89,7 @@ function bundle(
 		.pipe( gulp.dest( 'dist/' + part + '/js/' ) );
 }
 
-gulp.task( 'build:js', function() {
+gulp.task( 'build:js', function () {
 	return merge(
 		bundle(
 			'preset_customize_control',
@@ -120,12 +120,12 @@ gulp.task( 'build:js', function() {
 	);
 } );
 
-gulp.task( 'build:mo', function() {
+gulp.task( 'build:mo', function () {
 	return gulp
 		.src( 'src/languages/*.po' )
 		.pipe( potomo( { verbose: false } ) )
 		.pipe(
-			rename( function( path: rename.ParsedPath ) {
+			rename( function ( path: rename.ParsedPath ) {
 				path.basename = path.basename!.substring(
 					path.basename!.lastIndexOf( '-' ) + 1
 				);
@@ -134,17 +134,17 @@ gulp.task( 'build:mo', function() {
 		.pipe( gulp.dest( 'dist/languages/' ) );
 } );
 
-gulp.task( 'build:php:root', function() {
+gulp.task( 'build:php:root', function () {
 	return gulp.src( 'src/php/*.php' ).pipe( gulp.dest( 'dist/' ) );
 } );
 
-gulp.task( 'build:php:admin', function() {
+gulp.task( 'build:php:admin', function () {
 	return gulp
 		.src( 'src/php/admin/**/*.php' )
 		.pipe( gulp.dest( 'dist/admin/' ) );
 } );
 
-gulp.task( 'build:php:frontend', function() {
+gulp.task( 'build:php:frontend', function () {
 	return gulp
 		.src( 'src/php/frontend/**/*.php' )
 		.pipe( gulp.dest( 'dist/frontend/' ) );
@@ -155,17 +155,17 @@ gulp.task(
 	gulp.parallel( 'build:php:root', 'build:php:admin', 'build:php:frontend' )
 );
 
-gulp.task( 'build:png:screenshot', function() {
+gulp.task( 'build:png:screenshot', function () {
 	return gulp.src( 'src/png/screenshot.png' ).pipe( gulp.dest( 'dist/' ) );
 } );
 
-gulp.task( 'build:png:admin', function() {
+gulp.task( 'build:png:admin', function () {
 	return gulp
 		.src( 'src/png/admin/**/*.png' )
 		.pipe( gulp.dest( 'dist/admin/' ) );
 } );
 
-gulp.task( 'build:png:frontend', function() {
+gulp.task( 'build:png:frontend', function () {
 	return gulp
 		.src( 'src/png/frontend/**/*.png' )
 		.pipe( gulp.dest( 'dist/frontend/images/' ) );
@@ -180,7 +180,7 @@ gulp.task(
 	)
 );
 
-gulp.task( 'build:txt', function() {
+gulp.task( 'build:txt', function () {
 	return gulp
 		.src( [ 'src/txt/license.txt', 'src/txt/readme.txt' ] )
 		.pipe( gulp.dest( 'dist/' ) );
@@ -202,7 +202,7 @@ gulp.task(
 
 gulp.task(
 	'update-translations:generate-pot',
-	gulp.series( function() {
+	gulp.series( function () {
 		return gulp
 			.src( 'src/php/**/*.php' )
 			.pipe(
@@ -218,7 +218,7 @@ gulp.task(
 	) )
 );
 
-gulp.task( 'update-translations:update-po', function() {
+gulp.task( 'update-translations:update-po', function () {
 	return gulp
 		.src( 'src/languages/*.po', { read: false } )
 		.pipe(

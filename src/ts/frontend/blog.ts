@@ -18,11 +18,9 @@ function addExcerptClickability(): void {
 		return;
 	}
 	const articles = $( '.site-main article .inside-article' );
-	articles.each( function( _, article ) {
-		const href = $( article )
-			.find( '.entry-title a' )
-			.attr( 'href' )!;
-		$( article ).click( function() {
+	articles.each( function ( _, article ) {
+		const href = $( article ).find( '.entry-title a' ).attr( 'href' )!;
+		$( article ).click( function () {
 			window.location.href = href;
 		} );
 	} );

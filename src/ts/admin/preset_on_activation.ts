@@ -17,14 +17,10 @@ function handleResponse( response: string ): void {
 		crdmModernPresetOnActivationLocalize.dismiss +
 		'</span></button>' +
 		'</div>';
-	$( '.theme-browser' )
-		.first()
-		.before( html );
+	$( '.theme-browser' ).first().before( html );
 
-	$( '.crdm-modern-notice-dismiss' ).click( function() {
-		$( this )
-			.parent()
-			.remove();
+	$( '.crdm-modern-notice-dismiss' ).click( function () {
+		$( this ).parent().remove();
 	} );
 	tb_remove();
 }
@@ -91,12 +87,12 @@ function onActivation(): void {
 		'#TB_inline?inlineId=crdm-modern-preset-on-activation-modal'
 	);
 
-	$( 'input[name=crdm-modern-preset-on-activation]' ).change( function() {
+	$( 'input[name=crdm-modern-preset-on-activation]' ).change( function () {
 		const applyButton = $( '#crdm-modern-preset-on-activation-apply' );
 		applyButton.removeAttr( 'disabled' );
 		applyButton.click( applyCallback );
 	} );
-	$( '#crdm-modern-preset-on-activation-skip' ).click( function() {
+	$( '#crdm-modern-preset-on-activation-skip' ).click( function () {
 		tb_remove();
 	} );
 }
