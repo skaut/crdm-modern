@@ -8,7 +8,7 @@ const concat = require( 'gulp-concat' );
 const inject = require( 'gulp-inject-string' );
 const merge = require( 'merge-stream' );
 const potomo = require( 'gulp-potomo' );
-import rename = require('gulp-rename'); // import needed for typings
+const rename = require( 'gulp-rename' );
 const shell = require( 'gulp-shell' );
 const ts = require( 'gulp-typescript' );
 const uglify = require( 'uglify-js' );
@@ -66,12 +66,7 @@ gulp.task( 'build:jpg:frontend', function () {
 
 gulp.task( 'build:jpg', gulp.parallel( 'build:jpg:frontend' ) );
 
-function bundle(
-	name: string,
-	sources: Array< string >,
-	part: string,
-	jQuery = false
-): void {
+function bundle( name, sources, part, jQuery = false ) {
 	const tsProject = ts.createProject( 'tsconfig.json' );
 	let ret = gulp
 		.src( sources.concat( [ 'src/d.ts/**/*.d.ts' ] ) )
@@ -125,9 +120,9 @@ gulp.task( 'build:mo', function () {
 		.src( 'src/languages/*.po' )
 		.pipe( potomo( { verbose: false } ) )
 		.pipe(
-			rename( function ( path: rename.ParsedPath ) {
-				path.basename = path.basename!.substring(
-					path.basename!.lastIndexOf( '-' ) + 1
+			rename( function ( path ) {
+				path.basename = path.basename.substring(
+					path.basename.lastIndexOf( '-' ) + 1
 				);
 			} )
 		)
