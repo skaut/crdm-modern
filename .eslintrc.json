@@ -18,6 +18,14 @@
 		"plugin:@typescript-eslint/recommended",
 		"plugin:@typescript-eslint/recommended-requiring-type-checking"
 	],
+	"overrides": [
+		{
+			"files": ["gulpfile.js"],
+			"rules": {
+				"@typescript-eslint/explicit-function-return-type": "off"
+			}
+		}
+	],
 	"rules": {
 		"compat/compat": "warn",
 		"no-warning-comments": "warn",

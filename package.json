@@ -30,7 +30,7 @@
 		"lint:php:phpcs": "vendor/bin/phpcs",
 		"lint:php:phpmd": "vendor/bin/phpmd src text phpmd.xml",
 		"lint:php": "run-s -c lint:php:*",
-		"lint:ts:eslint": "eslint src/**/*.ts gulpfile.ts",
+		"lint:ts:eslint": "eslint src/**/*.ts gulpfile.js",
 		"lint:ts": "run-s -c lint:ts:*",
 		"lint": "run-s -c lint:*",
 		"update-translations": "gulp update-translations"
@@ -39,7 +39,6 @@
 		"dripicons": "^2.0.0"
 	},
 	"devDependencies": {
-		"@types/gulp-rename": "0.0.33",
 		"@types/jquery": "^3.5.0",
 		"@typescript-eslint/eslint-plugin": "^2.34.0",
 		"@typescript-eslint/parser": "^2.34.0",
