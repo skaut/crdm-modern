@@ -23,9 +23,9 @@ function setCSSInHead(
 	if ( target.media ) {
 		mediaBegin = '@media (';
 		if ( target.media.minWidth ) {
-			mediaBegin += 'min-width: ' + target.media.minWidth;
+			mediaBegin += 'min-width: ' + target.media.minWidth.toString();
 		} else if ( target.media.maxWidth ) {
-			mediaBegin += 'max-width: ' + target.media.maxWidth;
+			mediaBegin += 'max-width: ' + target.media.maxWidth.toString();
 		}
 		mediaBegin += 'px) {\n';
 		mediaEnd = '}\n';

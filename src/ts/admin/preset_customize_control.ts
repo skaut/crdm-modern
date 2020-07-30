@@ -1,6 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isAssoc( value: any ): value is Record< string, any > {
-	return !! value && value.constructor === Object;
+	return (
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		!! value && ( value as Record< string, any > ).constructor === Object
+	);
 }
 
 function applyPreset( control: any ): void {
