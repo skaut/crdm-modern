@@ -28,7 +28,7 @@ function enqueue() {
  * Adds the icon to the widget title
  *
  * @param string $title The title of the widget.
- * @param array  $_ Unused.
+ * @param array  $instance @unused-param Unused.
  * @param string $id_base The ID of the widget.
  *
  * @return string The new title.
@@ -36,7 +36,7 @@ function enqueue() {
  * @SuppressWarnings(PHPMD.ShortVariable)
  * @SuppressWarnings(PHPMD.UnusedFormalParameter)
  */
-function add_icon( string $title, array $_ = array(), string $id_base = '' ) {
+function add_icon( string $title, array $instance = array(), string $id_base = '' ) {
 	switch ( $id_base ) {
 		case 'text':
 			$icon = 'message';
