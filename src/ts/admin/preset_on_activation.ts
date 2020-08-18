@@ -35,7 +35,7 @@ function applyCallback(): void {
 	$.get(
 		crdmModernPresetOnActivationLocalize.ajax_url,
 		{
-			_ajax_nonce: crdmModernPresetOnActivationLocalize.nonce, // eslint-disable-line @typescript-eslint/camelcase
+			_ajax_nonce: crdmModernPresetOnActivationLocalize.nonce, // eslint-disable-line camelcase
 			action: 'crdm_modern_apply_preset',
 			id,
 		},
