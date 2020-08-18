@@ -68,12 +68,12 @@ class Title_Widget extends \WP_Widget {
 	 * Echoes the widget content.
 	 *
 	 * @param array $args     Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-	 * @param array $_ Unused.
+	 * @param array $instance @unused-param Unused.
 	 *
 	 * @SuppressWarnings(PHPMD.ShortVariable)
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
-	public function widget( $args, $_ ) {
+	public function widget( $args, $instance ) {
 		$gp_settings = wp_parse_args(
 			get_option( 'generate_settings', array() ),
 			generate_get_defaults()
@@ -102,8 +102,7 @@ class Title_Widget extends \WP_Widget {
 		echo( '</div>' );
 		echo( '<div class="crdm-modern-title-widget-tagline">' );
 		echo( esc_html( $tagline ) );
-		echo( '</div>' );
-		echo( '</div>' );
+		echo( '</div></div>' );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo( $args['after_widget'] );
 	}
