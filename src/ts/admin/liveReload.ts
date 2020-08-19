@@ -75,8 +75,8 @@ function liveReload(
 	targets: Array< LiveReloadTarget >,
 	fallbacks?: Array< string >
 ): void {
-	wp.customize( setting, function ( value: any ) {
-		value.bind( function ( newValue: any ) {
+	wp.customize( setting, function ( value ) {
+		value.bind( function ( newValue ) {
 			if ( ! newValue && fallbacks ) {
 				$.each( fallbacks, function ( _, fallback ) {
 					const fallbackValue = wp.customize( fallback ).get();
@@ -94,8 +94,8 @@ function liveReload(
 	} );
 	if ( fallbacks ) {
 		for ( let i = 0; i < fallbacks.length; i++ ) {
-			wp.customize( fallbacks[ i ], function ( value: any ) {
-				value.bind( function ( newValue: any ) {
+			wp.customize( fallbacks[ i ], function ( value ) {
+				value.bind( function ( newValue ) {
 					if ( wp.customize( setting ).get() ) {
 						return;
 					}
