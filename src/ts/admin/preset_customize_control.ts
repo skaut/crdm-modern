@@ -3,7 +3,7 @@ function isAssoc( value: any ): value is Record< string, any > {
 	return !! value && value.constructor === Object;
 }
 
-function applyPreset( control: any ): void {
+function applyPreset( control: wordpress__customize.Control ): void {
 	const chosen = control.container
 		.find( 'input[name=crdm_modern_preset]:checked' )
 		.val() as string;
