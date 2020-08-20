@@ -1,4 +1,7 @@
 interface LiveReloadComputedProperty {
 	additionalSettings?: Array< string >;
-	value: ( value: any, additionalValues: Array< any > ) => string;
+	value: (
+		value: LiveReloadValue,
+		additionalValues: Array< LiveReloadValue >
+	) => string;
 }
