@@ -15,7 +15,7 @@ function hash( str: string ): string {
 function setCSSInHead(
 	setting: string,
 	target: LiveReloadTarget,
-	value: LiveReloadValue
+	value: string
 ): void {
 	const targetHash = hash( setting + target.selector );
 	let mediaBegin = '';

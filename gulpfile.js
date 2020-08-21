@@ -107,7 +107,6 @@ gulp.task( 'build:js', function () {
 				'src/ts/admin/LiveReloadMediaRules.ts',
 				'src/ts/admin/LiveReloadProperty.ts',
 				'src/ts/admin/LiveReloadTarget.ts',
-				'src/ts/admin/LiveReloadValue.ts',
 			],
 			'admin',
 			true
