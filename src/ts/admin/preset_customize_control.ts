@@ -36,7 +36,7 @@ function applyPreset( control: any ): void {
 	$( '.generatepress-font-variant select' ).trigger( 'change' );
 }
 
-wp.customize.control( 'crdm_modern_preset', function ( control: any ) {
+void wp.customize.control( 'crdm_modern_preset', function ( control: any ) {
 	control.container
 		.find( 'input[name=crdm_modern_preset]' )
 		.change( function () {

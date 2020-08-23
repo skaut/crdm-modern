@@ -31,6 +31,7 @@
 		}
 	],
 	"rules": {
+		"camelcase": ["error", {"allow": ["wordpress__customize"]}],
 		"compat/compat": "warn",
 		"no-warning-comments": "warn",
 		"strict": [ "error", "never" ],
