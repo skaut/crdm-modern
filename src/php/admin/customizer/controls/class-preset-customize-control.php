@@ -80,7 +80,7 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 *
 	 * @SuppressWarnings(PHPMD.ShortVariable)
 	 */
-	public function __construct( \WP_Customize_Manager $manager, string $id, array $args, ?\CrdmModern\Admin\Customizer\Preset_Registry $presets = null ) {
+	public function __construct( \WP_Customize_Manager $manager, string $id, array $args, $presets = null ) {
 		parent::__construct( $manager, $id, $args );
 		$this->presets = $presets;
 	}
