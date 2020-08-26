@@ -46,6 +46,9 @@ function add_post_meta() {
 function enqueue() {
 	\CrdmModern\enqueue_script( 'crdm_modern_blog', 'frontend/js/blog.min.js', array( 'jquery' ) );
 	wp_add_inline_style( 'crdm_modern_inline', blog_css() );
+	$suffix  = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+	$version = defined( 'GENERATE_BLOG_VERSION' ) ? GENERATE_BLOG_VERSION : null;
+	wp_enqueue_style( 'generate-blog', plugins_url() . "/gp-premium/blog/functions/css/style{$suffix}.css", array(), $version );
 }
 
 /**
