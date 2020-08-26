@@ -15,6 +15,11 @@
  */
 
 /**
+ * @var string
+ */
+const GENERATE_BLOG_VERSION = '';
+
+/**
  * @return bool
  */
 function generate_blog_get_columns() {
