@@ -58,6 +58,10 @@ gulp.task( 'build:deps:npm', gulp.parallel( 'build:deps:npm:dripicons' ) );
 
 gulp.task( 'build:deps', gulp.parallel( 'build:deps:npm' ) );
 
+gulp.task( 'build:jpg:screenshot', function () {
+	return gulp.src( 'src/jpg/screenshot.jpg' ).pipe( gulp.dest( 'dist/' ) );
+} );
+
 gulp.task( 'build:jpg:frontend', function () {
 	return gulp
 		.src( 'src/jpg/frontend/**/*.jpg' )
@@ -72,7 +76,7 @@ gulp.task( 'build:jpg:admin', function () {
 
 gulp.task(
 	'build:jpg',
-	gulp.parallel( 'build:jpg:frontend', 'build:jpg:admin' )
+	gulp.parallel( 'build:jpg:screenshot', 'build:jpg:frontend', 'build:jpg:admin' )
 );
 
 function bundle( name, sources, part, jQuery = false ) {
@@ -159,10 +163,6 @@ gulp.task(
 	gulp.parallel( 'build:php:root', 'build:php:admin', 'build:php:frontend' )
 );
 
-gulp.task( 'build:png:screenshot', function () {
-	return gulp.src( 'src/png/screenshot.png' ).pipe( gulp.dest( 'dist/' ) );
-} );
-
 gulp.task( 'build:png:frontend', function () {
 	return gulp
 		.src( 'src/png/frontend/**/*.png' )
@@ -171,7 +171,7 @@ gulp.task( 'build:png:frontend', function () {
 
 gulp.task(
 	'build:png',
-	gulp.parallel( 'build:png:screenshot', 'build:png:frontend' )
+	gulp.parallel( 'build:png:frontend' )
 );
 
 gulp.task( 'build:txt', function () {
