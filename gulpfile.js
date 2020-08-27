@@ -13,7 +13,6 @@ const terser = require( 'gulp-terser' );
 const ts = require( 'gulp-typescript' );
 const wpPot = require( 'gulp-wp-pot' );
 
-
 gulp.task( 'build:css:main', function () {
 	return gulp
 		.src( [
