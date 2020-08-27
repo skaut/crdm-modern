@@ -76,7 +76,11 @@ gulp.task( 'build:jpg:admin', function () {
 
 gulp.task(
 	'build:jpg',
-	gulp.parallel( 'build:jpg:screenshot', 'build:jpg:frontend', 'build:jpg:admin' )
+	gulp.parallel(
+		'build:jpg:screenshot',
+		'build:jpg:frontend',
+		'build:jpg:admin'
+	)
 );
 
 function bundle( name, sources, part, jQuery = false ) {
@@ -169,10 +173,7 @@ gulp.task( 'build:png:frontend', function () {
 		.pipe( gulp.dest( 'dist/frontend/images/' ) );
 } );
 
-gulp.task(
-	'build:png',
-	gulp.parallel( 'build:png:frontend' )
-);
+gulp.task( 'build:png', gulp.parallel( 'build:png:frontend' ) );
 
 gulp.task( 'build:txt', function () {
 	return gulp
