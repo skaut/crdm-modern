@@ -64,7 +64,16 @@ gulp.task( 'build:jpg:frontend', function () {
 		.pipe( gulp.dest( 'dist/frontend/images/' ) );
 } );
 
-gulp.task( 'build:jpg', gulp.parallel( 'build:jpg:frontend' ) );
+gulp.task( 'build:jpg:admin', function () {
+	return gulp
+		.src( 'src/jpg/admin/**/*.jpg' )
+		.pipe( gulp.dest( 'dist/admin/' ) );
+} );
+
+gulp.task(
+	'build:jpg',
+	gulp.parallel( 'build:jpg:frontend', 'build:jpg:admin' )
+);
 
 function bundle( name, sources, part, jQuery = false ) {
 	const tsProject = ts.createProject( 'tsconfig.json' );
@@ -154,12 +163,6 @@ gulp.task( 'build:png:screenshot', function () {
 	return gulp.src( 'src/png/screenshot.png' ).pipe( gulp.dest( 'dist/' ) );
 } );
 
-gulp.task( 'build:png:admin', function () {
-	return gulp
-		.src( 'src/png/admin/**/*.png' )
-		.pipe( gulp.dest( 'dist/admin/' ) );
-} );
-
 gulp.task( 'build:png:frontend', function () {
 	return gulp
 		.src( 'src/png/frontend/**/*.png' )
@@ -168,11 +171,7 @@ gulp.task( 'build:png:frontend', function () {
 
 gulp.task(
 	'build:png',
-	gulp.parallel(
-		'build:png:screenshot',
-		'build:png:admin',
-		'build:png:frontend'
-	)
+	gulp.parallel( 'build:png:screenshot', 'build:png:frontend' )
 );
 
 gulp.task( 'build:txt', function () {
