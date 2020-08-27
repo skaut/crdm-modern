@@ -3,18 +3,16 @@
 const gulp = require( 'gulp' );
 
 const cleanCSS = require( 'gulp-clean-css' );
-const composer = require( 'gulp-uglify/composer' );
 const concat = require( 'gulp-concat' );
 const inject = require( 'gulp-inject-string' );
 const merge = require( 'merge-stream' );
 const potomo = require( 'gulp-potomo' );
 const rename = require( 'gulp-rename' );
 const shell = require( 'gulp-shell' );
+const terser = require( 'gulp-terser' );
 const ts = require( 'gulp-typescript' );
-const uglify = require( 'uglify-js' );
 const wpPot = require( 'gulp-wp-pot' );
 
-const minify = composer( uglify, console );
 
 gulp.task( 'build:css:main', function () {
 	return gulp
@@ -97,7 +95,7 @@ function bundle( name, sources, part, jQuery = false ) {
 			.pipe( inject.append( '});\n' ) );
 	}
 	return ret
-		.pipe( minify( { ie8: true } ) )
+		.pipe( terser( { ie8: true } ) )
 		.pipe( gulp.dest( 'dist/' + part + '/js/' ) );
 }
 
