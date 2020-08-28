@@ -6,10 +6,10 @@ function isAssoc( value: any ): value is Record< string, any > {
 	);
 }
 
-function applyPreset( control: any ): void {
+function applyPreset( control: wordpress__customize.Control ): void {
 	const chosen = control.container
 		.find( 'input[name=crdm_modern_preset]:checked' )
-		.val();
+		.val() as string;
 	if ( ! chosen ) {
 		return;
 	}
@@ -36,7 +36,7 @@ function applyPreset( control: any ): void {
 	$( '.generatepress-font-variant select' ).trigger( 'change' );
 }
 
-void wp.customize.control( 'crdm_modern_preset', function ( control: any ) {
+void wp.customize.control( 'crdm_modern_preset', function ( control ) {
 	control.container
 		.find( 'input[name=crdm_modern_preset]' )
 		.change( function () {

@@ -15,7 +15,7 @@ function hash( str: string ): string {
 function setCSSInHead(
 	setting: string,
 	target: LiveReloadTarget,
-	value: any
+	value: string
 ): void {
 	const targetHash = hash( setting + target.selector );
 	let mediaBegin = '';
@@ -77,8 +77,8 @@ function liveReload(
 	targets: Array< LiveReloadTarget >,
 	fallbacks?: Array< string >
 ): void {
-	void wp.customize( setting, function ( value: any ) {
-		value.bind( function ( newValue: any ) {
+	void wp.customize( setting, function ( value ) {
+		value.bind( function ( newValue ) {
 			if ( ! newValue && fallbacks ) {
 				$.each( fallbacks, function ( _, fallback ) {
 					const fallbackValue = String(
@@ -98,8 +98,8 @@ function liveReload(
 	} );
 	if ( fallbacks ) {
 		for ( let i = 0; i < fallbacks.length; i++ ) {
-			void wp.customize( fallbacks[ i ], function ( value: any ) {
-				value.bind( function ( newValue: any ) {
+			void wp.customize( fallbacks[ i ], function ( value ) {
+				value.bind( function ( newValue ) {
 					if ( wp.customize( setting ).get() ) {
 						return;
 					}

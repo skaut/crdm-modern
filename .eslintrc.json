@@ -36,6 +36,7 @@
 		"no-warning-comments": "warn",
 		"strict": [ "error", "never" ],
 		"@typescript-eslint/array-type": ["error", {"default": "generic"}],
+		"@typescript-eslint/camelcase": ["error", {"allow": ["wordpress__customize"]}],
 		"@typescript-eslint/member-ordering": "error",
 		"@typescript-eslint/no-extraneous-class": "error",
 		"@typescript-eslint/no-namespace": ["error", {"allowDeclarations": true}],

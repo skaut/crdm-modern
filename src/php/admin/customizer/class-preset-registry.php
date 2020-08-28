@@ -82,7 +82,7 @@ class Preset_Registry {
 			array(
 				'blue'  => ( new Preset(
 					__( 'Blue', 'crdm-modern' ),
-					'presets/blue.png'
+					'presets/blue.jpg'
 				) )->add_settings_field(
 					'crdm_modern',
 					array(
@@ -382,7 +382,7 @@ class Preset_Registry {
 				),
 				'green' => ( new Preset(
 					__( 'Green', 'crdm-modern' ),
-					'presets/blue.png'
+					'presets/green.jpg'
 				) )->add_settings_field(
 					'crdm_modern',
 					array(
@@ -683,7 +683,7 @@ class Preset_Registry {
 				),
 				'beige' => ( new Preset(
 					__( 'Beige', 'crdm-modern' ),
-					'presets/blue.png'
+					'presets/beige.jpg'
 				) )->add_settings_field(
 					'crdm_modern',
 					array(

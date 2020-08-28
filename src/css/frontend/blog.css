@@ -31,7 +31,7 @@
 	width: 100%;
 }
 
-.crdm-modern-excerpt .wp-post-image {
+.crdm-modern-excerpt .post-image .wp-post-image {
 	object-fit: cover;
 	vertical-align: bottom;
 	width: 100%;
