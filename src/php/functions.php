@@ -87,7 +87,9 @@ function activate() {
 function copy_images() {
 	try {
 		// Do not touch titles or the files will be copied again.
-		copy_image( get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png', 'CRDM - Modern default header image' );
+		copy_image( get_stylesheet_directory_uri() . '/frontend/images/tent_beige.png', 'CRDM - Modern default header image 1' );
+		copy_image( get_stylesheet_directory_uri() . '/frontend/images/tee-pee.png', 'CRDM - Modern default header image 2' );
+		copy_image( get_stylesheet_directory_uri() . '/frontend/images/tent_grey.png', 'CRDM - Modern default header image 3' );
 		copy_image( get_stylesheet_directory_uri() . '/frontend/images/background.jpg', 'CRDM - Modern default background image' );
 	} catch ( \Exception $_ ) {
 		add_action( 'admin_notices', '\\CrdmModern\\notice_image_copy_failed' );
