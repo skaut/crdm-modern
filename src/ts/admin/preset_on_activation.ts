@@ -32,7 +32,7 @@ function applyCallback(): void {
 	const id = $(
 		'input[name=crdm-modern-preset-on-activation]:checked'
 	).val();
-	$.get(
+	void $.get(
 		crdmModernPresetOnActivationLocalize.ajax_url,
 		{
 			_ajax_nonce: crdmModernPresetOnActivationLocalize.nonce, // eslint-disable-line camelcase
