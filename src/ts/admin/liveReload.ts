@@ -23,9 +23,9 @@ function setCSSInHead(
 	if ( target.media ) {
 		mediaBegin = '@media (';
 		if ( target.media.minWidth ) {
-			mediaBegin += 'min-width: ' + target.media.minWidth;
+			mediaBegin += 'min-width: ' + target.media.minWidth.toString();
 		} else if ( target.media.maxWidth ) {
-			mediaBegin += 'max-width: ' + target.media.maxWidth;
+			mediaBegin += 'max-width: ' + target.media.maxWidth.toString();
 		}
 		mediaBegin += 'px) {\n';
 		mediaEnd = '}\n';
@@ -41,12 +41,14 @@ function setCSSInHead(
 			$.map( target.properties, function ( property ) {
 				let computedValue = value;
 				if ( property.computed ) {
-					let additionalValues = [];
+					let additionalValues: Array< string > = [];
 					if ( property.computed.additionalSettings ) {
 						additionalValues = $.map(
 							property.computed.additionalSettings,
 							( additionalSetting ) =>
-								wp.customize( additionalSetting ).get()
+								String(
+									wp.customize( additionalSetting ).get()
+								)
 						);
 					}
 					computedValue = property.computed.value(
@@ -75,11 +77,13 @@ function liveReload(
 	targets: Array< LiveReloadTarget >,
 	fallbacks?: Array< string >
 ): void {
-	wp.customize( setting, function ( value ) {
+	void wp.customize( setting, function ( value ) {
 		value.bind( function ( newValue ) {
 			if ( ! newValue && fallbacks ) {
 				$.each( fallbacks, function ( _, fallback ) {
-					const fallbackValue = wp.customize( fallback ).get();
+					const fallbackValue = String(
+						wp.customize( fallback ).get()
+					);
 					if ( fallbackValue ) {
 						newValue = fallbackValue;
 						return false;
@@ -94,7 +98,7 @@ function liveReload(
 	} );
 	if ( fallbacks ) {
 		for ( let i = 0; i < fallbacks.length; i++ ) {
-			wp.customize( fallbacks[ i ], function ( value ) {
+			void wp.customize( fallbacks[ i ], function ( value ) {
 				value.bind( function ( newValue ) {
 					if ( wp.customize( setting ).get() ) {
 						return;

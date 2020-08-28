@@ -14,7 +14,6 @@
 	"extends": [
 	    "eslint:recommended",
 	    "plugin:@wordpress/eslint-plugin/recommended",
-		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:@typescript-eslint/recommended-requiring-type-checking"
 	],
@@ -22,16 +21,21 @@
 		{
 			"files": ["gulpfile.js"],
 			"rules": {
-				"@typescript-eslint/explicit-function-return-type": "off"
+				"@typescript-eslint/explicit-function-return-type": "off",
+				"@typescript-eslint/no-unsafe-assignment": "off",
+				"@typescript-eslint/no-unsafe-call": "off",
+				"@typescript-eslint/no-unsafe-member-access": "off",
+				"@typescript-eslint/no-unsafe-return": "off",
+				"@typescript-eslint/restrict-plus-operands": "off"
 			}
 		}
 	],
 	"rules": {
+		"camelcase": ["error", {"allow": ["wordpress__customize"]}],
 		"compat/compat": "warn",
 		"no-warning-comments": "warn",
 		"strict": [ "error", "never" ],
 		"@typescript-eslint/array-type": ["error", {"default": "generic"}],
-		"@typescript-eslint/camelcase": ["error", {"allow": ["wordpress__customize"]}],
 		"@typescript-eslint/member-ordering": "error",
 		"@typescript-eslint/no-extraneous-class": "error",
 		"@typescript-eslint/no-namespace": ["error", {"allowDeclarations": true}],

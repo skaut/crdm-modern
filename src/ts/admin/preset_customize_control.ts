@@ -1,6 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isAssoc( value: any ): value is Record< string, any > {
-	return !! value && value.constructor === Object;
+	return (
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		!! value && ( value as Record< string, any > ).constructor === Object
+	);
 }
 
 function applyPreset( control: wordpress__customize.Control ): void {
@@ -33,7 +36,7 @@ function applyPreset( control: wordpress__customize.Control ): void {
 	$( '.generatepress-font-variant select' ).trigger( 'change' );
 }
 
-wp.customize.control( 'crdm_modern_preset', function ( control ) {
+void wp.customize.control( 'crdm_modern_preset', function ( control ) {
 	control.container
 		.find( 'input[name=crdm_modern_preset]' )
 		.change( function () {
