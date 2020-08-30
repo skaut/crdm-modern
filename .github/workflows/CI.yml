@@ -44,6 +44,11 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v2
 
+      - name: "Install gettext"
+        run: |
+          sudo apt-get update
+          sudo apt-get install gettext
+
       - name: "Cache Composer dependencies"
         uses: actions/cache@v2
         env:
@@ -73,5 +78,9 @@ jobs:
             npm-dependencies-${{ runner.os }}-
 
       - name: "Install NPM dependencies"
+        run: |
+          npm ci
+
+      - name: "Build"
         run: |
           npm run build
