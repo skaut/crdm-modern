@@ -15,7 +15,7 @@ jobs:
 
       - name: "Install NPM dependencies"
         run: |
-          npm install
+          npm ci
 
       - name: "Update translations"
         run: |
