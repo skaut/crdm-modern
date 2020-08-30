@@ -92,7 +92,7 @@ jobs:
 
       - name: "Install php-ast"
         run: |
-          pecl install ast
+          sudo pecl install ast
 
       - name: "Cache Composer dependencies"
         uses: actions/cache@v2
