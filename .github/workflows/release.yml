@@ -51,8 +51,28 @@ jobs:
         run: |
           npm run build
 
-      - name: "Persist artifact"
+      - name: "Upload artifact"
         uses: actions/upload-artifact@v2
         with:
           name: "build-artifact"
           path: dist
+
+  release:
+    name: "Create a release"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Download artifact"
+        uses: actions/download-artifact@v2
+        with:
+          name: "build-artifact"
+          path: ${{ github.event.repository.name }}
+      - name: "Create zip"
+        run: |
+          zip -r ${{ github.event.repository.name }}.${{ github.ref }}.zip ${{ github.event.repository.name }}
+      - name: "Create a release"
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Version ${{ github.ref }}
