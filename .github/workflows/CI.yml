@@ -63,7 +63,7 @@ jobs:
 
       - name: "Install Composer dependencies"
         run: |
-          npm install -n --prefer-dist
+          composer install -n --prefer-dist
 
       - name: "Cache NPM dependencies"
         uses: actions/cache@v2
@@ -106,7 +106,7 @@ jobs:
 
       - name: "Install Composer dependencies"
         run: |
-          npm install -n --prefer-dist
+          composer install -n --prefer-dist
 
       - name: "Cache NPM dependencies"
         uses: actions/cache@v2
