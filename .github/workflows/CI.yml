@@ -10,7 +10,6 @@ jobs:
 
       - name: "Install gettext"
         run: |
-          sudo apt-get update
           sudo apt-get install gettext
 
       - name: "Cache NPM dependencies"
@@ -46,7 +45,6 @@ jobs:
 
       - name: "Install gettext"
         run: |
-          sudo apt-get update
           sudo apt-get install gettext
 
       - name: "Cache Composer dependencies"
@@ -91,6 +89,10 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
+
+      - name: "Install php-ast"
+        run: |
+          pecl install ast
 
       - name: "Cache Composer dependencies"
         uses: actions/cache@v2
