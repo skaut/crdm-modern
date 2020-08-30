@@ -78,7 +78,7 @@ jobs:
 
       - name: "Extract changelog"
         run: |
-          sed -n '/=\s\?${{ github.ref }}\s\?=/{:a;n;/=.*/b;p;ba}' ${{ github.event.repository.name }}/readme.txt > body.md
+          sed -n '/=\s\?${{ steps.version.outputs.VERSION }}\s\?=/{:a;n;/=.*/b;p;ba}' ${{ github.event.repository.name }}/readme.txt > body.md
 
       - name: "Create a release"
         id: create_release
