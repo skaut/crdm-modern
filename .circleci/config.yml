@@ -4,11 +4,10 @@ workflows:
     jobs:
       - build:
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /.*/
-      - lint:
-          requires:
-            - build
       - package:
           filters:
             branches:
@@ -74,31 +73,6 @@ jobs:
           root: dist
           paths:
             - "*"
-  lint:
-    docker:
-      - image: circleci/php:7.3-node
-    steps:
-      - checkout
-
-      - restore_cache: *restore_composer
-      - run: *install_composer
-      - save_cache: *save_composer
-
-      - restore_cache: *restore_npm
-      - run: *install_npm
-      - save_cache: *save_npm
-
-      - attach_workspace:
-          at: dist
-
-      - run:
-          name: "Install php-ast"
-          command: |
-            sudo pecl install ast
-            echo 'extension=ast.so' | sudo tee /usr/local/etc/php/php.ini > /dev/null
-      - run:
-          name: "Lint"
-          command: npm run lint
 
   package:
     docker:
