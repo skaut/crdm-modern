@@ -1,0 +1,14 @@
+name: "Translatin sync check"
+on: push
+jobs:
+  translation-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+      - name: "Update translations"
+        run: |
+          npm run update-translations
+      - name: "Check for clean repo"
+        run: |
+          [ -z "$(git status --porcelain)" ] || (c=$?; git status; (exit $c))
