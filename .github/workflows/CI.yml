@@ -92,7 +92,7 @@ jobs:
 
       - name: "Install php-ast"
         run: |
-          sudo apt install php-ast
+          sudo apt-get install php-ast
 
       - name: "Cache Composer dependencies"
         uses: actions/cache@v2
