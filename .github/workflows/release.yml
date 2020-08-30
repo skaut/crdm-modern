@@ -77,7 +77,7 @@ jobs:
           zip -r dist.zip ${{ github.event.repository.name }}
 
       - name: "Extract changelog"
-        run |
+        run: |
           sed -n '/=\s\?${{ github.ref }}\s\?=/{:a;n;/=.*/b;p;ba}' ${{ github.event.repository.name }}/readme.txt > body.md
 
       - name: "Create a release"
