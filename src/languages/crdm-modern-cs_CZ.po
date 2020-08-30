@@ -38,7 +38,7 @@ msgstr ""
 "Šablona bude fungovat v pořádku i tak, ale nebudete moct znovu použít její "
 "výchozí obrázky jinak, než použitím předvolby šablony."
 
-#: admin/customizer.php:53
+#: admin/customizer.php:50
 msgid "Body"
 msgstr "Tělo"
 
