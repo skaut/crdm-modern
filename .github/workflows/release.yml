@@ -67,9 +67,12 @@ jobs:
         with:
           name: "build-artifact"
           path: ${{ github.event.repository.name }}
+      - name: Get the version
+        id: version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
       - name: "Create zip"
         run: |
-          zip -r ${{ github.event.repository.name }}.${{ github.ref }}.zip ${{ github.event.repository.name }}
+          zip -r ${{ github.event.repository.name }}.${{ steps.version.outputs.VERSION }}.zip ${{ github.event.repository.name }}
       - name: "Create a release"
         uses: actions/create-release@v1
         env:
