@@ -76,6 +76,10 @@ jobs:
         run: |
           zip -r dist.zip ${{ github.event.repository.name }}
 
+      - name: "Extract changelog"
+        run |
+          sed -n '/=\s\?${{ github.ref }}\s\?=/{:a;n;/=.*/b;p;ba}' ${{ github.event.repository.name }}/readme.txt > body.md
+
       - name: "Create a release"
         id: create_release
         uses: actions/create-release@v1
@@ -84,6 +88,7 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Version ${{ github.ref }}
+          body_path: ./body.md
 
       - name: "Upload release asset"
         uses: actions/upload-release-asset@v1
