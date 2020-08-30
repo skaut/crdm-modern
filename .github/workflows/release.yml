@@ -67,16 +67,30 @@ jobs:
         with:
           name: "build-artifact"
           path: ${{ github.event.repository.name }}
+
       - name: Get the version
         id: version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+
       - name: "Create zip"
         run: |
-          zip -r ${{ github.event.repository.name }}.${{ steps.version.outputs.VERSION }}.zip ${{ github.event.repository.name }}
+          zip -r dist.zip ${{ github.event.repository.name }}
+
       - name: "Create a release"
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: Version ${{ github.ref }}
+
+      - name: "Upload release asset"
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist.zip
+          asset_name: ${{ github.event.repository.name }}.${{ steps.version.outputs.VERSION }}.zip
+          asset_content_type: application/zip
