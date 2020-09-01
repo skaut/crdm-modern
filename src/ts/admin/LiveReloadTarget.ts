@@ -1,3 +1,5 @@
+/* exported LiveReloadTarget */
+
 interface LiveReloadTarget {
 	selector: string;
 	media?: LiveReloadMediaRules;
