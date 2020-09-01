@@ -1,3 +1,5 @@
+/* exported LiveReloadProperty */
+
 interface LiveReloadProperty {
 	name: string;
 	prefix?: string;
