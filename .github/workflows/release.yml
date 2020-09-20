@@ -3,6 +3,9 @@ on:
   push:
     tags:
       - "*"
+env:
+  php-version: 7.4
+  cache-version: 1
 jobs:
   build:
     name: "Build"
@@ -15,10 +18,14 @@ jobs:
         run: |
           sudo apt-get install gettext
 
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.php-version }}
+          coverage: none
+
       - name: "Cache Composer dependencies"
         uses: actions/cache@v2
-        env:
-          cache-version: 1
         with:
           path: "~/.composer/cache"
           key: composer-dependencies-${{ runner.os }}-${{ env.cache-version }}-${{ hashFiles('composer.json') }}
@@ -33,8 +40,6 @@ jobs:
 
       - name: "Cache NPM dependencies"
         uses: actions/cache@v2
-        env:
-          cache-version: 1
         with:
           path: "~/.npm"
           key: npm-dependencies-${{ runner.os }}-${{ env.cache-version }}-${{ hashFiles('package.json') }}
