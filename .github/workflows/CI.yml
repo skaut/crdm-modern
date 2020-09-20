@@ -93,7 +93,7 @@ jobs:
     name: "Lint"
     runs-on: ubuntu-latest
     env:
-      cache-version: 1
+      php-extensions: ast
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
