@@ -1,7 +1,7 @@
 ﻿=== CRDM - Modern ===
 Contributors: skaut, marekdedic
 Requires at least: 5.0.0
-Tested up to: 5.1
+Tested up to: 5.7
 Requires PHP: 7.0
 Version: 1.0.2
 License: GPLv3 or later
