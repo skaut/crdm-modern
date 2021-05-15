@@ -8,19 +8,24 @@
 	padding-bottom: 0;
 	position: relative;
 	cursor: pointer;
-	transition: color 0.1s ease-in-out;
-}
-
-.post-image-aligned-left .inside-article.crdm-modern-excerpt .post-image,
-.post-image-aligned-right .inside-article.crdm-modern-excerpt .post-image,
-.post-image-above-header .inside-article.crdm-modern-excerpt div.post-image {
-	margin: 0;
+	transition: color 0.1s ease-in-out; /*stylelint-disable-line plugin/no-unsupported-browser-features */
 }
 
 .post-image-aligned-center .crdm-modern-excerpt .post-image,
 .generate-columns .crdm-modern-excerpt .post-image {
 	position: relative;
 	width: 100%;
+}
+
+.post-image-aligned-center .crdm-modern-excerpt .post-image,
+.post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
+	text-align: left;
+}
+
+.post-image-aligned-left .inside-article.crdm-modern-excerpt .post-image,
+.post-image-aligned-right .inside-article.crdm-modern-excerpt .post-image,
+.post-image-above-header .inside-article.crdm-modern-excerpt div.post-image {
+	margin: 0;
 }
 
 .post-image-aligned-center .crdm-modern-excerpt .post-image a,
@@ -45,7 +50,7 @@
 @media (max-width: 767px) {
 
 	.generate-columns-container {
-		margin-left: unset !important;
+		margin-left: 0 !important;
 	}
 }
 
@@ -85,16 +90,14 @@
 	}
 }
 
-.post-image-aligned-center .crdm-modern-excerpt .post-image,
-.post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image,
-.generate-columns-activated.post-image-aligned-left .generate-columns-container article:not(.featured-column) .crdm-modern-excerpt .post-image,
-.generate-columns-activated.post-image-aligned-right .generate-columns-container article:not(.featured-column) .crdm-modern-excerpt .post-image {
-	text-align: left;
-}
-
 .post-image-aligned-left .generate-columns .crdm-modern-excerpt .post-image,
 .post-image-aligned-right .generate-columns .crdm-modern-excerpt .post-image {
 	float: none;
+}
+
+.generate-columns-activated.post-image-aligned-left .generate-columns-container article:not(.featured-column) .crdm-modern-excerpt .post-image,
+.generate-columns-activated.post-image-aligned-right .generate-columns-container article:not(.featured-column) .crdm-modern-excerpt .post-image {
+	text-align: left;
 }
 
 .crdm-modern-excerpt .entry-header {
