@@ -199,7 +199,10 @@ liveReload( 'generate_spacing_settings[separator]', [
 	},
 	{
 		selector: '.generate-columns-container',
-		properties: [ { name: 'margin-left', prefix: '-', postfix: 'px' } ],
+		properties: [
+			{ name: 'margin-bottom', postfix: 'px' },
+			{ name: 'margin-left', prefix: '-', postfix: 'px' },
+		],
 	},
 	{
 		selector: '.crdm-modern-excerpt',

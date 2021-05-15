@@ -74,6 +74,7 @@ function blog_css() {
 		'padding-left: ' . $separator . 'px;' .
 		'}' .
 		'.generate-columns-container {' .
+		'margin-bottom: ' . $separator . 'px;' .
 		'margin-left: -' . $separator . 'px;' .
 		'}' .
 		'.crdm-modern-excerpt {' .
