@@ -38,7 +38,7 @@ function setCSSInHead(
 			mediaBegin +
 			target.selector +
 			' {\n' +
-			$.map( target.properties, function ( property ) {
+			$.map( target.properties, ( property ) => {
 				let computedValue = value;
 				if ( property.computed ) {
 					let additionalValues: Array< string > = [];
@@ -77,10 +77,10 @@ function liveReload(
 	targets: Array< LiveReloadTarget >,
 	fallbacks?: Array< string >
 ): void {
-	void wp.customize( setting, function ( value ) {
-		value.bind( function ( newValue ) {
+	void wp.customize( setting, ( value ) => {
+		value.bind( ( newValue ) => {
 			if ( ! newValue && fallbacks ) {
-				$.each( fallbacks, function ( _, fallback ) {
+				$.each( fallbacks, ( _, fallback ) => {
 					const fallbackValue = String(
 						wp.customize( fallback ).get()
 					);
@@ -91,15 +91,15 @@ function liveReload(
 					return true;
 				} );
 			}
-			$.each( targets, function ( _, target ) {
+			$.each( targets, ( _, target ) => {
 				setCSSInHead( setting, target, newValue );
 			} );
 		} );
 	} );
 	if ( fallbacks ) {
 		for ( let i = 0; i < fallbacks.length; i++ ) {
-			void wp.customize( fallbacks[ i ], function ( value ) {
-				value.bind( function ( newValue ) {
+			void wp.customize( fallbacks[ i ], ( value ) => {
+				value.bind( ( newValue ) => {
 					if ( wp.customize( setting ).get() ) {
 						return;
 					}
@@ -108,7 +108,7 @@ function liveReload(
 							return;
 						}
 					}
-					$.each( targets, function ( _, target ) {
+					$.each( targets, ( _, target ) => {
 						setCSSInHead( setting, target, newValue );
 					} );
 				} );

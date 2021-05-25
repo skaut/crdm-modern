@@ -15,9 +15,9 @@ function applyPreset( control: wordpress__customize.Control ): void {
 	}
 
 	const preset = crdmModernPresetCustomizeControlLocalize[ chosen ];
-	$.each( preset, function ( key, value ) {
+	$.each( preset, ( key, value ) => {
 		if ( isAssoc( value ) ) {
-			$.each( value, function ( innerKey, innerValue ) {
+			$.each( value, ( innerKey, innerValue ) => {
 				const innerSetting = wp.customize( key + '[' + innerKey + ']' );
 				if ( ! innerSetting ) {
 					return;
@@ -36,14 +36,12 @@ function applyPreset( control: wordpress__customize.Control ): void {
 	$( '.generatepress-font-variant select' ).trigger( 'change' );
 }
 
-void wp.customize.control( 'crdm_modern_preset', function ( control ) {
-	control.container
-		.find( 'input[name=crdm_modern_preset]' )
-		.change( function () {
-			control.container.find( '.button' ).prop( 'disabled', false );
-		} );
+void wp.customize.control( 'crdm_modern_preset', ( control ) => {
+	control.container.find( 'input[name=crdm_modern_preset]' ).change( () => {
+		control.container.find( '.button' ).prop( 'disabled', false );
+	} );
 
-	control.container.find( '.button' ).click( function () {
+	control.container.find( '.button' ).click( () => {
 		applyPreset( control );
 	} );
 } );

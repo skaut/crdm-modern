@@ -13,8 +13,8 @@ const terser = require( 'gulp-terser' );
 const ts = require( 'gulp-typescript' );
 const wpPot = require( 'gulp-wp-pot' );
 
-gulp.task( 'build:css:main', function () {
-	return gulp
+gulp.task( 'build:css:main', () =>
+	gulp
 		.src( [
 			'src/css/style.css',
 			'src/css/frontend/blog.css',
@@ -26,21 +26,21 @@ gulp.task( 'build:css:main', function () {
 		] )
 		.pipe( cleanCSS( { compatibility: 'ie8' } ) )
 		.pipe( concat( 'style.css' ) )
-		.pipe( gulp.dest( 'dist/' ) );
-} );
+		.pipe( gulp.dest( 'dist/' ) )
+);
 
-gulp.task( 'build:css:admin', function () {
-	return gulp
+gulp.task( 'build:css:admin', () =>
+	gulp
 		.src( 'src/css/admin/**/*.css' )
 		.pipe( cleanCSS( { compatibility: 'ie8' } ) )
 		.pipe( rename( { suffix: '.min' } ) )
-		.pipe( gulp.dest( 'dist/admin/css/' ) );
-} );
+		.pipe( gulp.dest( 'dist/admin/css/' ) )
+);
 
 gulp.task( 'build:css', gulp.parallel( 'build:css:main', 'build:css:admin' ) );
 
-gulp.task( 'build:deps:npm:dripicons', function () {
-	return gulp
+gulp.task( 'build:deps:npm:dripicons', () =>
+	gulp
 		.src(
 			[
 				'node_modules/dripicons/webfont/webfont.css',
@@ -48,28 +48,26 @@ gulp.task( 'build:deps:npm:dripicons', function () {
 			],
 			{ base: 'node_modules/dripicons/webfont' }
 		)
-		.pipe( gulp.dest( 'dist/frontend/dripicons' ) );
-} );
+		.pipe( gulp.dest( 'dist/frontend/dripicons' ) )
+);
 
 gulp.task( 'build:deps:npm', gulp.parallel( 'build:deps:npm:dripicons' ) );
 
 gulp.task( 'build:deps', gulp.parallel( 'build:deps:npm' ) );
 
-gulp.task( 'build:jpg:screenshot', function () {
-	return gulp.src( 'src/jpg/screenshot.jpg' ).pipe( gulp.dest( 'dist/' ) );
-} );
+gulp.task( 'build:jpg:screenshot', () =>
+	gulp.src( 'src/jpg/screenshot.jpg' ).pipe( gulp.dest( 'dist/' ) )
+);
 
-gulp.task( 'build:jpg:frontend', function () {
-	return gulp
+gulp.task( 'build:jpg:frontend', () =>
+	gulp
 		.src( 'src/jpg/frontend/**/*.jpg' )
-		.pipe( gulp.dest( 'dist/frontend/images/' ) );
-} );
+		.pipe( gulp.dest( 'dist/frontend/images/' ) )
+);
 
-gulp.task( 'build:jpg:admin', function () {
-	return gulp
-		.src( 'src/jpg/admin/**/*.jpg' )
-		.pipe( gulp.dest( 'dist/admin/' ) );
-} );
+gulp.task( 'build:jpg:admin', () =>
+	gulp.src( 'src/jpg/admin/**/*.jpg' ).pipe( gulp.dest( 'dist/admin/' ) )
+);
 
 gulp.task(
 	'build:jpg',
@@ -98,8 +96,8 @@ function bundle( name, sources, part, jQuery = false ) {
 		.pipe( gulp.dest( 'dist/' + part + '/js/' ) );
 }
 
-gulp.task( 'build:js', function () {
-	return merge(
+gulp.task( 'build:js', () =>
+	merge(
 		bundle(
 			'preset_customize_control',
 			[ 'src/ts/admin/preset_customize_control.ts' ],
@@ -126,57 +124,55 @@ gulp.task( 'build:js', function () {
 			true
 		),
 		bundle( 'blog', [ 'src/ts/frontend/blog.ts' ], 'frontend', true )
-	);
-} );
+	)
+);
 
-gulp.task( 'build:mo', function () {
-	return gulp
+gulp.task( 'build:mo', () =>
+	gulp
 		.src( 'src/languages/*.po' )
 		.pipe( potomo( { verbose: false } ) )
 		.pipe(
-			rename( function ( path ) {
+			rename( ( path ) => {
 				path.basename = path.basename.substring(
 					path.basename.lastIndexOf( '-' ) + 1
 				);
 			} )
 		)
-		.pipe( gulp.dest( 'dist/languages/' ) );
-} );
+		.pipe( gulp.dest( 'dist/languages/' ) )
+);
 
-gulp.task( 'build:php:root', function () {
-	return gulp.src( 'src/php/*.php' ).pipe( gulp.dest( 'dist/' ) );
-} );
+gulp.task( 'build:php:root', () =>
+	gulp.src( 'src/php/*.php' ).pipe( gulp.dest( 'dist/' ) )
+);
 
-gulp.task( 'build:php:admin', function () {
-	return gulp
-		.src( 'src/php/admin/**/*.php' )
-		.pipe( gulp.dest( 'dist/admin/' ) );
-} );
+gulp.task( 'build:php:admin', () =>
+	gulp.src( 'src/php/admin/**/*.php' ).pipe( gulp.dest( 'dist/admin/' ) )
+);
 
-gulp.task( 'build:php:frontend', function () {
-	return gulp
+gulp.task( 'build:php:frontend', () =>
+	gulp
 		.src( 'src/php/frontend/**/*.php' )
-		.pipe( gulp.dest( 'dist/frontend/' ) );
-} );
+		.pipe( gulp.dest( 'dist/frontend/' ) )
+);
 
 gulp.task(
 	'build:php',
 	gulp.parallel( 'build:php:root', 'build:php:admin', 'build:php:frontend' )
 );
 
-gulp.task( 'build:png:frontend', function () {
-	return gulp
+gulp.task( 'build:png:frontend', () =>
+	gulp
 		.src( 'src/png/frontend/**/*.png' )
-		.pipe( gulp.dest( 'dist/frontend/images/' ) );
-} );
+		.pipe( gulp.dest( 'dist/frontend/images/' ) )
+);
 
 gulp.task( 'build:png', gulp.parallel( 'build:png:frontend' ) );
 
-gulp.task( 'build:txt', function () {
-	return gulp
+gulp.task( 'build:txt', () =>
+	gulp
 		.src( [ 'src/txt/license.txt', 'src/txt/readme.txt' ] )
-		.pipe( gulp.dest( 'dist/' ) );
-} );
+		.pipe( gulp.dest( 'dist/' ) )
+);
 
 gulp.task(
 	'build',
@@ -194,31 +190,34 @@ gulp.task(
 
 gulp.task(
 	'update-translations:generate-pot',
-	gulp.series( function () {
-		return gulp
-			.src( 'src/php/**/*.php' )
-			.pipe(
-				wpPot( {
-					bugReport: 'https://github.com/skaut/crdm-modern/issues',
-					domain: 'crdm-modern',
-					relativeTo: 'src/php',
-				} )
-			)
-			.pipe( gulp.dest( 'src/languages/crdm-modern.pot' ) );
-	}, shell.task(
-		'msgmerge -U src/languages/crdm-modern.pot src/languages/crdm-modern.pot'
-	) )
+	gulp.series(
+		() =>
+			gulp
+				.src( 'src/php/**/*.php' )
+				.pipe(
+					wpPot( {
+						bugReport:
+							'https://github.com/skaut/crdm-modern/issues',
+						domain: 'crdm-modern',
+						relativeTo: 'src/php',
+					} )
+				)
+				.pipe( gulp.dest( 'src/languages/crdm-modern.pot' ) ),
+		shell.task(
+			'msgmerge -U src/languages/crdm-modern.pot src/languages/crdm-modern.pot'
+		)
+	)
 );
 
-gulp.task( 'update-translations:update-po', function () {
-	return gulp
+gulp.task( 'update-translations:update-po', () =>
+	gulp
 		.src( 'src/languages/*.po', { read: false } )
 		.pipe(
 			shell(
 				'msgmerge -U <%= file.path %> src/languages/crdm-modern.pot'
 			)
-		);
-} );
+		)
+);
 
 gulp.task(
 	'update-translations',
