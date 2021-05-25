@@ -9,6 +9,7 @@
 	},
 	"plugins": [
 	    "compat",
+		"prefer-arrow",
 		"@typescript-eslint"
 	],
 	"extends": [
@@ -31,10 +32,12 @@
 		}
 	],
 	"rules": {
+		"arrow-body-style": ["error", "as-needed"],
 		"camelcase": ["error", {"allow": ["wordpress__customize"]}],
-		"compat/compat": "warn",
 		"no-warning-comments": "warn",
 		"strict": [ "error", "never" ],
+		"compat/compat": "warn",
+		"prefer-arrow/prefer-arrow-functions": ["warn", {"allowStandaloneDeclarations": true}],
 		"@typescript-eslint/array-type": ["error", {"default": "generic"}],
 		"@typescript-eslint/member-ordering": "error",
 		"@typescript-eslint/no-extraneous-class": "error",
