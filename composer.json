@@ -30,7 +30,7 @@
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
 		"wp-coding-standards/wpcs": "^2.1",
 		"phpmd/phpmd": "^2.7",
-		"phan/phan": "^4.0",
+		"phan/phan": "^5.1",
 		"skaut/phan-wordpress-stubs": "^1.0.0"
 	}
 }
