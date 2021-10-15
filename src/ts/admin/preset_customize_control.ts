@@ -1,8 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function isAssoc( value: any ): value is Record< string, any > {
+function isAssoc( value: unknown ): value is Record< string, unknown > {
 	return (
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		!! value && ( value as Record< string, any > ).constructor === Object
+		!! value &&
+		( value as Record< string, unknown > ).constructor === Object
 	);
 }
 
