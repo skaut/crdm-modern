@@ -22,9 +22,9 @@ function setCSSInHead(
 	let mediaEnd = '';
 	if ( target.media ) {
 		mediaBegin = '@media (';
-		if ( target.media.minWidth ) {
+		if ( target.media.minWidth !== undefined ) {
 			mediaBegin += 'min-width: ' + target.media.minWidth.toString();
-		} else if ( target.media.maxWidth ) {
+		} else if ( target.media.maxWidth !== undefined ) {
 			mediaBegin += 'max-width: ' + target.media.maxWidth.toString();
 		}
 		mediaBegin += 'px) {\n';
@@ -100,11 +100,13 @@ function liveReload(
 		for ( let i = 0; i < fallbacks.length; i++ ) {
 			void wp.customize( fallbacks[ i ], function ( value ) {
 				value.bind( function ( newValue: string ) {
-					if ( wp.customize( setting ).get() ) {
+					if ( wp.customize( setting ).get() !== undefined ) {
 						return;
 					}
 					for ( let j = 0; j < i; j++ ) {
-						if ( wp.customize( fallbacks[ j ] ).get() ) {
+						if (
+							wp.customize( fallbacks[ j ] ).get() !== undefined
+						) {
 							return;
 						}
 					}

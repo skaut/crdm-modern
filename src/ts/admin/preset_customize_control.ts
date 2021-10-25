@@ -1,6 +1,6 @@
 function isAssoc( value: unknown ): value is Record< string, unknown > {
 	return (
-		!! value &&
+		value !== undefined &&
 		( value as Record< string, unknown > ).constructor === Object
 	);
 }
@@ -18,6 +18,7 @@ function applyPreset( control: wordpress__customize.Control ): void {
 		if ( isAssoc( value ) ) {
 			$.each( value, function ( innerKey, innerValue ) {
 				const innerSetting = wp.customize( key + '[' + innerKey + ']' );
+				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/strict-boolean-expressions
 				if ( ! innerSetting ) {
 					return;
 				}
@@ -25,6 +26,7 @@ function applyPreset( control: wordpress__customize.Control ): void {
 			} );
 		} else {
 			const setting = wp.customize( key );
+			// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/strict-boolean-expressions
 			if ( ! setting ) {
 				return;
 			}
