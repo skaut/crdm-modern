@@ -78,7 +78,7 @@ class Preset {
 		$ret = array();
 		foreach ( $this->settings as $id => $setting ) {
 			if ( $type === $setting['type'] ) {
-				$ret[] = $id;
+				$ret[] = strval( $id );
 			}
 		}
 		return $ret;
