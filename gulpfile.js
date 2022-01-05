@@ -194,6 +194,7 @@ gulp.task(
 					wpPot({
 						bugReport:
 							'https://github.com/skaut/crdm-modern/issues',
+						copyrightText: '# Copyright (C) Junák – český skaut',
 						domain: 'crdm-modern',
 						package: 'crdm-modern',
 						relativeTo: 'src/php',
