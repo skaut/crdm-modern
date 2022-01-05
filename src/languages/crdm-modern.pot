@@ -1,4 +1,4 @@
-# Copyright (C) 2021 crdm-modern
+# Copyright (C) 2022 crdm-modern
 # This file is distributed under the same license as the crdm-modern package.
 msgid ""
 msgstr ""
