@@ -1,0 +1,10 @@
+parameters:
+  level: 0
+  paths:
+  - src
+  - .phan/config.php
+  scanDirectories:
+  - .phan/stubs
+  - vendor/skaut/phan-wordpress-stubs/stubs
+  scanFiles:
+  - vendor/skaut/phan-wordpress-stubs/stubs/WordPress/functions.php
