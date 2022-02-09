@@ -16,26 +16,26 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: functions.php:150
+#: functions.php:160
 msgid "CRDM - Modern theme requires at least WordPress 5.0"
 msgstr ""
 
-#: functions.php:161
+#: functions.php:173
 msgid "CRDM - Modern theme requires at least PHP 7.0"
 msgstr ""
 
-#: functions.php:171
+#: functions.php:185
 msgid "CRDM - Modern theme requires GeneratePress Premium"
 msgstr ""
 
-#: functions.php:181
+#: functions.php:197
 msgid ""
 "Failed to copy CRDM - Modern theme images to WordPress Media. The theme will "
 "work fine, but you won't be able to re-select the default images outside of "
 "the theme presets."
 msgstr ""
 
-#: admin/customizer.php:50
+#: admin/customizer.php:52
 msgid "Body"
 msgstr ""
 
@@ -73,140 +73,140 @@ msgid "Theme preset selection"
 msgstr ""
 
 #. translators: %s: Theme name.
-#: admin/update.php:20
+#: admin/update.php:22
 msgid "The theme %s is not available for updating."
 msgstr ""
 
 #. translators: %s: Theme name.
-#: admin/update.php:22
+#: admin/update.php:24
 msgid "The GitHub API request for updates for the theme %s has failed."
 msgstr ""
 
-#: admin/update.php:23
+#: admin/update.php:25
 msgid "Error message:"
 msgstr ""
 
 #. translators: %s: Theme name.
-#: admin/update.php:25
+#: admin/update.php:27
 msgid "The GitHub API response for the theme %s is invalid."
 msgstr ""
 
 #. translators: %s: Theme name.
-#: admin/update.php:27
+#: admin/update.php:29
 msgid "The latest version of the theme %s does not contain an update zip file."
 msgstr ""
 
-#: admin/update.php:28
+#: admin/update.php:30
 msgid "New version"
 msgstr ""
 
-#: admin/update.php:29
+#: admin/update.php:31
 msgid "No more info available."
 msgstr ""
 
-#: frontend/class-title-widget.php:64
+#: frontend/class-title-widget.php:72
 msgid "Title Widget"
 msgstr ""
 
-#: frontend/class-title-widget.php:64
+#: frontend/class-title-widget.php:72
 msgid "A widget containing the site logo, title and tagline."
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:135,
-#: admin/customizer/class-preset-registry.php:435,
-#: admin/customizer/class-preset-registry.php:736
+#: admin/customizer/class-preset-registry.php:136,
+#: admin/customizer/class-preset-registry.php:436,
+#: admin/customizer/class-preset-registry.php:737
 msgid "Read more >"
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:84
+#: admin/customizer/class-preset-registry.php:85
 msgid "Blue"
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:384
+#: admin/customizer/class-preset-registry.php:385
 msgid "Green"
 msgstr ""
 
-#: admin/customizer/class-preset-registry.php:685
+#: admin/customizer/class-preset-registry.php:686
 msgid "Beige"
 msgstr ""
 
-#: admin/customizer/colors.php:46
+#: admin/customizer/colors.php:50
 msgid "Widget Separator"
 msgstr ""
 
-#: admin/customizer/colors.php:70
+#: admin/customizer/colors.php:74
 msgid "Excerpt Border"
 msgstr ""
 
-#: admin/customizer/colors.php:94
+#: admin/customizer/colors.php:98
 msgid "Excerpt Background Hover"
 msgstr ""
 
-#: admin/customizer/colors.php:118
+#: admin/customizer/colors.php:122
 msgid "Excerpt Text Hover"
 msgstr ""
 
-#: admin/customizer/colors.php:142
+#: admin/customizer/colors.php:146
 msgid "\"Read more\" Link"
 msgstr ""
 
-#: admin/customizer/colors.php:165
+#: admin/customizer/colors.php:169
 msgid "\"Read more\" Link Hover"
 msgstr ""
 
-#: admin/customizer/layout.php:46
+#: admin/customizer/layout.php:50
 msgid "Navigation spacing"
 msgstr ""
 
-#: admin/customizer/layout.php:78
+#: admin/customizer/layout.php:82
 msgid "Navigation shadow"
 msgstr ""
 
-#: admin/customizer/layout.php:100
+#: admin/customizer/layout.php:104
 msgid "Sidebar widget separator width"
 msgstr ""
 
-#: admin/customizer/layout.php:134
+#: admin/customizer/layout.php:138
 msgid "Sidebar widget separator spacing"
 msgstr ""
 
-#: admin/customizer/layout.php:160
+#: admin/customizer/layout.php:164
 msgid "Featured Posts"
 msgstr ""
 
-#: admin/customizer/layout.php:179
+#: admin/customizer/layout.php:183
 msgid "Number of featured posts"
 msgstr ""
 
-#: admin/customizer/preset.php:33
+#: admin/customizer/preset.php:37
 msgid "Preset"
 msgstr ""
 
-#: admin/customizer/site-identity.php:45
+#: admin/customizer/site-identity.php:49
 msgid "Header Image"
 msgstr ""
 
-#: admin/customizer/site-identity.php:75
+#: admin/customizer/site-identity.php:79
 msgid "Header Image Height"
 msgstr ""
 
-#: admin/customizer/site-identity.php:108
+#: admin/customizer/site-identity.php:112
 msgid "Header Image Top Position"
 msgstr ""
 
-#: admin/customizer/site-identity.php:141
+#: admin/customizer/site-identity.php:145
 msgid "Header Image Right Position"
 msgstr ""
 
-#: admin/customizer/site-identity.php:173
+#: admin/customizer/site-identity.php:177
 msgid "Minimum Width to Show Header Image"
 msgstr ""
 
-#: admin/customizer/typography.php:34
+#: admin/customizer/typography.php:38
 msgid "Blog"
 msgstr ""
 
-#: admin/customizer/typography.php:90
+#: admin/customizer/typography.php:94
 msgid "Font size"
 msgstr ""
 
