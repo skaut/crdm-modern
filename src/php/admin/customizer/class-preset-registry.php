@@ -63,7 +63,7 @@ class Preset_Registry {
 	/**
 	 * The default registry.
 	 *
-	 * @var Preset_Registry
+	 * @var Preset_Registry|null
 	 */
 	private static $instance = null;
 
