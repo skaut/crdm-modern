@@ -91,7 +91,7 @@ class Title_Widget extends \WP_Widget {
 		if ( function_exists( 'the_custom_logo' ) && null !== get_theme_mod( 'custom_logo' ) ) {
 			$logo_url = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
 		}
-		if ( isset( $logo_url ) ) {
+		if ( isset( $logo_url ) && false !== $logo_url ) {
 			$logo_url = $logo_url[0];
 		} else {
 			$logo_url = $gp_settings['logo'];

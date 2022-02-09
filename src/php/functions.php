@@ -209,7 +209,7 @@ function notice_image_copy_failed() {
  */
 function register_script( string $handle, string $src, array $deps = array() ) {
 	$file = get_stylesheet_directory() . '/' . $src;
-	wp_register_script( $handle, get_stylesheet_directory_uri() . '/' . $src, $deps, file_exists( $file ) ? filemtime( $file ) : false, true );
+	wp_register_script( $handle, get_stylesheet_directory_uri() . '/' . $src, $deps, file_exists( $file ) ? strval( filemtime( $file ) ) : false, true );
 }
 
 /**
@@ -241,7 +241,7 @@ function enqueue_script( string $handle, string $src, array $deps = array() ) {
  */
 function register_style( string $handle, string $src, array $deps = array() ) {
 	$file = get_stylesheet_directory() . '/' . $src;
-	wp_register_style( $handle, get_stylesheet_directory_uri() . '/' . $src, $deps, file_exists( $file ) ? filemtime( $file ) : false );
+	wp_register_style( $handle, get_stylesheet_directory_uri() . '/' . $src, $deps, file_exists( $file ) ? strval( filemtime( $file ) ) : false );
 }
 
 /**

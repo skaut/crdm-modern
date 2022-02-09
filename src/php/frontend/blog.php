@@ -314,6 +314,9 @@ function featured_image_size() {
  */
 function featured_image() {
 	$post_ID = get_the_ID();
+	if ( false === $post_ID ) {
+		return '';
+	}
 
 	$image_html = get_the_post_thumbnail(
 		$post_ID,
@@ -322,9 +325,14 @@ function featured_image() {
 			'itemprop' => 'image',
 		)
 	);
+	$permalink  = get_permalink( $post_ID );
+	if ( false === $permalink ) {
+		return '';
+	}
+
 	return '<div class="post-image">' .
 			apply_filters( 'generate_inside_featured_image_output', '' ) . // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
-			'<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' .
+			'<a href="' . esc_url( $permalink ) . '">' .
 			$image_html .
 			'</a>' .
 		'</div>';
