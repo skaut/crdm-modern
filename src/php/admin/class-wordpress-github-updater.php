@@ -150,6 +150,9 @@ class WordPress_Github_Updater {
 	 * @return object The updated update data with the injected values.
 	 */
 	public function update_theme( $transient ) {
+		if ( ! property_exists( $transient, 'checked' ) || ! property_exists( $transient, 'response' ) ) {
+			return $transient;
+		}
 		try {
 			$this->check_transient( $transient );
 			$response = $this->github_request();
