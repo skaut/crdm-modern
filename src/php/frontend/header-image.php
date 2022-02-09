@@ -11,6 +11,8 @@ namespace CrdmModern\Frontend\Header_Image;
 
 /**
  * Registers all the hooks for the header image.
+ *
+ * @return void
  */
 function register() {
 	add_action( 'generate_header', '\\CrdmModern\\Frontend\\Header_Image\\insert', 9 );
@@ -18,6 +20,8 @@ function register() {
 
 /**
  * Inserts the header image into the page
+ *
+ * @return void
  */
 function insert() {
 	$preset               = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();

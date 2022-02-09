@@ -11,6 +11,8 @@ namespace CrdmModern\Frontend\Widget_Icons;
 
 /**
  * Registers all the hooks for the header image.
+ *
+ * @return void
  */
 function register() {
 	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Frontend\\Widget_Icons\\enqueue' );
@@ -19,6 +21,8 @@ function register() {
 
 /**
  * Enqueues the dripicons font.
+ *
+ * @return void
  */
 function enqueue() {
 	\CrdmModern\enqueue_style( 'crdm_modern_dripicons', 'frontend/dripicons/webfont.css' );

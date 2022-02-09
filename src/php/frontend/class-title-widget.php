@@ -15,6 +15,8 @@ namespace CrdmModern\Frontend;
 class Title_Widget extends \WP_Widget {
 	/**
 	 * Registers the widget with WordPress.
+	 *
+	 * @return void
 	 */
 	public static function register() {
 		register_widget( '\\CrdmModern\\Frontend\\Title_Widget' );
@@ -23,6 +25,8 @@ class Title_Widget extends \WP_Widget {
 
 	/**
 	 * Enqueues all the styles for the widget.
+	 *
+	 * @return void
 	 */
 	public static function enqueue() {
 		$css = new \GeneratePress_Pro_CSS();
@@ -69,6 +73,8 @@ class Title_Widget extends \WP_Widget {
 	 *
 	 * @param array $args     Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
 	 * @param array $instance @unused-param Unused.
+	 *
+	 * @return void
 	 *
 	 * @SuppressWarnings(PHPMD.ShortVariable)
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)

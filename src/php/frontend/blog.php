@@ -11,6 +11,8 @@ namespace CrdmModern\Frontend\Blog;
 
 /**
  * Registers all the hooks for the blog.
+ *
+ * @return void
  */
 function register() {
 	add_action( 'wp_enqueue_scripts', '\\CrdmModern\\Frontend\\Blog\\enqueue', 51 );
@@ -24,6 +26,8 @@ function register() {
 
 /**
  * Removes posted-on date from after the excerpt title in the blog.
+ *
+ * @return void
  */
 function remove_post_meta() {
 	if ( ! \is_singular() ) {
@@ -33,6 +37,8 @@ function remove_post_meta() {
 
 /**
  * Adds posted-on date before the excerpt title in the blog.
+ *
+ * @return void
  */
 function add_post_meta() {
 	if ( ! \is_singular() ) {
@@ -42,6 +48,8 @@ function add_post_meta() {
 
 /**
  * Registers the script for the blog.
+ *
+ * @return void
  */
 function enqueue() {
 	\CrdmModern\enqueue_script( 'crdm_modern_blog', 'frontend/js/blog.min.js', array( 'jquery' ) );
@@ -186,6 +194,8 @@ function should_run( $function_name, $condition ) {
 
 /**
  * Fires before each article on the blog. Initializes the multi-column layout when appropriate
+ *
+ * @return void
  */
 function before_content() {
 	if ( ! should_run( 'before_content', 'begin' ) ) {
@@ -322,6 +332,8 @@ function featured_image() {
 
 /**
  * Fires after each article on the blog. Closes the multi-column layout when appropriate
+ *
+ * @return void
  */
 function after_content() {
 	if ( ! should_run( 'after_content', 'end' ) ) {

@@ -11,6 +11,8 @@ namespace CrdmModern\Admin\Customizer\Typography;
 
 /**
  * Registers all the hooks for the customizer section.
+ *
+ * @return void
  */
 function register() {
 	add_action( 'customize_register', '\\CrdmModern\\Admin\\Customizer\\Typography\\customize', 1000 );
@@ -23,6 +25,8 @@ function register() {
  * Adds the settings and the controls to the customizer.
  *
  * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
+ *
+ * @return void
  */
 function customize( \WP_Customize_Manager $wp_customize ) {
 	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->get_stylesheet_defaults( 'crdm_modern' );
@@ -109,6 +113,8 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 
 /**
  * Enqueues all the styles from this section
+ *
+ * @return void
  */
 function enqueue() {
 	$css = new \GeneratePress_Pro_CSS();
