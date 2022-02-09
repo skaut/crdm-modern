@@ -46,7 +46,7 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 *
 	 * @param \WP_Customize_Manager                         $manager Customizer bootstrap instance.
 	 * @param string                                        $id      Control ID.
-	 * @param array                                         $args    {
+	 * @param array<string, mixed>                          $args    {
 	 *     Optional. Arguments to override class property defaults.
 	 *
 	 *     @type int                  $instance_number Order in which this instance was created in relation

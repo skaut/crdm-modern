@@ -31,9 +31,9 @@ function enqueue() {
 /**
  * Adds the icon to the widget title
  *
- * @param string $title The title of the widget.
- * @param array  $instance @unused-param Unused.
- * @param string $id_base The ID of the widget.
+ * @param string       $title The title of the widget.
+ * @param array<never> $instance @unused-param Unused.
+ * @param string       $id_base The ID of the widget.
  *
  * @return string The new title.
  *

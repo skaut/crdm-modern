@@ -16,7 +16,7 @@ class Preset_Registry {
 	/**
 	 * The registered presets
 	 *
-	 * @var array
+	 * @var array<string, mixed>
 	 */
 	public $presets;
 
@@ -30,8 +30,8 @@ class Preset_Registry {
 	/**
 	 * Preset_Registry class constructor
 	 *
-	 * @param array  $presets A associative array of presets.
-	 * @param string $default The id of the default preset.
+	 * @param array<string, mixed> $presets An associative array of presets.
+	 * @param string               $default The id of the default preset.
 	 */
 	public function __construct( $presets, $default ) {
 		$this->presets = $presets;
@@ -41,7 +41,7 @@ class Preset_Registry {
 	/**
 	 * Returns an associative array where each item contains all the default values of a preset.
 	 *
-	 * @return array A list of preset defaults.
+	 * @return array<string, mixed> A list of preset defaults.
 	 */
 	public function get_all_template_defaults() {
 		$ret = array();

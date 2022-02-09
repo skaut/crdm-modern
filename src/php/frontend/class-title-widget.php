@@ -71,8 +71,8 @@ class Title_Widget extends \WP_Widget {
 	/**
 	 * Echoes the widget content.
 	 *
-	 * @param array $args     Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-	 * @param array $instance @unused-param Unused.
+	 * @param array<string, string> $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
+	 * @param array<mixed, mixed>   $instance @unused-param Unused.
 	 *
 	 * @return void
 	 *

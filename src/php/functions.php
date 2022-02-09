@@ -201,9 +201,9 @@ function notice_image_copy_failed() {
  *
  * Registers a script so that it can later be enqueued by `wp_enqueue_script()`.
  *
- * @param string $handle A unique handle to identify the script with. This handle should be passed to `wp_enqueue_script()`.
- * @param string $src Path to the file, relative to the theme directory.
- * @param array  $deps A list of dependencies of the script. These can be either system dependencies like jquery or other registered scripts. Default [].
+ * @param string        $handle A unique handle to identify the script with. This handle should be passed to `wp_enqueue_script()`.
+ * @param string        $src Path to the file, relative to the theme directory.
+ * @param array<string> $deps A list of dependencies of the script. These can be either system dependencies like jquery or other registered scripts. Default [].
  *
  * @return void
  */
@@ -217,9 +217,9 @@ function register_script( string $handle, string $src, array $deps = array() ) {
  *
  * Registers and immediately enqueues a script. Note that you should **not** call this function if you've previously registered the script using `register_script()`.
  *
- * @param string $handle A unique handle to identify the script with.
- * @param string $src Path to the file, relative to the theme directory.
- * @param array  $deps A list of dependencies of the script. These can be either system dependencies like jquery or other registered scripts. Default [].
+ * @param string        $handle A unique handle to identify the script with.
+ * @param string        $src Path to the file, relative to the theme directory.
+ * @param array<string> $deps A list of dependencies of the script. These can be either system dependencies like jquery or other registered scripts. Default [].
  *
  * @return void
  */
@@ -233,9 +233,9 @@ function enqueue_script( string $handle, string $src, array $deps = array() ) {
  *
  * Registers a style so that it can later be enqueued by `wp_enqueue_style()`.
  *
- * @param string $handle A unique handle to identify the style with. This handle should be passed to `wp_enqueue_style()`.
- * @param string $src Path to the file, relative to the theme directory.
- * @param array  $deps A list of dependencies of the style. These can be either system dependencies like jquery or other registered style. Default [].
+ * @param string        $handle A unique handle to identify the style with. This handle should be passed to `wp_enqueue_style()`.
+ * @param string        $src Path to the file, relative to the theme directory.
+ * @param array<string> $deps A list of dependencies of the style. These can be either system dependencies like jquery or other registered style. Default [].
  *
  * @return void
  */
@@ -249,9 +249,9 @@ function register_style( string $handle, string $src, array $deps = array() ) {
  *
  * Registers and immediately enqueues a style. Note that you should **not** call this function if you've previously registered the style using `register_style()`.
  *
- * @param string $handle A unique handle to identify the style with.
- * @param string $src Path to the file, relative to the theme directory.
- * @param array  $deps A list of dependencies of the style. These can be either system dependencies like jquery or other registered style. Default [].
+ * @param string        $handle A unique handle to identify the style with.
+ * @param string        $src Path to the file, relative to the theme directory.
+ * @param array<string> $deps A list of dependencies of the style. These can be either system dependencies like jquery or other registered style. Default [].
  *
  * @return void
  */

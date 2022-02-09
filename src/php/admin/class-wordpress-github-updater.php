@@ -185,7 +185,8 @@ class WordPress_Github_Updater {
 			echo( '<h1>' . esc_html( self::$err_msg_version ) . '</h1>' . esc_html( self::$err_msg_no_info ) );
 			die();
 		}
-		$version  = sanitize_text_field( wp_unslash( $_GET['version'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$version  = sanitize_text_field( wp_unslash( strval( $_GET['version'] ) ) );
 		$response = wp_remote_get( 'https://github.com/' . $this->gh_slug . '/releases/tag/' . $version );
 		if ( is_wp_error( $response ) ) {
 			echo( '<h1>' . esc_html( self::$err_msg_version ) . '</h1>' . esc_html( self::$err_msg_no_info ) );
