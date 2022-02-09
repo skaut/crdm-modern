@@ -74,8 +74,9 @@ function handle_ajax() {
 	if ( ! isset( $_GET['id'] ) ) {
 		wp_send_json( 'error' );
 	}
-	$presets   = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->presets;
-	$preset_id = sanitize_text_field( wp_unslash( $_GET['id'] ) );
+	$presets = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->presets;
+	// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	$preset_id = sanitize_text_field( wp_unslash( strval( $_GET['id'] ) ) );
 	if ( ! array_key_exists( $preset_id, $presets ) ) {
 		wp_send_json( 'error' );
 	}
