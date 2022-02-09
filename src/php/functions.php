@@ -132,7 +132,9 @@ function copy_image( $path, $title ) {
 		throw new \Exception();
 	}
 	require_once ABSPATH . 'wp-admin/includes/image.php';
+	// @phpstan-ignore-next-line
 	$attachment_metadata = wp_generate_attachment_metadata( $attachment_id, $file_contents['file'] );
+	// @phpstan-ignore-next-line
 	wp_update_attachment_metadata( $attachment_id, $attachment_metadata );
 }
 

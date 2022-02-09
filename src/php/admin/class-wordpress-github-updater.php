@@ -231,9 +231,9 @@ class WordPress_Github_Updater {
 		$raw_response = wp_remote_get( 'https://api.github.com/repos/' . $this->gh_slug . '/releases/latest' );
 		if ( is_wp_error( $raw_response ) ) {
 			// @phan-suppress-next-line PhanPossiblyNonClassMethodCall is_wp_error() narrows $raw_response from \WP_Error|array to \WP_Error.
-			throw new \Exception( sprintf( self::$err_msg_request_failed, $this->name ) . ' ' . self::$err_msg_error_message . ' ' . $raw_response->get_error_message() );
+			throw new \Exception( sprintf( self::$err_msg_request_failed, $this->name ) . ' ' . self::$err_msg_error_message . ' ' . $raw_response->get_error_message() ); // @phpstan-ignore-line
 		}
-		if ( wp_remote_retrieve_response_code( $raw_response ) !== 200 || ! isset( $raw_response['body'] ) ) {
+		if ( wp_remote_retrieve_response_code( $raw_response ) !== 200 || ! isset( $raw_response['body'] ) ) { // @phpstan-ignore-line
 			throw new \Exception( sprintf( self::$err_msg_request_failed, $this->name ) );
 		}
 		$response = json_decode( $raw_response['body'] );
