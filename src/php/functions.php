@@ -21,6 +21,8 @@ require_once __DIR__ . '/frontend/widget-icons.php';
 
 /**
  * Initializes the theme
+ *
+ * @return void
  */
 function init() {
 	add_action( 'after_switch_theme', '\\CrdmModern\\activate' );
@@ -48,6 +50,8 @@ function localize() {
  * Theme activation function
  *
  * This function is called on theme activation. It checks all the sxystem requirements and activates some needed GeneratePress packages.
+ *
+ * @return bool
  */
 function activate() {
 	if ( ! isset( $GLOBALS['wp_version'] ) || version_compare( $GLOBALS['wp_version'], '5.0.0', '<' ) ) {
@@ -128,12 +132,16 @@ function copy_image( $path, $title ) {
 		throw new \Exception();
 	}
 	require_once ABSPATH . 'wp-admin/includes/image.php';
+	// @phpstan-ignore-next-line
 	$attachment_metadata = wp_generate_attachment_metadata( $attachment_id, $file_contents['file'] );
+	// @phpstan-ignore-next-line
 	wp_update_attachment_metadata( $attachment_id, $attachment_metadata );
 }
 
 /**
  * Registers the inline style.
+ *
+ * @return void
  */
 function enqueue() {
 	wp_register_style( 'crdm_modern_inline', false, array(), wp_get_theme()->version );
@@ -144,6 +152,8 @@ function enqueue() {
  * WordPress version notice
  *
  * Prints a notice informing the user they need to update their WordPress version.
+ *
+ * @return void
  */
 function notice_wp_version() {
 	echo( '<div class="notice notice-error is-dismissible"><p>' );
@@ -155,6 +165,8 @@ function notice_wp_version() {
  * PHP version notice
  *
  * Prints a notice informing the user they need to update their PHP version.
+ *
+ * @return void
  */
 function notice_php_version() {
 	echo( '<div class="notice notice-error is-dismissible"><p>' );
@@ -165,6 +177,8 @@ function notice_php_version() {
 /**
  * GeneratePress Premium notice
  * Prints a notice informing the user they need to get GeneratePress Premium to use this theme.
+ *
+ * @return void
  */
 function notice_gp_premium() {
 	echo( '<div class="notice notice-error is-dismissible"><p>' );
@@ -175,6 +189,8 @@ function notice_gp_premium() {
 /**
  * Image copy failure notice
  * Prints a notice informing the user that copying the default theme images to WordPress Media failed.
+ *
+ * @return void
  */
 function notice_image_copy_failed() {
 	echo( '<div class="notice notice-warning is-dismissible"><p>' );
@@ -187,13 +203,15 @@ function notice_image_copy_failed() {
  *
  * Registers a script so that it can later be enqueued by `wp_enqueue_script()`.
  *
- * @param string $handle A unique handle to identify the script with. This handle should be passed to `wp_enqueue_script()`.
- * @param string $src Path to the file, relative to the theme directory.
- * @param array  $deps A list of dependencies of the script. These can be either system dependencies like jquery or other registered scripts. Default [].
+ * @param string        $handle A unique handle to identify the script with. This handle should be passed to `wp_enqueue_script()`.
+ * @param string        $src Path to the file, relative to the theme directory.
+ * @param array<string> $deps A list of dependencies of the script. These can be either system dependencies like jquery or other registered scripts. Default [].
+ *
+ * @return void
  */
 function register_script( string $handle, string $src, array $deps = array() ) {
 	$file = get_stylesheet_directory() . '/' . $src;
-	wp_register_script( $handle, get_stylesheet_directory_uri() . '/' . $src, $deps, file_exists( $file ) ? filemtime( $file ) : false, true );
+	wp_register_script( $handle, get_stylesheet_directory_uri() . '/' . $src, $deps, file_exists( $file ) ? strval( filemtime( $file ) ) : false, true );
 }
 
 /**
@@ -201,9 +219,11 @@ function register_script( string $handle, string $src, array $deps = array() ) {
  *
  * Registers and immediately enqueues a script. Note that you should **not** call this function if you've previously registered the script using `register_script()`.
  *
- * @param string $handle A unique handle to identify the script with.
- * @param string $src Path to the file, relative to the theme directory.
- * @param array  $deps A list of dependencies of the script. These can be either system dependencies like jquery or other registered scripts. Default [].
+ * @param string        $handle A unique handle to identify the script with.
+ * @param string        $src Path to the file, relative to the theme directory.
+ * @param array<string> $deps A list of dependencies of the script. These can be either system dependencies like jquery or other registered scripts. Default [].
+ *
+ * @return void
  */
 function enqueue_script( string $handle, string $src, array $deps = array() ) {
 	register_script( $handle, $src, $deps );
@@ -215,13 +235,15 @@ function enqueue_script( string $handle, string $src, array $deps = array() ) {
  *
  * Registers a style so that it can later be enqueued by `wp_enqueue_style()`.
  *
- * @param string $handle A unique handle to identify the style with. This handle should be passed to `wp_enqueue_style()`.
- * @param string $src Path to the file, relative to the theme directory.
- * @param array  $deps A list of dependencies of the style. These can be either system dependencies like jquery or other registered style. Default [].
+ * @param string        $handle A unique handle to identify the style with. This handle should be passed to `wp_enqueue_style()`.
+ * @param string        $src Path to the file, relative to the theme directory.
+ * @param array<string> $deps A list of dependencies of the style. These can be either system dependencies like jquery or other registered style. Default [].
+ *
+ * @return void
  */
 function register_style( string $handle, string $src, array $deps = array() ) {
 	$file = get_stylesheet_directory() . '/' . $src;
-	wp_register_style( $handle, get_stylesheet_directory_uri() . '/' . $src, $deps, file_exists( $file ) ? filemtime( $file ) : false );
+	wp_register_style( $handle, get_stylesheet_directory_uri() . '/' . $src, $deps, file_exists( $file ) ? strval( filemtime( $file ) ) : false );
 }
 
 /**
@@ -229,9 +251,11 @@ function register_style( string $handle, string $src, array $deps = array() ) {
  *
  * Registers and immediately enqueues a style. Note that you should **not** call this function if you've previously registered the style using `register_style()`.
  *
- * @param string $handle A unique handle to identify the style with.
- * @param string $src Path to the file, relative to the theme directory.
- * @param array  $deps A list of dependencies of the style. These can be either system dependencies like jquery or other registered style. Default [].
+ * @param string        $handle A unique handle to identify the style with.
+ * @param string        $src Path to the file, relative to the theme directory.
+ * @param array<string> $deps A list of dependencies of the style. These can be either system dependencies like jquery or other registered style. Default [].
+ *
+ * @return void
  */
 function enqueue_style( string $handle, string $src, array $deps = array() ) {
 	register_style( $handle, $src, $deps );

@@ -13,6 +13,8 @@ require_once __DIR__ . '/class-wordpress-github-updater.php';
 
 /**
  * Registers the WordPress_Github_Updater.
+ *
+ * @return void
  */
 function register() {
 	WordPress_Github_Updater::set_error_messages_i10n(

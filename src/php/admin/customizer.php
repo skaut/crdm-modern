@@ -20,6 +20,8 @@ require_once __DIR__ . '/customizer/controls/class-external-image-control.php';
 
 /**
  * Registers all the hooks for the customizer.
+ *
+ * @return void
  */
 function register() {
 	Colors\register();
@@ -56,6 +58,8 @@ function fix_images( \WP_Customize_Manager $wp_customize ) {
 
 /**
  * Registers customizer live preview script
+ *
+ * @return void
  */
 function enqueue() {
 	\CrdmModern\enqueue_script( 'crdm_modern_customizer', 'admin/js/customizer.min.js', array( 'generate-spacing-customizer' ) );

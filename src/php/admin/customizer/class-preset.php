@@ -34,7 +34,7 @@ class Preset {
 	/**
 	 * Preset settings
 	 *
-	 * @var array
+	 * @var array<string, mixed>
 	 */
 	private $settings;
 
@@ -89,7 +89,7 @@ class Preset {
 	 *
 	 * @param string $name The name of the field.
 	 *
-	 * @return array The settings extended values.
+	 * @return array<string, mixed> The settings extended values.
 	 */
 	private function extends_values( string $name ) {
 		if ( is_null( $this->settings[ $name ]['extends'] ) ) {
@@ -109,7 +109,7 @@ class Preset {
 	 *
 	 * @param string $name The name of the field.
 	 *
-	 * @return array The settings current values.
+	 * @return array<string, mixed> The settings current values.
 	 */
 	public function get_current_values( string $name ) {
 		return wp_parse_args(
@@ -175,8 +175,8 @@ class Preset {
 	/**
 	 * Adds a settings field.
 	 *
-	 * @param string $name The name of the settings field.
-	 * @param array  $args {
+	 * @param string               $name The name of the settings field.
+	 * @param array<string, mixed> $args {
 	 *     The setting field arguments.
 	 *
 	 *     @type string   $type The type of the settings field. Accepts `option`, `theme_mod`.

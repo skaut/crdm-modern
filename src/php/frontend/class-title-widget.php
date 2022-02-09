@@ -15,6 +15,8 @@ namespace CrdmModern\Frontend;
 class Title_Widget extends \WP_Widget {
 	/**
 	 * Registers the widget with WordPress.
+	 *
+	 * @return void
 	 */
 	public static function register() {
 		register_widget( '\\CrdmModern\\Frontend\\Title_Widget' );
@@ -23,6 +25,8 @@ class Title_Widget extends \WP_Widget {
 
 	/**
 	 * Enqueues all the styles for the widget.
+	 *
+	 * @return void
 	 */
 	public static function enqueue() {
 		$css = new \GeneratePress_Pro_CSS();
@@ -42,12 +46,16 @@ class Title_Widget extends \WP_Widget {
 		$css->add_property( 'margin-left', strval( absint( $gp_settings['logo_width'] ) + 20 ), false, 'px' );
 
 		$css->set_selector( '.crdm-modern-title-widget-title' );
-		$css->add_property( 'font-family', 'inherit' !== $gp_settings['font_site_title'] ? $site_title_family : null );
+		if ( 'inherit' !== $gp_settings['font_site_title'] ) {
+			$css->add_property( 'font-family', $site_title_family );
+		}
 		$css->add_property( 'font-size', strval( absint( $gp_settings['site_title_font_size'] ) ), false, 'px' );
 		$css->add_property( 'font-weight', strval( absint( $gp_settings['site_title_font_weight'] ) ), false );
 
 		$css->set_selector( '.crdm-modern-title-widget-tagline' );
-		$css->add_property( 'font-family', 'inherit' !== $gp_settings['font_site_tagline'] ? $site_tagline_family : null );
+		if ( 'inherit' !== $gp_settings['font_site_tagline'] ) {
+			$css->add_property( 'font-family', $site_tagline_family );
+		}
 		$css->add_property( 'font-size', strval( absint( $gp_settings['site_tagline_font_size'] ) ), false, 'px' );
 		$css->add_property( 'font-weight', strval( absint( $gp_settings['site_tagline_font_weight'] ) ), false );
 
@@ -67,8 +75,10 @@ class Title_Widget extends \WP_Widget {
 	/**
 	 * Echoes the widget content.
 	 *
-	 * @param array $args     Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-	 * @param array $instance @unused-param Unused.
+	 * @param array<string, string> $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
+	 * @param array<mixed, mixed>   $instance @unused-param Unused.
+	 *
+	 * @return void
 	 *
 	 * @SuppressWarnings(PHPMD.ShortVariable)
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
@@ -85,7 +95,7 @@ class Title_Widget extends \WP_Widget {
 		if ( function_exists( 'the_custom_logo' ) && null !== get_theme_mod( 'custom_logo' ) ) {
 			$logo_url = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
 		}
-		if ( isset( $logo_url ) ) {
+		if ( isset( $logo_url ) && false !== $logo_url ) {
 			$logo_url = $logo_url[0];
 		} else {
 			$logo_url = $gp_settings['logo'];

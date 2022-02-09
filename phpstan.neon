@@ -1,0 +1,12 @@
+parameters:
+  level: 8
+  paths:
+    - src
+    - .phan/config.php
+  scanDirectories:
+    - .phan/stubs
+    - vendor/skaut/phan-wordpress-stubs/stubs
+  scanFiles:
+    - vendor/skaut/phan-wordpress-stubs/stubs/WordPress/functions.php
+  dynamicConstantNames:
+    - SCRIPT_DEBUG
