@@ -123,6 +123,9 @@ function copy_image( $path, $title ) {
 		throw new \Exception();
 	}
 	$mime_type       = wp_check_filetype( $filename );
+	if ( false === $mime_type['type'] ) {
+		throw new \Exception();
+	}
 	$attachment_args = array(
 		'post_mime_type' => $mime_type['type'],
 		'post_title'     => $title,
