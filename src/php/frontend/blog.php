@@ -296,7 +296,7 @@ function featured_image_width() {
 /**
  * Returns the (approximate) width and height for featured images.
  *
- * @return int[] The approximate width and height.
+ * @return array{0: int, 1: int} The approximate width and height.
  */
 function featured_image_size() {
 	$preset           = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();
