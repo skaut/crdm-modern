@@ -63,6 +63,15 @@ function generate_get_font_family_css( $font, $settings, $default ) {
 }
 
 /**
+ * @param string $input
+ * @param WP_Customize_Setting $setting
+ *
+ * @return string
+ */
+function generate_premium_sanitize_choices( $input, $setting ) {
+}
+
+/**
  * @return void
  */
 function generate_post_meta() {
