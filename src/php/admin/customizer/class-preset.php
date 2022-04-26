@@ -109,7 +109,7 @@ class Preset {
 	 *
 	 * @param string $name The name of the field.
 	 *
-	 * @return array<string, mixed> The settings current values.
+	 * @return array<int|string, mixed> The settings current values.
 	 */
 	public function get_current_values( string $name ) {
 		return wp_parse_args(
@@ -149,7 +149,7 @@ class Preset {
 	 *
 	 * @param string $name The name of the field.
 	 *
-	 * @return mixed The settings default values.
+	 * @return array{header_image: string, header_image_height: string, header_image_top: string, header_image_right: string, header_image_min_width: string, blog_font_weight: string, blog_font_size: int, blog_font_transform: string} The settings default values.
 	 */
 	public function get_stylesheet_defaults( string $name ) {
 		return $this->settings[ $name ]['default_values'];

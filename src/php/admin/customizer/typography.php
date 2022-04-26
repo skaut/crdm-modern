@@ -80,7 +80,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 		'crdm_modern[blog_font_size]',
 		array(
 			'type'              => 'option',
-			'default'           => $defaults['blog_font_size'],
+			'default'           => strval( $defaults['blog_font_size'] ),
 			'sanitize_callback' => 'absint',
 			'transport'         => 'postMessage',
 		)
