@@ -54,9 +54,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'  => array(
 					'desktop' => array(
-						'min'  => 0,
-						'max'  => 200,
-						'step' => 1,
+						'min'  => '0',
+						'max'  => '200',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),
@@ -108,9 +108,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'  => array(
 					'desktop' => array(
-						'min'  => 0,
-						'max'  => 20,
-						'step' => 1,
+						'min'  => '0',
+						'max'  => '20',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),
@@ -142,9 +142,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'  => array(
 					'desktop' => array(
-						'min'  => 0,
-						'max'  => 200,
-						'step' => 1,
+						'min'  => '0',
+						'max'  => '200',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),

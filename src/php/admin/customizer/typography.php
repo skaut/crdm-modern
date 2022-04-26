@@ -99,9 +99,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'     => array(
 					'desktop' => array(
-						'min'  => 6,
-						'max'  => 25,
-						'step' => 1,
+						'min'  => '6',
+						'max'  => '25',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),
