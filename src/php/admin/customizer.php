@@ -48,7 +48,7 @@ function fix_images( \WP_Customize_Manager $wp_customize ) {
 			'generate_backgrounds-body-image',
 			array(
 				'section'  => 'generate_backgrounds_body',
-				'setting'  => 'generate_background_settings[body_image]',
+				'settings' => 'generate_background_settings[body_image]',
 				'label'    => __( 'Body', 'crdm-modern' ),
 				'priority' => 5,
 			)
