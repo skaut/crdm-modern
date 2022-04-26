@@ -72,6 +72,14 @@ function generate_premium_sanitize_choices( $input, $setting ) {
 }
 
 /**
+ * @param string $color
+ *
+ * @return string
+ */
+function generate_premium_sanitize_hex_color( $color ) {
+}
+
+/**
  * @return void
  */
 function generate_post_meta() {
