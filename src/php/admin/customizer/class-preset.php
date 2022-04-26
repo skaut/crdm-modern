@@ -133,7 +133,7 @@ class Preset {
 			if ( is_null( $stylesheet_defaults ) ) {
 				return $this->extends_values( $name );
 			}
-			return array_merge( $this->extends_values( $name ), $this->get_stylesheet_defaults( $name ) );
+			return array_merge( $this->extends_values( $name ), $stylesheet_defaults );
 		} else {
 			if ( is_null( $stylesheet_defaults ) ) {
 				return $this->settings[ $name ]['extends'];
@@ -149,7 +149,7 @@ class Preset {
 	 *
 	 * @param string $name The name of the field.
 	 *
-	 * @return array{header_image: string, header_image_height: string, header_image_top: string, header_image_right: string, header_image_min_width: string, primary_navigation_spacing: string, primary_navigation_shadow: string, sidebar_widget_separator_width: string, sidebar_widget_separator_spacing: string, sidebar_widget_separator_color: string, excerpt_border_color: string, excerpt_hover_background_color: string, excerpt_hover_text_color: string, read_more_color: string, read_more_hover_color: string, blog_font_weight: string, featured_post_count: string, blog_font_size: int, blog_font_transform: string} The settings default values.
+	 * @return null|array{header_image: string, header_image_height: string, header_image_top: string, header_image_right: string, header_image_min_width: string, primary_navigation_spacing: string, primary_navigation_shadow: string, sidebar_widget_separator_width: string, sidebar_widget_separator_spacing: string, sidebar_widget_separator_color: string, excerpt_border_color: string, excerpt_hover_background_color: string, excerpt_hover_text_color: string, read_more_color: string, read_more_hover_color: string, blog_font_weight: string, featured_post_count: string, blog_font_size: int, blog_font_transform: string} The settings default values.
 	 */
 	public function get_stylesheet_defaults( string $name ) {
 		return $this->settings[ $name ]['default_values'];

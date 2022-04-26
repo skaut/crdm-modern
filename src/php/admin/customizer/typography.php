@@ -31,6 +31,10 @@ function register() {
 function customize( \WP_Customize_Manager $wp_customize ) {
 	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->get_stylesheet_defaults( 'crdm_modern' );
 
+	if( is_null( $defaults ) ) {
+		return;
+	}
+
 	$wp_customize->add_section(
 		'crdm_modern_blog_typography',
 		array(
