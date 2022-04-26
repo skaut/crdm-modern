@@ -207,9 +207,9 @@ function before_content() {
 /**
  * Adds the multi-column blog layout classes to the featured posts.
  *
- * @param string[] $classes A list of post classes.
+ * @param array<string> $classes A list of post classes.
  *
- * @return string[] The updated list of post classes.
+ * @return array<string> The updated list of post classes.
  */
 function post_classes( $classes ) {
 	if ( ! should_run( 'post_classes', 'all' ) ) {
@@ -296,7 +296,7 @@ function featured_image_width() {
 /**
  * Returns the (approximate) width and height for featured images.
  *
- * @return int[] The approximate width and height.
+ * @return array{0: int, 1: int} The approximate width and height.
  */
 function featured_image_size() {
 	$preset           = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset();

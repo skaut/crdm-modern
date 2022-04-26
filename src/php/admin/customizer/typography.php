@@ -31,6 +31,10 @@ function register() {
 function customize( \WP_Customize_Manager $wp_customize ) {
 	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->get_stylesheet_defaults( 'crdm_modern' );
 
+	if ( is_null( $defaults ) ) {
+		return;
+	}
+
 	$wp_customize->add_section(
 		'crdm_modern_blog_typography',
 		array(
@@ -80,7 +84,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 		'crdm_modern[blog_font_size]',
 		array(
 			'type'              => 'option',
-			'default'           => $defaults['blog_font_size'],
+			'default'           => strval( $defaults['blog_font_size'] ),
 			'sanitize_callback' => 'absint',
 			'transport'         => 'postMessage',
 		)
@@ -99,9 +103,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'     => array(
 					'desktop' => array(
-						'min'  => 6,
-						'max'  => 25,
-						'step' => 1,
+						'min'  => '6',
+						'max'  => '25',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),

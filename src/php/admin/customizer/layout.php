@@ -31,6 +31,10 @@ function register() {
 function customize( \WP_Customize_Manager $wp_customize ) {
 	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->get_stylesheet_defaults( 'crdm_modern' );
 
+	if ( is_null( $defaults ) ) {
+		return;
+	}
+
 	// Floating navigation spacing.
 	$wp_customize->add_setting(
 		'crdm_modern[primary_navigation_spacing]',
@@ -54,9 +58,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'  => array(
 					'desktop' => array(
-						'min'  => 0,
-						'max'  => 200,
-						'step' => 1,
+						'min'  => '0',
+						'max'  => '200',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),
@@ -108,9 +112,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'  => array(
 					'desktop' => array(
-						'min'  => 0,
-						'max'  => 20,
-						'step' => 1,
+						'min'  => '0',
+						'max'  => '20',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),
@@ -142,9 +146,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'  => array(
 					'desktop' => array(
-						'min'  => 0,
-						'max'  => 200,
-						'step' => 1,
+						'min'  => '0',
+						'max'  => '200',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),

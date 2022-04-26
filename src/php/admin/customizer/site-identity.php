@@ -31,6 +31,10 @@ function register() {
 function customize( \WP_Customize_Manager $wp_customize ) {
 	$defaults = \CrdmModern\Admin\Customizer\Preset_Registry::get_instance()->default_preset()->get_stylesheet_defaults( 'crdm_modern' );
 
+	if ( is_null( $defaults ) ) {
+		return;
+	}
+
 	// Header Image.
 	$wp_customize->add_setting(
 		'crdm_modern[header_image]',
@@ -83,9 +87,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'  => array(
 					'desktop' => array(
-						'min'  => 0,
-						'max'  => 500,
-						'step' => 1,
+						'min'  => '0',
+						'max'  => '500',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),
@@ -116,9 +120,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'  => array(
 					'desktop' => array(
-						'min'  => 0,
-						'max'  => 300,
-						'step' => 1,
+						'min'  => '0',
+						'max'  => '300',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),
@@ -149,9 +153,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'  => array(
 					'desktop' => array(
-						'min'  => 0,
-						'max'  => 300,
-						'step' => 1,
+						'min'  => '0',
+						'max'  => '300',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),
@@ -181,9 +185,9 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 				),
 				'choices'  => array(
 					'desktop' => array(
-						'min'  => 769,
-						'max'  => 2000,
-						'step' => 1,
+						'min'  => '769',
+						'max'  => '2000',
+						'step' => '1',
 						'edit' => true,
 						'unit' => 'px',
 					),

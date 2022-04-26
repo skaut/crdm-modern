@@ -16,19 +16,19 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: functions.php:160
+#: functions.php:163
 msgid "CRDM - Modern theme requires at least WordPress 5.0"
 msgstr ""
 
-#: functions.php:173
+#: functions.php:176
 msgid "CRDM - Modern theme requires at least PHP 7.0"
 msgstr ""
 
-#: functions.php:185
+#: functions.php:188
 msgid "CRDM - Modern theme requires GeneratePress Premium"
 msgstr ""
 
-#: functions.php:197
+#: functions.php:200
 msgid ""
 "Failed to copy CRDM - Modern theme images to WordPress Media. The theme will "
 "work fine, but you won't be able to re-select the default images outside of "
@@ -130,51 +130,51 @@ msgstr ""
 msgid "Beige"
 msgstr ""
 
-#: admin/customizer/colors.php:50
+#: admin/customizer/colors.php:54
 msgid "Widget Separator"
 msgstr ""
 
-#: admin/customizer/colors.php:74
+#: admin/customizer/colors.php:78
 msgid "Excerpt Border"
 msgstr ""
 
-#: admin/customizer/colors.php:98
+#: admin/customizer/colors.php:102
 msgid "Excerpt Background Hover"
 msgstr ""
 
-#: admin/customizer/colors.php:122
+#: admin/customizer/colors.php:126
 msgid "Excerpt Text Hover"
 msgstr ""
 
-#: admin/customizer/colors.php:146
+#: admin/customizer/colors.php:150
 msgid "\"Read more\" Link"
 msgstr ""
 
-#: admin/customizer/colors.php:169
+#: admin/customizer/colors.php:173
 msgid "\"Read more\" Link Hover"
 msgstr ""
 
-#: admin/customizer/layout.php:50
+#: admin/customizer/layout.php:54
 msgid "Navigation spacing"
 msgstr ""
 
-#: admin/customizer/layout.php:82
+#: admin/customizer/layout.php:86
 msgid "Navigation shadow"
 msgstr ""
 
-#: admin/customizer/layout.php:104
+#: admin/customizer/layout.php:108
 msgid "Sidebar widget separator width"
 msgstr ""
 
-#: admin/customizer/layout.php:138
+#: admin/customizer/layout.php:142
 msgid "Sidebar widget separator spacing"
 msgstr ""
 
-#: admin/customizer/layout.php:164
+#: admin/customizer/layout.php:168
 msgid "Featured Posts"
 msgstr ""
 
-#: admin/customizer/layout.php:183
+#: admin/customizer/layout.php:187
 msgid "Number of featured posts"
 msgstr ""
 
@@ -182,31 +182,31 @@ msgstr ""
 msgid "Preset"
 msgstr ""
 
-#: admin/customizer/site-identity.php:49
+#: admin/customizer/site-identity.php:53
 msgid "Header Image"
 msgstr ""
 
-#: admin/customizer/site-identity.php:79
+#: admin/customizer/site-identity.php:83
 msgid "Header Image Height"
 msgstr ""
 
-#: admin/customizer/site-identity.php:112
+#: admin/customizer/site-identity.php:116
 msgid "Header Image Top Position"
 msgstr ""
 
-#: admin/customizer/site-identity.php:145
+#: admin/customizer/site-identity.php:149
 msgid "Header Image Right Position"
 msgstr ""
 
-#: admin/customizer/site-identity.php:177
+#: admin/customizer/site-identity.php:181
 msgid "Minimum Width to Show Header Image"
 msgstr ""
 
-#: admin/customizer/typography.php:38
+#: admin/customizer/typography.php:42
 msgid "Blog"
 msgstr ""
 
-#: admin/customizer/typography.php:94
+#: admin/customizer/typography.php:98
 msgid "Font size"
 msgstr ""
 

@@ -53,7 +53,7 @@ class Preset {
 	/**
 	 * Returns a list of all the option names in the preset.
 	 *
-	 * @return string[] A list of options.
+	 * @return array<string> A list of options.
 	 */
 	public function options() {
 		return $this->list_by_type( 'option' );
@@ -62,7 +62,7 @@ class Preset {
 	/**
 	 * Returns a list of all the theme mod names in the preset.
 	 *
-	 * @return string[] A list of theme mods.
+	 * @return array<string> A list of theme mods.
 	 */
 	public function theme_mods() {
 		return $this->list_by_type( 'theme_mod' );
@@ -72,7 +72,7 @@ class Preset {
 	 * Lists all the settings field IDs of a particular type.
 	 *
 	 * @param string $type The type of the settings field. Accepts `option`, `theme_mod`.
-	 * @return string[] The list
+	 * @return array<string> The list
 	 */
 	private function list_by_type( $type ) {
 		$ret = array();
@@ -109,7 +109,7 @@ class Preset {
 	 *
 	 * @param string $name The name of the field.
 	 *
-	 * @return array<string, mixed> The settings current values.
+	 * @return array<int|string, mixed> The settings current values.
 	 */
 	public function get_current_values( string $name ) {
 		return wp_parse_args(
@@ -133,7 +133,7 @@ class Preset {
 			if ( is_null( $stylesheet_defaults ) ) {
 				return $this->extends_values( $name );
 			}
-			return array_merge( $this->extends_values( $name ), $this->get_stylesheet_defaults( $name ) );
+			return array_merge( $this->extends_values( $name ), $stylesheet_defaults );
 		} else {
 			if ( is_null( $stylesheet_defaults ) ) {
 				return $this->settings[ $name ]['extends'];
@@ -149,7 +149,7 @@ class Preset {
 	 *
 	 * @param string $name The name of the field.
 	 *
-	 * @return mixed The settings default values.
+	 * @return null|array{header_image: string, header_image_height: string, header_image_top: string, header_image_right: string, header_image_min_width: string, primary_navigation_spacing: string, primary_navigation_shadow: string, sidebar_widget_separator_width: string, sidebar_widget_separator_spacing: string, sidebar_widget_separator_color: string, excerpt_border_color: string, excerpt_hover_background_color: string, excerpt_hover_text_color: string, read_more_color: string, read_more_hover_color: string, blog_font_weight: string, featured_post_count: string, blog_font_size: int, blog_font_transform: string} The settings default values.
 	 */
 	public function get_stylesheet_defaults( string $name ) {
 		return $this->settings[ $name ]['default_values'];
@@ -180,7 +180,7 @@ class Preset {
 	 *     The setting field arguments.
 	 *
 	 *     @type string   $type The type of the settings field. Accepts `option`, `theme_mod`.
-	 *     @type string[] $extends Original values to extend expressed as a list of function names used to get the values. Only used for options. Default `array()`.
+	 *     @type array<string> $extends Original values to extend expressed as a list of function names used to get the values. Only used for options. Default `array()`.
 	 *     @type array    $default_values The settings field default values. Default `array()`.
 	 * }
 	 *

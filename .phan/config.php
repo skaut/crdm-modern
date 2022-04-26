@@ -21,10 +21,10 @@ return array(
 	'directory_list'                            => array(
 		'src',
 		'.phan',
-		'vendor/skaut/phan-wordpress-stubs/stubs',
+		'vendor/skaut/wordpress-stubs/stubs',
 	),
 	'exclude_analysis_directory_list'           => array(
-		'vendor/skaut/phan-wordpress-stubs/stubs',
+		'vendor/skaut/wordpress-stubs/stubs',
 	),
 	'plugins'                                   => array(
 		'AlwaysReturnPlugin',
