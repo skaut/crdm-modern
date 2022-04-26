@@ -53,7 +53,7 @@ class Preset {
 	/**
 	 * Returns a list of all the option names in the preset.
 	 *
-	 * @return string[] A list of options.
+	 * @return array<string> A list of options.
 	 */
 	public function options() {
 		return $this->list_by_type( 'option' );
@@ -62,7 +62,7 @@ class Preset {
 	/**
 	 * Returns a list of all the theme mod names in the preset.
 	 *
-	 * @return string[] A list of theme mods.
+	 * @return array<string> A list of theme mods.
 	 */
 	public function theme_mods() {
 		return $this->list_by_type( 'theme_mod' );
@@ -72,7 +72,7 @@ class Preset {
 	 * Lists all the settings field IDs of a particular type.
 	 *
 	 * @param string $type The type of the settings field. Accepts `option`, `theme_mod`.
-	 * @return string[] The list
+	 * @return array<string> The list
 	 */
 	private function list_by_type( $type ) {
 		$ret = array();
@@ -180,7 +180,7 @@ class Preset {
 	 *     The setting field arguments.
 	 *
 	 *     @type string   $type The type of the settings field. Accepts `option`, `theme_mod`.
-	 *     @type string[] $extends Original values to extend expressed as a list of function names used to get the values. Only used for options. Default `array()`.
+	 *     @type array<string> $extends Original values to extend expressed as a list of function names used to get the values. Only used for options. Default `array()`.
 	 *     @type array    $default_values The settings field default values. Default `array()`.
 	 * }
 	 *

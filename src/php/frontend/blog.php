@@ -207,9 +207,9 @@ function before_content() {
 /**
  * Adds the multi-column blog layout classes to the featured posts.
  *
- * @param string[] $classes A list of post classes.
+ * @param array<string> $classes A list of post classes.
  *
- * @return string[] The updated list of post classes.
+ * @return array<string> The updated list of post classes.
  */
 function post_classes( $classes ) {
 	if ( ! should_run( 'post_classes', 'all' ) ) {
