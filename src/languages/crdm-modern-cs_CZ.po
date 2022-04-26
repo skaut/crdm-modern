@@ -16,19 +16,19 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: functions.php:160
+#: functions.php:163
 msgid "CRDM - Modern theme requires at least WordPress 5.0"
 msgstr "Šablona CRDM - Modern vyžaduje alespoň WordPress 5.0"
 
-#: functions.php:173
+#: functions.php:176
 msgid "CRDM - Modern theme requires at least PHP 7.0"
 msgstr "Šablona CRDM - Modern vyžaduje alespoň PHP 7.0"
 
-#: functions.php:185
+#: functions.php:188
 msgid "CRDM - Modern theme requires GeneratePress Premium"
 msgstr "Šablona CRDM - Modern vyžaduje premium verzi GeneratePress"
 
-#: functions.php:197
+#: functions.php:200
 msgid ""
 "Failed to copy CRDM - Modern theme images to WordPress Media. The theme will "
 "work fine, but you won't be able to re-select the default images outside of "
@@ -138,51 +138,51 @@ msgstr "Zelená"
 msgid "Beige"
 msgstr "Béžová"
 
-#: admin/customizer/colors.php:50
+#: admin/customizer/colors.php:54
 msgid "Widget Separator"
 msgstr "Oddělovač widgetů"
 
-#: admin/customizer/colors.php:74
+#: admin/customizer/colors.php:78
 msgid "Excerpt Border"
 msgstr "Rámeček úryvku"
 
-#: admin/customizer/colors.php:98
+#: admin/customizer/colors.php:102
 msgid "Excerpt Background Hover"
 msgstr "Pozadí úryvku při přejetí myší"
 
-#: admin/customizer/colors.php:122
+#: admin/customizer/colors.php:126
 msgid "Excerpt Text Hover"
 msgstr "Text úryvku při přejetí myší"
 
-#: admin/customizer/colors.php:146
+#: admin/customizer/colors.php:150
 msgid "\"Read more\" Link"
 msgstr "Odkaz \"Číst více\""
 
-#: admin/customizer/colors.php:169
+#: admin/customizer/colors.php:173
 msgid "\"Read more\" Link Hover"
 msgstr "Odkaz \"Číst více\" při přejetí myší"
 
-#: admin/customizer/layout.php:50
+#: admin/customizer/layout.php:54
 msgid "Navigation spacing"
 msgstr "Rozestupy navigace"
 
-#: admin/customizer/layout.php:82
+#: admin/customizer/layout.php:86
 msgid "Navigation shadow"
 msgstr "Stín navigace"
 
-#: admin/customizer/layout.php:104
+#: admin/customizer/layout.php:108
 msgid "Sidebar widget separator width"
 msgstr "Šířka oddělovače widgetů v postranním panelu"
 
-#: admin/customizer/layout.php:138
+#: admin/customizer/layout.php:142
 msgid "Sidebar widget separator spacing"
 msgstr "Rozestup oddělovače widgetů v postranním panelu"
 
-#: admin/customizer/layout.php:164
+#: admin/customizer/layout.php:168
 msgid "Featured Posts"
 msgstr "Zvýrazněné příspěvky"
 
-#: admin/customizer/layout.php:183
+#: admin/customizer/layout.php:187
 msgid "Number of featured posts"
 msgstr "Počet zvýrazněných příspěvků"
 
@@ -190,31 +190,31 @@ msgstr "Počet zvýrazněných příspěvků"
 msgid "Preset"
 msgstr "Předvolby šablony"
 
-#: admin/customizer/site-identity.php:49
+#: admin/customizer/site-identity.php:53
 msgid "Header Image"
 msgstr "Obrázek v záhlaví"
 
-#: admin/customizer/site-identity.php:79
+#: admin/customizer/site-identity.php:83
 msgid "Header Image Height"
 msgstr "Výška obrázku v záhlaví"
 
-#: admin/customizer/site-identity.php:112
+#: admin/customizer/site-identity.php:116
 msgid "Header Image Top Position"
 msgstr "Odsazení obrázku v záhlaví zeshora"
 
-#: admin/customizer/site-identity.php:145
+#: admin/customizer/site-identity.php:149
 msgid "Header Image Right Position"
 msgstr "Odsazení obrázku v záhlaví zprava"
 
-#: admin/customizer/site-identity.php:177
+#: admin/customizer/site-identity.php:181
 msgid "Minimum Width to Show Header Image"
 msgstr "Minimální šířka pro zobrazení obrázku v záhlaví"
 
-#: admin/customizer/typography.php:38
+#: admin/customizer/typography.php:42
 msgid "Blog"
 msgstr "Blog"
 
-#: admin/customizer/typography.php:94
+#: admin/customizer/typography.php:98
 msgid "Font size"
 msgstr "Velikost písma"
 
