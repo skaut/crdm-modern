@@ -48,7 +48,7 @@ function customize( \WP_Customize_Manager $wp_customize ) {
 			array(
 				'label'    => __( 'Header Image', 'crdm-modern' ),
 				'section'  => 'title_tagline',
-				'settings' => 'crdm_modern[header_image]',
+				'setting' => 'crdm_modern[header_image]',
 			)
 		)
 	);
