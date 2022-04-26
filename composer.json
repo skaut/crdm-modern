@@ -31,7 +31,7 @@
 		"wp-coding-standards/wpcs": "^2.1",
 		"phpmd/phpmd": "^2.7",
 		"phan/phan": "^5.1",
-		"skaut/wordpress-stubs": "^2.1.0",
+		"skaut/wordpress-stubs": "^2.2.0",
 		"phpstan/phpstan": "^1.4"
 	}
 }

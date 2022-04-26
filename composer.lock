@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "41ab34f8fb8c2a286e193585f374bb31",
+    "content-hash": "e24408203a488d849bb2dd95d0314598",
     "packages": [],
     "packages-dev": [
         {
@@ -919,16 +919,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.5.7",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "7fb7e2e1e9f3d59a26a413b2d3d5e47f0edb75ac"
+                "reference": "b480ba2ae0699a72d43a340c20b9c00ede91ee3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7fb7e2e1e9f3d59a26a413b2d3d5e47f0edb75ac",
-                "reference": "7fb7e2e1e9f3d59a26a413b2d3d5e47f0edb75ac",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b480ba2ae0699a72d43a340c20b9c00ede91ee3e",
+                "reference": "b480ba2ae0699a72d43a340c20b9c00ede91ee3e",
                 "shasum": ""
             },
             "require": {
@@ -954,7 +954,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.5.7"
+                "source": "https://github.com/phpstan/phpstan/tree/1.6.0"
             },
             "funding": [
                 {
@@ -974,7 +974,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-20T12:20:27+00:00"
+            "time": "2022-04-26T05:43:03+00:00"
         },
         {
             "name": "psr/container",
@@ -1147,16 +1147,16 @@
         },
         {
             "name": "skaut/wordpress-stubs",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skaut/wordpress-stubs.git",
-                "reference": "9a3d08ea88a62de8e81b4942d0b3cc30399cbad9"
+                "reference": "268f70f9126eb384ee0d4be39cbeeadd6f2edf22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skaut/wordpress-stubs/zipball/9a3d08ea88a62de8e81b4942d0b3cc30399cbad9",
-                "reference": "9a3d08ea88a62de8e81b4942d0b3cc30399cbad9",
+                "url": "https://api.github.com/repos/skaut/wordpress-stubs/zipball/268f70f9126eb384ee0d4be39cbeeadd6f2edf22",
+                "reference": "268f70f9126eb384ee0d4be39cbeeadd6f2edf22",
                 "shasum": ""
             },
             "require": {
@@ -1200,7 +1200,7 @@
                 "source": "https://github.com/skaut/wordpress-stubs",
                 "wiki": "https://github.com/skaut/wordpress-stubs/wiki"
             },
-            "time": "2022-04-25T10:45:46+00:00"
+            "time": "2022-04-26T11:23:17+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
