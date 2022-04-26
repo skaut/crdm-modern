@@ -63,7 +63,7 @@ function generate_get_font_family_css( $font, $settings, $default ) {
 }
 
 /**
- * @param string $input
+ * @param string               $input
  * @param WP_Customize_Setting $setting
  *
  * @return string

@@ -119,7 +119,7 @@ function copy_image( $path, $title ) {
 
 	$filename      = wp_basename( $path );
 	$file_contents = wp_upload_bits( 'crdm_modern_' . $filename, null, file_get_contents( $path ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-	if ( !isset( $file_contents['file'] ) ) {
+	if ( ! isset( $file_contents['file'] ) ) {
 		throw new \Exception();
 	}
 	$mime_type = wp_check_filetype( $filename );
