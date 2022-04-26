@@ -4,7 +4,12 @@
  *
  * @package crdm-modern
  *
+ * @phan-file-suppress PhanUnusedPublicMethodParameter
+ *
  * phpcs:disable Generic.Commenting.DocComment.Empty
+ * phpcs:disable Generic.Commenting.DocComment.MissingShort
+ * phpcs:disable Squiz.Commenting.FunctionComment.MissingParamComment
+ * phpcs:disable Squiz.Commenting.FunctionComment.ParamCommentFullStop
  * phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
  */
 
