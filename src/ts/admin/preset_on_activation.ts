@@ -1,6 +1,6 @@
-function handleResponse( response: string ): void {
+function handleResponse(response: string): void {
 	let html = '';
-	if ( response === 'success' ) {
+	if (response === 'success') {
 		html +=
 			'<div class="notice notice-success is-dismissible">' +
 			'<p>' +
@@ -17,21 +17,19 @@ function handleResponse( response: string ): void {
 		crdmModernPresetOnActivationLocalize.dismiss +
 		'</span></button>' +
 		'</div>';
-	$( '.theme-browser' ).first().before( html );
+	$('.theme-browser').first().before(html);
 
-	$( '.crdm-modern-notice-dismiss' ).on( 'click', function () {
-		$( this ).parent().remove();
-	} );
+	$('.crdm-modern-notice-dismiss').on('click', function () {
+		$(this).parent().remove();
+	});
 	tb_remove();
 }
 
 function applyCallback(): void {
-	const applyButton = $( '#crdm-modern-preset-on-activation-apply' );
-	applyButton.attr( 'disabled', 'disabled' );
-	applyButton.off( 'click' );
-	const id = $(
-		'input[name=crdm-modern-preset-on-activation]:checked'
-	).val();
+	const applyButton = $('#crdm-modern-preset-on-activation-apply');
+	applyButton.attr('disabled', 'disabled');
+	applyButton.off('click');
+	const id = $('input[name=crdm-modern-preset-on-activation]:checked').val();
 	void $.get(
 		crdmModernPresetOnActivationLocalize.ajax_url,
 		{
@@ -53,7 +51,7 @@ function onActivation(): void {
 		'<br>';
 	$.each(
 		crdmModernPresetOnActivationLocalize.presets,
-		( id: string, preset ) => {
+		(id: string, preset) => {
 			html +=
 				'<div class="crdm-modern-preset-on-activation-preset">' +
 				'<label>' +
@@ -81,23 +79,20 @@ function onActivation(): void {
 		'</a>' +
 		'</div>' +
 		'</div>';
-	$( 'body' ).append( html );
+	$('body').append(html);
 	tb_show(
 		crdmModernPresetOnActivationLocalize.title,
 		'#TB_inline?inlineId=crdm-modern-preset-on-activation-modal'
 	);
 
-	$( 'input[name=crdm-modern-preset-on-activation]' ).on(
-		'change',
-		function () {
-			const applyButton = $( '#crdm-modern-preset-on-activation-apply' );
-			applyButton.removeAttr( 'disabled' );
-			applyButton.on( 'click', applyCallback );
-		}
-	);
-	$( '#crdm-modern-preset-on-activation-skip' ).on( 'click', function () {
+	$('input[name=crdm-modern-preset-on-activation]').on('change', function () {
+		const applyButton = $('#crdm-modern-preset-on-activation-apply');
+		applyButton.removeAttr('disabled');
+		applyButton.on('click', applyCallback);
+	});
+	$('#crdm-modern-preset-on-activation-skip').on('click', function () {
 		tb_remove();
-	} );
+	});
 }
 
 onActivation();
