@@ -20,7 +20,7 @@ function addExcerptClickability(): void {
 	const articles = $( '.site-main article .inside-article' );
 	articles.each( function ( _, article ) {
 		const href = $( article ).find( '.entry-title a' ).attr( 'href' ) ?? '';
-		$( article ).click( function () {
+		$( article ).on( 'click', function () {
 			window.location.href = href;
 		} );
 	} );
