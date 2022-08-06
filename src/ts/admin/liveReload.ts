@@ -1,12 +1,12 @@
 /* exported liveReload */
 
-function hash( str: string ): string {
-	if ( str.length === 0 ) {
+function hash(str: string): string {
+	if (str.length === 0) {
 		return '';
 	}
 	let ret = 0;
-	for ( let i = 0; i < str.length; i++ ) {
-		ret = ( ret << 5 ) - ret + str.charCodeAt( i ); // eslint-disable-line no-bitwise
+	for (let i = 0; i < str.length; i++) {
+		ret = (ret << 5) - ret + str.charCodeAt(i); // eslint-disable-line no-bitwise
 		ret |= 0; // eslint-disable-line no-bitwise
 	}
 	return ret.toString();
@@ -17,38 +17,36 @@ function setCSSInHead(
 	target: LiveReloadTarget,
 	value: string
 ): void {
-	const targetHash = hash( setting + target.selector );
+	const targetHash = hash(setting + target.selector);
 	let mediaBegin = '';
 	let mediaEnd = '';
-	if ( target.media ) {
+	if (target.media) {
 		mediaBegin = '@media (';
-		if ( target.media.minWidth !== undefined ) {
+		if (target.media.minWidth !== undefined) {
 			mediaBegin += 'min-width: ' + target.media.minWidth.toString();
-		} else if ( target.media.maxWidth !== undefined ) {
+		} else if (target.media.maxWidth !== undefined) {
 			mediaBegin += 'max-width: ' + target.media.maxWidth.toString();
 		}
 		mediaBegin += 'px) {\n';
 		mediaEnd = '}\n';
 	}
-	$( 'head style#' + targetHash ).remove();
-	$( 'head' ).append(
+	$('head style#' + targetHash).remove();
+	$('head').append(
 		'<style id="' +
 			targetHash +
 			'">\n' +
 			mediaBegin +
 			target.selector +
 			' {\n' +
-			$.map( target.properties, function ( property ) {
+			$.map(target.properties, function (property) {
 				let computedValue = value;
-				if ( property.computed ) {
-					let additionalValues: Array< string > = [];
-					if ( property.computed.additionalSettings ) {
+				if (property.computed) {
+					let additionalValues: Array<string> = [];
+					if (property.computed.additionalSettings) {
 						additionalValues = $.map(
 							property.computed.additionalSettings,
-							( additionalSetting ) =>
-								String(
-									wp.customize( additionalSetting ).get()
-								)
+							(additionalSetting) =>
+								String(wp.customize(additionalSetting).get())
 						);
 					}
 					computedValue = property.computed.value(
@@ -60,12 +58,12 @@ function setCSSInHead(
 					'\t' +
 					property.name +
 					': ' +
-					( property.prefix ?? '' ) +
+					(property.prefix ?? '') +
 					computedValue +
-					( property.postfix ?? '' ) +
+					(property.postfix ?? '') +
 					';\n'
 				);
-			} ).join( '' ) +
+			}).join('') +
 			'}\n' +
 			mediaEnd +
 			'</style>'
@@ -74,47 +72,43 @@ function setCSSInHead(
 
 function liveReload(
 	setting: string,
-	targets: Array< LiveReloadTarget >,
-	fallbacks?: Array< string >
+	targets: Array<LiveReloadTarget>,
+	fallbacks?: Array<string>
 ): void {
-	void wp.customize( setting, function ( value ) {
-		value.bind( function ( newValue: string ) {
-			if ( ! newValue && fallbacks ) {
-				$.each( fallbacks, function ( _, fallback ) {
-					const fallbackValue = String(
-						wp.customize( fallback ).get()
-					);
-					if ( fallbackValue ) {
+	void wp.customize(setting, function (value) {
+		value.bind(function (newValue: string) {
+			if (!newValue && fallbacks) {
+				$.each(fallbacks, function (_, fallback) {
+					const fallbackValue = String(wp.customize(fallback).get());
+					if (fallbackValue) {
 						newValue = fallbackValue;
 						return false;
 					}
 					return true;
-				} );
+				});
 			}
-			$.each( targets, function ( _, target ) {
-				setCSSInHead( setting, target, newValue );
-			} );
-		} );
-	} );
-	if ( fallbacks ) {
-		for ( let i = 0; i < fallbacks.length; i++ ) {
-			void wp.customize( fallbacks[ i ], function ( value ) {
-				value.bind( function ( newValue: string ) {
-					if ( wp.customize( setting ).get() !== undefined ) {
+			$.each(targets, function (_, target) {
+				setCSSInHead(setting, target, newValue);
+			});
+		});
+	});
+	if (fallbacks) {
+		for (let i = 0; i < fallbacks.length; i++) {
+			void wp.customize(fallbacks[i], function (value) {
+				value.bind(function (newValue: string) {
+					if (wp.customize(setting).get() !== undefined) {
 						return;
 					}
-					for ( let j = 0; j < i; j++ ) {
-						if (
-							wp.customize( fallbacks[ j ] ).get() !== undefined
-						) {
+					for (let j = 0; j < i; j++) {
+						if (wp.customize(fallbacks[j]).get() !== undefined) {
 							return;
 						}
 					}
-					$.each( targets, function ( _, target ) {
-						setCSSInHead( setting, target, newValue );
-					} );
-				} );
-			} );
+					$.each(targets, function (_, target) {
+						setCSSInHead(setting, target, newValue);
+					});
+				});
+			});
 		}
 	}
 }

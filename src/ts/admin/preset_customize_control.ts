@@ -1,50 +1,50 @@
-function isAssoc( value: unknown ): value is Record< string, unknown > {
+function isAssoc(value: unknown): value is Record<string, unknown> {
 	return (
 		value !== undefined &&
-		( value as Record< string, unknown > ).constructor === Object
+		(value as Record<string, unknown>).constructor === Object
 	);
 }
 
-function applyPreset( control: wordpress__customize.Control ): void {
+function applyPreset(control: wordpress__customize.Control): void {
 	const chosen = control.container
-		.find( 'input[name=crdm_modern_preset]:checked' )
+		.find('input[name=crdm_modern_preset]:checked')
 		.val() as string;
-	if ( ! chosen ) {
+	if (!chosen) {
 		return;
 	}
 
-	const preset = crdmModernPresetCustomizeControlLocalize[ chosen ];
-	$.each( preset, function ( key, value ) {
-		if ( isAssoc( value ) ) {
-			$.each( value, function ( innerKey, innerValue ) {
-				const innerSetting = wp.customize( key + '[' + innerKey + ']' );
+	const preset = crdmModernPresetCustomizeControlLocalize[chosen];
+	$.each(preset, function (key, value) {
+		if (isAssoc(value)) {
+			$.each(value, function (innerKey, innerValue) {
+				const innerSetting = wp.customize(key + '[' + innerKey + ']');
 				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/strict-boolean-expressions
-				if ( ! innerSetting ) {
+				if (!innerSetting) {
 					return;
 				}
-				innerSetting.set( innerValue );
-			} );
+				innerSetting.set(innerValue);
+			});
 		} else {
-			const setting = wp.customize( key );
+			const setting = wp.customize(key);
 			// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/strict-boolean-expressions
-			if ( ! setting ) {
+			if (!setting) {
 				return;
 			}
-			setting.set( value );
+			setting.set(value);
 		}
-	} );
+	});
 
-	$( '.generatepress-font-variant select' ).trigger( 'change' );
+	$('.generatepress-font-variant select').trigger('change');
 }
 
-void wp.customize.control( 'crdm_modern_preset', function ( control ) {
+void wp.customize.control('crdm_modern_preset', function (control) {
 	control.container
-		.find( 'input[name=crdm_modern_preset]' )
-		.change( function () {
-			control.container.find( '.button' ).prop( 'disabled', false );
-		} );
+		.find('input[name=crdm_modern_preset]')
+		.on('change', function () {
+			control.container.find('.button').prop('disabled', false);
+		});
 
-	control.container.find( '.button' ).click( function () {
-		applyPreset( control );
-	} );
-} );
+	control.container.find('.button').on('click', function () {
+		applyPreset(control);
+	});
+});
