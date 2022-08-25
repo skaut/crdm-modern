@@ -6,6 +6,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strict": true,
+    "lib": ["es2015", "DOM"],
     "target": "ES3"
   }
 }
