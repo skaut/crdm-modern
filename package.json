@@ -43,7 +43,7 @@
 		"@types/jquery": "^3.5.16",
 		"@types/wordpress__customize-browser": "^5.5.1",
 		"@typescript-eslint/eslint-plugin": "^5.53.0",
-		"@typescript-eslint/parser": "^5.53.0",
+		"@typescript-eslint/parser": "^5.54.0",
 		"@wordpress/browserslist-config": "^5.10.0",
 		"@wordpress/eslint-plugin": "^14.0.0",
 		"@wordpress/stylelint-config": "^21.10.0",
