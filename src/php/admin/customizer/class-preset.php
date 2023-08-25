@@ -200,4 +200,3 @@ class Preset {
 		return $this;
 	}
 }
-
