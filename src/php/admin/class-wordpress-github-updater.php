@@ -219,7 +219,7 @@ class WordPress_Github_Updater {
 	 */
 	private function check_transient( $transient ) {
 		if ( empty( $transient->checked ) || empty( $transient->checked[ $this->wp_slug ] ) ) {
-			throw new \Exception( sprintf( self::$err_msg_not_available, $this->name ) );
+			throw new \Exception( esc_html( sprintf( self::$err_msg_not_available, $this->name ) ) );
 		}
 	}
 
@@ -234,10 +234,10 @@ class WordPress_Github_Updater {
 		$raw_response = wp_remote_get( 'https://api.github.com/repos/' . $this->gh_slug . '/releases/latest' );
 		if ( is_wp_error( $raw_response ) ) {
 			// @phan-suppress-next-line PhanPossiblyNonClassMethodCall is_wp_error() narrows $raw_response from \WP_Error|array to \WP_Error.
-			throw new \Exception( sprintf( self::$err_msg_request_failed, $this->name ) . ' ' . self::$err_msg_error_message . ' ' . $raw_response->get_error_message() ); // @phpstan-ignore-line
+			throw new \Exception( esc_html( sprintf( self::$err_msg_request_failed, $this->name ) . ' ' . self::$err_msg_error_message . ' ' . $raw_response->get_error_message() ) ); // @phpstan-ignore-line
 		}
 		if ( wp_remote_retrieve_response_code( $raw_response ) !== 200 || ! isset( $raw_response['body'] ) ) { // @phpstan-ignore-line
-			throw new \Exception( sprintf( self::$err_msg_request_failed, $this->name ) );
+			throw new \Exception( esc_html( sprintf( self::$err_msg_request_failed, $this->name ) ) );
 		}
 		$response = json_decode( $raw_response['body'] );
 		$this->check_response_fields( $response );
@@ -255,11 +255,11 @@ class WordPress_Github_Updater {
 	 */
 	private function check_response_fields( $response ) {
 		if ( ! isset( $response->tag_name ) || ! isset( $response->html_url ) || ! isset( $response->assets ) ) {
-			throw new \Exception( sprintf( self::$err_msg_response_invalid, $this->name ) );
+			throw new \Exception( esc_html( sprintf( self::$err_msg_response_invalid, $this->name ) ) );
 		}
 		foreach ( $response->assets as $asset ) {
 			if ( ! isset( $asset->name ) || ! isset( $asset->browser_download_url ) ) {
-				throw new \Exception( sprintf( self::$err_msg_response_invalid, $this->name ) );
+				throw new \Exception( esc_html( sprintf( self::$err_msg_response_invalid, $this->name ) ) );
 			}
 		}
 	}
@@ -282,7 +282,7 @@ class WordPress_Github_Updater {
 			}
 		}
 		if ( is_null( $zip_url ) ) {
-			throw new \Exception( sprintf( self::$err_msg_no_zip, $this->name ) );
+			throw new \Exception( esc_html( sprintf( self::$err_msg_no_zip, $this->name ) ) );
 		}
 		return $zip_url;
 	}

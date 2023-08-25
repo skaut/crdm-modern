@@ -173,7 +173,7 @@ function should_run( $function_name, $condition ) {
 		'post_classes'   => 0,
 		'after_content'  => 0,
 	);
-	$counts[ $function_name ]++;
+	++$counts[ $function_name ];
 
 	$featured_post_count = get_featured_post_count();
 	if ( 0 === $featured_post_count || \is_singular() || \generate_blog_get_columns() ) {

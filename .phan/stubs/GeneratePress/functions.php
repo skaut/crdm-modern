@@ -13,6 +13,7 @@
  * phpcs:disable Squiz.Commenting.FunctionComment.MissingParamComment
  * phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
  * phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
+ * phpcs:disable Universal.NamingConventions.NoReservedKeywordParameterNames.defaultFound
  */
 
 /**
