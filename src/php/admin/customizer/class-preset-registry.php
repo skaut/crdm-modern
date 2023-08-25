@@ -25,17 +25,17 @@ class Preset_Registry {
 	 *
 	 * @var string
 	 */
-	private $default;
+	private $default_preset;
 
 	/**
 	 * Preset_Registry class constructor
 	 *
 	 * @param array<string, mixed> $presets An associative array of presets.
-	 * @param string               $default The id of the default preset.
+	 * @param string               $default_preset The id of the default preset.
 	 */
-	public function __construct( $presets, $default ) {
-		$this->presets = $presets;
-		$this->default = $default;
+	public function __construct( $presets, $default_preset ) {
+		$this->presets        = $presets;
+		$this->default_preset = $default_preset;
 	}
 
 	/**
@@ -57,7 +57,7 @@ class Preset_Registry {
 	 * @return Preset The default preset.
 	 */
 	public function default_preset() {
-		return $this->presets[ $this->default ];
+		return $this->presets[ $this->default_preset ];
 	}
 
 	/**
