@@ -22,6 +22,11 @@
 		"issues": "https://github.com/skaut/crdm-modern/issues",
 		"source": "https://github.com/skaut/crdm-modern"
 	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
 	"require": {
 		"php": "^7.0 || ^8.0"
 	},
@@ -32,6 +37,7 @@
 		"phpmd/phpmd": "^2.7",
 		"phan/phan": "^5.1",
 		"skaut/wordpress-stubs": "^2.2.0",
-		"phpstan/phpstan": "^1.4"
+		"phpstan/phpstan": "^1.4",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0"
 	}
 }
