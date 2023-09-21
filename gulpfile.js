@@ -195,7 +195,9 @@ gulp.task(
 				wpPot({
 					bugReport: 'https://github.com/skaut/crdm-modern/issues',
 					domain: 'crdm-modern',
+					package: 'crdm-modern',
 					relativeTo: 'src/php',
+					includePOTCreationDate: false,
 				})
 			)
 			.pipe(gulp.dest('src/languages/crdm-modern.pot'));
