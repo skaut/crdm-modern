@@ -199,9 +199,7 @@ gulp.task(
 				})
 			)
 			.pipe(gulp.dest('src/languages/crdm-modern.pot'));
-	}, shell.task(
-		'msgmerge -U src/languages/crdm-modern.pot src/languages/crdm-modern.pot'
-	))
+	}, shell.task('msgmerge -U src/languages/crdm-modern.pot src/languages/crdm-modern.pot'))
 );
 
 gulp.task('update-translations:update-po', function () {
