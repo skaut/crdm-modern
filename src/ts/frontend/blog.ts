@@ -18,9 +18,9 @@ function addExcerptClickability(): void {
 		return;
 	}
 	const articles = $('.site-main article .inside-article');
-	articles.each(function (_, article) {
+	articles.each((_, article) => {
 		const href = $(article).find('.entry-title a').attr('href') ?? '';
-		$(article).on('click', function () {
+		$(article).on('click', () => {
 			window.location.href = href;
 		});
 	});
