@@ -85,12 +85,12 @@ function onActivation(): void {
 		'#TB_inline?inlineId=crdm-modern-preset-on-activation-modal'
 	);
 
-	$('input[name=crdm-modern-preset-on-activation]').on('change', function () {
+	$('input[name=crdm-modern-preset-on-activation]').on('change', () => {
 		const applyButton = $('#crdm-modern-preset-on-activation-apply');
 		applyButton.removeAttr('disabled');
 		applyButton.on('click', applyCallback);
 	});
-	$('#crdm-modern-preset-on-activation-skip').on('click', function () {
+	$('#crdm-modern-preset-on-activation-skip').on('click', () => {
 		tb_remove();
 	});
 }
