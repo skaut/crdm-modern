@@ -1,5 +1,4 @@
-# Copyright (C) 2023 crdm-modern
-# This file is distributed under the same license as the crdm-modern package.
+# Copyright (C) Junák – český skaut
 msgid ""
 msgstr ""
 "Project-Id-Version: crdm-modern\n"
