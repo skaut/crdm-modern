@@ -6,7 +6,6 @@ const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const inject = require('gulp-inject-string');
 const merge = require('merge-stream');
-const potomo = require('gulp-potomo');
 const rename = require('gulp-rename');
 const terser = require('gulp-terser');
 const ts = require('gulp-typescript');
@@ -124,18 +123,34 @@ gulp.task('build:js', () =>
 	)
 );
 
-gulp.task('build:mo', () =>
-	gulp
-		.src('src/languages/*.po')
-		.pipe(potomo({ verbose: false }))
-		.pipe(
-			rename((path) => {
-				path.basename = path.basename.substring(
-					path.basename.lastIndexOf('-') + 1
-				);
-			})
-		)
-		.pipe(gulp.dest('dist/languages/'))
+gulp.task(
+	'build:mo',
+	gulp.series(
+		(cb) => {
+			exec(
+				'./vendor/bin/wp i18n make-mo src/languages/ dist/languages/ ',
+				(err) => {
+					cb(err);
+				}
+			);
+		},
+		() =>
+			gulp
+				.src('dist/languages/*.mo')
+				.pipe(
+					rename((path) => {
+						path.basename = path.basename.substring(
+							path.basename.lastIndexOf('-') + 1
+						);
+					})
+				)
+				.pipe(gulp.dest('dist/languages/')),
+		(cb) => {
+			exec('rm dist/languages/crdm-modern-*.mo', (err) => {
+				cb(err);
+			});
+		}
+	)
 );
 
 gulp.task('build:php:root', () =>
