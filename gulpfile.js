@@ -8,7 +8,6 @@ const inject = require('gulp-inject-string');
 const merge = require('merge-stream');
 const potomo = require('gulp-potomo');
 const rename = require('gulp-rename');
-const shell = require('gulp-shell');
 const terser = require('gulp-terser');
 const ts = require('gulp-typescript');
 
@@ -196,12 +195,17 @@ gulp.task(
 	})
 );
 
-gulp.task('update-translations:update-po', () =>
-	gulp
-		.src('src/languages/*.po', { read: false })
-		.pipe(
-			shell('msgmerge -U <%= file.path %> src/languages/crdm-modern.pot')
-		)
+gulp.task(
+	'update-translations:update-po',
+	gulp.series((cb) => {
+		const exec = require('child_process').exec;
+		exec(
+			'./vendor/bin/wp i18n update-po src/languages/crdm-modern.pot src/languages/',
+			(err) => {
+				cb(err);
+			}
+		);
+	})
 );
 
 gulp.task(

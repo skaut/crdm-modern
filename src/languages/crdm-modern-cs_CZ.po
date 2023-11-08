@@ -1,227 +1,225 @@
-# Copyright (C) 2022 crdm-modern
-# This file is distributed under the same license as the crdm-modern package.
 msgid ""
 msgstr ""
-"Project-Id-Version: crdm-modern\n"
+"Project-Id-Version: crdm-modern 1.0.4\n"
 "Report-Msgid-Bugs-To: https://github.com/skaut/crdm-modern/issues\n"
+"Last-Translator: Marek Dědič <developer@dedic.eu>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;"
-"_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
-"esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: cs_CZ\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: crdm-modern\n"
 
-#: functions.php:163
-msgid "CRDM - Modern theme requires at least WordPress 5.0"
-msgstr "Šablona CRDM - Modern vyžaduje alespoň WordPress 5.0"
+#. Theme Name of the theme
+msgid "CRDM - Modern"
+msgstr "CRDM - Modern"
 
-#: functions.php:176
-msgid "CRDM - Modern theme requires at least PHP 7.0"
-msgstr "Šablona CRDM - Modern vyžaduje alespoň PHP 7.0"
+#. Theme URI of the theme
+msgid "https://github.com/skaut/crdm-modern"
+msgstr "https://github.com/skaut/crdm-modern"
 
-#: functions.php:188
-msgid "CRDM - Modern theme requires GeneratePress Premium"
-msgstr "Šablona CRDM - Modern vyžaduje premium verzi GeneratePress"
+#. Description of the theme
+msgid "A modern WordPress theme made for children's organizations"
+msgstr "Moderní WordPressová šablona pro organizace dětí a mládeže"
 
-#: functions.php:200
-msgid ""
-"Failed to copy CRDM - Modern theme images to WordPress Media. The theme will "
-"work fine, but you won't be able to re-select the default images outside of "
-"the theme presets."
-msgstr ""
-"Nepodařilo se zkopírovat obrázky šablony CRDM - Modern do WordPress Médií. "
-"Šablona bude fungovat v pořádku i tak, ale nebudete moct znovu použít její "
-"výchozí obrázky jinak, než použitím předvolby šablony."
+#. Author of the theme
+msgid "Junák - český skaut"
+msgstr "Junák - český skaut"
 
-#: admin/customizer.php:52
+#. Author URI of the theme
+msgid "https://github.com/skaut"
+msgstr "https://github.com/skaut"
+
+#: php/admin/customizer.php:52
 msgid "Body"
 msgstr "Tělo"
 
-#: admin/preset-on-activation.php:54,
-#: admin/customizer/controls/class-preset-customize-control.php:129
+#: php/admin/customizer/class-preset-registry.php:85
+msgid "Blue"
+msgstr "Modrá"
+
+#: php/admin/customizer/class-preset-registry.php:136
+#: php/admin/customizer/class-preset-registry.php:436
+#: php/admin/customizer/class-preset-registry.php:737
+msgid "Read more >"
+msgstr "Číst více >"
+
+#: php/admin/customizer/class-preset-registry.php:385
+msgid "Green"
+msgstr "Zelená"
+
+#: php/admin/customizer/class-preset-registry.php:686
+msgid "Beige"
+msgstr "Béžová"
+
+#: php/admin/customizer/colors.php:54
+msgid "Widget Separator"
+msgstr "Oddělovač widgetů"
+
+#: php/admin/customizer/colors.php:78
+msgid "Excerpt Border"
+msgstr "Rámeček úryvku"
+
+#: php/admin/customizer/colors.php:102
+msgid "Excerpt Background Hover"
+msgstr "Pozadí úryvku při přejetí myší"
+
+#: php/admin/customizer/colors.php:126
+msgid "Excerpt Text Hover"
+msgstr "Text úryvku při přejetí myší"
+
+#: php/admin/customizer/colors.php:150
+msgid "\"Read more\" Link"
+msgstr "Odkaz \"Číst více\""
+
+#: php/admin/customizer/colors.php:173
+msgid "\"Read more\" Link Hover"
+msgstr "Odkaz \"Číst více\" při přejetí myší"
+
+#: php/admin/customizer/controls/class-preset-customize-control.php:126
+msgid "Applying the preset overrides a lot of the theme options. You can always go back by closing the customizer before saving."
+msgstr "Požitím předvolby se změní velké množství nastavení šablony. Vždy se můžete vrátit zpět zavřením přizpůsobování webu před uložením nového nastavení."
+
+#: php/admin/customizer/controls/class-preset-customize-control.php:129
+#: php/admin/preset-on-activation.php:54
 msgid "Apply"
 msgstr "Použít"
 
-#: admin/preset-on-activation.php:55
+#: php/admin/customizer/layout.php:54
+msgid "Navigation spacing"
+msgstr "Rozestupy navigace"
+
+#: php/admin/customizer/layout.php:86
+msgid "Navigation shadow"
+msgstr "Stín navigace"
+
+#: php/admin/customizer/layout.php:108
+msgid "Sidebar widget separator width"
+msgstr "Šířka oddělovače widgetů v postranním panelu"
+
+#: php/admin/customizer/layout.php:142
+msgid "Sidebar widget separator spacing"
+msgstr "Rozestup oddělovače widgetů v postranním panelu"
+
+#: php/admin/customizer/layout.php:168
+msgid "Featured Posts"
+msgstr "Zvýrazněné příspěvky"
+
+#: php/admin/customizer/layout.php:187
+msgid "Number of featured posts"
+msgstr "Počet zvýrazněných příspěvků"
+
+#: php/admin/customizer/preset.php:37
+msgid "Preset"
+msgstr "Předvolby šablony"
+
+#: php/admin/customizer/site-identity.php:53
+msgid "Header Image"
+msgstr "Obrázek v záhlaví"
+
+#: php/admin/customizer/site-identity.php:83
+msgid "Header Image Height"
+msgstr "Výška obrázku v záhlaví"
+
+#: php/admin/customizer/site-identity.php:116
+msgid "Header Image Top Position"
+msgstr "Odsazení obrázku v záhlaví zeshora"
+
+#: php/admin/customizer/site-identity.php:149
+msgid "Header Image Right Position"
+msgstr "Odsazení obrázku v záhlaví zprava"
+
+#: php/admin/customizer/site-identity.php:181
+msgid "Minimum Width to Show Header Image"
+msgstr "Minimální šířka pro zobrazení obrázku v záhlaví"
+
+#: php/admin/customizer/typography.php:42
+msgid "Blog"
+msgstr "Blog"
+
+#: php/admin/customizer/typography.php:98
+msgid "Font size"
+msgstr "Velikost písma"
+
+#: php/admin/preset-on-activation.php:55
 msgid "Dismiss this notice."
 msgstr "Skrýt toto upozornění."
 
-#: admin/preset-on-activation.php:56
+#: php/admin/preset-on-activation.php:56
 msgid "Applying the preset failed."
 msgstr "Použití předvolby šablony se nezdařilo."
 
-#: admin/preset-on-activation.php:57
-msgid ""
-"You can choose to apply one of the presets of this theme as a starting point "
-"for your website. This will change a lot of the settings of this theme and "
-"of GeneratePress, so it is advised to do this only if you are starting "
-"fresh. This can be done later in the Customizer as well."
-msgstr ""
-"Můžete vybrat a použít jednu z předvoleb šablony jako výchozí bod vašeho "
-"webu. Použití předvolby změní velké množství nastavení této šablony a "
-"šablony GeneratePress a tedy je doporučeno pouze pokud začínáte s touto "
-"šablonou. Předvolby šablony jde použít i později na stránce Přizpůsobení "
-"vzhledu webu."
+#: php/admin/preset-on-activation.php:57
+msgid "You can choose to apply one of the presets of this theme as a starting point for your website. This will change a lot of the settings of this theme and of GeneratePress, so it is advised to do this only if you are starting fresh. This can be done later in the Customizer as well."
+msgstr "Můžete vybrat a použít jednu z předvoleb šablony jako výchozí bod vašeho webu. Použití předvolby změní velké množství nastavení této šablony a šablony GeneratePress a tedy je doporučeno pouze pokud začínáte s touto šablonou. Předvolby šablony jde použít i později na stránce Přizpůsobení vzhledu webu."
 
-#: admin/preset-on-activation.php:59
+#: php/admin/preset-on-activation.php:59
 msgid "Skip"
 msgstr "Přeskočit"
 
-#: admin/preset-on-activation.php:60
+#: php/admin/preset-on-activation.php:60
 msgid "Successfully applied the preset."
 msgstr "Úspěšně použita předvolba šablony."
 
-#: admin/preset-on-activation.php:61
+#: php/admin/preset-on-activation.php:61
 msgid "Theme preset selection"
 msgstr "Výběr předvolby šablony"
 
 #. translators: %s: Theme name.
-#: admin/update.php:22
+#: php/admin/update.php:22
 msgid "The theme %s is not available for updating."
 msgstr "Šablona %s není dostupná k aktualizaci"
 
 #. translators: %s: Theme name.
-#: admin/update.php:24
+#: php/admin/update.php:24
 msgid "The GitHub API request for updates for the theme %s has failed."
 msgstr "Požadavek na GitHub API pro aktualizaci šablony %s selhal."
 
-#: admin/update.php:25
+#: php/admin/update.php:25
 msgid "Error message:"
 msgstr "Chybová hláška:"
 
 #. translators: %s: Theme name.
-#: admin/update.php:27
+#: php/admin/update.php:27
 msgid "The GitHub API response for the theme %s is invalid."
 msgstr "Odpověď GitHub API pro aktualizaci šablony %s je neplatná."
 
 #. translators: %s: Theme name.
-#: admin/update.php:29
+#: php/admin/update.php:29
 msgid "The latest version of the theme %s does not contain an update zip file."
 msgstr "Nejnovější verze šablony %s neobsahuje soubor zip s aktualizací."
 
-#: admin/update.php:30
+#: php/admin/update.php:30
 msgid "New version"
 msgstr "Nová verze"
 
-#: admin/update.php:31
+#: php/admin/update.php:31
 msgid "No more info available."
 msgstr "Žádné další informace nejsou k dispozici."
 
-#: frontend/class-title-widget.php:72
+#: php/frontend/class-title-widget.php:72
 msgid "Title Widget"
 msgstr "Widget názvu webu"
 
-#: frontend/class-title-widget.php:72
+#: php/frontend/class-title-widget.php:72
 msgid "A widget containing the site logo, title and tagline."
 msgstr "Widget obsahující logo, název a popis webu."
 
-#: admin/customizer/class-preset-registry.php:136,
-#: admin/customizer/class-preset-registry.php:436,
-#: admin/customizer/class-preset-registry.php:737
-msgid "Read more >"
-msgstr "Číst více >"
+#: php/functions.php:163
+msgid "CRDM - Modern theme requires at least WordPress 5.0"
+msgstr "Šablona CRDM - Modern vyžaduje alespoň WordPress 5.0"
 
-#: admin/customizer/class-preset-registry.php:85
-msgid "Blue"
-msgstr "Modrá"
+#: php/functions.php:176
+msgid "CRDM - Modern theme requires at least PHP 7.0"
+msgstr "Šablona CRDM - Modern vyžaduje alespoň PHP 7.0"
 
-#: admin/customizer/class-preset-registry.php:385
-msgid "Green"
-msgstr "Zelená"
+#: php/functions.php:188
+msgid "CRDM - Modern theme requires GeneratePress Premium"
+msgstr "Šablona CRDM - Modern vyžaduje premium verzi GeneratePress"
 
-#: admin/customizer/class-preset-registry.php:686
-msgid "Beige"
-msgstr "Béžová"
-
-#: admin/customizer/colors.php:54
-msgid "Widget Separator"
-msgstr "Oddělovač widgetů"
-
-#: admin/customizer/colors.php:78
-msgid "Excerpt Border"
-msgstr "Rámeček úryvku"
-
-#: admin/customizer/colors.php:102
-msgid "Excerpt Background Hover"
-msgstr "Pozadí úryvku při přejetí myší"
-
-#: admin/customizer/colors.php:126
-msgid "Excerpt Text Hover"
-msgstr "Text úryvku při přejetí myší"
-
-#: admin/customizer/colors.php:150
-msgid "\"Read more\" Link"
-msgstr "Odkaz \"Číst více\""
-
-#: admin/customizer/colors.php:173
-msgid "\"Read more\" Link Hover"
-msgstr "Odkaz \"Číst více\" při přejetí myší"
-
-#: admin/customizer/layout.php:54
-msgid "Navigation spacing"
-msgstr "Rozestupy navigace"
-
-#: admin/customizer/layout.php:86
-msgid "Navigation shadow"
-msgstr "Stín navigace"
-
-#: admin/customizer/layout.php:108
-msgid "Sidebar widget separator width"
-msgstr "Šířka oddělovače widgetů v postranním panelu"
-
-#: admin/customizer/layout.php:142
-msgid "Sidebar widget separator spacing"
-msgstr "Rozestup oddělovače widgetů v postranním panelu"
-
-#: admin/customizer/layout.php:168
-msgid "Featured Posts"
-msgstr "Zvýrazněné příspěvky"
-
-#: admin/customizer/layout.php:187
-msgid "Number of featured posts"
-msgstr "Počet zvýrazněných příspěvků"
-
-#: admin/customizer/preset.php:37
-msgid "Preset"
-msgstr "Předvolby šablony"
-
-#: admin/customizer/site-identity.php:53
-msgid "Header Image"
-msgstr "Obrázek v záhlaví"
-
-#: admin/customizer/site-identity.php:83
-msgid "Header Image Height"
-msgstr "Výška obrázku v záhlaví"
-
-#: admin/customizer/site-identity.php:116
-msgid "Header Image Top Position"
-msgstr "Odsazení obrázku v záhlaví zeshora"
-
-#: admin/customizer/site-identity.php:149
-msgid "Header Image Right Position"
-msgstr "Odsazení obrázku v záhlaví zprava"
-
-#: admin/customizer/site-identity.php:181
-msgid "Minimum Width to Show Header Image"
-msgstr "Minimální šířka pro zobrazení obrázku v záhlaví"
-
-#: admin/customizer/typography.php:42
-msgid "Blog"
-msgstr "Blog"
-
-#: admin/customizer/typography.php:98
-msgid "Font size"
-msgstr "Velikost písma"
-
-#: admin/customizer/controls/class-preset-customize-control.php:126
-msgid ""
-"Applying the preset overrides a lot of the theme options. You can always go "
-"back by closing the customizer before saving."
-msgstr ""
-"Požitím předvolby se změní velké množství nastavení šablony. Vždy se můžete "
-"vrátit zpět zavřením přizpůsobování webu před uložením nového nastavení."
+#: php/functions.php:200
+msgid "Failed to copy CRDM - Modern theme images to WordPress Media. The theme will work fine, but you won't be able to re-select the default images outside of the theme presets."
+msgstr "Nepodařilo se zkopírovat obrázky šablony CRDM - Modern do WordPress Médií. Šablona bude fungovat v pořádku i tak, ale nebudete moct znovu použít její výchozí obrázky jinak, než použitím předvolby šablony."
