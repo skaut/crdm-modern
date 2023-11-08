@@ -43,7 +43,7 @@
 	},
 	"devDependencies": {
 		"@types/jquery": "^3.5.26",
-		"@types/wordpress__customize-browser": "^5.5.3",
+		"@types/wordpress__customize-browser": "^5.5.4",
 		"@typescript-eslint/eslint-plugin": "^6.10.0",
 		"@typescript-eslint/parser": "^6.10.0",
 		"@wordpress/browserslist-config": "^5.28.0",
