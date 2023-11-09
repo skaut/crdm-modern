@@ -6,12 +6,10 @@ const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const inject = require('gulp-inject-string');
 const merge = require('merge-stream');
-const potomo = require('gulp-potomo');
 const rename = require('gulp-rename');
-const shell = require('gulp-shell');
 const terser = require('gulp-terser');
 const ts = require('gulp-typescript');
-const wpPot = require('gulp-wp-pot');
+const exec = require('child_process').exec;
 
 gulp.task('build:css:main', () =>
 	gulp
@@ -125,19 +123,14 @@ gulp.task('build:js', () =>
 	)
 );
 
-gulp.task('build:mo', () =>
-	gulp
-		.src('src/languages/*.po')
-		.pipe(potomo({ verbose: false }))
-		.pipe(
-			rename((path) => {
-				path.basename = path.basename.substring(
-					path.basename.lastIndexOf('-') + 1
-				);
-			})
-		)
-		.pipe(gulp.dest('dist/languages/'))
-);
+gulp.task('build:mo', (cb) => {
+	exec(
+		'./vendor/bin/wp i18n make-mo src/languages/ dist/languages/ ',
+		(err) => {
+			cb(err);
+		}
+	);
+});
 
 gulp.task('build:php:root', () =>
 	gulp.src('src/php/*.php').pipe(gulp.dest('dist/'))
@@ -184,37 +177,23 @@ gulp.task(
 	)
 );
 
-gulp.task(
-	'update-translations:generate-pot',
-	gulp.series(
-		() =>
-			gulp
-				.src('src/php/**/*.php')
-				.pipe(
-					wpPot({
-						bugReport:
-							'https://github.com/skaut/crdm-modern/issues',
-						copyrightText: '# Copyright (C) Junák – český skaut',
-						domain: 'crdm-modern',
-						package: 'crdm-modern',
-						relativeTo: 'src/php',
-						includePOTCreationDate: false,
-					})
-				)
-				.pipe(gulp.dest('src/languages/crdm-modern.pot')),
-		shell.task(
-			'msgmerge -U src/languages/crdm-modern.pot src/languages/crdm-modern.pot'
-		)
-	)
-);
+gulp.task('update-translations:generate-pot', (cb) => {
+	exec(
+		'./vendor/bin/wp i18n make-pot src/ src/languages/crdm-modern.pot --slug="crdm-modern" --headers=\'{"Report-Msgid-Bugs-To": "https://github.com/skaut/crdm-modern/issues", "POT-Creation-Date": "", "Last-Translator": "Marek Dědič <developer@dedic.eu>", "Language-Team": ""}\' --file-comment="Copyright (C) Junák – český skaut" --package-name="crdm-modern"',
+		(err) => {
+			cb(err);
+		}
+	);
+});
 
-gulp.task('update-translations:update-po', () =>
-	gulp
-		.src('src/languages/*.po', { read: false })
-		.pipe(
-			shell('msgmerge -U <%= file.path %> src/languages/crdm-modern.pot')
-		)
-);
+gulp.task('update-translations:update-po', (cb) => {
+	exec(
+		'./vendor/bin/wp i18n update-po src/languages/crdm-modern.pot src/languages/',
+		(err) => {
+			cb(err);
+		}
+	);
+});
 
 gulp.task(
 	'update-translations',
