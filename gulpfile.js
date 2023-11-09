@@ -123,35 +123,14 @@ gulp.task('build:js', () =>
 	)
 );
 
-gulp.task(
-	'build:mo',
-	gulp.series(
-		(cb) => {
-			exec(
-				'./vendor/bin/wp i18n make-mo src/languages/ dist/languages/ ',
-				(err) => {
-					cb(err);
-				}
-			);
-		},
-		() =>
-			gulp
-				.src('dist/languages/*.mo')
-				.pipe(
-					rename((path) => {
-						path.basename = path.basename.substring(
-							path.basename.lastIndexOf('-') + 1
-						);
-					})
-				)
-				.pipe(gulp.dest('dist/languages/')),
-		(cb) => {
-			exec('rm dist/languages/crdm-modern-*.mo', (err) => {
-				cb(err);
-			});
+gulp.task('build:mo', (cb) => {
+	exec(
+		'./vendor/bin/wp i18n make-mo src/languages/ dist/languages/ ',
+		(err) => {
+			cb(err);
 		}
-	)
-);
+	);
+});
 
 gulp.task('build:php:root', () =>
 	gulp.src('src/php/*.php').pipe(gulp.dest('dist/'))
