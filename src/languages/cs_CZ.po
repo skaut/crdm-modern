@@ -14,22 +14,27 @@ msgstr ""
 "X-Domain: crdm-modern\n"
 
 #. Theme Name of the theme
+#: css
 msgid "CRDM - Modern"
 msgstr "CRDM - Modern"
 
 #. Theme URI of the theme
+#: css
 msgid "https://github.com/skaut/crdm-modern"
 msgstr "https://github.com/skaut/crdm-modern"
 
 #. Description of the theme
+#: css
 msgid "A modern WordPress theme made for children's organizations"
 msgstr "Moderní WordPressová šablona pro organizace dětí a mládeže"
 
 #. Author of the theme
+#: css
 msgid "Junák - český skaut"
 msgstr "Junák - český skaut"
 
 #. Author URI of the theme
+#: css
 msgid "https://github.com/skaut"
 msgstr "https://github.com/skaut"
 
