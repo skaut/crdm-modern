@@ -70,6 +70,29 @@ function setCSSInHead(
 	);
 }
 
+function customizeFallback(
+	setting: string,
+	targets: Array<LiveReloadTarget>,
+	fallbacks: Array<string>,
+	i: number
+): void {
+	void wp.customize(fallbacks[i], (value) => {
+		value.bind((newValue: string) => {
+			if (wp.customize(setting).get() !== undefined) {
+				return;
+			}
+			for (let j = 0; j < i; j++) {
+				if (wp.customize(fallbacks[j]).get() !== undefined) {
+					return;
+				}
+			}
+			$.each(targets, (_, target) => {
+				setCSSInHead(setting, target, newValue);
+			});
+		});
+	});
+}
+
 function liveReload(
 	setting: string,
 	targets: Array<LiveReloadTarget>,
@@ -94,21 +117,7 @@ function liveReload(
 	});
 	if (fallbacks) {
 		for (let i = 0; i < fallbacks.length; i++) {
-			void wp.customize(fallbacks[i], (value) => {
-				value.bind((newValue: string) => {
-					if (wp.customize(setting).get() !== undefined) {
-						return;
-					}
-					for (let j = 0; j < i; j++) {
-						if (wp.customize(fallbacks[j]).get() !== undefined) {
-							return;
-						}
-					}
-					$.each(targets, (_, target) => {
-						setCSSInHead(setting, target, newValue);
-					});
-				});
-			});
+			customizeFallback(setting, targets, fallbacks, i);
 		}
 	}
 }
