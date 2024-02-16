@@ -1,16 +1,18 @@
 /* exported liveReload */
 
+/* eslint-disable no-bitwise -- Hashing function can do bitwise operations */
 function hash(str: string): string {
 	if (str.length === 0) {
 		return '';
 	}
 	let ret = 0;
 	for (let i = 0; i < str.length; i++) {
-		ret = (ret << 5) - ret + str.charCodeAt(i); // eslint-disable-line no-bitwise
-		ret |= 0; // eslint-disable-line no-bitwise
+		ret = (ret << 5) - ret + str.charCodeAt(i);
+		ret |= 0;
 	}
 	return ret.toString();
 }
+/* eslint-enable */
 
 function setCSSInHead(
 	setting: string,

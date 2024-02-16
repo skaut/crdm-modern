@@ -33,7 +33,8 @@ function applyCallback(): void {
 	void $.get(
 		crdmModernPresetOnActivationLocalize.ajax_url,
 		{
-			_ajax_nonce: crdmModernPresetOnActivationLocalize.nonce, // eslint-disable-line camelcase
+			// eslint-disable-next-line camelcase -- Fixed name of WordPress parameter
+			_ajax_nonce: crdmModernPresetOnActivationLocalize.nonce,
 			action: 'crdm_modern_apply_preset',
 			id,
 		},

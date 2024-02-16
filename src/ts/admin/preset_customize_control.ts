@@ -1,3 +1,5 @@
+import type { Setting } from '@wordpress/customize-browser/Setting';
+
 function isAssoc(value: unknown): value is Record<string, unknown> {
 	return (
 		value !== undefined &&
@@ -17,16 +19,18 @@ function applyPreset(control: wordpress__customize.Control): void {
 	$.each(preset, (key, value) => {
 		if (isAssoc(value)) {
 			$.each(value, (innerKey, innerValue) => {
-				const innerSetting = wp.customize(key + '[' + innerKey + ']');
-				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/strict-boolean-expressions
+				const innerSetting = wp.customize(
+					key + '[' + innerKey + ']'
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Taken from @wordpress/customize typings
+				) as Setting<any> | undefined;
 				if (!innerSetting) {
 					return;
 				}
 				innerSetting.set(innerValue);
 			});
 		} else {
-			const setting = wp.customize(key);
-			// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/strict-boolean-expressions
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Taken from @wordpress/customize typings
+			const setting = wp.customize(key) as Setting<any> | undefined;
 			if (!setting) {
 				return;
 			}
