@@ -29,7 +29,12 @@
     "compat/compat": "warn",
     "deprecation/deprecation": "warn",
     "eslint-comments/no-unused-disable": "error",
-    "eslint-comments/require-description": "error",
+    "eslint-comments/require-description": [
+      "error",
+      {
+        "ignore": ["eslint-enable", "eslint-env", "exported"]
+      }
+    ],
     "prefer-arrow-functions/prefer-arrow-functions": [
       "error",
       {
