@@ -22,6 +22,7 @@
 		"type": "git",
 		"url": "git+https://github.com/skaut/crdm-modern.git"
 	},
+	"type": "module",
 	"scripts": {
 		"clean": "rimraf dist/*",
 		"prebuild": "npm run clean",
