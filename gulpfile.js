@@ -1,15 +1,14 @@
 /* eslint-env node */
 
-const gulp = require('gulp');
-
-const cleanCSS = require('gulp-clean-css');
-const concat = require('gulp-concat');
-const inject = require('gulp-inject-string');
-const merge = require('merge-stream');
-const rename = require('gulp-rename');
-const terser = require('gulp-terser');
-const ts = require('gulp-typescript');
-const exec = require('child_process').exec;
+import { exec } from 'child_process';
+import gulp from 'gulp';
+import cleanCSS from 'gulp-clean-css';
+import concat from 'gulp-concat';
+import inject from 'gulp-inject-string';
+import rename from 'gulp-rename';
+import terser from 'gulp-terser';
+import ts from 'gulp-typescript';
+import merge from 'merge-stream';
 
 gulp.task('build:css:main', () =>
 	gulp
