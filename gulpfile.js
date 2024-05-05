@@ -8,7 +8,7 @@ import inject from 'gulp-inject-string';
 import rename from 'gulp-rename';
 import terser from 'gulp-terser';
 import ts from 'gulp-typescript';
-import merge from 'merge-stream';
+import ordered from 'ordered-read-streams';
 
 gulp.task('build:css:main', () =>
 	gulp
@@ -92,7 +92,7 @@ function bundle(name, sources, part, jQuery = false) {
 }
 
 gulp.task('build:js', () =>
-	merge(
+	ordered([
 		bundle(
 			'preset_customize_control',
 			['src/ts/admin/preset_customize_control.ts'],
@@ -118,8 +118,8 @@ gulp.task('build:js', () =>
 			'admin',
 			true
 		),
-		bundle('blog', ['src/ts/frontend/blog.ts'], 'frontend', true)
-	)
+		bundle('blog', ['src/ts/frontend/blog.ts'], 'frontend', true),
+	])
 );
 
 gulp.task('build:mo', (cb) => {
