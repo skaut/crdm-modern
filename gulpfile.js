@@ -122,14 +122,27 @@ gulp.task('build:js', () =>
 	])
 );
 
-gulp.task('build:mo', (cb) => {
-	exec(
-		'./vendor/bin/wp i18n make-mo src/languages/ dist/languages/ ',
-		(err) => {
-			cb(err);
+gulp.task(
+	'build:l10n',
+	gulp.parallel(
+		(cb) => {
+			exec(
+				'./vendor/bin/wp i18n make-mo src/languages/ dist/languages/ ',
+				(err) => {
+					cb(err);
+				}
+			);
+		},
+		(cb) => {
+			exec(
+				'./vendor/bin/wp i18n make-php src/languages/ dist/languages/ ',
+				(err) => {
+					cb(err);
+				}
+			);
 		}
-	);
-});
+	)
+);
 
 gulp.task('build:php:root', () =>
 	gulp.src('src/php/*.php').pipe(gulp.dest('dist/'))
@@ -169,7 +182,7 @@ gulp.task(
 		'build:deps',
 		'build:jpg',
 		'build:js',
-		'build:mo',
+		'build:l10n',
 		'build:php',
 		'build:png',
 		'build:txt'
