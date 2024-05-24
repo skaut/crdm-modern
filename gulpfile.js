@@ -124,7 +124,7 @@ gulp.task('build:js', () =>
 
 gulp.task(
 	'build:l10n',
-	gulp.parallel(
+	gulp.series(
 		(cb) => {
 			exec(
 				'./vendor/bin/wp i18n make-mo src/languages/ dist/languages/ ',
