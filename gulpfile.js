@@ -43,7 +43,7 @@ gulp.task('build:deps:npm:dripicons', () =>
 				'node_modules/dripicons/webfont/webfont.css',
 				'node_modules/dripicons/webfont/fonts/*',
 			],
-			{ base: 'node_modules/dripicons/webfont' }
+			{ base: 'node_modules/dripicons/webfont', encoding: false }
 		)
 		.pipe(gulp.dest('dist/frontend/dripicons'))
 );
@@ -53,17 +53,21 @@ gulp.task('build:deps:npm', gulp.parallel('build:deps:npm:dripicons'));
 gulp.task('build:deps', gulp.parallel('build:deps:npm'));
 
 gulp.task('build:jpg:screenshot', () =>
-	gulp.src('src/jpg/screenshot.jpg').pipe(gulp.dest('dist/'))
+	gulp
+		.src('src/jpg/screenshot.jpg', { encoding: false })
+		.pipe(gulp.dest('dist/'))
 );
 
 gulp.task('build:jpg:frontend', () =>
 	gulp
-		.src('src/jpg/frontend/**/*.jpg')
+		.src('src/jpg/frontend/**/*.jpg', { encoding: false })
 		.pipe(gulp.dest('dist/frontend/images/'))
 );
 
 gulp.task('build:jpg:admin', () =>
-	gulp.src('src/jpg/admin/**/*.jpg').pipe(gulp.dest('dist/admin/'))
+	gulp
+		.src('src/jpg/admin/**/*.jpg', { encoding: false })
+		.pipe(gulp.dest('dist/admin/'))
 );
 
 gulp.task(
@@ -163,7 +167,7 @@ gulp.task(
 
 gulp.task('build:png:frontend', () =>
 	gulp
-		.src('src/png/frontend/**/*.png')
+		.src('src/png/frontend/**/*.png', { encoding: false })
 		.pipe(gulp.dest('dist/frontend/images/'))
 );
 
