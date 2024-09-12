@@ -1,13 +1,19 @@
 {
   "compilerOptions": {
-    "module": "umd",
     "forceConsistentCasingInFileNames": true,
+    "lib": ["es2015", "DOM"],
+    "module": "umd",
+    "target": "ES5",
+
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
     "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strict": true,
-    "lib": ["es2015", "DOM"],
-    "target": "ES5"
+    "strict": true
   }
 }
