@@ -3,7 +3,7 @@
 	border-left-style: solid;
 }
 
-.sidebar .inside-right-sidebar .widget.widget_search { /*stylelint-disable-line selector-class-pattern */
+.sidebar .inside-right-sidebar .widget.widget_search { /* stylelint-disable-line selector-class-pattern */
 	border-left: none;
 	padding-left: 0 !important;
 }
