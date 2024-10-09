@@ -1,7 +1,7 @@
 # Copyright (C) Junák – český skaut
 msgid ""
 msgstr ""
-"Project-Id-Version: crdm-modern 1.1.0\n"
+"Project-Id-Version: crdm-modern 1.1.1\n"
 "Report-Msgid-Bugs-To: https://github.com/skaut/crdm-modern/issues\n"
 "Last-Translator: Marek Dědič <developer@dedic.eu>\n"
 "Language-Team: \n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: crdm-modern\n"
 
 #. Theme Name of the theme

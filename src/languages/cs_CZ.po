@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: crdm-modern 1.1.0\n"
+"Project-Id-Version: crdm-modern 1.1.1\n"
 "Report-Msgid-Bugs-To: https://github.com/skaut/crdm-modern/issues\n"
 "Last-Translator: Marek Dědič <developer@dedic.eu>\n"
 "Language-Team: \n"
