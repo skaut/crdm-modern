@@ -37,7 +37,7 @@
 		"phpmd/phpmd": "^2.7",
 		"phan/phan": "^5.1",
 		"skaut/wordpress-stubs": "^2.2.0",
-		"phpstan/phpstan": "^1.4",
+		"phpstan/phpstan": "^2.0",
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
 		"wp-cli/i18n-command": "^2.4"
 	}
