@@ -80,8 +80,8 @@ class Title_Widget extends \WP_Widget {
 	 *
 	 * @return void
 	 *
-	 * @SuppressWarnings(PHPMD.ShortVariable)
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 * @SuppressWarnings("PHPMD.ShortVariable")
+	 * @SuppressWarnings("PHPMD.UnusedFormalParameter")
 	 */
 	public function widget( $args, $instance ) {
 		$gp_settings = wp_parse_args(

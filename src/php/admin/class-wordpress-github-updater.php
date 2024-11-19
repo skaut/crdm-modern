@@ -181,7 +181,7 @@ class WordPress_Github_Updater {
 	 *
 	 * @return void
 	 *
-	 * @SuppressWarnings(PHPMD.ExitExpression)
+	 * @SuppressWarnings("PHPMD.ExitExpression")
 	 */
 	public function update_url() {
 		if ( ! isset( $_GET['version'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
