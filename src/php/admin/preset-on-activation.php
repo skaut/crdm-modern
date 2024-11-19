@@ -121,6 +121,7 @@ function apply_preset( $preset ) {
 			remove_theme_mod( $mod );
 			continue;
 		}
+		// @phpstan-ignore function.alreadyNarrowedType (Should always be array, but check here for safety)
 		if ( is_array( $value ) ) {
 			$value = implode( ',', $value );
 		}

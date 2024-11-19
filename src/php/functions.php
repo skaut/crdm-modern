@@ -111,8 +111,9 @@ function copy_images() {
  * @return void
  */
 function copy_image( $path, $title ) {
-	// Bail if image already exists.
+	// @phpstan-ignore requireOnce.fileNotFound (WordPress file)
 	require_once ABSPATH . 'wp-admin/includes/post.php';
+	// Bail if image already exists.
 	if ( 0 !== post_exists( $title, '', '', 'attachment' ) ) {
 		return;
 	}
@@ -134,6 +135,7 @@ function copy_image( $path, $title ) {
 	if ( is_wp_error( $attachment_id ) ) {
 		throw new \Exception();
 	}
+	// @phpstan-ignore requireOnce.fileNotFound (WordPress file)
 	require_once ABSPATH . 'wp-admin/includes/image.php';
 	// @phpstan-ignore-next-line
 	$attachment_metadata = wp_generate_attachment_metadata( $attachment_id, $file_contents['file'] );

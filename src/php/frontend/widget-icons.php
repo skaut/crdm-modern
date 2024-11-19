@@ -37,8 +37,8 @@ function enqueue() {
  *
  * @return string The new title.
  *
- * @SuppressWarnings(PHPMD.ShortVariable)
- * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+ * @SuppressWarnings("PHPMD.ShortVariable")
+ * @SuppressWarnings("PHPMD.UnusedFormalParameter")
  */
 function add_icon( string $title, array $instance = array(), string $id_base = '' ) {
 	switch ( $id_base ) {

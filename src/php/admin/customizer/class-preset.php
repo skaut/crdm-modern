@@ -14,7 +14,7 @@ namespace CrdmModern\Admin\Customizer;
  *
  * Contains all the data about a preset.
  *
- * @SuppressWarnings(PHPMD.ShortVariable)
+ * @SuppressWarnings("PHPMD.ShortVariable")
  */
 class Preset {
 	/**
@@ -162,7 +162,7 @@ class Preset {
 	 *
 	 * @return mixed The defautl values.
 	 *
-	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 * @SuppressWarnings("PHPMD.UnusedLocalVariable")
 	 */
 	public function get_all_template_defaults() {
 		$ret = array();
