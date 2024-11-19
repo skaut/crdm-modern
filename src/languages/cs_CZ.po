@@ -213,18 +213,18 @@ msgstr "Widget názvu webu"
 msgid "A widget containing the site logo, title and tagline."
 msgstr "Widget obsahující logo, název a popis webu."
 
-#: php/functions.php:163
+#: php/functions.php:165
 msgid "CRDM - Modern theme requires at least WordPress 5.0"
 msgstr "Šablona CRDM - Modern vyžaduje alespoň WordPress 5.0"
 
-#: php/functions.php:176
+#: php/functions.php:178
 msgid "CRDM - Modern theme requires at least PHP 7.0"
 msgstr "Šablona CRDM - Modern vyžaduje alespoň PHP 7.0"
 
-#: php/functions.php:188
+#: php/functions.php:190
 msgid "CRDM - Modern theme requires GeneratePress Premium"
 msgstr "Šablona CRDM - Modern vyžaduje premium verzi GeneratePress"
 
-#: php/functions.php:200
+#: php/functions.php:202
 msgid "Failed to copy CRDM - Modern theme images to WordPress Media. The theme will work fine, but you won't be able to re-select the default images outside of the theme presets."
 msgstr "Nepodařilo se zkopírovat obrázky šablony CRDM - Modern do WordPress Médií. Šablona bude fungovat v pořádku i tak, ale nebudete moct znovu použít její výchozí obrázky jinak, než použitím předvolby šablony."
