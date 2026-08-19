@@ -53,7 +53,6 @@
 		"@wordpress/stylelint-config": "^24.2.0",
 		"eslint": "^8.57.1",
 		"eslint-plugin-compat": "^6.0.2",
-		"eslint-plugin-deprecation": "^3.0.0",
 		"eslint-plugin-prefer-arrow-functions": "^3.10.2",
 		"eslint-plugin-simple-import-sort": "^14.0.0",
 		"gulp": "^5.0.1",
@@ -69,7 +68,7 @@
 		"stylelint": "^16.26.1",
 		"stylelint-config-standard": "^39.0.1",
 		"stylelint-no-unsupported-browser-features": "^8.1.1",
-		"typescript": "^5.9.3"
+		"typescript": "^6.0.3"
 	},
 	"browserslist": [
 		"extends @wordpress/browserslist-config"

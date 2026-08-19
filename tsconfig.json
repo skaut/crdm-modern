@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
     "lib": ["es2015", "DOM"],
-    "module": "umd",
-    "target": "ES5",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "es2015",
+    "types": ["@wordpress/customize-browser"],
+
+    "strict": true,
 
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -13,7 +16,6 @@
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "strict": true
+    "noUnusedParameters": true
   }
 }
