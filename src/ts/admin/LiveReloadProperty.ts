@@ -1,8 +1,8 @@
 /* exported LiveReloadProperty */
 
 interface LiveReloadProperty {
-	name: string;
-	prefix?: string;
-	postfix?: string;
 	computed?: LiveReloadComputedProperty;
+	name: string;
+	postfix?: string;
+	prefix?: string;
 }

@@ -6,8 +6,6 @@
     "target": "es2015",
     "types": ["@wordpress/customize-browser"],
 
-    "strict": true,
-
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "exactOptionalPropertyTypes": true,

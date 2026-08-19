@@ -1,10 +1,3 @@
-function isAssoc(value: unknown): value is Record<string, unknown> {
-	return (
-		value !== undefined &&
-		(value as Record<string, unknown>).constructor === Object
-	);
-}
-
 function applyPreset(control: wordpress__customize.Control): void {
 	const chosen = control.container
 		.find('input[name=crdm_modern_preset]:checked')
@@ -18,7 +11,7 @@ function applyPreset(control: wordpress__customize.Control): void {
 		if (isAssoc(value)) {
 			$.each(value, (innerKey, innerValue) => {
 				const innerSetting = wp.customize(
-					key + '[' + innerKey + ']'
+					`${key}[${innerKey}]`
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Taken from @wordpress/customize typings
 				) as CustomizeSetting<any> | undefined;
 				if (!innerSetting) {
@@ -28,8 +21,7 @@ function applyPreset(control: wordpress__customize.Control): void {
 			});
 		} else {
 			const setting = wp.customize(key) as  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Taken from @wordpress/customize typings
-				| CustomizeSetting<any>
-				| undefined;
+				CustomizeSetting<any> | undefined;
 			if (!setting) {
 				return;
 			}
@@ -38,6 +30,13 @@ function applyPreset(control: wordpress__customize.Control): void {
 	});
 
 	$('.generatepress-font-variant select').trigger('change');
+}
+
+function isAssoc(value: unknown): value is Record<string, unknown> {
+	return (
+		value !== undefined &&
+		(value as Record<string, unknown>).constructor === Object
+	);
 }
 
 void wp.customize.control('crdm_modern_preset', (control) => {

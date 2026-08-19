@@ -1,76 +1,89 @@
 {
-	"name": "crdm-modern",
-	"version": "1.1.1",
-	"description": "A modern WordPress theme made for children's organizations",
-	"keywords": [
-		"wordpress",
-		"skaut",
-		"crdm",
-		"theme",
-		"children"
-	],
-	"homepage": "https://github.com/skaut/crdm-modern",
-	"bugs": {
-		"url": "https://github.com/skaut/crdm-modern/issues"
-	},
-	"license": "GPL-3.0-or-later",
-	"author": {
-		"name": "Marek Dědič",
-		"email": "developer@dedic.eu"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/skaut/crdm-modern.git"
-	},
-	"type": "module",
-	"scripts": {
-		"clean": "rimraf dist/*",
-		"prebuild": "npm run clean",
-		"build": "gulp build",
-		"lint:css:stylelint": "stylelint --color 'src/**/*.css'",
-		"lint:css": "run-p -c --aggregate-output lint:css:*",
-		"lint:php:phan": "export PHAN_DISABLE_XDEBUG_WARN=1; vendor/bin/phan",
-		"lint:php:phpcs": "vendor/bin/phpcs",
-		"lint:php:phpmd": "vendor/bin/phpmd src,.phan/config.php text phpmd.xml",
-		"lint:php:phpstan": "vendor/bin/phpstan",
-		"lint:php": "run-p -c --aggregate-output lint:php:*",
-		"lint:ts:eslint": "eslint --color 'src/**/*.ts' 'gulpfile.js' '*.config.{js,ts}'",
-		"lint:ts": "run-p -c --aggregate-output lint:ts:*",
-		"lint": "run-p -c --aggregate-output lint:*",
-		"update-translations": "gulp update-translations"
-	},
-	"dependencies": {
-		"dripicons": "^2.0.0"
-	},
-	"devDependencies": {
-		"@eslint-community/eslint-plugin-eslint-comments": "^4.7.2",
-		"@types/jquery": "^4.0.1",
-		"@types/wordpress__customize-browser": "^5.5.5",
-		"@typescript-eslint/eslint-plugin": "^7.17.0",
-		"@typescript-eslint/parser": "^7.18.0",
-		"@wordpress/browserslist-config": "^6.53.0",
-		"@wordpress/eslint-plugin": "^23.0.0",
-		"@wordpress/stylelint-config": "^24.2.0",
-		"eslint": "^8.57.1",
-		"eslint-plugin-compat": "^6.0.2",
-		"eslint-plugin-prefer-arrow-functions": "^3.10.2",
-		"eslint-plugin-simple-import-sort": "^14.0.0",
-		"gulp": "^5.0.1",
-		"gulp-clean-css": "^4.3.0",
-		"gulp-concat": "^2.6.1",
-		"gulp-inject-string": "^1.1.2",
-		"gulp-rename": "^2.1.0",
-		"gulp-terser": "^2.1.0",
-		"gulp-typescript": "^6.0.0-alpha.1",
-		"npm-run-all": "^4.1.5",
-		"ordered-read-streams": "^2.0.0",
-		"rimraf": "^6.1.3",
-		"stylelint": "^16.26.1",
-		"stylelint-config-standard": "^39.0.1",
-		"stylelint-no-unsupported-browser-features": "^8.1.1",
-		"typescript": "^6.0.3"
-	},
-	"browserslist": [
-		"extends @wordpress/browserslist-config"
-	]
+  "name": "crdm-modern",
+  "version": "1.1.1",
+  "description": "A modern WordPress theme made for children's organizations",
+  "keywords": [
+    "wordpress",
+    "skaut",
+    "crdm",
+    "theme",
+    "children"
+  ],
+  "homepage": "https://github.com/skaut/crdm-modern",
+  "bugs": {
+    "url": "https://github.com/skaut/crdm-modern/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skaut/crdm-modern.git"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": {
+    "name": "Marek Dědič",
+    "email": "developer@dedic.eu",
+    "url": "https://dedic.eu"
+  },
+  "type": "module",
+  "exports": {
+    ".": null
+  },
+  "sideEffects": true,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "gulp build",
+    "clean": "rimraf dist/*",
+    "lint": "run-p -c --aggregate-output lint:*",
+    "lint:css": "run-p -c --aggregate-output lint:css:*",
+    "lint:css:stylelint": "stylelint --color 'src/**/*.css'",
+    "lint:eslint": "eslint --color",
+    "lint:php": "run-p -c --aggregate-output lint:php:*",
+    "lint:php:phan": "export PHAN_DISABLE_XDEBUG_WARN=1; vendor/bin/phan",
+    "lint:php:phpcs": "vendor/bin/phpcs",
+    "lint:php:phpmd": "vendor/bin/phpmd src,.phan/config.php text phpmd.xml",
+    "lint:php:phpstan": "vendor/bin/phpstan",
+    "update-translations": "gulp update-translations"
+  },
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ],
+  "dependencies": {
+    "dripicons": "^2.0.0"
+  },
+  "devDependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.7.2",
+    "@eslint/css": "^1.4.0",
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^2.0.1",
+    "@eslint/markdown": "^8.0.3",
+    "@types/jquery": "^4.0.1",
+    "@types/wordpress__customize-browser": "^5.5.5",
+    "@wordpress/browserslist-config": "^6.53.0",
+    "@wordpress/eslint-plugin": "^25.9.0",
+    "@wordpress/stylelint-config": "^24.2.0",
+    "eslint": "^10.8.1",
+    "eslint-plugin-compat": "^7.0.2",
+    "eslint-plugin-package-json": "^1.7.1",
+    "eslint-plugin-perfectionist": "^5.10.1",
+    "eslint-plugin-prefer-arrow-functions": "^3.10.2",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.11.0",
+    "gulp": "^5.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-inject-string": "^1.1.2",
+    "gulp-rename": "^2.1.0",
+    "gulp-terser": "^2.1.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "npm-run-all": "^4.1.5",
+    "ordered-read-streams": "^2.0.0",
+    "rimraf": "^6.1.3",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-no-unsupported-browser-features": "^8.1.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.67.0"
+  }
 }
