@@ -254,7 +254,7 @@ liveReload('generate_spacing_settings[content_element_separator]', [
 						'generate_blog_settings[post_image_width]',
 					],
 					value: (value, additionalValues): string =>
-						'calc(' + additionalValues[0] + 'px + ' + value + 'em)',
+						`calc(${additionalValues[0]}px + ${value}em)`,
 				},
 			},
 		],
@@ -272,7 +272,7 @@ liveReload('generate_spacing_settings[content_element_separator]', [
 						'generate_blog_settings[post_image_width]',
 					],
 					value: (value, additionalValues): string =>
-						'calc(' + additionalValues[0] + 'px + ' + value + 'em)',
+						`calc(${additionalValues[0]}px + ${value}em)`,
 				},
 			},
 		],
@@ -369,14 +369,7 @@ liveReload('generate_spacing_settings[content_element_separator]', [
 				name: 'margin',
 				computed: {
 					value: (value): string =>
-						value +
-						'em ' +
-						value +
-						'em ' +
-						value +
-						'em ' +
-						value +
-						'em',
+						`${value}em ${value}em ${value}em ${value}em`,
 				},
 			},
 		],

@@ -82,15 +82,13 @@ function bundle(name, sources, part, jQuery = false) {
 	let ret = gulp
 		.src(sources.concat(['src/d.ts/**/*.d.ts']))
 		.pipe(tsProject())
-		.js.pipe(concat(name + '.min.js'));
+		.js.pipe(concat(`${name}.min.js`));
 	if (jQuery) {
 		ret = ret
 			.pipe(inject.prepend('jQuery(document).ready( function( $) {\n'))
 			.pipe(inject.append('});\n'));
 	}
-	return ret
-		.pipe(terser({ ie8: true }))
-		.pipe(gulp.dest('dist/' + part + '/js/'));
+	return ret.pipe(terser({ ie8: true })).pipe(gulp.dest(`dist/${part}/js/`));
 }
 
 gulp.task('build:js', () =>

@@ -25,22 +25,18 @@ function setCSSInHead(
 	if (target.media) {
 		mediaBegin = '@media (';
 		if (target.media.minWidth !== undefined) {
-			mediaBegin += 'min-width: ' + target.media.minWidth.toString();
+			mediaBegin += `min-width: ${target.media.minWidth.toString()}`;
 		} else if (target.media.maxWidth !== undefined) {
-			mediaBegin += 'max-width: ' + target.media.maxWidth.toString();
+			mediaBegin += `max-width: ${target.media.maxWidth.toString()}`;
 		}
 		mediaBegin += 'px) {\n';
 		mediaEnd = '}\n';
 	}
-	$('head style#' + targetHash).remove();
+	$(`head style#${targetHash}`).remove();
 	$('head').append(
-		'<style id="' +
-			targetHash +
-			'">\n' +
-			mediaBegin +
-			target.selector +
-			' {\n' +
-			$.map(target.properties, (property) => {
+		`<style id="${targetHash}">\n${mediaBegin}${target.selector} {\n${$.map(
+			target.properties,
+			(property) => {
 				let computedValue = value;
 				if (property.computed) {
 					let additionalValues: Array<string> = [];
@@ -56,19 +52,11 @@ function setCSSInHead(
 						additionalValues
 					);
 				}
-				return (
-					'\t' +
-					property.name +
-					': ' +
-					(property.prefix ?? '') +
-					computedValue +
-					(property.postfix ?? '') +
-					';\n'
-				);
-			}).join('') +
-			'}\n' +
-			mediaEnd +
-			'</style>'
+				return `\t${property.name}: ${property.prefix ?? ''}${
+					computedValue
+				}${property.postfix ?? ''};\n`;
+			}
+		).join('')}}\n${mediaEnd}</style>`
 	);
 }
 

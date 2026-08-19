@@ -18,7 +18,7 @@ function applyPreset(control: wordpress__customize.Control): void {
 		if (isAssoc(value)) {
 			$.each(value, (innerKey, innerValue) => {
 				const innerSetting = wp.customize(
-					key + '[' + innerKey + ']'
+					`${key}[${innerKey}]`
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Taken from @wordpress/customize typings
 				) as CustomizeSetting<any> | undefined;
 				if (!innerSetting) {
