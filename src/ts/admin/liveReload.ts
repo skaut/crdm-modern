@@ -102,18 +102,19 @@ function liveReload(
 ): void {
 	void wp.customize(setting, (value) => {
 		value.bind((newValue: string) => {
-			if (!newValue && fallbacks) {
+			let resolvedValue = newValue;
+			if (!resolvedValue && fallbacks) {
 				$.each(fallbacks, (_, fallback) => {
 					const fallbackValue = String(wp.customize(fallback).get());
 					if (fallbackValue) {
-						newValue = fallbackValue;
+						resolvedValue = fallbackValue;
 						return false;
 					}
 					return true;
 				});
 			}
 			$.each(targets, (_, target) => {
-				setCSSInHead(setting, target, newValue);
+				setCSSInHead(setting, target, resolvedValue);
 			});
 		});
 	});
