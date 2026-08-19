@@ -396,7 +396,8 @@ liveReload('generate_settings[logo_width]', [
 				name: 'margin-left',
 				postfix: 'px',
 				computed: {
-					value: (value): string => (parseInt(value, 10) + 20).toString(),
+					value: (value): string =>
+						(parseInt(value, 10) + 20).toString(),
 				},
 			},
 		],
@@ -408,7 +409,8 @@ liveReload('generate_settings[logo_width]', [
 				name: 'margin-left',
 				postfix: 'px',
 				computed: {
-					value: (value): string => (parseInt(value, 10) + 20).toString(),
+					value: (value): string =>
+						(parseInt(value, 10) + 20).toString(),
 				},
 			},
 		],

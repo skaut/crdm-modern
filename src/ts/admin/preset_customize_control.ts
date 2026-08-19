@@ -28,8 +28,7 @@ function applyPreset(control: wordpress__customize.Control): void {
 			});
 		} else {
 			const setting = wp.customize(key) as  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Taken from @wordpress/customize typings
-				| CustomizeSetting<any>
-				| undefined;
+				CustomizeSetting<any> | undefined;
 			if (!setting) {
 				return;
 			}
