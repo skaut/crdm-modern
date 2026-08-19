@@ -1,5 +1,5 @@
 declare interface CrdmModernPresetOnActivationLocalize {
-	ajax_url: string; // eslint-disable-line camelcase
+	ajax_url: string;
 	apply: string;
 	dismiss: string;
 	error: string;
