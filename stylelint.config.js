@@ -10,8 +10,8 @@ export default {
 		'plugin/no-unsupported-browser-features': [
 			true,
 			{
-				severity: 'warning',
 				ignore: 'css-sel2',
+				severity: 'warning',
 			},
 		],
 	},
