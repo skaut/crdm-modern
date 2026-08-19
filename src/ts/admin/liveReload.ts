@@ -1,5 +1,28 @@
 /* exported liveReload */
 
+function customizeFallback(
+	setting: string,
+	targets: Array<LiveReloadTarget>,
+	fallbacks: Array<string>,
+	i: number
+): void {
+	void wp.customize(fallbacks[i], (value) => {
+		value.bind((newValue: string) => {
+			if (wp.customize(setting).get() !== undefined) {
+				return;
+			}
+			for (let j = 0; j < i; j++) {
+				if (wp.customize(fallbacks[j]).get() !== undefined) {
+					return;
+				}
+			}
+			$.each(targets, (_, target) => {
+				setCSSInHead(setting, target, newValue);
+			});
+		});
+	});
+}
+
 /* eslint-disable no-bitwise -- Hashing function can do bitwise operations */
 function hash(str: string): string {
 	if (str.length === 0) {
@@ -13,6 +36,36 @@ function hash(str: string): string {
 	return ret.toString();
 }
 /* eslint-enable */
+
+function liveReload(
+	setting: string,
+	targets: Array<LiveReloadTarget>,
+	fallbacks?: Array<string>
+): void {
+	void wp.customize(setting, (value) => {
+		value.bind((newValue: string) => {
+			let resolvedValue = newValue;
+			if (!resolvedValue && fallbacks) {
+				$.each(fallbacks, (_, fallback) => {
+					const fallbackValue = String(wp.customize(fallback).get());
+					if (fallbackValue) {
+						resolvedValue = fallbackValue;
+						return false;
+					}
+					return true;
+				});
+			}
+			$.each(targets, (_, target) => {
+				setCSSInHead(setting, target, resolvedValue);
+			});
+		});
+	});
+	if (fallbacks) {
+		for (let i = 0; i < fallbacks.length; i++) {
+			customizeFallback(setting, targets, fallbacks, i);
+		}
+	}
+}
 
 function setCSSInHead(
 	setting: string,
@@ -58,57 +111,4 @@ function setCSSInHead(
 			}
 		).join('')}}\n${mediaEnd}</style>`
 	);
-}
-
-function customizeFallback(
-	setting: string,
-	targets: Array<LiveReloadTarget>,
-	fallbacks: Array<string>,
-	i: number
-): void {
-	void wp.customize(fallbacks[i], (value) => {
-		value.bind((newValue: string) => {
-			if (wp.customize(setting).get() !== undefined) {
-				return;
-			}
-			for (let j = 0; j < i; j++) {
-				if (wp.customize(fallbacks[j]).get() !== undefined) {
-					return;
-				}
-			}
-			$.each(targets, (_, target) => {
-				setCSSInHead(setting, target, newValue);
-			});
-		});
-	});
-}
-
-function liveReload(
-	setting: string,
-	targets: Array<LiveReloadTarget>,
-	fallbacks?: Array<string>
-): void {
-	void wp.customize(setting, (value) => {
-		value.bind((newValue: string) => {
-			let resolvedValue = newValue;
-			if (!resolvedValue && fallbacks) {
-				$.each(fallbacks, (_, fallback) => {
-					const fallbackValue = String(wp.customize(fallback).get());
-					if (fallbackValue) {
-						resolvedValue = fallbackValue;
-						return false;
-					}
-					return true;
-				});
-			}
-			$.each(targets, (_, target) => {
-				setCSSInHead(setting, target, resolvedValue);
-			});
-		});
-	});
-	if (fallbacks) {
-		for (let i = 0; i < fallbacks.length; i++) {
-			customizeFallback(setting, targets, fallbacks, i);
-		}
-	}
 }

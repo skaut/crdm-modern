@@ -1,3 +1,20 @@
+function applyCallback(): void {
+	const applyButton = $('#crdm-modern-preset-on-activation-apply');
+	applyButton.attr('disabled', 'disabled');
+	applyButton.off('click');
+	const id = $('input[name=crdm-modern-preset-on-activation]:checked').val();
+	void $.get(
+		crdmModernPresetOnActivationLocalize.ajax_url,
+		{
+			// eslint-disable-next-line camelcase -- Fixed name of WordPress parameter
+			_ajax_nonce: crdmModernPresetOnActivationLocalize.nonce,
+			action: 'crdm_modern_apply_preset',
+			id,
+		},
+		handleResponse
+	);
+}
+
 function handleResponse(response: string): void {
 	let html = '';
 	if (response === 'success') {
@@ -21,23 +38,6 @@ function handleResponse(response: string): void {
 		$(this).parent().remove();
 	});
 	tb_remove();
-}
-
-function applyCallback(): void {
-	const applyButton = $('#crdm-modern-preset-on-activation-apply');
-	applyButton.attr('disabled', 'disabled');
-	applyButton.off('click');
-	const id = $('input[name=crdm-modern-preset-on-activation]:checked').val();
-	void $.get(
-		crdmModernPresetOnActivationLocalize.ajax_url,
-		{
-			// eslint-disable-next-line camelcase -- Fixed name of WordPress parameter
-			_ajax_nonce: crdmModernPresetOnActivationLocalize.nonce,
-			action: 'crdm_modern_apply_preset',
-			id,
-		},
-		handleResponse
-	);
 }
 
 function onActivation(): void {

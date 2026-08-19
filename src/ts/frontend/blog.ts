@@ -1,10 +1,3 @@
-function isArchive(): boolean {
-	const articles = $('.site-main article .inside-article');
-	return (
-		articles.length !== 1 || articles.find('.entry-summary').length !== 0
-	);
-}
-
 function addExcerptBorders(): void {
 	if (!isArchive()) {
 		return;
@@ -24,6 +17,13 @@ function addExcerptClickability(): void {
 			window.location.href = href;
 		});
 	});
+}
+
+function isArchive(): boolean {
+	const articles = $('.site-main article .inside-article');
+	return (
+		articles.length !== 1 || articles.find('.entry-summary').length !== 0
+	);
 }
 
 addExcerptBorders();
