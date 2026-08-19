@@ -164,7 +164,7 @@ liveReload('crdm_modern[header_image_right]', [
 				postfix: 'px',
 				computed: {
 					value: (value): string =>
-						Math.max(parseInt(value) - 30, 30).toString(),
+						Math.max(parseInt(value, 10) - 30, 30).toString(),
 				},
 			},
 		],
@@ -396,7 +396,7 @@ liveReload('generate_settings[logo_width]', [
 				name: 'margin-left',
 				postfix: 'px',
 				computed: {
-					value: (value): string => (parseInt(value) + 20).toString(),
+					value: (value): string => (parseInt(value, 10) + 20).toString(),
 				},
 			},
 		],
@@ -408,7 +408,7 @@ liveReload('generate_settings[logo_width]', [
 				name: 'margin-left',
 				postfix: 'px',
 				computed: {
-					value: (value): string => (parseInt(value) + 20).toString(),
+					value: (value): string => (parseInt(value, 10) + 20).toString(),
 				},
 			},
 		],
