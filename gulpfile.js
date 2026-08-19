@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 import { exec } from 'child_process';
 import gulp from 'gulp';
 import cleanCSS from 'gulp-clean-css';
