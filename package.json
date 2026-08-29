@@ -44,6 +44,7 @@
     "lint:php:phpcs": "vendor/bin/phpcs",
     "lint:php:phpmd": "vendor/bin/phpmd src,.phan/config.php text phpmd.xml",
     "lint:php:phpstan": "vendor/bin/phpstan",
+    "lint:typecheck": "tsc --noEmit",
     "update-translations": "gulp update-translations"
   },
   "browserslist": [
