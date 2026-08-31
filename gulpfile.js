@@ -88,7 +88,7 @@ function bundle(name, sources, part, jQuery = false) {
 			.pipe(inject.prepend('jQuery(document).ready( function( $) {\n'))
 			.pipe(inject.append('});\n'));
 	}
-	return ret.pipe(terser({ ie8: true })).pipe(gulp.dest(`dist/${part}/js/`));
+	return ret.pipe(terser()).pipe(gulp.dest(`dist/${part}/js/`));
 }
 
 gulp.task('build:js', () =>
