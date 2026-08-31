@@ -25,7 +25,11 @@
 	.site-footer .footer-widgets .footer-widgets-container .inside-footer-widgets .grid-parent {
 		margin-left: auto;
 		margin-right: auto;
-		width: max-content; /* stylelint-disable-line plugin/no-unsupported-browser-features */
+
+		/* Caniuse marks intrinsic-width partial in every Firefox, including
+		   current ones, so this can never clear. */
+		/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+		width: max-content;
 		max-width: 100%;
 	}
 }

@@ -12,7 +12,10 @@
 }
 
 #crdm-modern-preset-on-activation-overflow {
-	inset: 60px 0;
+	bottom: 60px;
+	left: 0;
+	right: 0;
+	top: 60px;
 	overflow-y: auto;
 	padding: 20px 30px;
 	position: absolute;
