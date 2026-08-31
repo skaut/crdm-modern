@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    "lib": ["ES2015", "DOM"],
     "module": "esnext",
     "moduleResolution": "bundler",
-    "target": "es2015",
+    "target": "es2017",
     "types": ["@wordpress/customize-browser"],
 
     "allowUnreachableCode": false,
