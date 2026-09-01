@@ -64,7 +64,7 @@
     "@types/wordpress__customize-browser": "^5.5.5",
     "@wordpress/eslint-plugin": "^25.9.0",
     "@wordpress/stylelint-config": "^24.2.0",
-    "eslint": "^10.9.0",
+    "eslint": "^10.9.1",
     "eslint-plugin-compat": "^7.0.2",
     "eslint-plugin-package-json": "^1.7.1",
     "eslint-plugin-perfectionist": "^5.10.1",
