@@ -1,12 +1,32 @@
+import browserslist from 'browserslist';
 import { exec } from 'child_process';
 import gulp from 'gulp';
-import cleanCSS from 'gulp-clean-css';
 import concat from 'gulp-concat';
 import inject from 'gulp-inject-string';
 import rename from 'gulp-rename';
 import terser from 'gulp-terser';
 import ts from 'gulp-typescript';
+import { browserslistToTargets, transform } from 'lightningcss';
+import { Transform } from 'node:stream';
 import ordered from 'ordered-read-streams';
+
+const cssTargets = browserslistToTargets(browserslist());
+
+// Minifies, and lowers modern syntax and adds prefixes for the browserslist floor.
+const lightningCSS = () =>
+	new Transform({
+		objectMode: true,
+		transform: (file, _encoding, callback) => {
+			const { code } = transform({
+				code: file.contents,
+				filename: file.path,
+				minify: true,
+				targets: cssTargets,
+			});
+			file.contents = Buffer.from(code);
+			callback(null, file);
+		},
+	});
 
 gulp.task('build:css:main', () =>
 	gulp
@@ -19,7 +39,7 @@ gulp.task('build:css:main', () =>
 			'src/css/frontend/site-title.css',
 			'src/css/frontend/title-widget.css',
 		])
-		.pipe(cleanCSS({ compatibility: 'ie8' }))
+		.pipe(lightningCSS())
 		.pipe(concat('style.css'))
 		.pipe(gulp.dest('dist/'))
 );
@@ -27,7 +47,7 @@ gulp.task('build:css:main', () =>
 gulp.task('build:css:admin', () =>
 	gulp
 		.src('src/css/admin/**/*.css')
-		.pipe(cleanCSS({ compatibility: 'ie8' }))
+		.pipe(lightningCSS())
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest('dist/admin/css/'))
 );
