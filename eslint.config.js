@@ -126,7 +126,6 @@ export default tseslint.config(
 			'no-useless-concat': 'error',
 			'no-useless-rename': 'error',
 			'no-useless-return': 'error',
-			'no-var': 'error',
 			'no-void': ['error', { allowAsStatement: true }],
 			'no-warning-comments': 'warn',
 			'object-shorthand': 'error',
@@ -157,12 +156,9 @@ export default tseslint.config(
 					allowNamedFunctions: true,
 				},
 			],
-			'prefer-const': 'error',
 			'prefer-exponentiation-operator': 'error',
 			'prefer-object-spread': 'error',
 			'prefer-regex-literals': 'error',
-			'prefer-rest-params': 'error',
-			'prefer-spread': 'error',
 			'prefer-template': 'error',
 			radix: 'error',
 			'require-atomic-updates': 'error',
@@ -180,7 +176,6 @@ export default tseslint.config(
 				projectService: true,
 				sourceType: 'script',
 			},
-			sourceType: 'script',
 		},
 		rules: {
 			'@typescript-eslint/array-type': ['error', { default: 'generic' }],
@@ -193,7 +188,6 @@ export default tseslint.config(
 			'@typescript-eslint/explicit-module-boundary-types': 'error',
 			'@typescript-eslint/init-declarations': 'error',
 			'@typescript-eslint/method-signature-style': ['error', 'method'],
-			'@typescript-eslint/no-base-to-string': 'error',
 			'@typescript-eslint/no-import-type-side-effects': 'error',
 			'@typescript-eslint/no-invalid-void-type': [
 				'error',
@@ -203,7 +197,6 @@ export default tseslint.config(
 			'@typescript-eslint/no-unnecessary-parameter-property-assignment':
 				'error',
 			'@typescript-eslint/no-unnecessary-qualifier': 'error',
-			'@typescript-eslint/no-unused-vars': 'error',
 			'@typescript-eslint/no-use-before-define': [
 				'error',
 				{ functions: false },
