@@ -65,7 +65,7 @@
     "@eslint/markdown": "^8.0.3",
     "@types/jquery": "^4.0.1",
     "@types/wordpress__customize-browser": "^5.5.5",
-    "@wordpress/eslint-plugin": "^26.0.0",
+    "@wordpress/eslint-plugin": "^27.0.0",
     "@wordpress/stylelint-config": "^26.0.0",
     "browserslist": "^4.29.1",
     "doiuse": "^6.0.6",
