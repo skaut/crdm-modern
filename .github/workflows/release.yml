@@ -3,7 +3,7 @@ name: "Release"
 "on":
   push:
     tags:
-      - "*"
+      - "**"
 env:
   php-version: 8.1
   cache-version: 1
