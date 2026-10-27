@@ -85,7 +85,7 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "jiti": "^2.7.0",
     "lightningcss": "^1.33.0",
-    "npm-run-all2": "^9.0.3",
+    "npm-run-all2": "^9.0.4",
     "ordered-read-streams": "^2.0.0",
     "postcss": "^8.5.30",
     "rimraf": "^6.1.3",
