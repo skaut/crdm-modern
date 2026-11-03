@@ -36,10 +36,8 @@ function enqueue() {
  * @param string       $id_base The ID of the widget.
  *
  * @return string The new title.
- *
- * @SuppressWarnings("PHPMD.ShortVariable")
- * @SuppressWarnings("PHPMD.UnusedFormalParameter")
  */
+#[\PHPMD\Attribute\SuppressWarnings( \PHPMD\Rule\UnusedFormalParameter::class )]
 function add_icon( string $title, array $instance = array(), string $id_base = '' ) {
 	switch ( $id_base ) {
 		case 'text':

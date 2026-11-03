@@ -13,8 +13,6 @@ namespace CrdmModern\Admin\Customizer;
  * A preset
  *
  * Contains all the data about a preset.
- *
- * @SuppressWarnings("PHPMD.ShortVariable")
  */
 class Preset {
 	/**
@@ -161,9 +159,8 @@ class Preset {
 	 * Returns the default values of all settings fields, including extended values.
 	 *
 	 * @return mixed The defautl values.
-	 *
-	 * @SuppressWarnings("PHPMD.UnusedLocalVariable")
 	 */
+	#[\PHPMD\Attribute\SuppressWarnings( \PHPMD\Rule\UnusedLocalVariable::class )]
 	public function get_all_template_defaults() {
 		$ret = array();
 		foreach ( $this->settings as $id => $_ ) {
