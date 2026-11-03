@@ -72,7 +72,6 @@ class Preset_Registry {
 	 *
 	 * @return Preset_Registry The default registry.
 	 *
-	 * @suppress PhanPossiblyNullTypeReturn
 	 * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
 	 */
 	public static function get_instance() {

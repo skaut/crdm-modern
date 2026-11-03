@@ -42,21 +42,21 @@ msgstr "https://github.com/skaut"
 msgid "Body"
 msgstr "Tělo"
 
-#: php/admin/customizer/class-preset-registry.php:85
+#: php/admin/customizer/class-preset-registry.php:84
 msgid "Blue"
 msgstr "Modrá"
 
-#: php/admin/customizer/class-preset-registry.php:136
-#: php/admin/customizer/class-preset-registry.php:436
-#: php/admin/customizer/class-preset-registry.php:737
+#: php/admin/customizer/class-preset-registry.php:135
+#: php/admin/customizer/class-preset-registry.php:435
+#: php/admin/customizer/class-preset-registry.php:736
 msgid "Read more >"
 msgstr "Číst více >"
 
-#: php/admin/customizer/class-preset-registry.php:385
+#: php/admin/customizer/class-preset-registry.php:384
 msgid "Green"
 msgstr "Zelená"
 
-#: php/admin/customizer/class-preset-registry.php:686
+#: php/admin/customizer/class-preset-registry.php:685
 msgid "Beige"
 msgstr "Béžová"
 
