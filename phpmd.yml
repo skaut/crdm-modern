@@ -1,0 +1,19 @@
+# PHPMD configuration, see https://phpmd.org/documentation/creating-a-ruleset.html
+paths:
+  - src
+  - .phan/config.php
+rules:
+  - ref: rulesets/codesize.xml
+    exclude:
+      - ExcessiveMethodLength
+  - ref: rulesets/codesize.xml/ExcessiveMethodLength
+    properties:
+      maximum: 249
+  - ref: rulesets/design.xml
+  - ref: rulesets/naming.xml
+    exclude:
+      - LongVariable
+  - ref: rulesets/naming.xml/LongVariable
+    properties:
+      maximum: 30
+  - ref: rulesets/unusedcode.xml
