@@ -35,7 +35,7 @@
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
 		"wp-coding-standards/wpcs": "^3.0",
 		"phpmd/phpmd": "^2.7",
-		"phan/phan": "^5.1",
+		"phan/phan": "^6.0",
 		"skaut/wordpress-stubs": "^2.2.0",
 		"phpstan/phpstan": "^2.0",
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",

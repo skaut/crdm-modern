@@ -6,9 +6,9 @@
  */
 
 return array(
-	'target_php_version'                        => '7.4',
-	'minimum_target_php_version'                => '7.0',
-	'backward_compatibility_checks'             => false, // Covered by PHPCS.
+	// Phan 6 only supports targeting PHP 8.1+. Compatibility with older PHP versions is covered by PHPCS.
+	'target_php_version'                        => '8.1',
+	'minimum_target_php_version'                => '8.1',
 	'warn_about_undocumented_throw_statements'  => true,
 	'strict_method_checking'                    => true,
 	'strict_object_checking'                    => true,
@@ -18,6 +18,9 @@ return array(
 	'redundant_condition_detection'             => true,
 	'unused_variable_detection'                 => true,
 	'warn_about_redundant_use_namespaced_class' => true,
+	'suppress_issue_types'                      => array(
+		'PhanUnusedVariableDeclarationCaughtException', // Omitting the caught exception variable requires PHP 8.0.
+	),
 	'directory_list'                            => array(
 		'src',
 		'.phan',
