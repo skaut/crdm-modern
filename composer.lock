@@ -1858,16 +1858,16 @@
         },
         {
             "name": "skaut/wordpress-stubs",
-            "version": "2.10.0",
+            "version": "2.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skaut/wordpress-stubs.git",
-                "reference": "58095f4a59db1f235c9f77f291889fd873db9d6e"
+                "reference": "815f2a5e8a8d7fa62c84722efe058d54743af8d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skaut/wordpress-stubs/zipball/58095f4a59db1f235c9f77f291889fd873db9d6e",
-                "reference": "58095f4a59db1f235c9f77f291889fd873db9d6e",
+                "url": "https://api.github.com/repos/skaut/wordpress-stubs/zipball/815f2a5e8a8d7fa62c84722efe058d54743af8d1",
+                "reference": "815f2a5e8a8d7fa62c84722efe058d54743af8d1",
                 "shasum": ""
             },
             "require": {
@@ -1875,7 +1875,7 @@
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-                "phan/phan": "^5.0",
+                "phan/phan": "^6.0",
                 "phpstan/phpstan": "^2.1",
                 "slevomat/coding-standard": "^8.14",
                 "squizlabs/php_codesniffer": "^3.0",
@@ -1913,7 +1913,7 @@
                 "source": "https://github.com/skaut/wordpress-stubs",
                 "wiki": "https://github.com/skaut/wordpress-stubs/wiki"
             },
-            "time": "2025-01-06T14:12:21+00:00"
+            "time": "2026-10-06T21:48:08+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -3528,12 +3528,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.0 || ^8.0"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
