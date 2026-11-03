@@ -70,7 +70,7 @@
     "browserslist": "^4.29.4",
     "doiuse": "^6.0.6",
     "es-check": "^9.8.1",
-    "eslint": "^10.13.0",
+    "eslint": "^10.14.0",
     "eslint-plugin-compat": "^7.0.2",
     "eslint-plugin-package-json": "^1.11.0",
     "eslint-plugin-perfectionist": "^5.13.0",
