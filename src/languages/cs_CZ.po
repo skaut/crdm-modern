@@ -42,21 +42,21 @@ msgstr "https://github.com/skaut"
 msgid "Body"
 msgstr "Tělo"
 
-#: php/admin/customizer/class-preset-registry.php:84
+#: php/admin/customizer/class-preset-registry.php:83
 msgid "Blue"
 msgstr "Modrá"
 
-#: php/admin/customizer/class-preset-registry.php:135
-#: php/admin/customizer/class-preset-registry.php:435
-#: php/admin/customizer/class-preset-registry.php:736
+#: php/admin/customizer/class-preset-registry.php:134
+#: php/admin/customizer/class-preset-registry.php:434
+#: php/admin/customizer/class-preset-registry.php:735
 msgid "Read more >"
 msgstr "Číst více >"
 
-#: php/admin/customizer/class-preset-registry.php:384
+#: php/admin/customizer/class-preset-registry.php:383
 msgid "Green"
 msgstr "Zelená"
 
-#: php/admin/customizer/class-preset-registry.php:685
+#: php/admin/customizer/class-preset-registry.php:684
 msgid "Beige"
 msgstr "Béžová"
 
@@ -84,11 +84,11 @@ msgstr "Odkaz \"Číst více\""
 msgid "\"Read more\" Link Hover"
 msgstr "Odkaz \"Číst více\" při přejetí myší"
 
-#: php/admin/customizer/controls/class-preset-customize-control.php:126
+#: php/admin/customizer/controls/class-preset-customize-control.php:125
 msgid "Applying the preset overrides a lot of the theme options. You can always go back by closing the customizer before saving."
 msgstr "Požitím předvolby se změní velké množství nastavení šablony. Vždy se můžete vrátit zpět zavřením přizpůsobování webu před uložením nového nastavení."
 
-#: php/admin/customizer/controls/class-preset-customize-control.php:129
+#: php/admin/customizer/controls/class-preset-customize-control.php:128
 #: php/admin/preset-on-activation.php:54
 msgid "Apply"
 msgstr "Použít"

@@ -71,9 +71,8 @@ class Preset_Registry {
 	 * Returns the default registry. See the singleton pattern for more detail.
 	 *
 	 * @return Preset_Registry The default registry.
-	 *
-	 * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
 	 */
+	#[\PHPMD\Attribute\SuppressWarnings( \PHPMD\Rule\Design\ExcessiveMethodLength::class )]
 	public static function get_instance() {
 		if ( ! is_null( self::$instance ) ) {
 			return self::$instance;

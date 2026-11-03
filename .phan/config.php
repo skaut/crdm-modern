@@ -24,9 +24,11 @@ return array(
 	'directory_list'                            => array(
 		'src',
 		'.phan',
+		'vendor/phpmd/phpmd/src',
 		'vendor/skaut/wordpress-stubs/stubs',
 	),
 	'exclude_analysis_directory_list'           => array(
+		'vendor/phpmd/phpmd/src',
 		'vendor/skaut/wordpress-stubs/stubs',
 	),
 	'plugins'                                   => array(

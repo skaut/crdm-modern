@@ -180,9 +180,8 @@ class WordPress_Github_Updater {
 	 * Passes through the GitHub release page for the given version.
 	 *
 	 * @return void
-	 *
-	 * @SuppressWarnings("PHPMD.ExitExpression")
 	 */
+	#[\PHPMD\Attribute\SuppressWarnings( \PHPMD\Rule\Design\ExitExpression::class )]
 	public function update_url() {
 		if ( ! isset( $_GET['version'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			echo( '<h1>' . esc_html( self::$err_msg_version ) . '</h1>' . esc_html( self::$err_msg_no_info ) );

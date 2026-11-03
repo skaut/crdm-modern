@@ -79,10 +79,8 @@ class Title_Widget extends \WP_Widget {
 	 * @param array<mixed, mixed>   $instance @unused-param Unused.
 	 *
 	 * @return void
-	 *
-	 * @SuppressWarnings("PHPMD.ShortVariable")
-	 * @SuppressWarnings("PHPMD.UnusedFormalParameter")
 	 */
+	#[\PHPMD\Attribute\SuppressWarnings( \PHPMD\Rule\UnusedFormalParameter::class )]
 	public function widget( $args, $instance ) {
 		$gp_settings = wp_parse_args(
 			get_option( 'generate_settings', array() ),
