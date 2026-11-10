@@ -89,7 +89,7 @@
     "ordered-read-streams": "^2.0.0",
     "postcss": "^8.5.32",
     "rimraf": "^6.1.4",
-    "stylelint": "^17.16.0",
+    "stylelint": "^18.0.0",
     "stylelint-config-standard": "^40.0.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.1"
