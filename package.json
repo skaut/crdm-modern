@@ -69,7 +69,7 @@
     "@wordpress/stylelint-config": "^27.1.0",
     "browserslist": "^4.29.5",
     "doiuse": "^6.0.6",
-    "es-check": "^9.8.1",
+    "es-check": "^9.9.0",
     "eslint": "^10.14.0",
     "eslint-plugin-compat": "^7.0.2",
     "eslint-plugin-package-json": "^1.14.0",
